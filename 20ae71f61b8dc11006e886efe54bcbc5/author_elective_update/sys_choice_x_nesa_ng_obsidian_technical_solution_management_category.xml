@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="category" table="x_nesa_ng_obsidian_technical_solution_management" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>category</element>
+            <name>x_nesa_ng_obsidian_technical_solution_management</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-02-07 15:55:05</sys_created_on>
+            <sys_id>e66186551bad015cfe9e43f1b24bcb10</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>category</sys_name>
+            <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+            <sys_update_name>sys_choice_x_nesa_ng_obsidian_technical_solution_management_category</sys_update_name>
+            <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+            <sys_updated_on>2022-02-07 15:55:05</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>category</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Issue Management (IM)</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_technical_solution_management</name>
+            <sequence>0</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-02-07 15:55:05</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>2a6186551bad015cfe9e43f1b24bcb0f</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+            <sys_updated_on>2022-02-07 15:55:49</sys_updated_on>
+            <value>issue_management</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>category</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Issue Management (IM) / Continuous Improvement (CI)</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_technical_solution_management</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-02-07 15:55:38</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>6e8146951bad015cfe9e43f1b24bcbbb</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+            <sys_updated_on>2022-02-07 15:55:38</sys_updated_on>
+            <value>im_ci</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>category</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Continuous Improvement (CI)</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_technical_solution_management</name>
+            <sequence>2</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-02-07 15:55:09</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>276102951bad015cfe9e43f1b24bcb29</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+            <sys_updated_on>2022-02-07 15:55:09</sys_updated_on>
+            <value>continuous_improvement</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>category</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Order Management (OM)</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_technical_solution_management</name>
+            <sequence>3</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-02-07 15:55:16</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>557146551bad015cfe9e43f1b24bcbc7</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+            <sys_updated_on>2022-02-18 09:22:09</sys_updated_on>
+            <value>order_management</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

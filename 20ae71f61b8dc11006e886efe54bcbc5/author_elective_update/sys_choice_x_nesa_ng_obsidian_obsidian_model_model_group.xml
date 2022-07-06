@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="model_group" table="x_nesa_ng_obsidian_obsidian_model" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>model_group</element>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>admin_Dung Tri_Ly</sys_created_by>
+            <sys_created_on>2022-03-23 12:08:37</sys_created_on>
+            <sys_id>ea83f3131b524110fe9e43f1b24bcbb0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>model_group</sys_name>
+            <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+            <sys_update_name>sys_choice_x_nesa_ng_obsidian_obsidian_model_model_group</sys_update_name>
+            <sys_updated_by>admin_Dung Tri_Ly</sys_updated_by>
+            <sys_updated_on>2022-03-23 12:08:37</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>model_group</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>CoolPro</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sequence>10</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Dung Tri_Ly</sys_created_by>
+            <sys_created_on>2022-03-23 12:08:37</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>73633fd31b524110fe9e43f1b24bcbc8</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Dung Tri_Ly</sys_updated_by>
+            <sys_updated_on>2022-03-23 12:08:37</sys_updated_on>
+            <value>coolpro</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>model_group</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Express</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sequence>20</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Dung Tri_Ly</sys_created_by>
+            <sys_created_on>2022-03-23 12:09:02</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>d293f3171b524110fe9e43f1b24bcb84</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Dung Tri_Ly</sys_updated_by>
+            <sys_updated_on>2022-03-23 12:09:02</sys_updated_on>
+            <value>express</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>model_group</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>EZCare</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sequence>30</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Dung Tri_Ly</sys_created_by>
+            <sys_created_on>2022-03-23 12:09:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>0db33bd31b524110fe9e43f1b24bcb98</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Dung Tri_Ly</sys_updated_by>
+            <sys_updated_on>2022-03-23 12:09:34</sys_updated_on>
+            <value>ezcare</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>model_group</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>NA1</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sequence>40</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Dung Tri_Ly</sys_created_by>
+            <sys_created_on>2022-03-23 12:09:58</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>32c333571b524110fe9e43f1b24bcbaa</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Dung Tri_Ly</sys_updated_by>
+            <sys_updated_on>2022-03-23 12:09:58</sys_updated_on>
+            <value>na1</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>model_group</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>NA2</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sequence>50</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Dung Tri_Ly</sys_created_by>
+            <sys_created_on>2022-03-23 12:10:17</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>f3d333571b524110fe9e43f1b24bcbf9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Dung Tri_Ly</sys_updated_by>
+            <sys_updated_on>2022-03-23 12:10:17</sys_updated_on>
+            <value>na2</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>model_group</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>NDG</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sequence>60</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Dung Tri_Ly</sys_created_by>
+            <sys_created_on>2022-03-23 12:10:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>55f333571b524110fe9e43f1b24bcbfc</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Dung Tri_Ly</sys_updated_by>
+            <sys_updated_on>2022-03-23 12:10:34</sys_updated_on>
+            <value>ndg</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>model_group</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>NM1</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sequence>70</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Dung Tri_Ly</sys_created_by>
+            <sys_created_on>2022-03-23 12:10:51</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>7804b7571b524110fe9e43f1b24bcb74</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Dung Tri_Ly</sys_updated_by>
+            <sys_updated_on>2022-03-23 12:10:51</sys_updated_on>
+            <value>nm1</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>model_group</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>NM2</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sequence>80</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Dung Tri_Ly</sys_created_by>
+            <sys_created_on>2022-03-23 12:11:05</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>670433571b524110fe9e43f1b24bcbaf</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Dung Tri_Ly</sys_updated_by>
+            <sys_updated_on>2022-03-23 12:11:05</sys_updated_on>
+            <value>nm2</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>model_group</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Real</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sequence>90</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Dung Tri_Ly</sys_created_by>
+            <sys_created_on>2022-03-23 12:11:23</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>a71473571b524110fe9e43f1b24bcbd7</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Dung Tri_Ly</sys_updated_by>
+            <sys_updated_on>2022-03-23 12:11:23</sys_updated_on>
+            <value>real</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>model_group</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Roastelier</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sequence>100</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Dung Tri_Ly</sys_created_by>
+            <sys_created_on>2022-03-23 12:11:38</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>2034bbd31b524110fe9e43f1b24bcbb2</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Dung Tri_Ly</sys_updated_by>
+            <sys_updated_on>2022-03-23 12:11:38</sys_updated_on>
+            <value>roastelier</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>model_group</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>SBUX</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sequence>110</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Dung Tri_Ly</sys_created_by>
+            <sys_created_on>2022-03-23 12:11:52</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>ff34b7971b524110fe9e43f1b24bcb7f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Dung Tri_Ly</sys_updated_by>
+            <sys_updated_on>2022-03-23 12:11:52</sys_updated_on>
+            <value>sbux</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>model_group</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Slush</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sequence>120</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Dung Tri_Ly</sys_created_by>
+            <sys_created_on>2022-03-23 12:12:14</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>a05433971b524110fe9e43f1b24bcb20</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Dung Tri_Ly</sys_updated_by>
+            <sys_updated_on>2022-03-23 12:12:14</sys_updated_on>
+            <value>slush</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>model_group</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Visual Bowl</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sequence>130</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Dung Tri_Ly</sys_created_by>
+            <sys_created_on>2022-03-23 12:15:01</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>d0f4bf971b524110fe9e43f1b24bcbfd</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Dung Tri_Ly</sys_updated_by>
+            <sys_updated_on>2022-03-23 12:15:01</sys_updated_on>
+            <value>visual_bowl</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>model_group</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>NA Legacy</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sequence>140</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Dung Tri_Ly</sys_created_by>
+            <sys_created_on>2022-03-23 12:15:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>9c15bbd31b524110fe9e43f1b24bcbd6</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin_Dung Tri_Ly</sys_updated_by>
+            <sys_updated_on>2022-03-23 12:15:49</sys_updated_on>
+            <value>na_legacy</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>model_group</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Other</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sequence>150</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Dung Tri_Ly</sys_created_by>
+            <sys_created_on>2022-03-23 12:16:09</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>54357f9b1b524110fe9e43f1b24bcb7a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Dung Tri_Ly</sys_updated_by>
+            <sys_updated_on>2022-03-23 12:16:09</sys_updated_on>
+            <value>other</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

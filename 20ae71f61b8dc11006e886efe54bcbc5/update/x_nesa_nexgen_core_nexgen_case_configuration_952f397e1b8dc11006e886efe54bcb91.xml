@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nesa_nexgen_core_nexgen_case_configuration">
+    <x_nesa_nexgen_core_nexgen_case_configuration action="INSERT_OR_UPDATE">
+        <agent_roles name="x_nesa_ng_obsidian.technical_ticket_user">09727ba11b998d1006e886efe54bcb53</agent_roles>
+        <assignable_group_types>a81429ed1b258110fe9e43f1b24bcba1</assignable_group_types>
+        <case_portal_page_url>/obsidian?id=standard_ticket&amp;table=${sys_class_name}&amp;sys_id=${sys_id}</case_portal_page_url>
+        <cc_requested_for_in_end_user_notifications>false</cc_requested_for_in_end_user_notifications>
+        <email_footer/>
+        <email_header_logo/>
+        <email_header_title/>
+        <enable_attachments_in_portal>true</enable_attachments_in_portal>
+        <end_user_notification_signature/>
+        <fields_displayed_in_agent_notifications>number,opened_by,market,u_country,impacted_nestle_company,description</fields_displayed_in_agent_notifications>
+        <fields_displayed_in_portal>number,sys_updated_on,sys_created_on,state,opened_by,requested_for</fields_displayed_in_portal>
+        <generic_my_cases_case_page_id/>
+        <include_close_notes_in_resolution_notification>false</include_close_notes_in_resolution_notification>
+        <list_cases_in_my_cases_generic_page>true</list_cases_in_my_cases_generic_page>
+        <my_cases_advanced_query>false</my_cases_advanced_query>
+        <my_cases_advanced_query_script/>
+        <my_cases_columns>number,state,title,category,tsm.state,sys_created_on</my_cases_columns>
+        <my_cases_query table="x_nesa_ng_obsidian_technical_ticket">opened_byDYNAMIC90d1921e5f510100a9ad2572f2b477fe^ORmarketDYNAMIC8ebd36ba1b46cd90fe9e43f1b24bcbd7^ORu_countryDYNAMIC81fd323e1b46cd90fe9e43f1b24bcbad^EQ<item endquery="false" field="opened_by" goto="false" newquery="false" operator="DYNAMIC" or="false" value="90d1921e5f510100a9ad2572f2b477fe"/>
+            <item endquery="false" field="market" goto="false" newquery="false" operator="DYNAMIC" or="true" value="8ebd36ba1b46cd90fe9e43f1b24bcbd7"/>
+            <item endquery="false" field="u_country" goto="false" newquery="false" operator="DYNAMIC" or="true" value="81fd323e1b46cd90fe9e43f1b24bcbad"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </my_cases_query>
+        <require_close_notes_on_closed_state>false</require_close_notes_on_closed_state>
+        <sys_class_name>x_nesa_nexgen_core_nexgen_case_configuration</sys_class_name>
+        <sys_created_by>admin_Isaac_Perez</sys_created_by>
+        <sys_created_on>2022-01-18 11:04:39</sys_created_on>
+        <sys_id>952f397e1b8dc11006e886efe54bcb91</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>x_nesa_ng_obsidian_technical_ticket</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>x_nesa_nexgen_core_nexgen_case_configuration_952f397e1b8dc11006e886efe54bcb91</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-06-16 08:20:43</sys_updated_on>
+        <table>x_nesa_ng_obsidian_technical_ticket</table>
+        <use_default_agent_notifications>true</use_default_agent_notifications>
+        <use_default_end_user_notifications>false</use_default_end_user_notifications>
+        <watchlist_roles/>
+        <worknotes_list_roles name="x_nesa_ng_obsidian.technical_ticket_user">09727ba11b998d1006e886efe54bcb53</worknotes_list_roles>
+    </x_nesa_nexgen_core_nexgen_case_configuration>
+</record_update>

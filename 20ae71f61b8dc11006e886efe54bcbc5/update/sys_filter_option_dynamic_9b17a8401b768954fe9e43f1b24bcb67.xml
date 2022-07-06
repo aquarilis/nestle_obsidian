@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_filter_option_dynamic">
+    <sys_filter_option_dynamic action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <available_for_default>false</available_for_default>
+        <available_for_filter>true</available_for_filter>
+        <available_for_ref_qual>false</available_for_ref_qual>
+        <field_type display_value="Reference">52a227c1bf3320001875647fcf07396a</field_type>
+        <filter_by_schedule/>
+        <label>One of my Obsidian groups</label>
+        <order/>
+        <roles/>
+        <script>javascript:x_nesa_ng_obsidian.DXCObsidianCommonUtilsAJAX.getMyObsidianGroup()</script>
+        <script_reference_id/>
+        <script_reference_table/>
+        <sys_class_name>sys_filter_option_dynamic</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-04-06 15:43:31</sys_created_on>
+        <sys_id>9b17a8401b768954fe9e43f1b24bcb67</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>One of my Obsidian groups</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_filter_option_dynamic_9b17a8401b768954fe9e43f1b24bcb67</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-04-06 15:46:06</sys_updated_on>
+        <table>sys_user_group</table>
+        <table_containing_filter/>
+    </sys_filter_option_dynamic>
+</record_update>

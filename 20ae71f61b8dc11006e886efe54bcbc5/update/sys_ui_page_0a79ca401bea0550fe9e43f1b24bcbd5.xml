@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script/>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_nesa_ng_obsidian_dxc_new_model_launch.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	
+<style>
+      .infoAtTask{
+      border-collapse: collapse;
+      border: solid black 1px;
+      }
+	   th.infoAtTask{
+	   font-weight:bolder;
+	   font-size: 16px;
+	   }
+</style>
+	
+	
+<div id="showInfoTab">
+	<p>test 45</p>
+	</div>
+	
+  <script>
+        var infoObj = JSON.parse(ciObj);
+
+        var div = document.getElementById("showInfoTab");
+        div.innerHTML = "";
+        var tbl = document.createElement('table');
+        tbl.className = "table table-striped m-b-lg";
+		
+        var h2 = document.createElement('h2');
+        h2.textContent = "Configuration Item Type: " + infoObj.type;
+        div.appendChild(h2)
+		
+       
+		
+		
+</script>
+	
+</j:jelly>
+]]></html>
+        <name>dxc_new_model_launch</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>admin_Dian_Veselinov</sys_created_by>
+        <sys_created_on>2022-03-25 13:16:33</sys_created_on>
+        <sys_id>0a79ca401bea0550fe9e43f1b24bcbd5</sys_id>
+        <sys_mod_count>13</sys_mod_count>
+        <sys_name>dxc_new_model_launch</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_ui_page_0a79ca401bea0550fe9e43f1b24bcbd5</sys_update_name>
+        <sys_updated_by>admin_Dian_Veselinov</sys_updated_by>
+        <sys_updated_on>2022-03-28 08:41:44</sys_updated_on>
+    </sys_ui_page>
+</record_update>

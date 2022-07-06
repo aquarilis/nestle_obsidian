@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_nesa_ng_obsidian.DXCTechnicalSolutionManagementUtils</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>DXCTechnicalSolutionManagementUtils</name>
+        <script><![CDATA[var DXCTechnicalSolutionManagementUtils = Class.create();
+DXCTechnicalSolutionManagementUtils.prototype = {
+    initialize: function() {},
+
+	/**
+     * @author	DXC - Isaac Perez
+     * @desc Updates the status for all Technical tickets associated to given Technical Solution Management
+     * @param GlideRecord from the table "x_nesa_ng_obsidian_technical_solution_management"
+     * @return N/A
+     */
+    updateTechnicalTicketsAssociatedToConfirmedTSM: function(tsmGR) {
+        var ticketGR = new GlideRecord(DXCObsidianConstants.TECHNICAL_TICKET_TABLE);
+        ticketGR.addQuery('tsm', tsmGR.getUniqueValue());
+        ticketGR.addQuery('active', true);
+        ticketGR.query();
+
+        while (ticketGR.next()) {
+            ticketGR.state = DXCObsidianConstants.TECHNICAL_TICKET_STATE_SOLUTION_COMMUNICATION_TO_MARKET;
+            ticketGR.update();
+        }
+    },
+	
+    /**
+     * @author	DXC - Isaac Perez
+     * @desc Calculates the estimated resolution time for a TSM ticket when created
+     * @return String with the date of the resolution time
+     */
+    calculateEstimatedResolutionTime: function() {
+        var estimatedDays = gs.getProperty('x_nesa_ng_obsidian.tsm.estimated_resolution_days');
+
+        var currentDate = new GlideDateTime();
+        currentDate.addDaysLocalTime(estimatedDays);
+
+        return currentDate.getDisplayValue();
+    },
+    /*_________________________________________________________________
+       * Author	DXC - Dian Veselinov
+       * Description:
+    			1. Clear the field "TSM" in each Technical ticket
+    			2. Update the state of the Technical ticket to Info Colection
+       * Parameters:GlideRecord from the table "x_nesa_ng_obsidian_technical_solution_management"
+       * Returns:N/A
+       ________________________________________________________________*/
+    updateTechnicalTicketsAssociatedToCancelledTSM: function(tsmGR) {
+        var ticketGR = new GlideRecord(DXCObsidianConstants.TECHNICAL_TICKET_TABLE);
+        ticketGR.addQuery('tsm', tsmGR.getUniqueValue());
+        ticketGR.query();
+        while (ticketGR.next()) {
+            ticketGR.setValue("tsm", "");
+            ticketGR.setValue("state", DXCObsidianConstants.TECHNICAL_TICKET_STATE_INFO_COLLECTION);
+            ticketGR.update();
+        }
+    },
+    /*_________________________________________________________________
+          * Author	DXC - Dian Veselinov
+          * Parameters:GlideRecord from the table "x_nesa_ng_obsidian_technical_solution_management"
+          * Returns: boolean
+          ________________________________________________________________*/
+
+    canCreateNewUniversalTaskForTechnicalTicket: function(tsmGR) {
+        if (gs.hasRole("admin")){
+            return true;
+        }
+
+        var notConfirmed = tsmGR.state != DXCObsidianConstants.TSM_STATE_CONFIRMED;
+        var notCancelled = tsmGR.state != DXCObsidianConstants.TSM_STATE_CANCELLED;
+        var member = gs.getUser().isMemberOf(tsmGR.getValue('assignment_group'));
+        var canWrite = tsmGR.canWrite();
+        return notConfirmed && notCancelled && member && canWrite;
+    },
+	
+	canReadTSM: function(tsmID){
+		var ticketGR = new GlideRecord(DXCObsidianConstants.TECHNICAL_TICKET_TABLE);
+        ticketGR.addQuery('tsm', tsmID);
+        ticketGR.query();
+        while (ticketGR.next()) {
+			if (ticketGR.canRead())
+				return true;
+		}
+		
+		return false;
+	},
+	
+    type: 'DXCTechnicalSolutionManagementUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_Isaac_Perez</sys_created_by>
+        <sys_created_on>2022-03-01 07:56:35</sys_created_on>
+        <sys_id>c6c661981bcac510fe9e43f1b24bcbe6</sys_id>
+        <sys_mod_count>13</sys_mod_count>
+        <sys_name>DXCTechnicalSolutionManagementUtils</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_include_c6c661981bcac510fe9e43f1b24bcbe6</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-06-08 12:59:18</sys_updated_on>
+    </sys_script_include>
+</record_update>

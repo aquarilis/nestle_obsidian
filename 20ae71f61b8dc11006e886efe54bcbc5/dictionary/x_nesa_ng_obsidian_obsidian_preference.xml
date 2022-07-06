@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this table is used for &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this table has been created or updated &gt;" label="Obsidian Preference" max_length="40" name="x_nesa_ng_obsidian_obsidian_preference" sizeclass="0" type="collection">
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Country reference" max_length="32" name="country_reference" reference="cmn_location" reference_qual="u_type=country^EQ" reference_qual_condition="u_type=country^EQ" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Default" max_length="40" name="default" type="boolean"/>
+        <element display="true" label="Title" max_length="40" name="title" read_only="true" type="string"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Type" mandatory="true" max_length="100" name="type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Shipping instructions" sequence="0" value="shipping_instructions"/>
+                <element inactive_on_update="false" label="Personal email address" sequence="1" value="personal_email_address"/>
+                <element inactive_on_update="false" label="Country" sequence="2" value="country"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="User related" mandatory="true" max_length="32" name="user_related" reference="sys_user" type="reference"/>
+        <element label="Value" max_length="1000" name="value" type="string"/>
+        <index name="index">
+            <element name="country_reference"/>
+        </index>
+        <index name="index2">
+            <element name="user_related"/>
+        </index>
+    </element>
+</database>

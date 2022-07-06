@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_page">
+    <sp_page action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <css>.d-none {&#13;
+ display: none;&#13;
+}&#13;
+&#13;
+section.page { background-color: $sp-homepage-bg; } section.page, main.body { padding-top: 0px !important; } /*col-md 1.5*/ @media (min-width: 992px){ .link-box{ width:12.499999995%; } .hidden-xs.hidden-sm{ width:12.499999995%; } .col-md-offset-1-5 { margin-left: 12.499999995%; } } .search_and_buttons { background-position: 0% 35%; } .homepage_button { background-color: white; margin-bottom: 32px; margin-top: 32px; min-height: 175px; padding-top: 12%; padding-bottom: 0; } .announcement-table { //max-height: 290px; min-height: 290px; } @media (min-width: 768px) .homepage_button { padding-top: 5%; } .homepage-news { color: #475064; } .homepage-news .panel { border: 0; box-shadow: none; } .homepage-news .panel-heading { background-color: white; border-bottom: 0; } .homepage-news .panel-body { padding-top: 0px; } .homepage-news .list-group-body { padding-top: 0px; } .announcement-section { padding: 24px 0; } //mobile css @media only screen and (max-width: 768px){ .wrapper-xl &gt; h2{ font-size: 1.5em; } .wrapper-xl { padding: 0 !important; margin-bottom: 20px; } .wrapper-xl img{ width: 7%; } .wrapper-xl img::before { content: "\A"; white-space: pre; } .link-box{ width: 50%; float: left; } .row { margin-left: 0px; margin-right: 0px; } .link-box span.ng-binding{ display: none; } .circle_icon.homepage_button.text-{ margin-bottom: 18px; padding-right: 0px; padding-left: 0px; } .top_footer &gt; p{ font-size: 19px; } .top_footer_btn{ width: 60%; margin: 8px !important; } .btn-info.btn-chat.ng-binding{ width: 60%; margin: 8px; } .top_footer_buttons { padding-bottom: 14px; } .announcement-table{ max-height: none; } }&#13;
+.td_short_description { color: #007681; } &#13;
+.fa_my_items { margin-right: 5px; } &#13;
+.td_bold { font-weight: bold; }&#13;
+&#13;
+/* Hide reference icon */&#13;
+&#13;
+</css>
+        <draft>false</draft>
+        <dynamic_title_structure/>
+        <id>obsidian_index</id>
+        <internal>false</internal>
+        <omit_watcher>false</omit_watcher>
+        <public>false</public>
+        <roles/>
+        <seo_script/>
+        <short_description/>
+        <sys_class_name>sp_page</sys_class_name>
+        <sys_created_by>admin_Isaac_Perez</sys_created_by>
+        <sys_created_on>2022-01-19 07:50:50</sys_created_on>
+        <sys_id>a45c168f1b09cd1006e886efe54bcb54</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>obsidian_index</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sp_page_a45c168f1b09cd1006e886efe54bcb54</sys_update_name>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-06-23 14:00:15</sys_updated_on>
+        <title>Obsidian Portal</title>
+        <use_seo_script>false</use_seo_script>
+    </sp_page>
+    <sys_translated_text action="delete_multiple" query="documentkey=a45c168f1b09cd1006e886efe54bcb54"/>
+</record_update>

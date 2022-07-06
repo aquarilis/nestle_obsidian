@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_email">
+    <sys_script_email action="INSERT_OR_UPDATE">
+        <name>x_nesa_ng_obsidian.supplier_recipients</name>
+        <new_lines_to_html>false</new_lines_to_html>
+        <script><![CDATA[(function runMailScript( /* GlideRecord */ current, /* TemplatePrinter */ template,
+    /* Optional EmailOutbound */
+    email, /* Optional GlideRecord */ email_action,
+    /* Optional GlideRecord */
+    event) {
+
+    try {
+        var supplierID = current.getValue('supplier');
+		var utils = new x_nesa_ng_obsidian.DXCObsidianCommonUtils();
+		
+		var recipients = utils.getEmailUsersRelatedWithSupplier(supplierID);
+		if (!recipients)
+			return;
+		
+		for (var i=0; i < recipients.length; i++)
+			email.addAddress('cc', recipients[i]);
+		
+    } catch (e) {
+        template.print('Error in "x_nesa_ng_obsidian.supplier_recipients" email script: ' + e);
+    }
+
+})(current, template, email, email_action, event);]]></script>
+        <sys_class_name>sys_script_email</sys_class_name>
+        <sys_created_by>admin_Agata_Swoboda</sys_created_by>
+        <sys_created_on>2022-03-04 10:20:56</sys_created_on>
+        <sys_id>efa4619d1b8e459006e886efe54bcb08</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>x_nesa_ng_obsidian.supplier_recipients</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_email_efa4619d1b8e459006e886efe54bcb08</sys_update_name>
+        <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+        <sys_updated_on>2022-03-10 08:03:45</sys_updated_on>
+    </sys_script_email>
+</record_update>

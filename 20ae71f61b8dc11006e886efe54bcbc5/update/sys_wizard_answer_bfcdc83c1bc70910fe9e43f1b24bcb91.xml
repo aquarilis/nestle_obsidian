@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_wizard_answer">
+    <sys_wizard_answer action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <answer>SKU Assignment</answer>
+        <button_label/>
+        <dependent_value/>
+        <element/>
+        <name>SKU Assignment</name>
+        <next_question/>
+        <order>100</order>
+        <payload_name/>
+        <question display_value="Task" name="Task">c58f9d45db0303008e0214a05b9619ed</question>
+        <roles/>
+        <script/>
+        <sys_class_name>sys_wizard_answer</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-04-21 07:47:13</sys_created_on>
+        <sys_id>bfcdc83c1bc70910fe9e43f1b24bcb91</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>SKU Assignment</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_wizard_answer_bfcdc83c1bc70910fe9e43f1b24bcb91</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-04-21 07:47:13</sys_updated_on>
+        <table/>
+        <target_url>x_nesa_ng_obsidian_sku_assignment.do</target_url>
+        <type>1</type>
+    </sys_wizard_answer>
+</record_update>

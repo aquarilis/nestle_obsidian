@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>false</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>sn_uni_task_universal_task</collection>
+        <condition/>
+        <description>(DXC) whenever a universal task is inserted for a Obsidian New Model Launch, the latter has its "NML Stage Completed" set to false</description>
+        <execute_function>false</execute_function>
+        <filter_condition table="sn_uni_task_universal_task">parent.sys_class_name=x_nesa_ng_obsidian_obsidian_new_model_launch^parent.ref_x_nesa_ng_obsidian_obsidian_new_model_launch.nml_stage_completed=true^EQ<item display_value="x_nesa_ng_obsidian_obsidian_new_model_launch" endquery="false" field="parent.sys_class_name" goto="false" newquery="false" operator="=" or="false" value="x_nesa_ng_obsidian_obsidian_new_model_launch"/>
+            <item endquery="false" field="parent.ref_x_nesa_ng_obsidian_obsidian_new_model_launch.nml_stage_completed" goto="false" newquery="false" operator="=" or="false" value="true"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter_condition>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>(DXC) Update Obsidian NML on insert</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
+    try {
+        var obsidianNML_GR = current.parent.getRefRecord();
+        obsidianNML_GR.setValue("nml_stage_completed", false);
+        obsidianNML_GR.update();
+    } catch (exception) {
+        var dxcLogger = new global.DXCGSLog("com.dxc.global.debugging_level", "(DXC) Update Obsidian NML on insert");
+        dxcLogger.logError(exception);
+    }
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-04-06 06:09:57</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>7076eef71b6ac19406e886efe54bcbef</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>(DXC) Update Obsidian NML on insert</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_7076eef71b6ac19406e886efe54bcbef</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-04-06 06:09:57</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=7076eef71b6ac19406e886efe54bcbef"/>
+</record_update>

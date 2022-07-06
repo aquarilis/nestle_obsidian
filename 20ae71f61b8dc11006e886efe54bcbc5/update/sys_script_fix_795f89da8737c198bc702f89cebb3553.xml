@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_fix">
+    <sys_script_fix action="INSERT_OR_UPDATE">
+        <before>false</before>
+        <description/>
+        <name>(DXC) fix assessable records UT forms</name>
+        <record_for_rollback>true</record_for_rollback>
+        <script><![CDATA[var lmaLogger = new global.GSLog("com.dxc.global.debugging_enabled", "LMADebug");
+
+try {
+
+    var obsidianEmployeeForm_GR = new GlideRecord('sn_uni_task_employee_form');
+    obsidianEmployeeForm_GR.addEncodedQuery("parent_tablesLIKEx_nesa_ng_obsidian_obsidian_new_model_launch^ORparent_tablesLIKEx_nesa_ng_obsidian_sku_assignment^ORparent_tablesLIKEx_nesa_ng_obsidian_technical_solution_management^ORparent_tablesLIKEx_nesa_ng_obsidian_technical_ticket");
+    obsidianEmployeeForm_GR.query();
+
+    while (obsidianEmployeeForm_GR.next()) {
+        var assessmentMetricType_GR = obsidianEmployeeForm_GR.survey_form.getRefRecord();
+        if (assessmentMetricType_GR.isValidRecord() == false) {
+            throw "couldn't get assessmentMetricType_GR for employee form " + obsidianEmployeeForm_GR.getDisplayValue();
+        }
+
+        var assessmentMetricType_sysID = assessmentMetricType_GR.getUniqueValue();
+
+        var assessableRecord_GR = new GlideRecord('asmt_assessable_record');
+        assessableRecord_GR.addEncodedQuery("metric_type=" + assessmentMetricType_sysID);
+        assessableRecord_GR.query();
+
+
+        while (assessableRecord_GR.next()) {
+            assessableRecord_GR.deleteRecord();
+        }
+
+        assessableRecord_GR.initialize();
+        assessableRecord_GR.setValue("name", assessmentMetricType_GR.getDisplayValue());
+        assessableRecord_GR.setValue("metric_type", assessmentMetricType_sysID);
+        assessableRecord_GR.setValue("source_table", "asmt_metric_type");
+        assessableRecord_GR.setValue("source_id", assessmentMetricType_sysID);
+        assessableRecord_GR.insert();
+
+
+    }
+} catch (e) {
+    lmaLogger.logErr("error in fix assessable record: " + e);
+}]]></script>
+        <sys_class_name>sys_script_fix</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-06-02 11:11:49</sys_created_on>
+        <sys_id>795f89da8737c198bc702f89cebb3553</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>(DXC) fix assessable records UT forms</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_fix_795f89da8737c198bc702f89cebb3553</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-06-02 11:30:29</sys_updated_on>
+        <unloadable>false</unloadable>
+    </sys_script_fix>
+</record_update>

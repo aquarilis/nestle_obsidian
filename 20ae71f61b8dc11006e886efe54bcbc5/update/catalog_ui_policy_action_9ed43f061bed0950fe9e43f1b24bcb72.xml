@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="catalog_ui_policy_action">
+    <catalog_ui_policy_action action="INSERT_OR_UPDATE">
+        <catalog_item/>
+        <catalog_variable>IO:9ad3774a1bad0950fe9e43f1b24bcb88</catalog_variable>
+        <cleared>false</cleared>
+        <disabled>ignore</disabled>
+        <field/>
+        <mandatory>true</mandatory>
+        <order>100</order>
+        <sys_class_name>catalog_ui_policy_action</sys_class_name>
+        <sys_created_by>admin_Agata_Swoboda</sys_created_by>
+        <sys_created_on>2022-02-10 08:15:23</sys_created_on>
+        <sys_id>9ed43f061bed0950fe9e43f1b24bcb72</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>confirm_below_shipping_instructions</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>catalog_ui_policy_action_9ed43f061bed0950fe9e43f1b24bcb72</sys_update_name>
+        <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+        <sys_updated_on>2022-02-10 09:16:00</sys_updated_on>
+        <table/>
+        <ui_policy display_value="(DXC) Shipping instructions editable and mandatory">7864bb421bed0950fe9e43f1b24bcb3b</ui_policy>
+        <variable>confirm_below_shipping_instructions</variable>
+        <variable_set display_value="Additional information">b135d44a1b294150fe9e43f1b24bcb29</variable_set>
+        <visible>true</visible>
+    </catalog_ui_policy_action>
+</record_update>

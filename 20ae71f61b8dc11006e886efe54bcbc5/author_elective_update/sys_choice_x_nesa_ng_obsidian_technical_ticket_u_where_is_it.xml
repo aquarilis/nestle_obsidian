@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="u_where_is_it" table="x_nesa_ng_obsidian_technical_ticket" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>u_where_is_it</element>
+            <name>x_nesa_ng_obsidian_technical_ticket</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>admin_Agata_Swoboda</sys_created_by>
+            <sys_created_on>2022-02-07 12:00:41</sys_created_on>
+            <sys_id>1dcbc5991ba1819006e886efe54bcbc2</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>u_where_is_it</sys_name>
+            <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+            <sys_update_name>sys_choice_x_nesa_ng_obsidian_technical_ticket_u_where_is_it</sys_update_name>
+            <sys_updated_by>admin_Agata_Swoboda</sys_updated_by>
+            <sys_updated_on>2022-02-07 12:00:41</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_where_is_it</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Requestor</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_technical_ticket</name>
+            <sequence>0</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Agata_Swoboda</sys_created_by>
+            <sys_created_on>2022-02-07 12:00:41</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>d1cbc5991ba1819006e886efe54bcbc2</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Agata_Swoboda</sys_updated_by>
+            <sys_updated_on>2022-02-07 12:00:41</sys_updated_on>
+            <value>requestor</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_where_is_it</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Supplier</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_technical_ticket</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Agata_Swoboda</sys_created_by>
+            <sys_created_on>2022-02-07 12:00:41</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>99cbc5991ba1819006e886efe54bcbd6</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Agata_Swoboda</sys_updated_by>
+            <sys_updated_on>2022-02-07 12:00:41</sys_updated_on>
+            <value>supplier</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_where_is_it</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Actuation group</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_technical_ticket</name>
+            <sequence>2</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Agata_Swoboda</sys_created_by>
+            <sys_created_on>2022-02-07 12:00:41</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>9dcbc5991ba1819006e886efe54bcbdd</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Agata_Swoboda</sys_updated_by>
+            <sys_updated_on>2022-02-07 12:00:41</sys_updated_on>
+            <value>actuation group</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_where_is_it</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>TCU</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_technical_ticket</name>
+            <sequence>3</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Agata_Swoboda</sys_created_by>
+            <sys_created_on>2022-02-07 12:00:41</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>91cbc5991ba1819006e886efe54bcbe5</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Agata_Swoboda</sys_updated_by>
+            <sys_updated_on>2022-02-07 12:00:41</sys_updated_on>
+            <value>tcu</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="catalog_ui_policy_action">
+    <catalog_ui_policy_action action="INSERT_OR_UPDATE">
+        <catalog_item/>
+        <catalog_variable>IO:8530eeb21b894510fe9e43f1b24bcbc4</catalog_variable>
+        <cleared>true</cleared>
+        <disabled>ignore</disabled>
+        <field/>
+        <mandatory>true</mandatory>
+        <order>100</order>
+        <sys_class_name>catalog_ui_policy_action</sys_class_name>
+        <sys_created_by>admin_Agata_Swoboda</sys_created_by>
+        <sys_created_on>2022-02-09 15:13:46</sys_created_on>
+        <sys_id>0b0b4c421b254150fe9e43f1b24bcb0b</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>u_additional_information</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>catalog_ui_policy_action_0b0b4c421b254150fe9e43f1b24bcb0b</sys_update_name>
+        <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+        <sys_updated_on>2022-02-14 15:25:47</sys_updated_on>
+        <table/>
+        <ui_policy display_value="(DXC) Show/Hide additional information">5ff6c8861ba14150fe9e43f1b24bcb55</ui_policy>
+        <variable>u_additional_information</variable>
+        <variable_set display_value="Machine Information">112fda7a1b094510fe9e43f1b24bcb23</variable_set>
+        <visible>ignore</visible>
+    </catalog_ui_policy_action>
+</record_update>

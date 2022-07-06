@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this table is used for &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this table has been created or updated &gt;" extends="x_nesa_nexgen_core_nexgen_core_case" label="SKU Assignment" max_length="40" name="x_nesa_ng_obsidian_sku_assignment" sizeclass="48" type="collection">
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Account assignment" max_length="40" name="account_assignment" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Cost Center" sequence="0" value="Cost Center"/>
+                <element inactive_on_update="false" label="WBS" sequence="1" value="WBS"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="Activation date" max_length="40" name="activation_date" read_only="true" type="glide_date"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false,ref_decoration_disabled=true" label="Assignment company" max_length="32" name="assignment_company" read_only="true" reference="core_company" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Assignment company SAP Code" max_length="40" name="assignment_company_sap_code" read_only="true" type="string"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false,ref_decoration_disabled=true" label="Assignment country" max_length="32" name="assignment_country" read_only="true" reference="cmn_location" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Cost Center" max_length="40" name="cost_center" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Deactivation date" max_length="40" name="deactivation_date" read_only="true" type="glide_date"/>
+        <element attributes="edge_encryption_enabled=true" label="Estimated volume a year" max_length="40" name="estimated_volume_a_year" read_only="true" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" label="GL Account" max_length="40" name="gl_account" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Import unique key" max_length="1000" name="import_unique_key" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Initiate SKU deactivation" max_length="40" name="initiate_sku_deactivation" read_only="true" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" label="Justification" max_length="1000" name="justification" read_only="true" type="string"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Model Configuration" max_length="32" name="model_configuration" read_only="true" reference="x_nesa_ng_obsidian_obsidian_model_configuration" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="New SAP Material number batched managed" max_length="40" name="new_sap_material_number_batched_managed" read_only="true" type="choice">
+            <choice>
+                <element inactive="true" inactive_on_update="true" label="Yes" sequence="0" value="Yes"/>
+                <element inactive="true" inactive_on_update="true" label="No" sequence="1" value="No"/>
+            </choice>
+        </element>
+        <element label="New SAP Material number justification" max_length="500" name="new_sap_material_number_justification" read_only="true" type="string"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="New SAP Material number required" max_length="40" name="new_sap_material_number_required" read_only="true" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Yes" sequence="0" value="Yes"/>
+                <element inactive_on_update="false" label="No" sequence="1" value="No"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Obsidian Model" max_length="32" name="obsidian_model" read_only="true" reference="x_nesa_ng_obsidian_obsidian_model" reference_cascade_rule="delete" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Obsidian SKU" max_length="32" name="obsidian_sku" reference="x_nesa_ng_obsidian_obsidian_sku" reference_qual="javascript:&quot;obsidian_model=&quot; + current.obsidian_model + &quot;^model_configuration=&quot; + current.model_configuration" type="reference" use_reference_qualifier="advanced"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Procurement decision on supplier price" max_length="40" name="procurement_decision_on_supplier_price" read_only="true" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Request supplier validated price" sequence="0" value="Request supplier validated price"/>
+                <element inactive_on_update="false" label="Cancel SKU assignment" sequence="1" value="Cancel SKU assignment"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Procurement validates supplier price" max_length="40" name="procurement_validates_supplier_price" read_only="true" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Yes" sequence="0" value="Yes"/>
+                <element inactive_on_update="false" label="No" sequence="1" value="No"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="Purchasing group" max_length="100" name="purchasing_group" type="string"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="SAP Material number" max_length="32" name="sap_material_number" reference="x_nesa_ng_obsidian_sap_material" reference_qual="javascript:&quot;obsidian_model=&quot;+current.obsidian_model;" type="reference" use_reference_qualifier="advanced"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false,ref_ac_columns=u_hr_object_id,ref_ac_columns_search=true" choice="1" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="SAP Procurement plant" max_length="32" name="sap_procurement_plant" reference="cmn_location" reference_qual="javascript:&quot;u_type=site_plant^u_active=true^parent=&quot; + current.assignment_country;" type="reference" use_reference_qualifier="advanced">
+            <choice/>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="SKU Assignment expiry date" max_length="40" name="sku_assignment_expiry_date" type="glide_date"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="SKU Assignment has expiry date" max_length="40" name="sku_assignment_has_expiry_date" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Yes" sequence="0" value="Yes"/>
+                <element inactive_on_update="false" label="No" sequence="1" value="No"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false,ref_decoration_disabled=true" label="SKU Regional approval group" max_length="32" name="sku_regional_approval_group" read_only="true" reference="sys_user_group" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false,ref_decoration_disabled=true" label="SKU Requester group" max_length="32" name="sku_requester_group" read_only="true" reference="sys_user_group" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" default="100" label="SKU Stage" max_length="40" name="sku_stage" read_only="true" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Authorization" sequence="0" value="100"/>
+                <element inactive_on_update="false" label="Feature configuration" sequence="1" value="200"/>
+                <element inactive_on_update="false" label="Supplier validation" sequence="2" value="300"/>
+                <element inactive_on_update="false" label="SAP SKU Extension" sequence="3" value="400"/>
+                <element inactive_on_update="false" label="Active" sequence="4" value="600"/>
+                <element inactive_on_update="false" label="Inactive" sequence="5" value="700"/>
+                <element inactive_on_update="false" label="Rejected" sequence="6" value="900"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false,ref_decoration_disabled=true" label="SKU Vendor" max_length="32" name="sku_vendor" read_only="true" reference="core_company" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="SKU Vendor SAP Code" max_length="40" name="sku_vendor_sap_code" read_only="true" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Storage location" max_length="100" name="storage_location" type="string"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false,ref_decoration_disabled=true" label="Supplier" max_length="32" name="supplier" read_only="true" reference="core_company" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Supplier validated price" max_length="100" name="supplier_validated_price" read_only="true" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Supplier validated price currency" max_length="100" name="supplier_validated_price_currency" read_only="true" type="string"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Supplier validates configuration" max_length="40" name="supplier_validates_configuration" read_only="true" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Yes" sequence="0" value="Yes"/>
+                <element inactive_on_update="false" label="No" sequence="1" value="No"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true,omit_sys_original=true,serializer=com.glide.currency2.Currency2XMLSerializer" label="Theoretical feature price" max_length="32" name="theoretical_feature_price" read_only="true" type="currency2"/>
+        <element attributes="edge_encryption_enabled=true,omit_sys_original=true,serializer=com.glide.currency2.Currency2XMLSerializer" label="Theoretical gross price" max_length="32" name="theoretical_gross_price" read_only="true" type="currency2"/>
+        <element attributes="edge_encryption_enabled=true,omit_sys_original=true,serializer=com.glide.currency2.Currency2XMLSerializer" label="Validated price" max_length="32" name="validated_price" read_only="true" type="currency2"/>
+        <element attributes="edge_encryption_enabled=true" label="WBS" max_length="40" name="wbs" type="string"/>
+        <index name="index">
+            <element name="theoretical_gross_price"/>
+        </index>
+        <index name="index2">
+            <element name="assignment_company"/>
+        </index>
+        <index name="index3">
+            <element name="sku_requester_group"/>
+        </index>
+        <index name="index4">
+            <element name="validated_price"/>
+        </index>
+        <index name="index5">
+            <element name="model_configuration"/>
+        </index>
+        <index name="index6">
+            <element name="sku_regional_approval_group"/>
+        </index>
+        <index name="index7">
+            <element name="sap_procurement_plant"/>
+        </index>
+        <index name="index8">
+            <element name="import_unique_key"/>
+        </index>
+        <index name="index9">
+            <element name="theoretical_feature_price"/>
+        </index>
+        <index name="index10">
+            <element name="supplier"/>
+        </index>
+        <index name="index11">
+            <element name="obsidian_model"/>
+        </index>
+        <index name="index12">
+            <element name="sku_vendor"/>
+        </index>
+        <index name="index13">
+            <element name="assignment_country"/>
+        </index>
+        <index name="index14">
+            <element name="obsidian_sku"/>
+        </index>
+        <index name="index15">
+            <element name="sap_material_number"/>
+        </index>
+    </element>
+</database>

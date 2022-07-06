@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_container">
+    <sp_container action="INSERT_OR_UPDATE">
+        <background_color/>
+        <background_image/>
+        <background_style>default</background_style>
+        <bootstrap_alt>false</bootstrap_alt>
+        <class_name/>
+        <container_class_name/>
+        <name>Service Catalog - Container 3</name>
+        <order>3</order>
+        <sp_page display_value="obsidian_sc_cat_item">061c5be51baa8d10fe9e43f1b24bcbda</sp_page>
+        <subheader>false</subheader>
+        <sys_class_name>sp_container</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-03-30 10:12:33</sys_created_on>
+        <sys_id>5a1c9fe91baa8d10fe9e43f1b24bcb62</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Service Catalog - Container 3</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sp_container_5a1c9fe91baa8d10fe9e43f1b24bcb62</sys_update_name>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-03-30 12:29:46</sys_updated_on>
+        <title/>
+        <width>container</width>
+    </sp_container>
+</record_update>

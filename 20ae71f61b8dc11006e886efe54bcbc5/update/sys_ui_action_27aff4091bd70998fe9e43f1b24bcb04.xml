@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_action">
+    <sys_ui_action action="INSERT_OR_UPDATE">
+        <action_name>sysverb_create_new_sku_code</action_name>
+        <active>true</active>
+        <client>true</client>
+        <client_script_v2><![CDATA[function onClick(g_form) {
+
+}]]></client_script_v2>
+        <comments/>
+        <condition>gs.hasRole("x_nesa_ng_obsidian.nbs_user") &amp;&amp; current.canWrite() &amp;&amp; current.sku_stage == "400" &amp;&amp; current.obsidian_sku.nil()</condition>
+        <form_action>true</form_action>
+        <form_button>true</form_button>
+        <form_button_v2>false</form_button_v2>
+        <form_context_menu>false</form_context_menu>
+        <form_link>false</form_link>
+        <form_menu_button_v2>false</form_menu_button_v2>
+        <form_style/>
+        <format_for_configurable_workspace>false</format_for_configurable_workspace>
+        <hint/>
+        <isolate_script>true</isolate_script>
+        <list_action>false</list_action>
+        <list_banner_button>false</list_banner_button>
+        <list_button>false</list_button>
+        <list_choice>false</list_choice>
+        <list_context_menu>false</list_context_menu>
+        <list_link>false</list_link>
+        <list_save_with_form_button>false</list_save_with_form_button>
+        <list_style/>
+        <messages/>
+        <name>Create new SKU Code</name>
+        <onclick>openNewSKUglideModal()</onclick>
+        <order>100</order>
+        <script><![CDATA[function openNewSKUglideModal() {
+
+    if (g_form.getValue("obsidian_sku") != "") {
+
+        var glideModal = new GlideModal("glide_alert_standard");
+        glideModal.setTitle("Cannot create new SKU Code");
+        glideModal.setPreference('warning', true);
+        glideModal.setPreference('title', 'The Obsidian SKU field is already filled in.\nPlease empty Obsidian SKU reference before creating a new SKU for this assignment.');
+        glideModal.render();
+
+    } else {
+        var glideModalForm = new GlideModalForm('Create new SKU Code', 'x_nesa_ng_obsidian_obsidian_sku');
+        glideModalForm.setPreference('sysparm_view', '');
+
+        var sysparmQueryString = 'obsidian_model=' + g_form.getValue("obsidian_model");
+        sysparmQueryString += "^model_configuration=" + g_form.getValue("model_configuration");
+        sysparmQueryString += "^source_sku_assignment=" + g_form.getUniqueValue();
+        sysparmQueryString += "^sku_vendor=" + g_form.getValue("sku_vendor");
+
+        glideModalForm.addParm('sysparm_query', sysparmQueryString);
+        glideModalForm.render();
+        glideModalForm.setCompletionCallback(function (action_verb, sys_id, table, displayValue) {
+            if (sys_id) {
+                g_form.setValue("obsidian_sku", sys_id, displayValue);
+                gsftSubmit(null, g_form.getFormElement(), 'sysverb_create_new_sku_code');
+            }
+        });
+    }
+
+}
+
+
+
+if (typeof window == 'undefined') {
+    serverSideCode();
+}
+
+function serverSideCode() {
+    action.setRedirectURL(current);
+    current.update();
+}]]></script>
+        <show_insert>false</show_insert>
+        <show_multiple_update>false</show_multiple_update>
+        <show_query>false</show_query>
+        <show_update>true</show_update>
+        <sys_class_name>sys_ui_action</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-05-04 16:21:25</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>27aff4091bd70998fe9e43f1b24bcb04</sys_id>
+        <sys_mod_count>100</sys_mod_count>
+        <sys_name>Create new SKU Code</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_ui_action_27aff4091bd70998fe9e43f1b24bcb04</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-05-19 12:48:16</sys_updated_on>
+        <table>x_nesa_ng_obsidian_sku_assignment</table>
+        <ui11_compatible>true</ui11_compatible>
+        <ui16_compatible>false</ui16_compatible>
+    </sys_ui_action>
+</record_update>

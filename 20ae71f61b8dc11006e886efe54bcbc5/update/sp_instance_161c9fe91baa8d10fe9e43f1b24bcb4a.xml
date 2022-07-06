@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance">
+    <sp_instance action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css>.alert-info {&#13;
+  	border-color: transparent;&#13;
+}</css>
+        <glyph/>
+        <id/>
+        <order>5</order>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="1">9e1c9fe91baa8d10fe9e43f1b24bcb33</sp_column>
+        <sp_widget display_value="DXC Obsidian SC Catalog Item">b4c3e3ad1b62cd10fe9e43f1b24bcb78</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-03-30 10:12:32</sys_created_on>
+        <sys_id>161c9fe91baa8d10fe9e43f1b24bcb4a</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>SC Catalog Item</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sp_instance_161c9fe91baa8d10fe9e43f1b24bcb4a</sys_update_name>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-04-21 13:19:19</sys_updated_on>
+        <title>SC Catalog Item</title>
+        <url/>
+        <widget_parameters><![CDATA[{
+	"show_add_cart_button": {
+		"value": "true",
+		"displayValue": "true"
+	},
+	"page": {
+		"value": "standard_ticket",
+		"displayValue": "standard_ticket"
+	},
+	"url": {
+		"value": "",
+		"displayValue": ""
+	},
+	"table": {
+		"value": "a231e949db4303008e0214a05b9619ec",
+		"displayValue": "Requested Item"
+	},
+	"auto_redirect": {
+		"value": "false",
+		"displayValue": "false"
+	},
+	"show_field_validation_messages": {
+		"value": "true",
+		"displayValue": "true"
+	},
+	"show_add_to_wishlist_button": {
+		"value": "false",
+		"displayValue": "false"
+	},
+	"display_cart_on_right": {
+		"value": "false",
+		"displayValue": "false"
+	},
+	"show_less_description": {
+		"value": "true",
+		"displayValue": "true"
+	},
+	"hide_delivery_time": {
+		"value": "true",
+		"displayValue": "true"
+	},
+	"display_cuantity": {
+		"value": "false",
+		"displayValue": "false"
+	}
+}]]></widget_parameters>
+    </sp_instance>
+    <sys_translated_text action="delete_multiple" query="documentkey=161c9fe91baa8d10fe9e43f1b24bcb4a"/>
+</record_update>

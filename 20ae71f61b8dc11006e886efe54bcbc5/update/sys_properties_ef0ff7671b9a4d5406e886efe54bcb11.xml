@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
+        <description>sys id of the obsidian-org-nml_sbu_requester group type</description>
+        <ignore_cache>true</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_nesa_ng_obsidian.nml.sbu_requester_group_type_sys_id</name>
+        <read_roles/>
+        <suffix>nml.sbu_requester_group_type_sys_id</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-03-24 07:37:26</sys_created_on>
+        <sys_id>ef0ff7671b9a4d5406e886efe54bcb11</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_nesa_ng_obsidian.nml.sbu_requester_group_type_sys_id</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_properties_ef0ff7671b9a4d5406e886efe54bcb11</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-03-24 07:37:26</sys_updated_on>
+        <type>string</type>
+        <value>66dcf76f1b5a4d5406e886efe54bcb46</value>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=ef0ff7671b9a4d5406e886efe54bcb11"/>
+</record_update>

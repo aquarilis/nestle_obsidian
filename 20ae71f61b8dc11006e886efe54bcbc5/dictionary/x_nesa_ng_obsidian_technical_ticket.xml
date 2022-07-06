@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this table is used for &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this table has been created or updated &gt;" extends="x_nesa_nexgen_core_nexgen_core_case" label="Technical Ticket" max_length="40" name="x_nesa_ng_obsidian_technical_ticket" sizeclass="1" text_index="true" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Affecting overall look" max_length="40" name="affecting_overall_look" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" label="Conclusion rejected" max_length="40" name="conclusion_rejected" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Confirm below shipping instructions" mandatory="true" max_length="40" name="confirm_below_shipping_instructions" reference="x_nesa_ng_obsidian_obsidian_preference" reference_qual="javascript:'user_related=' + current.opened_by + '^type=shipping_instructions'" type="reference" use_reference_qualifier="advanced"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Defective component" mandatory="true" max_length="100" name="defective_component" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Auger" sequence="1" value="Auger"/>
+                <element inactive_on_update="false" label="Boiler" sequence="2" value="Boiler"/>
+                <element inactive_on_update="false" label="Bowl" sequence="3" value="Bowl"/>
+                <element inactive_on_update="false" label="Coffee group" sequence="4" value="Coffee group"/>
+                <element inactive_on_update="false" label="Compressor" sequence="5" value="Compressor"/>
+                <element inactive_on_update="false" label="Condensate tray" sequence="6" value="Condensate tray"/>
+                <element inactive_on_update="false" label="Cooling Unit" sequence="7" value="Cooling Unit"/>
+                <element inactive_on_update="false" label="CPU Board" sequence="8" value="CPU Board"/>
+                <element inactive_on_update="false" label="Cup station" sequence="9" value="Cup station"/>
+                <element inactive_on_update="false" label="Display" sequence="10" value="Display"/>
+                <element inactive_on_update="false" label="Door" sequence="11" value="Door"/>
+                <element inactive_on_update="false" label="Doser" sequence="12" value="Doser"/>
+                <element inactive_on_update="false" label="Drip tray" sequence="13" value="Drip tray"/>
+                <element inactive_on_update="false" label="Drip tray grill" sequence="14" value="Drip tray grill"/>
+                <element inactive_on_update="false" label="Electronics PCB" sequence="15" value="Electronics PCB"/>
+                <element inactive_on_update="false" label="Exhaust system" sequence="16" value="Exhaust system"/>
+                <element inactive_on_update="false" label="F1 Collector cells" sequence="17" value="F1 Collector cells"/>
+                <element inactive_on_update="false" label="F1 Duct adaptor kit" sequence="18" value="F1 Duct adaptor kit"/>
+                <element inactive_on_update="false" label="F1 Pre-filter mesh" sequence="19" value="F1 Pre-filter mesh"/>
+                <element inactive_on_update="false" label="Fan" sequence="20" value="Fan"/>
+                <element inactive_on_update="false" label="Flat cable" sequence="21" value="Flat cable"/>
+                <element inactive_on_update="false" label="Gasket/ Seal" sequence="22" value="Gasket/ Seal"/>
+                <element inactive_on_update="false" label="Grinder" sequence="23" value="Grinder"/>
+                <element inactive_on_update="false" label="Heater insulator" sequence="24" value="Heater insulator"/>
+                <element inactive_on_update="false" label="Heating element" sequence="25" value="Heating element"/>
+                <element inactive_on_update="false" label="Keyboard, keypad" sequence="25" value="Keyboard, keypad"/>
+                <element inactive_on_update="false" label="Level sensor" sequence="26" value="Level sensor"/>
+                <element inactive_on_update="false" label="Main switch" sequence="27" value="Main switch"/>
+                <element inactive_on_update="false" label="Mixing system" sequence="28" value="Mixing system"/>
+                <element inactive_on_update="false" label="Modem" sequence="29" value="Modem"/>
+                <element inactive_on_update="false" label="Moving Arm" sequence="30" value="Moving Arm"/>
+                <element inactive_on_update="false" label="Nozzle support" sequence="31" value="Nozzle support"/>
+                <element inactive_on_update="false" label="Payment system" sequence="32" value="Payment system"/>
+                <element inactive_on_update="false" label="Peristaltic Pump" sequence="33" value="Peristaltic Pump"/>
+                <element inactive_on_update="false" label="Powder Canister" sequence="34" value="Powder Canister"/>
+                <element inactive_on_update="false" label="Powder Chute" sequence="35" value="Powder Chute"/>
+                <element inactive_on_update="false" label="Powder motor" sequence="36" value="Powder motor"/>
+                <element inactive_on_update="false" label="Power board" sequence="37" value="Power board"/>
+                <element inactive_on_update="false" label="Pump motor" sequence="38" value="Pump motor"/>
+                <element inactive_on_update="false" label="Reed switches assembly" sequence="39" value="Reed switches assembly"/>
+                <element inactive_on_update="false" label="RTS-250 Chaff-tray (magnet + others)" sequence="40" value="RTS-250 Chaff-tray (magnet + others)"/>
+                <element inactive_on_update="false" label="RTS-250 Code reader" sequence="41" value="RTS-250 Code reader"/>
+                <element inactive_on_update="false" label="RTS-250 Cyclone" sequence="42" value="RTS-250 Cyclone"/>
+                <element inactive_on_update="false" label="RTS-250 Jug assembly" sequence="43" value="RTS-250 Jug assembly"/>
+                <element inactive_on_update="false" label="Software" sequence="44" value="Software"/>
+                <element inactive_on_update="false" label="Solenoid valve" sequence="45" value="Solenoid valve"/>
+                <element inactive_on_update="false" label="Structure (panel, support, …)" sequence="46" value="Structure (panel, support, …)"/>
+                <element inactive_on_update="false" label="Switching Power board" sequence="47" value="Switching Power board"/>
+                <element inactive_on_update="false" label="Telemetry" sequence="48" value="Telemetry"/>
+                <element inactive_on_update="false" label="Temperature probe" sequence="49" value="Temperature probe"/>
+                <element inactive_on_update="false" label="Touch screen" sequence="50" value="Touch screen"/>
+                <element inactive_on_update="false" label="Tubes" sequence="51" value="Tubes"/>
+                <element inactive_on_update="false" label="Valve (other)" sequence="52" value="Valve (other)"/>
+                <element inactive_on_update="false" label="Various sensors" sequence="53" value="Various sensors"/>
+                <element inactive_on_update="false" label="Water inlet valve" sequence="54" value="Water inlet valve"/>
+                <element inactive_on_update="false" label="Water pump" sequence="55" value="Water pump"/>
+                <element inactive_on_update="false" label="Water tank" sequence="56" value="Water tank"/>
+                <element inactive_on_update="false" label="Wiring" sequence="57" value="Wiring"/>
+                <element inactive_on_update="false" label="Other..." sequence="999" value="Other"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="Epidemic flag" max_length="40" name="epidemic_flag" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" label="Food safety" max_length="40" name="food_safety" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" label="Food safety market" max_length="40" name="food_safety_market" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false,no_text_index=true" label="Impacted Nestlé company" max_length="32" name="impacted_nestle_company" read_only="true" reference="core_company" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,no_text_index=true" choice="1" label="Impact on operation" mandatory="true" max_length="40" name="impact_on_operation" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Equipment still works fine" sequence="0" value="Equipment still works fine"/>
+                <element inactive_on_update="false" label="Amended equipment works fine" sequence="1" value="Amended equipment works fine"/>
+                <element inactive_on_update="false" label="Equipment works poorly" sequence="2" value="Equipment works poorly"/>
+                <element inactive_on_update="false" label="Equipment is difficult to use" sequence="3" value="Equipment is difficult to use"/>
+                <element inactive_on_update="false" label="Equipment does not work" sequence="4" value="Equipment does not work"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Impacted market" max_length="32" name="market" read_only="true" reference="cmn_location" reference_qual="u_type=market^u_active=true^EQ" reference_qual_condition="u_type=market^u_active=true^EQ" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Model" max_length="32" name="model" read_only="true" reference="x_nesa_ng_obsidian_obsidian_model" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Model version" max_length="100" name="model_version" read_only="true" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Number of machines" mandatory="true" max_length="40" name="number_of_machines" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" label="Operator safety" max_length="40" name="operator_safety" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" label="Operator safety market" max_length="40" name="operator_safety_market" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" label="Other shipping address" max_length="1000" name="other_shipping_address" type="string"/>
+        <element attributes="edge_encryption_enabled=true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Previously rejected" max_length="40" name="previously_rejected" read_only="true" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Recurring issue" max_length="40" name="recurring_issue" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false,no_text_index=true" label="Requester group" max_length="32" name="requester_group" read_only="true" reference="sys_user_group" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,no_text_index=true" choice="1" label="Requester type" max_length="40" name="requester_type" read_only="true" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Market" sequence="0" value="market"/>
+                <element inactive_on_update="false" label="3rd party" sequence="1" value="3rd_party"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Self-managed" max_length="40" name="self_managed" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" label="Self-managed description" max_length="1000" name="self_managed_description" type="string"/>
+        <element attributes="no_text_index=true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" default="javascript: current.confirm_below_shipping_instructions.value;" label="Shipping instructions" max_length="1000" name="shipping_instructions" read_only="true" type="string"/>
+        <element attributes="edge_encryption_enabled=true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Supplier" max_length="100" name="supplier" read_only="true" reference="core_company" reference_qual="u_restrict_visibility_toLIKEec2686691b61c110fe9e43f1b24bcbeb^u_is_parent_vendor=true^EQ" reference_qual_condition="u_restrict_visibility_toLIKEec2686691b61c110fe9e43f1b24bcbeb^u_is_parent_vendor=true^EQ" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false,no_text_index=true" label="Supplier group" max_length="32" name="supplier_group" read_only="true" reference="sys_user_group" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Title" max_length="100" name="title" read_only="true" type="string"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="TSM" max_length="32" name="tsm" reference="x_nesa_ng_obsidian_technical_solution_management" reference_qual="javascript:&quot;supplier=&quot;+current.supplier;" type="reference" use_reference_qualifier="advanced"/>
+        <element attributes="edge_encryption_enabled=true" label="Additional information" max_length="400" name="u_additional_information" type="string"/>
+        <element active="false" attributes="edge_encryption_enabled=true" default="true" label="Assign to Market display" max_length="40" name="u_assign_to_market_display" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" dependent="market" dependent_on_field="market" label="Impacted country" max_length="32" name="u_country" read_only="true" reference="cmn_location" reference_qual="javascript:'u_active=true^u_type=country^sys_idIN' + new x_nesa_ng_obsidian.DXCTechnicalTicketUtils().getValidCountriesForUser(current.opened_by) + '^parent=' + current.market + '^EQ'" type="reference" use_dependent_field="true" use_reference_qualifier="advanced"/>
+        <element attributes="edge_encryption_enabled=true" label="How did you solve it?" max_length="400" name="u_how_to_solve" type="string"/>
+        <index name="index">
+            <element name="market"/>
+        </index>
+        <index name="index2">
+            <element name="u_country"/>
+        </index>
+        <index name="index3">
+            <element name="impacted_nestle_company"/>
+        </index>
+        <index name="index4">
+            <element name="supplier"/>
+        </index>
+        <index name="index5">
+            <element name="model"/>
+        </index>
+        <index name="index6">
+            <element name="requester_group"/>
+        </index>
+        <index name="index7">
+            <element name="supplier_group"/>
+        </index>
+        <index name="index8">
+            <element name="tsm"/>
+        </index>
+    </element>
+</database>

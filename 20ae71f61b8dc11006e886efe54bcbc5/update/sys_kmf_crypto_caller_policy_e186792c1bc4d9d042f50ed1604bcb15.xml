@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_kmf_crypto_caller_policy">
+    <sys_kmf_crypto_caller_policy action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <approval_type/>
+        <check_script_hash>false</check_script_hash>
+        <crypto_module display_value="com_glide_certificates_glideencrypter">8994cbe3ff23201022f462aa453bf13d</crypto_module>
+        <crypto_spec display_value="com_glide_certificates_glideencrypter --- Symmetric Key Wrapping/Unwrapping">0594cbe3ff23201022f462aa453bf13f</crypto_spec>
+        <granular_operation/>
+        <impersonation>false</impersonation>
+        <instance_recipient/>
+        <owner>a0169534db21001849eac597059619ff</owner>
+        <policy_name>AutoGen-script-fe628630d733210092610eca5e610326-global.com_glide_certificates_glideencrypter</policy_name>
+        <result>track</result>
+        <script_hash>sAPGecsW3lY20CbLhpnoga3L8FL1EQWaDU/E5HxmjzQ=</script_hash>
+        <script_table>sys_script_include</script_table>
+        <signature_data/>
+        <specify_purpose>false</specify_purpose>
+        <sys_class_name>sys_kmf_crypto_caller_policy</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-06-09 13:49:01</sys_created_on>
+        <sys_id>e186792c1bc4d9d042f50ed1604bcb15</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>AutoGen-script-fe628630d733210092610eca5e610326-global.com_glide_certificates_glideencrypter</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_kmf_crypto_caller_policy_e186792c1bc4d9d042f50ed1604bcb15</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-06-09 13:49:01</sys_updated_on>
+        <target_role/>
+        <target_scope/>
+        <target_script>fe628630d733210092610eca5e610326</target_script>
+        <type>1</type>
+        <used>false</used>
+    </sys_kmf_crypto_caller_policy>
+</record_update>

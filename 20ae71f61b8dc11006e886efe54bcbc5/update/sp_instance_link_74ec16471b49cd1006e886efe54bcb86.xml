@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance_link">
+    <sp_instance_link action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <class_name>homepage_button</class_name>
+        <color>default</color>
+        <css/>
+        <glyph>exclamation-triangle</glyph>
+        <id/>
+        <kb_article/>
+        <kb_category/>
+        <kb_topic/>
+        <order>1</order>
+        <roles/>
+        <sc_cat_item display_value="New Technical Ticket">b78cd6b21b054510fe9e43f1b24bcbfb</sc_cat_item>
+        <sc_category/>
+        <short_description>Create a new technical ticket</short_description>
+        <size>md</size>
+        <sp_column display_value="1">afccd6071b49cd1006e886efe54bcbb4</sp_column>
+        <sp_page display_value="sc_cat_item">9f12251147132100ba13a5554ee490f4</sp_page>
+        <sp_widget display_value="Obsidian button-circle-img">7fce73e91b338d1842f50ed1604bcb1e</sp_widget>
+        <sys_class_name>sp_instance_link</sys_class_name>
+        <sys_created_by>admin_Isaac_Perez</sys_created_by>
+        <sys_created_on>2022-01-19 07:53:05</sys_created_on>
+        <sys_id>74ec16471b49cd1006e886efe54bcb86</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>RAISE TECHNICAL TICKET</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sp_instance_link_74ec16471b49cd1006e886efe54bcb86</sys_update_name>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-05-31 17:20:41</sys_updated_on>
+        <title>RAISE TECHNICAL TICKET</title>
+        <type>sc_cat_item</type>
+        <url/>
+        <widget_parameters><![CDATA[{
+    "id": {
+      "value": "technical_ticket"
+    },
+	"template": {
+		"value": "Color Box",
+		"displayValue": "Color Box"
+	},
+	"link_template": {
+		"value": "Circle Icon",
+		"displayValue": "Circle Icon"
+	},
+	"icon_src": {
+		"value": "Report_IT_Issue.png",
+		"displayValue": "Report_IT_Issue.png"
+	},
+	"icon_src_hover": {
+		"value": "Report_IT_Issue_hover.png",
+		"displayValue": "Report_IT_Issue_hover.png"
+	},
+	"user_criteria_list": {
+		"value": "",
+		"displayValue": ""
+	},
+	"not_available_for": {
+		"value": "",
+		"displayValue": ""
+	}
+}]]></widget_parameters>
+    </sp_instance_link>
+    <sys_translated_text action="delete_multiple" query="documentkey=74ec16471b49cd1006e886efe54bcb86"/>
+</record_update>

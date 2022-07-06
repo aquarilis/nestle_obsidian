@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_hub_flow">
+    <sys_hub_flow action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <acls/>
+        <active>false</active>
+        <annotation/>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category/>
+        <compiler_build/>
+        <copied_from/>
+        <copied_from_name/>
+        <description>Flow to generate NML universal task and wait for all universal task to be completed before generating the next batch</description>
+        <internal_name>dxc_nml_stage_change</internal_name>
+        <label_cache>[]</label_cache>
+        <latest_snapshot/>
+        <master_snapshot/>
+        <name>(DXC) NML Stage Change</name>
+        <natlang/>
+        <outputs/>
+        <remote_trigger_id/>
+        <run_as>user</run_as>
+        <run_with_roles/>
+        <sc_callable>false</sc_callable>
+        <show_draft_actions>false</show_draft_actions>
+        <show_triggered_flows>false</show_triggered_flows>
+        <status>draft</status>
+        <sys_class_name>sys_hub_flow</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-04-04 16:35:21</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>26a366d71b620514fe9e43f1b24bcb0e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>(DXC) NML Stage Change</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_hub_flow_26a366d71b620514fe9e43f1b24bcb0e</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-04-04 16:35:21</sys_updated_on>
+        <type>flow</type>
+    </sys_hub_flow>
+    <sys_variable_value action="delete_multiple" query="document_key=26a366d71b620514fe9e43f1b24bcb0e"/>
+    <sys_hub_trigger_instance action="delete_multiple" query="flow=26a366d71b620514fe9e43f1b24bcb0e"/>
+    <sys_hub_flow_stage action="delete_multiple" query="flow=26a366d71b620514fe9e43f1b24bcb0e"/>
+    <sys_flow_cat_variable_model action="delete_multiple" query="id=26a366d71b620514fe9e43f1b24bcb0e^sys_idNOT IN22a366d71b620514fe9e43f1b24bcb10"/>
+    <sys_flow_cat_variable_model action="INSERT_OR_UPDATE">
+        <id>26a366d71b620514fe9e43f1b24bcb0e</id>
+        <name>(DXC) NML Stage Change</name>
+        <sys_class_name>sys_flow_cat_variable_model</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-04-04 16:35:21</sys_created_on>
+        <sys_id>22a366d71b620514fe9e43f1b24bcb10</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-04-04 16:35:21</sys_updated_on>
+    </sys_flow_cat_variable_model>
+    <sys_flow_cat_variable action="delete_multiple" query="flow_catalog_model=22a366d71b620514fe9e43f1b24bcb10"/>
+    <sys_hub_flow_input action="delete_multiple" query="model=26a366d71b620514fe9e43f1b24bcb0e"/>
+    <sys_hub_flow_output action="delete_multiple" query="model=26a366d71b620514fe9e43f1b24bcb0e"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=26a366d71b620514fe9e43f1b24bcb0e"/>
+    <sys_hub_action_instance action="delete_multiple" query="flow=26a366d71b620514fe9e43f1b24bcb0e"/>
+    <sys_hub_sub_flow_instance action="delete_multiple" query="flow=26a366d71b620514fe9e43f1b24bcb0e"/>
+    <sys_hub_flow_logic action="delete_multiple" query="flow=26a366d71b620514fe9e43f1b24bcb0e"/>
+    <sys_hub_pill_compound action="delete_multiple" query="attached_to=26a366d71b620514fe9e43f1b24bcb0e"/>
+    <sys_hub_flow_variable action="delete_multiple" query="model=26a366d71b620514fe9e43f1b24bcb0e"/>
+    <sys_documentation action="delete_multiple" query="name=var__m_sys_hub_flow_input_26a366d71b620514fe9e43f1b24bcb0e"/>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_input_26a366d71b620514fe9e43f1b24bcb0e"/>
+    <sys_documentation action="delete_multiple" query="name=var__m_sys_hub_flow_output_26a366d71b620514fe9e43f1b24bcb0e"/>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_output_26a366d71b620514fe9e43f1b24bcb0e"/>
+    <sys_flow_trigger_plan action="delete_multiple" query="plan_id=26a366d71b620514fe9e43f1b24bcb0e"/>
+    <sys_flow_subflow_plan action="delete_multiple" query="plan_id=26a366d71b620514fe9e43f1b24bcb0e"/>
+</record_update>

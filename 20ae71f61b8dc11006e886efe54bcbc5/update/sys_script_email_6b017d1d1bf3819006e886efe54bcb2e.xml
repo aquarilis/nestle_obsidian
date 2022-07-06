@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_email">
+    <sys_script_email action="INSERT_OR_UPDATE">
+        <name>x_nesa_ng_obsidian.nml.portal_link</name>
+        <new_lines_to_html>true</new_lines_to_html>
+        <script><![CDATA[(function runMailScript( /* GlideRecord */ current, /* TemplatePrinter */ template,
+    /* Optional EmailOutbound */
+    email, /* Optional GlideRecord */ email_action,
+    /* Optional GlideRecord */
+    event) {
+    try {
+
+        var notificationTaskLink = gs.getProperty('glide.servlet.uri') + "nsc?id=standard_ticket&table=x_nesa_ng_obsidian_obsidian_new_model_launch&sys_id=" + current.getValue("obsidian_new_model_launch") + "&view=sp"; 
+
+        var nmlGR = current.obsidian_new_model_launch.getRefRecord();
+
+        if (nmlGR.isValidRecord() && (openedBySysID = nmlGR.getValue("opened_by"))){
+            var obsidianCommonUtils = new x_nesa_ng_obsidian.DXCObsidianCommonUtils();
+            if (obsidianCommonUtils.userHasBackEndAccess(openedBySysID)){
+                notificationTaskLink = gs.getProperty('glide.servlet.uri') + "nav_to.do?uri=" + current.getLink();
+            }
+        } 
+
+        template.print('<p>Click <a href="' + notificationTaskLink + '">here</a> to view the NML in its context.</p>');
+
+
+    } catch (e) {
+        template.print("error in x_nesa_ng_obsidian.nml.portal_link email script: " + e);
+    }
+
+})(current, template, email, email_action, event);]]></script>
+        <sys_class_name>sys_script_email</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-05-30 11:04:52</sys_created_on>
+        <sys_id>6b017d1d1bf3819006e886efe54bcb2e</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>x_nesa_ng_obsidian.nml.portal_link</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_email_6b017d1d1bf3819006e886efe54bcb2e</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-05-30 11:39:51</sys_updated_on>
+    </sys_script_email>
+</record_update>

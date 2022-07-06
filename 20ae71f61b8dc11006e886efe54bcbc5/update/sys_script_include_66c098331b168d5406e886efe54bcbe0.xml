@@ -1,0 +1,764 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_nesa_ng_obsidian.DXCObsidianNMLUtils</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>DXCObsidianNMLUtils</name>
+        <script><![CDATA[var DXCObsidianNMLUtils = Class.create();
+//initialize with         var obsidianNMLUtils = new x_nesa_ng_obsidian.DXCObsidianNMLUtils();
+DXCObsidianNMLUtils.prototype = {
+    initialize: function () {
+        this.MARKET_GROUPTYPE_SYS_ID = gs.getProperty("x_nesa_ng_obsidian.nml.market_requester_group_type_sys_id");
+        this.SBU_GROUPTYPE_SYS_ID = gs.getProperty("x_nesa_ng_obsidian.nml.sbu_requester_group_type_sys_id");
+        this.logger = new global.GSLog("com.dxc.global.debugging_enabled", "LMADebug");
+        this.obsidianCommonUtils = new x_nesa_ng_obsidian.DXCObsidianCommonUtils();
+        this.stageRequiredFields = {
+            "0": {
+                "name": "Name",
+                "obsidian_model_description": "Description",
+                "supplier": "Supplier"
+            },
+            "300": {
+                "obsidian_project": "Project",
+            },
+            "400": {
+                "model_class": "Model class",
+                "model_category": "Model Category",
+                "model_segment": "Model segment",
+                "preferred_model_list": "Preferred Model List",
+                "ingredient_format": "Ingredient Format",
+                "model_group": "Model Group",
+                "beverage_temperature": "Beverage Temperature",
+                "system_brand": "System Brand",
+                "machine_type": "Machine Type",
+                "positioning": "Positioning",
+                "ip_ownership": "IP Ownership",
+                "version": "Version/Generation"
+            },
+            "500": {
+                "prod_lead_time": "Production lead time (days)",
+                "hs_code": "HS Code",
+                "warranty_duration": "Warranty duration (months)",
+                "feature_price_has_expiry_date": "Feature price has expiry date",
+                "box_width": "Box width (cm)",
+                "box_length": "Box length (cm)",
+                "box_height": "Box height (cm)",
+                "net_weight": "Net weight (kg)",
+                "gross_weight": "Gross weight (kg)",
+                "default_currency": "Feature default currency"
+            }
+        };
+    },
+
+
+    /**
+    * @author	DXC - Luu-Ly Mai
+    * @desc runs the price update cascade onto related SKU assignments
+    * @param {GlideRecord} obsidianModel_GR
+    * @return objet - list of SKU assignment or SKU codes that have had their prices recalculated
+    */
+    cascadePriceUpdate: function (obsidianModel_GR) {
+
+
+        var modelFeatureOption_GR = new GlideRecord("x_nesa_ng_obsidian_obsidian_feature_option");
+        modelFeatureOption_GR.addQuery("model_feature.obsidian_model", obsidianModel_GR.getUniqueValue());
+        modelFeatureOption_GR.query();
+
+        var obsidianSKUUtils = new x_nesa_ng_obsidian.DXCObsidianSKUUtils();
+        var returnObject = {
+            updated_sku_assignment_numbers: [],
+            updated_obsidian_sku_codes: [],
+        };
+
+        var obsidianSKUSysIDsRequiringRecalculation = [];
+        var skuAassignmentSysIDsRequiringRecalculation = [];
+
+
+        while (modelFeatureOption_GR.next()) {
+
+
+            var skuAssignmentFeature_GR = new GlideRecord('x_nesa_ng_obsidian_sku_assignment_feature');
+            skuAssignmentFeature_GR.addQuery("feature_option", modelFeatureOption_GR.getUniqueValue());
+            skuAssignmentFeature_GR.query();
+
+
+            while (skuAssignmentFeature_GR.next()) {
+                var featurePriceHasChanged = this.obsidianCommonUtils.alignCurrencyFieldValues(modelFeatureOption_GR, "feature_price", skuAssignmentFeature_GR, "feature_price");
+                var grossPriceHasChanged = this.obsidianCommonUtils.alignCurrencyFieldValues(modelFeatureOption_GR, "gross_price", skuAssignmentFeature_GR, "gross_price");
+
+                if (featurePriceHasChanged || grossPriceHasChanged) {
+
+                    //this.logger.logDebug("an update is required on skuAssignmentFeature_GR " + skuAssignmentFeature_GR.getDisplayValue() + " because of feature option " + modelFeatureOption_GR.getDisplayValue());
+
+                    skuAssignmentFeature_GR.update();
+
+
+                    if ((obsidianSkuSysID = skuAssignmentFeature_GR.getValue("obsidian_sku")) != null) {
+                        if (obsidianSKUSysIDsRequiringRecalculation.indexOf(obsidianSkuSysID) == -1) {
+                            obsidianSKUSysIDsRequiringRecalculation.push(obsidianSkuSysID);
+                        }
+                    } else {
+                        var skuAssignmentSysID = skuAssignmentFeature_GR.getValue("sku_assignment");
+                        if (skuAassignmentSysIDsRequiringRecalculation.indexOf(skuAssignmentSysID) == -1) {
+                            skuAassignmentSysIDsRequiringRecalculation.push(skuAssignmentSysID);
+                        }
+                    }
+
+                }
+            }
+
+
+
+        }
+
+        if (skuAassignmentSysIDsRequiringRecalculation.length > 0 || obsidianSKUSysIDsRequiringRecalculation.length > 0) {
+
+
+            skuAassignmentSysIDsRequiringRecalculation.forEach(function (skuAssignmentSysID) {
+                var skuAssignmentGR = new GlideRecord("x_nesa_ng_obsidian_sku_assignment");
+                if (!skuAssignmentGR.get(skuAssignmentSysID)) {
+                    throw "DXCObsidianNMLUtils.cascadePriceUpdate couldn't get SKU assignment GlideRecord with sys_id " + skuAssignmentSysID;
+                }
+
+                returnObject.updated_sku_assignment_numbers.push(skuAssignmentGR.getDisplayValue());
+                obsidianSKUUtils.recalculateTheoreticalPrices(skuAssignmentGR);
+            });
+
+            obsidianSKUSysIDsRequiringRecalculation.forEach(function (obsidianSkySysID) {
+
+                var obsidianCommonUtils = new x_nesa_ng_obsidian.DXCObsidianCommonUtils();
+
+                var obsidianSKU_GR = new GlideRecord("x_nesa_ng_obsidian_obsidian_sku");
+                if (!obsidianSKU_GR.get(obsidianSkySysID)) {
+                    throw "DXCObsidianNMLUtils.cascadePriceUpdate couldn't get Obsidian SKU GlideRecord with sys_id " + obsidianSkySysID;
+                }
+
+                returnObject.updated_obsidian_sku_codes.push(obsidianSKU_GR.getDisplayValue());
+                obsidianSKUUtils.recalculateTheoreticalPrices(obsidianSKU_GR);
+
+
+                //create new Update PSL task for the obsidian SKU which has price update
+                var universalTaskRichDescription = "";
+
+                universalTaskRichDescription += '<p>Please update the following SKU Code in PSL tool:</p>';
+                universalTaskRichDescription += '<table style="border-collapse: collapse; width: 80%; height: 52px;" border="1">';
+                universalTaskRichDescription += '<tbody>';
+                // universalTaskRichDescription += '<tr>';
+                // universalTaskRichDescription += '<td><strong>Supplier:</strong></td>';
+                // universalTaskRichDescription += '<td>' + obsidianSKU_GR.obsidian_model.supplier.name.toString() + '</td>';
+                // universalTaskRichDescription += '</tr>';
+                universalTaskRichDescription += '<tr>';
+                universalTaskRichDescription += '<td><strong>Supplier SKU code:</strong></td>';
+                universalTaskRichDescription += '<td>' + obsidianSKU_GR.getDisplayValue("sku_supplier_code") + '</td>';
+                universalTaskRichDescription += '</tr>';
+                universalTaskRichDescription += '<tr>';
+                universalTaskRichDescription += '<td><strong>SKU Supplier description:</strong></td>';
+                universalTaskRichDescription += '<td>' + obsidianSKU_GR.getDisplayValue("sku_supplier_description") + '</td>';
+                universalTaskRichDescription += '</tr>';
+                universalTaskRichDescription += '<tr>';
+                universalTaskRichDescription += '<td><strong>Recalculated theoretical feature price:</strong></td>';
+                universalTaskRichDescription += '<td>' + obsidianSKU_GR.getDisplayValue("theoretical_feature_price") + '</td>';
+                universalTaskRichDescription += '</tr>';
+                universalTaskRichDescription += '</tbody>';
+                universalTaskRichDescription += '</table>';
+
+                //list active underlying SKU Assignment if any
+                var activeSKUassignment_GR = new GlideRecord('x_nesa_ng_obsidian_sku_assignment');
+                activeSKUassignment_GR.addEncodedQuery("obsidian_sku=" + obsidianSkySysID + "^sku_stage=600");
+                activeSKUassignment_GR.query();
+                if (activeSKUassignment_GR.hasNext()) {
+                    universalTaskRichDescription += '<p><br /></p>';
+                    universalTaskRichDescription += '<table style="border-collapse: collapse; width: 100%; height: 47px;" border="1">';
+                    universalTaskRichDescription += '<tbody>';
+                    universalTaskRichDescription += '<tr>';
+                    universalTaskRichDescription += '<td><strong>Assignment country</strong></td>';
+                    universalTaskRichDescription += '<td><strong>Assignment company SAP Code</strong></td>';
+                    universalTaskRichDescription += '<td><strong>SKU Assignment expiry date</strong></td>';
+                    universalTaskRichDescription += '<td><strong>SAP Material number</strong></td>';
+                    universalTaskRichDescription += '<td><strong>SAP Material Description</strong></td>';
+                    universalTaskRichDescription += '</tr>';
+                    while (activeSKUassignment_GR.next()) {
+                        universalTaskRichDescription += '<tr>';
+                        universalTaskRichDescription += '<td>' + activeSKUassignment_GR.getDisplayValue("assignment_country") + '</td>';
+                        universalTaskRichDescription += '<td>' + activeSKUassignment_GR.getDisplayValue("assignment_company_sap_code") + '</td>';
+                        universalTaskRichDescription += '<td>' + activeSKUassignment_GR.getDisplayValue("sku_assignment_expiry_date") + '</td>';
+                        universalTaskRichDescription += '<td>' + activeSKUassignment_GR.sap_material_number.sap_material_number.toString() + '</td>';
+                        universalTaskRichDescription += '<td>' + activeSKUassignment_GR.sap_material_number.description.toString() + '</td>';
+                        universalTaskRichDescription += '</tr>';
+                    }
+                    universalTaskRichDescription += '</tbody>';
+                    universalTaskRichDescription += '</table>';
+                }
+
+
+                var fieldValues = {
+                    "rich_description": universalTaskRichDescription
+                };
+
+                obsidianCommonUtils.createUniversalTask(obsidianModel_GR.getValue("obsidian_new_model_launch"), "04056b991b63499406e886" + "efe54bcbbd", fieldValues);
+            });
+
+
+            return returnObject;
+
+        } else {
+            return false;
+        }
+
+    },
+
+
+
+
+
+    /**
+     * @author	DXC - Luu-Ly Mai
+     * @desc returns the list of fields required for a given NML stage
+     * @param {String} stageValue GlideRecord of a Obsidian New Model Launch record
+     * @return objet - list of field names and labels which are required for the given stage
+     */
+    getStageRequiredFields: function (stageValue) {
+        if (!stageValue) {
+            throw "getStageRequiredFields received an invalid stageValue parameter";
+        }
+
+        stageValue = (typeof stageValue == "string" ? parseInt(stageValue) : stageValue);
+
+        var requiredFields_object = {};
+        for (var stageInStageRequiredFields in this.stageRequiredFields) {
+            if ((stageValueInStageRequiredFields = parseInt(stageInStageRequiredFields)) <= stageValue) {
+                for (var fieldName in this.stageRequiredFields[stageInStageRequiredFields]) {
+                    requiredFields_object[fieldName] = this.stageRequiredFields[stageInStageRequiredFields][fieldName];
+                }
+                // Object.assign(requiredFields_object, this.stageRequiredFields[stageInStageRequiredFields]);
+                // requiredFields_object = { requiredFields_object, this.stageRequiredFields[stageInStageRequiredFields]};
+            }
+        }
+        return requiredFields_object;
+    },
+
+
+    /**
+     * @author	DXC - Luu-Ly Mai
+     * @desc Check if the user is NML requester
+     * @param userID Sys_id string from the table "sys_user"
+     * @return Boolean - true if the user is member of a NML market or SBU requester group
+     */
+    isUserNMLRequester: function (userID) {
+        if (!userID) {
+            return false;
+        }
+        var memberGR = new GlideRecord('sys_user_grmember');
+        memberGR.addEncodedQuery("group.typeLIKE" + this.MARKET_GROUPTYPE_SYS_ID + "^ORgroup.typeLIKE" + this.SBU_GROUPTYPE_SYS_ID + "^user=" + userID);
+        memberGR.setLimit(1);
+        memberGR.query();
+        return memberGR.hasNext();
+    },
+
+
+
+
+
+    /** 
+     * @author	DXC - Luu-Ly Mai
+     * @desc returns whether the NML stage accepts NML (universal) task to be created  
+     * @param nmlStageValue the nml stage value
+     * @return Boolean whether the NML stage accepts ad-hoc NML Universal Task creation
+     */
+    canCreateAdHocUniversalTask: function (nmlStageValue) {
+
+
+        if (gs.hasRole("admin")) {
+            return true;
+        }
+
+
+        if (typeof nmlStageValue == "string") {
+            nmlStageValue = parseInt(nmlStageValue);
+        }
+
+        if (nmlStageValue >= 200 && nmlStageValue <= 500) {
+            return true;
+        } else {
+            return false;
+        }
+    },
+
+
+    /** 
+     * @desc
+     * returns whether the user can read a given Obsidian spare part record
+     * Used in Obsidian spare part read ACL
+     * 
+     * @param sparePartSysID the sys_id of the obsidian spare part record being evaluated for read access
+     *
+     * @return
+     *  Boolean whether the logged in user can read the record
+     */
+    userCanReadSparePart: function (sparePartGR) {
+        try {
+
+            //NBS users can read all Obsidian Models
+            if (gs.hasRole("admin") || gs.hasRole("x_nesa_ng_obsidian.nbs_user")) {
+                return true;
+            }
+
+            var currentGlideUser = gs.getUser();
+            var userID = currentGlideUser.getID();
+
+            //3rd party cannot read spare part data
+            if (this.obsidianCommonUtils.isUser3rdPartyRelated(userID)) {
+                return false;
+            }
+
+
+            if (this.obsidianCommonUtils.isUserSupplierRelated(userID)) {
+                var supplierSysID_array = this.obsidianCommonUtils.getSuppliersForUser(userID);
+                if (supplierSysID_array.indexOf(sparePartGR.getValue("supplier")) != -1) {
+                    return true;
+                } else {
+                    return false;
+                }
+
+            }
+
+            return true;
+
+
+
+        } catch (e) {
+            this.logger.logErr("error in userCanReadSparePart function (DXCObsidianNMLUtils): " + e);
+        }
+    },
+
+
+    /** 
+     * @desc
+     * returns whether the user can read a given Obsidian Model record
+     * Used in Obsidian Model read ACL
+     * 
+     * @param obsidianModelSysID the sys_id of the obsidian model record being evaluated for read access
+     *
+     * @return
+     *  Boolean whether the logged in user can read the record
+     */
+    userCanReadModel: function (obsidianModelSysID) {
+        try {
+
+            //NBS users can read all Obsidian Models
+            if (gs.hasRole("admin") || gs.hasRole("x_nesa_ng_obsidian.nbs_user")) {
+                return true;
+            }
+
+            var currentGlideUser = gs.getUser();
+            var userID = currentGlideUser.getID();
+
+            //Central team users can read all Obsidian Models
+            if (this.obsidianCommonUtils.isUserSBUCentralTeamRelated(userID)) {
+                return true;
+            }
+
+
+
+            var obsidianModel_GR = new GlideRecord(x_nesa_ng_obsidian.DXCObsidianConstants.NML_TABLE_NAMES.MODEL_TABLE);
+            if (!obsidianModel_GR.get(obsidianModelSysID)) {
+                throw ("Couldn't get Obsidian Model GlideRecord with sys_id " + obsidianModelSysID);
+            }
+
+            var obsidianNewModelLaunch_GR = obsidianModel_GR.obsidian_new_model_launch.getRefRecord();
+
+            if (obsidianNewModelLaunch_GR.isValidRecord()) {
+                //can read if there is a task assigned to me or my group
+                var universalTaskGR = new GlideRecord('sn_uni_task_universal_task');
+                universalTaskGR.addEncodedQuery("active=true^assignment_groupDYNAMIC9b17a8401b76" + "8954fe9e43f1b24bcb67^ORassigned_toDYNAMIC90d1921e5f51010" + "0a9ad2572f2b477fe^parent=" + obsidianNewModelLaunch_GR.getUniqueValue());
+                universalTaskGR.setLimit(1);
+                universalTaskGR.query();
+                if (universalTaskGR.hasNext()) {
+                    return true;
+                }
+            }
+
+
+
+            //NML Market/Regional requesters can read all Obsidian NML records where NML stage is active
+            if ((this.obsidianCommonUtils.isUserMarketRelated(userID) || this.obsidianCommonUtils.isUser3rdPartyRelated(userID)) && obsidianModel_GR.getValue("nml_stage") === "600") {
+                return true;
+            }
+
+            //NML Market/Regional requesters can read all Obsidian model records where they are part of the model requester group
+            var modelRequesterGroupSysID = obsidianModel_GR.getValue("model_requester_group");
+            if (modelRequesterGroupSysID && currentGlideUser.isMemberOf(modelRequesterGroupSysID)) {
+                return true;
+            }
+
+            //NML regional approvers can read all Obsidian model records where they are part of the model approver group
+            var modelApproverGroupSysID = obsidianModel_GR.getValue("model_approver_group");
+            if (modelApproverGroupSysID && currentGlideUser.isMemberOf(modelApproverGroupSysID)) {
+                return true;
+            }
+
+
+            //Suppliers can only see active Models where they are the supplier for
+            if (this.obsidianCommonUtils.isUserSupplierRelated(userID) && obsidianModel_GR.getValue("supplier") !== null) {
+                if (obsidianModel_GR.getValue("nml_stage") !== "600") {
+                    if (obsidianModel_GR.obsidian_new_model_launch != "") {
+                        var relatedUniversalTask_GR = new GlideRecord("sn_uni_task_universal_task");
+                        relatedUniversalTask_GR.addEncodedQuery("parent=" + obsidianModel_GR.getValue("obsidian_new_model_launch") + "^assignment_groupDYNAMIC9b17a8401b768954fe" + "9e43f1b24bcb67");
+                        relatedUniversalTask_GR.setLimit(1);
+                        relatedUniversalTask_GR.query();
+                        if (relatedUniversalTask_GR.hasNext()) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+                var supplierSysID_array = this.obsidianCommonUtils.getSuppliersForUser(userID);
+                if (supplierSysID_array.indexOf(obsidianModel_GR.getValue("supplier")) > -1) {
+                    return true;
+                }
+            }
+
+            return false;
+
+
+
+
+        } catch (e) {
+            this.logger.logErr("error in userCanReadModel function (DXCObsidianNMLUtils): " + e);
+        }
+    },
+
+    /** 
+     * @desc
+     * get the next NML stage value
+     * 
+     * @param currentNMLStage the string containing the current NML stage
+     * 
+     *
+     * @return
+     *  String the next NML stage value
+     */
+    getNextNMLStageChoiceValue: function (currentNMLStage) {
+        var currentNMLStageChoiceSequence;
+        var currentNMLStageChoice_GR = new GlideRecord('sys_choice');
+        currentNMLStageChoice_GR.addEncodedQuery("name=x_nesa_ng_obsidian_obsidian_new_model_launch^element=nml_stage^value=" + currentNMLStage);
+        currentNMLStageChoice_GR.query();
+        if (currentNMLStageChoice_GR.next()) {
+            currentNMLStageChoiceSequence = parseInt(currentNMLStageChoice_GR.getValue("sequence"));
+
+            var nextNMLStageChoice_GR = new GlideRecord("sys_choice");
+            nextNMLStageChoice_GR.addQuery("name", x_nesa_ng_obsidian.DXCObsidianConstants.NML_TABLE_NAMES.NML_TABLE);
+            nextNMLStageChoice_GR.addQuery("element", "nml_stage");
+            nextNMLStageChoice_GR.addQuery("inactive", false);
+            nextNMLStageChoice_GR.addQuery("sequence", ">", currentNMLStageChoiceSequence);
+            nextNMLStageChoice_GR.orderBy("sequence");
+            nextNMLStageChoice_GR.setLimit(1);
+            nextNMLStageChoice_GR.query();
+            if (nextNMLStageChoice_GR.next()) {
+                return nextNMLStageChoice_GR.getValue("value");
+            }
+        }
+        return "600";
+    },
+
+
+
+    /** 
+     * @desc
+     * Get reference qualifier for "model requester group" variable
+     * Used in "submit new model launch" record producer
+     *
+     * @return
+     *  String containing a reference qualifier
+     */
+    getRecordProducer_RequesterGroup_RQ: function (userID) {
+        try {
+
+            if (gs.hasRole("admin")) {
+                return "active=true^typeLIKE" + this.SBU_GROUPTYPE_SYS_ID + "^ORtypeLIKE" + this.MARKET_GROUPTYPE_SYS_ID;
+            }
+
+            var selectableGroupSysId_array = [];
+
+            var requesterGroupMembership_GR = new GlideRecord("sys_user_grmember");
+            requesterGroupMembership_GR.addEncodedQuery("group.active=true^group.typeLIKE" + this.MARKET_GROUPTYPE_SYS_ID + "^ORgroup.typeLIKE" + this.SBU_GROUPTYPE_SYS_ID + "^user=" + userID);
+            requesterGroupMembership_GR.query();
+            while (requesterGroupMembership_GR.next()) {
+                selectableGroupSysId_array.push(requesterGroupMembership_GR.getValue("group"));
+            }
+
+            if (selectableGroupSysId_array.length > 0) {
+                var refQual = "sys_idIN" + selectableGroupSysId_array.join(",");
+                return refQual;
+            } else {
+                return "active=true^typeLIKE" + this.SBU_GROUPTYPE_SYS_ID + "^ORtypeLIKE" + this.MARKET_GROUPTYPE_SYS_ID;
+            }
+        } catch (e) {
+            this.logger.logErr("error in getRecordProducer_RequesterGroup_RQ: " + e);
+        }
+    },
+
+
+    /** 
+     * @desc
+     * Get the default value for model requester group variable
+     * Used in "submit new model launch" record producer
+     *
+     * @return
+     *  String containing a reference qualifier
+     */
+    getRecordProducer_RequesterGroup_default_value: function () {
+        try {
+            var requesterGroupMembership_GR = new GlideRecord("sys_user_grmember");
+            requesterGroupMembership_GR.addEncodedQuery("group.active=true^group.typeLIKE" + this.MARKET_GROUPTYPE_SYS_ID + "^ORgroup.typeLIKE" + this.SBU_GROUPTYPE_SYS_ID + "^user=" + gs.getUserID());
+            requesterGroupMembership_GR.query();
+            if (requesterGroupMembership_GR.next() && !requesterGroupMembership_GR.hasNext()) {
+                return requesterGroupMembership_GR.group;
+            } else {
+                return "";
+            }
+
+        } catch (e) {
+            this.logger.logErr("error in getRecordProducer_RequesterGroup_default_value: " + e);
+        }
+    },
+
+
+    /** 
+     * @desc
+     * Get the NML Checklist item matrix details depending on the requester type and whether it's a new project
+     * Used in "submit new model launch" record producer
+     *
+     * @param
+     * requesterType String should be "sbu" or "market" in order to retrieve something
+     * newProject    Boolean
+     * 
+     * @return
+     *  String containing a reference qualifier
+     */
+    getNMLChecklistJSONMatrix: function (requesterType, newProject) {
+        var nmlChecklistMatrix_JSON = {
+
+        };
+
+        if ((requesterType !== "sbu" && requesterType !== "market") ||
+            (requesterType === "sbu" && newProject === null)) {
+            return nmlChecklistMatrix_JSON;
+        }
+
+        var nmlChecklistItem_GR = new GlideRecord("x_nesa_ng_obsidian_nml_checklist_item");
+        nmlChecklistItem_GR.addQuery("active", true);
+        nmlChecklistItem_GR.orderBy("name");
+        nmlChecklistItem_GR.query();
+
+        while (nmlChecklistItem_GR.next()) {
+            var checklistItem_behaviour = (function () {
+                if (requesterType === "market") {
+                    return nmlChecklistItem_GR.getValue("behaviour_for_market_requesters"); //will contain mandatory, hidden or optional
+                } else if (requesterType === "sbu") {
+                    var sbu_field_behaviour = nmlChecklistItem_GR.getValue("behaviour_for_sbu_requesters");
+                    switch (sbu_field_behaviour) {
+                        case "active":
+                            return "active";
+                        case "inactive":
+                            return "optional";
+                        case "new_project_only":
+                            return (newProject ? "active" : "optional");
+                        case "existing_project_only":
+                            return (newProject ? "optional" : "active");
+                    }
+                }
+            })();
+
+            var checklistItemIsVisible = null;
+            var checklistItemIsReadOnly = null;
+            var checklistItemIsSelected = null;
+
+            switch (checklistItem_behaviour) {
+                case "active":
+                    checklistItemIsVisible = true;
+                    checklistItemIsReadOnly = false;
+                    checklistItemIsSelected = true;
+                    break;
+                case "mandatory":
+                    checklistItemIsVisible = true;
+                    checklistItemIsReadOnly = true;
+                    checklistItemIsSelected = true;
+                    break;
+                case "optional":
+                    checklistItemIsVisible = true;
+                    checklistItemIsReadOnly = false;
+                    checklistItemIsSelected = (function () {
+                        //STRY0191612 - when the NML is being submitted by a Market requester, for the NML items marked as optional, 
+                        //the corresponding tickbox is ticked by default if the NML checklist item is NOT marked as "inactive" for SBU requesters
+                        if (requesterType == "sbu") {
+                            return false;
+                        } else if (requesterType == "market") {
+
+                            var sbu_field_behaviour = nmlChecklistItem_GR.getValue("behaviour_for_sbu_requesters");
+                            if (sbu_field_behaviour == "inactive") {
+                                return false;
+                            } else {
+                                return true;
+                            }
+                        }
+                    })();
+                    break;
+                case "hidden":
+                    checklistItemIsVisible = false;
+                    checklistItemIsReadOnly = false;
+                    checklistItemIsSelected = false;
+                    break;
+                default:
+                    break;
+            }
+
+
+
+            nmlChecklistMatrix_JSON[nmlChecklistItem_GR.sys_id] = {
+                nml_checklist_item_id: nmlChecklistItem_GR.getValue("id"),
+                nml_checklist_item_short_description: nmlChecklistItem_GR.getValue("short_description"),
+                nml_checklist_item_nml_stage: nmlChecklistItem_GR.getDisplayValue("nml_stage"),
+                nml_checklist_item_assigned_to: nmlChecklistItem_GR.getDisplayValue("assigned_to"),
+                nml_checklist_item_behaviour: checklistItem_behaviour,
+                nml_checklist_item_is_visible: checklistItemIsVisible,
+                nml_checklist_item_is_read_only: checklistItemIsReadOnly,
+                nml_checklist_item_is_selected: checklistItemIsSelected
+            };
+        }
+
+        return nmlChecklistMatrix_JSON;
+
+    },
+
+
+    /** 
+     * @desc
+     * creates the m2m relationships between the NML checklist items and the Obsidian NML and Model
+     *
+     * @param
+     * obsidianNML_sys_id string the sys_id of the NML record
+     * 
+     * @return
+     *  null
+     */
+    createNMLChecklistSelectionRecords: function (obsidianNML_sys_id) {
+        var nml_GR = new GlideRecord(x_nesa_ng_obsidian.DXCObsidianConstants.NML_TABLE_NAMES.NML_TABLE);
+        if (!nml_GR.get(obsidianNML_sys_id)) {
+            throw ("createNMLChecklistSelectionRecords couldn't get NML glideRecord with sys_id " + obsidianNML_sys_id);
+        }
+
+        var nmlChecklistMatrix_JSON = JSON.parse(nml_GR.getValue("nml_checklist_item_json"));
+
+
+        for (var checklist_item_sys_id in nmlChecklistMatrix_JSON) {
+            var checklistItemM2M_GR = new GlideRecord("x_nesa_ng_obsidian_m2m_nml_checklist");
+            checklistItemM2M_GR.addQuery("obsidian_new_model_launch", obsidianNML_sys_id);
+            checklistItemM2M_GR.addQuery("nml_checklist_item", checklist_item_sys_id);
+            checklistItemM2M_GR.query();
+            checklistItemM2M_GR.next();
+            checklistItemM2M_GR.setValue("nml_checklist_item", checklist_item_sys_id);
+            checklistItemM2M_GR.setValue("obsidian_new_model_launch", obsidianNML_sys_id);
+            checklistItemM2M_GR.setValue("active_in_this_nml", nmlChecklistMatrix_JSON[checklist_item_sys_id].nml_checklist_item_is_selected);
+            checklistItemM2M_GR.setValue("universal_task", "");
+            checklistItemM2M_GR.update();
+        }
+    },
+
+
+    /** 
+     * @desc
+     * returns the sys_id of the assignment group based on the NML checklist assignment type and the NML record
+     * 
+     *
+     * @param
+     * obsidianNML_GR GlideRecord the obsidian NML GlideRecord
+     * nmlChecklistItem_assignmentType string the assignment type
+     * 
+     * 
+     * @return
+     *  string   the sys_id of the corresponding assignment group
+     */
+    getUniversalTaskAssignmentGroupSysID: function (obsidianNML_GR, nmlChecklistItem_assignmentType) {
+        var assignmentGroupMap = JSON.parse(gs.getProperty("x_nesa_ng_obsidian.nml.checklist_item_assignment_map"));
+        if (assignmentGroupMap[nmlChecklistItem_assignmentType]) {
+            return assignmentGroupMap[nmlChecklistItem_assignmentType];
+        }
+
+        if (nmlChecklistItem_assignmentType == "requester") {
+            return obsidianNML_GR.getValue("model_requester_group");
+        }
+
+        if (nmlChecklistItem_assignmentType == "supplier") {
+            var supplierGroupSysID = this.obsidianCommonUtils.getSupplierGroupSysIDForSupplier(obsidianNML_GR.obsidian_model.supplier.toString());
+            if (supplierGroupSysID != null) {
+                return supplierGroupSysID;
+            } else {
+                return assignmentGroupMap["nbs"];
+            }
+        }
+    },
+
+    /** 
+     * @desc returns the sys_id of the regional NML approval group for a given country
+     *
+     * @param
+     * requestingCountrySysID String the sys_id of a country location
+     * 
+     * 
+     * @return
+     *  string   the sys_id of the approver group
+     */
+    getRegionalApprovalGroupSysID: function (requestingCountrySysID) {
+        if (!requestingCountrySysID) {
+            throw ("getRegionalApprovalGroupSysID has received an empty parameter");
+        }
+
+        var requestingCountry_GR = new GlideRecord("cmn_location");
+
+        if (!requestingCountry_GR.get(requestingCountrySysID)) {
+            throw ("getRegionalApprovalGroupSysID couldn't get location glideRecord with sys_id " + requestingCountrySysID);
+        }
+
+        if (requestingCountry_GR.getValue("u_type") !== "country") {
+            throw ("getRegionalApprovalGroupSysID got a location GlideRecord which is not a country with sys_id " + requestingCountrySysID);
+        }
+
+        var parentZoneSysID = requestingCountry_GR.parent.parent.parent.toString();
+
+        var coveredLocation_GR = new GlideRecord("sys_group_covers_location");
+        coveredLocation_GR.addQuery("location", parentZoneSysID);
+        coveredLocation_GR.addQuery("group.type", "CONTAINS", this.obsidianCommonUtils._getGroupTypeID("obsidian-regional_approval"));
+        coveredLocation_GR.query();
+        if (coveredLocation_GR.next()) {
+            return coveredLocation_GR.getValue("group");
+        } else {
+            return null;
+        }
+
+    },
+
+
+
+
+
+
+    type: 'DXCObsidianNMLUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-03-24 08:55:20</sys_created_on>
+        <sys_id>66c098331b168d5406e886efe54bcbe0</sys_id>
+        <sys_mod_count>360</sys_mod_count>
+        <sys_name>DXCObsidianNMLUtils</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_include_66c098331b168d5406e886efe54bcbe0</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-06-02 11:10:23</sys_updated_on>
+    </sys_script_include>
+</record_update>

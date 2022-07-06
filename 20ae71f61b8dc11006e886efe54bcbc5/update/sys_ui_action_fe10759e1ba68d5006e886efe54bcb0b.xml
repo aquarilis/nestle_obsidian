@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_action">
+    <sys_ui_action action="INSERT_OR_UPDATE">
+        <action_name/>
+        <active>true</active>
+        <client>true</client>
+        <client_script_v2><![CDATA[function onClick(g_form) {
+
+}]]></client_script_v2>
+        <comments>STRY0181847 - (DXC) "Create new Model Configuration" related link</comments>
+        <condition>current.canWrite()</condition>
+        <form_action>true</form_action>
+        <form_button>false</form_button>
+        <form_button_v2>false</form_button_v2>
+        <form_context_menu>false</form_context_menu>
+        <form_link>true</form_link>
+        <form_menu_button_v2>false</form_menu_button_v2>
+        <form_style/>
+        <format_for_configurable_workspace>false</format_for_configurable_workspace>
+        <hint/>
+        <isolate_script>true</isolate_script>
+        <list_action>false</list_action>
+        <list_banner_button>false</list_banner_button>
+        <list_button>false</list_button>
+        <list_choice>false</list_choice>
+        <list_context_menu>false</list_context_menu>
+        <list_link>false</list_link>
+        <list_save_with_form_button>false</list_save_with_form_button>
+        <list_style/>
+        <messages/>
+        <name>Create new Model Configuration</name>
+        <onclick>openFormDialog()</onclick>
+        <order>100</order>
+        <script><![CDATA[function openFormDialog() {
+	var gModalForm = new GlideModalForm('Create new Model Configuration', 'x_nesa_ng_obsidian_obsidian_model_configuration');
+	gModalForm.setPreference('sysparm_view', '');
+	gModalForm.addParm('sysparm_query', 'obsidian_model=' + g_scratchpad.obsidian_model_sys_id);
+	gModalForm.render();
+}]]></script>
+        <show_insert>true</show_insert>
+        <show_multiple_update>false</show_multiple_update>
+        <show_query>false</show_query>
+        <show_update>true</show_update>
+        <sys_class_name>sys_ui_action</sys_class_name>
+        <sys_created_by>admin_Diego_Casillas</sys_created_by>
+        <sys_created_on>2022-04-01 10:36:41</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>fe10759e1ba68d5006e886efe54bcb0b</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Create new Model Configuration</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_ui_action_fe10759e1ba68d5006e886efe54bcb0b</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-04-03 18:42:36</sys_updated_on>
+        <table>x_nesa_ng_obsidian_obsidian_feature_option</table>
+        <ui11_compatible>true</ui11_compatible>
+        <ui16_compatible>false</ui16_compatible>
+    </sys_ui_action>
+</record_update>

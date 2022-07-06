@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="shipping_information_comments" label="Shipping information comments" language="en" table="x_nesa_ng_obsidian_obsidian_model">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>shipping_information_comments</element>
+            <help/>
+            <hint/>
+            <label>Shipping information comments</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <plural>Shipping information comments</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-06-08 14:59:18</sys_created_on>
+            <sys_id>910d341c87c0dd5cbc702f89cebb358b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Shipping information comments</sys_name>
+            <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+            <sys_update_name>sys_documentation_x_nesa_ng_obsidian_obsidian_model_shipping_information_comments_en</sys_update_name>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-06-08 14:59:18</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

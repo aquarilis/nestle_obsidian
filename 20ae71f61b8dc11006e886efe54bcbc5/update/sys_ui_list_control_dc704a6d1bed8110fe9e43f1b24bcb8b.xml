@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_list_control">
+    <sys_ui_list_control action="INSERT_OR_UPDATE">
+        <columns_condition/>
+        <disable_nlq>false</disable_nlq>
+        <edit_condition/>
+        <edit_default_filter/>
+        <edit_roles/>
+        <empty_condition/>
+        <filter_condition/>
+        <filter_roles/>
+        <hierarchical_lists>false</hierarchical_lists>
+        <label/>
+        <link_condition/>
+        <link_roles/>
+        <list_edit_insert_row>false</list_edit_insert_row>
+        <list_edit_ref_qual_tag/>
+        <list_edit_type/>
+        <name>x_nesa_ng_obsidian_technical_ticket</name>
+        <new_condition><![CDATA[var notValidation = parent.state != DXCObsidianConstants.TECHNICAL_TICKET_STATE_VALIDATION;
+var notInfoCollection = parent.state != DXCObsidianConstants.TECHNICAL_TICKET_STATE_INFO_COLLECTION;
+var notRejected = parent.state != DXCObsidianConstants.TECHNICAL_TICKET_STATE_REJECTED;
+var member = gs.getUser().isMemberOf(parent.assignment_group);
+
+answer = notValidation && notInfoCollection && notRejected && !member;]]></new_condition>
+        <new_roles/>
+        <omit_columns_if_empty>false</omit_columns_if_empty>
+        <omit_count>false</omit_count>
+        <omit_count_views>false</omit_count_views>
+        <omit_count_views_list/>
+        <omit_drilldown_link>false</omit_drilldown_link>
+        <omit_edit_button>true</omit_edit_button>
+        <omit_filters>false</omit_filters>
+        <omit_if_empty>false</omit_if_empty>
+        <omit_links>false</omit_links>
+        <omit_new_button>false</omit_new_button>
+        <related_list>x_nesa_ng_obsidian_impacted_serials.technical_ticket</related_list>
+        <sys_class_name>sys_ui_list_control</sys_class_name>
+        <sys_created_by>admin_Isaac_Perez</sys_created_by>
+        <sys_created_on>2022-02-08 10:30:57</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>dc704a6d1bed8110fe9e43f1b24bcb8b</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>x_nesa_ng_obsidian_technical_ticket</sys_name>
+        <sys_overrides display_value="">global</sys_overrides>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_ui_list_control_dc704a6d1bed8110fe9e43f1b24bcb8b</sys_update_name>
+        <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+        <sys_updated_on>2022-02-09 08:40:26</sys_updated_on>
+    </sys_ui_list_control>
+</record_update>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="behaviour_for_market_requesters" label="Behaviour for Market Requesters" language="en" table="x_nesa_ng_obsidian_nml_checklist_item">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>behaviour_for_market_requesters</element>
+            <help/>
+            <hint>"Indicate how the given checklist item is marked during the NML submission process. &#13;
+&#13;
+Applies only if requester is Market user&#13;
+&#13;
+Mandatory: marked active and cannot be unticked&#13;
+&#13;
+Hidden: not shown in the list of checklist items&#13;
+&#13;
+Optional: shown unticked in the list of checklist items and can be enabled  by the requester</hint>
+            <label>Behaviour for Market Requesters</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_nml_checklist_item</name>
+            <plural>Behaviour for Market Requesters</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-03-23 09:30:30</sys_created_on>
+            <sys_id>065fcf5f1b5e415406e886efe54bcbe2</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_name>Behaviour for Market Requesters</sys_name>
+            <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+            <sys_update_name>sys_documentation_x_nesa_ng_obsidian_nml_checklist_item_behaviour_for_market_requesters_en</sys_update_name>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-03-23 09:37:11</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

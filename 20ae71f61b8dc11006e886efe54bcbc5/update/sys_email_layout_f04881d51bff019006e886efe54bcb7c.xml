@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_email_layout">
+    <sys_email_layout action="INSERT_OR_UPDATE">
+        <advanced>false</advanced>
+        <advanced_layout/>
+        <description>Email Layout use to standardize Obsidian email notifications&#13;
+</description>
+        <layout><![CDATA[<style>    * {        background-color: #ffffff !important;    }    td {        font-family: Arial, Helvetica, sans-serif;        font-size: 12pt;        color: #666666;    }    .img-logo{        max-height: 75px;    }    .td-header-title {        color: #4475a7;        font-size: 20pt;        text-align: right;    }    .td-footer {        color: #B9B9B9;        font-size: 10pt;    }</style>
+<table style="width: 100%;">
+<tbody>
+<tr>
+<td>
+<table style="width: 800px; margin: auto; padding-top: 30px;">
+<tbody>
+<tr>
+<td><img class="img-logo" src="logo_nestle.png"/></td>
+<td class="td-header-title">${mail_script:x_nesa_ng_obsidian.default_layout.header_text}</td>
+</tr>
+<tr>
+<td colspan="2"><hr />${notification:body}</td>
+</tr>
+<tr>
+<td class="td-footer" colspan="2"><hr />For internal use only</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>]]></layout>
+        <name>(DXC) Obsidian Email layout</name>
+        <sys_class_name>sys_email_layout</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-05-30 08:06:38</sys_created_on>
+        <sys_id>f04881d51bff019006e886efe54bcb7c</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>(DXC) Obsidian Email layout</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_email_layout_f04881d51bff019006e886efe54bcb7c</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-05-30 08:16:06</sys_updated_on>
+    </sys_email_layout>
+</record_update>

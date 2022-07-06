@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>false</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_nesa_ng_obsidian_obsidian_model</collection>
+        <condition/>
+        <description>DXC - when the default currency changes on the model, all underlying feature options are updated accordingly (gross price and feature price)&#13;
+</description>
+        <execute_function>false</execute_function>
+        <filter_condition table="x_nesa_ng_obsidian_obsidian_model">default_currencyVALCHANGES^EQ<item display_value="-- None --" endquery="false" field="default_currency" goto="false" newquery="false" operator="VALCHANGES" or="false" value=""/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter_condition>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>(DXC) Cascade Default Currency change</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
+   try {
+
+      var cascadeNeeded = false;
+
+      var currencyFieldNames_JSON = {
+         "gross_price": null,
+         "feature_price": null,
+      };
+
+      var featureOption_GR = new GlideRecord(x_nesa_ng_obsidian.DXCObsidianConstants.NML_TABLE_NAMES.FEATURE_OPTION_TABLE);
+      featureOption_GR.addQuery("model_feature.obsidian_model", current.sys_id);
+      featureOption_GR.query();
+      while (featureOption_GR.next()) {
+         for (var currencyFieldName in currencyFieldNames_JSON) {
+
+            var currencyFieldValue = featureOption_GR.getValue(currencyFieldName);
+            if (currencyFieldValue !== null) {
+               var fxCurrencyInstance_GR = new GlideRecord("fx_currency2_instance");
+               fxCurrencyInstance_GR.addQuery("parent_record", featureOption_GR.sys_id);
+               fxCurrencyInstance_GR.addQuery("field", currencyFieldName);
+               fxCurrencyInstance_GR.query();
+               fxCurrencyInstance_GR.next();
+               if (fxCurrencyInstance_GR.getValue("currency") !== current.default_currency) {
+                  cascadeNeeded = true;
+                  fxCurrencyInstance_GR.setValue("currency", current.default_currency);
+                  fxCurrencyInstance_GR.update();
+               }
+            }
+         }
+      }
+
+      if (cascadeNeeded) {
+         gs.addInfoMessage(gs.getMessage("Currency has been updated in underlying Feature Option records without conversion - please verify actual values to ensure correctness"));
+      }
+   } catch (exception) {
+      gs.addErrorMessage("Error in '(DXC) Cascade Default Currency change' business rule: " + exception);
+      var dxcLogger = new global.DXCGSLog("com.dxc.global.debugging_level", "(DXC) Cascade Default Currency change");
+      dxcLogger.logError(exception);
+   }
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-03-31 12:29:46</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>f4c4c5ca1beac950fe9e43f1b24bcb06</sys_id>
+        <sys_mod_count>23</sys_mod_count>
+        <sys_name>(DXC) Cascade Default Currency change</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_f4c4c5ca1beac950fe9e43f1b24bcb06</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-05-03 09:48:35</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=f4c4c5ca1beac950fe9e43f1b24bcb06"/>
+</record_update>

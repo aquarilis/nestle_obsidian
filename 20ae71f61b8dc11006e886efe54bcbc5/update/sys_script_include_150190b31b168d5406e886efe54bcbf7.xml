@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_nesa_ng_obsidian.DXCObsidianNMLUtilsAJAX</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>DXCObsidianNMLUtilsAJAX</name>
+        <script><![CDATA[var DXCObsidianNMLUtilsAJAX = Class.create();
+DXCObsidianNMLUtilsAJAX.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+
+
+    modelNameisAvailableForUse: function () {
+        var modelName = this.getParameter("sysparm_model_name");
+
+        var obsidianModel_GR = new GlideRecord(x_nesa_ng_obsidian.DXCObsidianConstants.NML_TABLE_NAMES.MODEL_TABLE);
+        obsidianModel_GR.addQuery("name", modelName);
+        obsidianModel_GR.query();
+
+        return (!obsidianModel_GR.hasNext());
+
+    },
+
+    processModelRequesterGroup: function () {
+        var groupSysId = this.getParameter("sysparm_group_sys_id");
+
+        var answerJSON = {
+            model_requester_type: null,
+            model_requesting_country_sys_id: null,
+            model_requesting_country_display_value: null,
+        };
+
+        var groupGR = new GlideRecord("sys_user_group");
+        if (groupGR.get(groupSysId)) {
+            var groupTypeArray = groupGR.getValue("type").split(",");
+            if (groupTypeArray.indexOf(gs.getProperty("x_nesa_ng_obsidian.nml.sbu_requester_group_type_sys_id")) !== -1) {
+                answerJSON.model_requester_type = "sbu";
+            } else {
+                answerJSON.model_requester_type = "market";
+                //if market, check covered location and put requesting country value if unique is found
+                var coveredLocation_GR = new GlideRecord('sys_group_covers_location');
+                coveredLocation_GR.addQuery("group", groupSysId);
+                coveredLocation_GR.addQuery("location.u_type", "country");
+                coveredLocation_GR.query();
+                if (coveredLocation_GR.getRowCount() == 1) {
+                    coveredLocation_GR.next();
+                    answerJSON.model_requesting_country_sys_id = coveredLocation_GR.getValue("location");
+                    answerJSON.model_requesting_country_display_value = coveredLocation_GR.getDisplayValue("location");
+                }
+            }
+        }
+
+        return JSON.stringify(answerJSON, null, 4, 4);
+
+
+    },
+
+    getNMLChecklistMatrix: function () {
+        var requesterType = this.getParameter("sysparm_requester_type");
+        var existingProject = this.getParameter("sysparm_existing_project");
+        var newProject;
+        if (existingProject == "yes") {
+            newProject = false;
+        } else if (existingProject == "no") {
+            newProject = true;
+        } else {
+            newProject = null;
+        }
+        var NMLHelper = new x_nesa_ng_obsidian.DXCObsidianNMLUtils();
+
+        var nmlChecklistMatrix_JSON = NMLHelper.getNMLChecklistJSONMatrix(requesterType, newProject);
+        return JSON.stringify(nmlChecklistMatrix_JSON, null, 4, 4);
+    },
+
+
+
+    type: 'DXCObsidianNMLUtilsAJAX'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-03-24 08:56:06</sys_created_on>
+        <sys_id>150190b31b168d5406e886efe54bcbf7</sys_id>
+        <sys_mod_count>39</sys_mod_count>
+        <sys_name>DXCObsidianNMLUtilsAJAX</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_include_150190b31b168d5406e886efe54bcbf7</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-05-16 08:41:18</sys_updated_on>
+    </sys_script_include>
+</record_update>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="impact_on_operation" table="x_nesa_ng_obsidian_technical_ticket" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>impact_on_operation</element>
+            <name>x_nesa_ng_obsidian_technical_ticket</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-01-18 13:27:57</sys_created_on>
+            <sys_id>d0ff5e361b494510fe9e43f1b24bcbcd</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>impact_on_operation</sys_name>
+            <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+            <sys_update_name>sys_choice_x_nesa_ng_obsidian_technical_ticket_impact_on_operation</sys_update_name>
+            <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+            <sys_updated_on>2022-01-18 13:27:57</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>impact_on_operation</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Equipment still works fine</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_technical_ticket</name>
+            <sequence>0</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-06-08 14:47:19</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>354a34988740dd5cbc702f89cebb35dc</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-06-08 14:47:19</sys_updated_on>
+            <value>Equipment still works fine</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>impact_on_operation</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Amended equipment works fine</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_technical_ticket</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-06-08 14:47:19</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>b14a30d88740dd5cbc702f89cebb355d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-06-08 14:47:19</sys_updated_on>
+            <value>Amended equipment works fine</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>impact_on_operation</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Equipment works poorly</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_technical_ticket</name>
+            <sequence>2</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-06-08 14:47:19</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>714a30d88740dd5cbc702f89cebb3566</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-06-08 14:47:19</sys_updated_on>
+            <value>Equipment works poorly</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>impact_on_operation</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Equipment is difficult to use</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_technical_ticket</name>
+            <sequence>3</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-06-08 14:47:19</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>314a30d88740dd5cbc702f89cebb356f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-06-08 14:47:19</sys_updated_on>
+            <value>Equipment is difficult to use</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>impact_on_operation</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Equipment does not work</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_technical_ticket</name>
+            <sequence>4</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-06-08 14:47:19</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>7d4a30d88740dd5cbc702f89cebb3590</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-06-08 14:47:19</sys_updated_on>
+            <value>Equipment does not work</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_action">
+    <sys_ui_action action="INSERT_OR_UPDATE">
+        <action_name>sysverb_create_ad_hoc_nml_task</action_name>
+        <active>false</active>
+        <client>false</client>
+        <client_script_v2><![CDATA[function onClick(g_form) {
+
+}]]></client_script_v2>
+        <comments/>
+        <condition>RP.isRelatedList() &amp;&amp; parent.sys_class_name == "x_nesa_ng_obsidian_obsidian_model" &amp;&amp; parent.canWrite() &amp;&amp; new x_nesa_ng_obsidian.DXCObsidianNMLUtils().canCreateAdHocUniversalTask(parent.nml_stage) </condition>
+        <form_action>false</form_action>
+        <form_button>false</form_button>
+        <form_button_v2>false</form_button_v2>
+        <form_context_menu>false</form_context_menu>
+        <form_link>false</form_link>
+        <form_menu_button_v2>false</form_menu_button_v2>
+        <form_style/>
+        <format_for_configurable_workspace>false</format_for_configurable_workspace>
+        <hint/>
+        <isolate_script>false</isolate_script>
+        <list_action>true</list_action>
+        <list_banner_button>true</list_banner_button>
+        <list_button>false</list_button>
+        <list_choice>false</list_choice>
+        <list_context_menu>false</list_context_menu>
+        <list_link>false</list_link>
+        <list_save_with_form_button>false</list_save_with_form_button>
+        <list_style/>
+        <messages/>
+        <name>Create NML Task</name>
+        <onclick/>
+        <order>100</order>
+        <script><![CDATA[try {
+    var referringURL = RP.getReferringURL();
+
+
+    var parentSysID_regex = /^\/?(\w+)\.do\?\S*sys_id=(\w{32}).*/gm;
+
+    var regexResultArray = parentSysID_regex.exec(referringURL);
+    if (regexResultArray === null) {
+        throw ("Couldn't identify table name and sys_id from RP.getReferringURL() " + referringURL);
+
+    } else {
+        var parentTableName = regexResultArray[1];
+        var parentSysID = regexResultArray[2];
+
+        if (parentTableName === x_nesa_ng_obsidian.DXCObsidianConstants.NML_TABLE_NAMES.MODEL_TABLE){
+            var obsidianModel_GR = new GlideRecord(x_nesa_ng_obsidian.DXCObsidianConstants.NML_TABLE_NAMES.MODEL_TABLE);
+            if (!obsidianModel_GR.get(parentSysID)){
+                throw ("Couldn't get parent Obsidian Model GlideRecord with sys_id " + parentSysID);
+            }
+            parentSysID = obsidianModel_GR.getValue("obsidian_new_model_launch");
+            if (!parentSysID){
+                throw ("Couldn't get valid Obsidian NML sys_id from Obsidian Model GlideRecord with sys_id " + parentSysID);
+            }
+        }
+
+        var uri = action.getGlideURI();
+        var path = uri.getFileFromPath() + '';
+        path = path.substring(0, path.length - 5) + '.do';
+
+        uri.set('sys_id', '-1');
+        uri.set('sysparm_query', 'parent=' + parentSysID);
+
+        action.setRedirectURL(uri.toString(path));
+
+        action.setNoPop(true);
+    }
+
+} catch (e) {
+    gs.addErrorMessage("Error in Related list button script: " + e);
+}]]></script>
+        <show_insert>true</show_insert>
+        <show_multiple_update>false</show_multiple_update>
+        <show_query>false</show_query>
+        <show_update>true</show_update>
+        <sys_class_name>sys_ui_action</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-04-06 08:10:29</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>fbf2833f1b66459406e886efe54bcbd2</sys_id>
+        <sys_mod_count>33</sys_mod_count>
+        <sys_name>Create NML Task</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_ui_action_fbf2833f1b66459406e886efe54bcbd2</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-06-08 13:52:26</sys_updated_on>
+        <table>sn_uni_task_universal_task</table>
+        <ui11_compatible>true</ui11_compatible>
+        <ui16_compatible>false</ui16_compatible>
+    </sys_ui_action>
+</record_update>

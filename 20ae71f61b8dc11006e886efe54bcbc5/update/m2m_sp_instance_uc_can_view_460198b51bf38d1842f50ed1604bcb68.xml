@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_instance_uc_can_view">
+    <m2m_sp_instance_uc_can_view action="INSERT_OR_UPDATE">
+        <sp_instance display_value="NEW MODEL LAUNCH">3a7cf2511b6ac110fe9e43f1b24bcb1a</sp_instance>
+        <sys_class_name>m2m_sp_instance_uc_can_view</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-05-31 17:22:18</sys_created_on>
+        <sys_id>460198b51bf38d1842f50ed1604bcb68</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>NEW MODEL LAUNCH.Obsidian NML requester</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>m2m_sp_instance_uc_can_view_460198b51bf38d1842f50ed1604bcb68</sys_update_name>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-05-31 17:22:18</sys_updated_on>
+        <user_criteria display_value="Obsidian NML requester">ee9a4bfb1b2e459406e886efe54bcb9f</user_criteria>
+    </m2m_sp_instance_uc_can_view>
+</record_update>

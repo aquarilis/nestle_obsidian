@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_package_dependency_m2m">
+    <sys_package_dependency_m2m action="INSERT_OR_UPDATE">
+        <dependency display_value="Model Management" source="com.snc.model">f8bf5dc5db0303008e0214a05b96192f</dependency>
+        <min_version>1.0</min_version>
+        <sys_created_by>admin_Isaac_Perez</sys_created_by>
+        <sys_created_on>2022-02-04 10:52:47</sys_created_on>
+        <sys_id>f332b1e81b60991006e886efe54bcbe8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+        <sys_updated_on>2022-02-04 10:52:47</sys_updated_on>
+    </sys_package_dependency_m2m>
+</record_update>

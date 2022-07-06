@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="critical_flag" label="Critical flag" language="en" table="x_nesa_ng_obsidian_technical_solution_management">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>critical_flag</element>
+            <help/>
+            <hint/>
+            <label>Critical flag</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_technical_solution_management</name>
+            <plural>Critical flags</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin_Agata_Swoboda</sys_created_by>
+            <sys_created_on>2022-02-28 16:21:23</sys_created_on>
+            <sys_id>7cd0d2481b06c11006e886efe54bcb02</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Critical flag</sys_name>
+            <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+            <sys_update_name>sys_documentation_x_nesa_ng_obsidian_technical_solution_management_critical_flag_en</sys_update_name>
+            <sys_updated_by>admin_Agata_Swoboda</sys_updated_by>
+            <sys_updated_on>2022-02-28 16:21:23</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

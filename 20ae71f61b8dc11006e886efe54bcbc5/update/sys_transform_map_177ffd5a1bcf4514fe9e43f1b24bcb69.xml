@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_transform_map">
+    <sys_transform_map action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copy_empty_fields>false</copy_empty_fields>
+        <create_new_record_on_empty_coalesce_fields>false</create_new_record_on_empty_coalesce_fields>
+        <enforce_mandatory_fields>No</enforce_mandatory_fields>
+        <name>(DXC) Obsidian - 03 - Model feature TM</name>
+        <order>100</order>
+        <run_business_rules>true</run_business_rules>
+        <run_script>true</run_script>
+        <script><![CDATA[(function transformRow(source, target, map, log, isUpdate) {
+	try {
+
+		//deal with feature category subcategory
+		var sourceFeatureCategorySubCategory = source.getValue("u_feature_category_subcategory");
+
+		if (!sourceFeatureCategorySubCategory) {
+			throw "source hasn't got any 'Feature category-subcategory' value defined";
+		}
+
+		sourceFeatureCategorySubCategory = sourceFeatureCategorySubCategory.toLowerCase();
+		var validFeatureCategorySubcategories = [
+			"base price---base price - other",
+			"base price---base price",
+			"beverage processing---boiler",
+			"beverage processing---special modules",
+			"beverage processing---canister configuration",
+			"beverage processing---water connection",
+			"beverage processing---machine configuration",
+			"beverage processing---whipper configuration",
+			"beverage processing---version",
+			"beverage processing---beverage processing - other",
+			"beverage processing---beverage processing options",
+			"technical interface---technical interface options",
+			"technical interface---electricity",
+			"technical interface---settings and documents",
+			"technical interface---technical interface - other",
+			"consumer interface---branding",
+			"consumer interface---cup station",
+			"consumer interface---consumer interface options",
+			"consumer interface---user interface",
+			"consumer interface---consumer interface - other",
+			"market constraints---regulatory",
+			"market constraints---market constraints - other",
+			"market constraints---marking",
+			"additional info---additional info - other",
+			"additional info---user requests",
+		];
+
+
+		if (validFeatureCategorySubcategories.indexOf(sourceFeatureCategorySubCategory) == -1) {
+			throw "invalid sourceFeatureCategorySubCategory detected: '" + sourceFeatureCategorySubCategory + "'";
+		}
+
+		var featureCategorySubcategoryArray = sourceFeatureCategorySubCategory.split("---");
+
+
+		var feature_category_map = {
+			"base price": "100_base_price",
+			"beverage processing": "200_beverage_processing",
+			"technical interface": "300_technical_interface",
+			"consumer interface": "400_consumer_interface",
+			"market constraints": "500_market_constraints",
+			"additional info": "600_additional_info",
+		};
+
+		var feature_subcategory_map = {
+			"base price - other": "Base price - other",
+			"base price": "Base price",
+			"boiler": "Boiler",
+			"special modules": "Special modules",
+			"canister configuration": "Canister configuration",
+			"water connection": "Water connection",
+			"machine configuration": "Machine configuration",
+			"whipper configuration": "Whipper configuration",
+			"version": "Version",
+			"beverage processing - other": "Beverage processing - other",
+			"beverage processing options": "Beverage processing options",
+			"technical interface options": "Technical interface options",
+			"electricity": "Electricity",
+			"settings and documents": "Settings and documents",
+			"technical interface - other": "Technical interface - other",
+			"branding": "Branding",
+			"cup station": "Cup station",
+			"consumer interface options": "Consumer interface options",
+			"user interface": "User interface",
+			"consumer interface - other": "Consumer interface - other",
+			"regulatory": "Regulatory",
+			"market constraints - other": "Market constraints - other",
+			"marking": "Marking",
+			"additional info - other": "Additional info - other",
+			"user requests": "User requests"
+		};
+
+		if (feature_category_map[featureCategorySubcategoryArray[0]] == undefined) {
+			throw "invalid feature category detected: " + featureCategorySubcategoryArray[0];
+		}
+		target.feature_category = feature_category_map[featureCategorySubcategoryArray[0]];
+
+
+		if (feature_subcategory_map[featureCategorySubcategoryArray[1]] == undefined) {
+			throw "invalid feature subcategory detected: " + featureCategorySubcategoryArray[1];
+		}
+		target.feature_subcategory = feature_subcategory_map[featureCategorySubcategoryArray[1]];
+
+
+
+		//deal with standard option
+		var standardOptionFullName = source.getValue("u_standard_option");
+
+		if (!standardOptionFullName) {
+			throw (source.u_feature_full_name + " has no standard option in source file !");
+		}
+
+		if (action == "update") {
+
+			var standardFeatureOption_GR = new GlideRecord('x_nesa_ng_obsidian_obsidian_feature_option');
+
+			if (!standardFeatureOption_GR.get("import_unique_key", standardOptionFullName)) {
+				throw "couldn't find feature option with full name " + standardOptionFullName;
+			}
+
+			if (standardFeatureOption_GR.getValue("model_feature") != target.sys_id) {
+				throw "provided standard option '" + standardOptionFullName + "' doesn't belong to feature '" + source.u_feature_full_name + "'";
+			}
+
+			if (!standardFeatureOption_GR.active) {
+				throw "standard feature option " + standardOptionFullName + " is inactive!";
+			}
+
+			target.standard_option = standardFeatureOption_GR.getUniqueValue();
+
+
+		}
+
+	} catch (e) {
+		error = true;
+		log.error("error in model feature TM main script : " + e);
+	}
+})(source, target, map, log, action === "update");]]></script>
+        <source_table>x_nesa_ng_obsidian_model_feature_import</source_table>
+        <sys_class_name>sys_transform_map</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-04-26 07:55:47</sys_created_on>
+        <sys_id>177ffd5a1bcf4514fe9e43f1b24bcb69</sys_id>
+        <sys_mod_count>41</sys_mod_count>
+        <sys_name>(DXC) Obsidian - 03 - Model feature TM</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_transform_map_177ffd5a1bcf4514fe9e43f1b24bcb69</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-06-20 08:51:45</sys_updated_on>
+        <target_table>x_nesa_ng_obsidian_obsidian_model_feature</target_table>
+    </sys_transform_map>
+</record_update>

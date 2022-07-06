@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this table is used for &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this table has been created or updated &gt;" label="Obsidian Model Feature" max_length="40" name="x_nesa_ng_obsidian_obsidian_model_feature" sizeclass="2127" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Active option count" max_length="40" name="active_option_count" read_only="true" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" label="Description" max_length="1000" name="description" type="string"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Editable" mandatory="true" max_length="40" name="editable" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Yes" sequence="0" value="yes"/>
+                <element inactive_on_update="false" label="No" sequence="1" value="no"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Feature category" mandatory="true" max_length="40" name="feature_category" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Base price" sequence="0" value="100_base_price"/>
+                <element inactive_on_update="false" label="Beverage processing" sequence="1" value="200_beverage_processing"/>
+                <element inactive_on_update="false" label="Technical interface" sequence="2" value="300_technical_interface"/>
+                <element inactive_on_update="false" label="Consumer interface" sequence="3" value="400_consumer_interface"/>
+                <element inactive_on_update="false" label="Market constraints" sequence="4" value="500_market_constraints"/>
+                <element inactive_on_update="false" label="Additional info" sequence="5" value="600_additional_info"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" choice="1" dependent="feature_category" dependent_on_field="feature_category" label="Feature subcategory" mandatory="true" max_length="40" name="feature_subcategory" type="string" use_dependent_field="true">
+            <choice>
+                <element dependent_value="100_base_price" inactive_on_update="false" label="Base price" sequence="0" value="Base price"/>
+                <element dependent_value="200_beverage_processing" inactive_on_update="false" label="Beverage processing options" sequence="0" value="Beverage processing options"/>
+                <element dependent_value="400_consumer_interface" inactive_on_update="false" label="Branding" sequence="0" value="Branding"/>
+                <element dependent_value="300_technical_interface" inactive_on_update="false" label="Electricity" sequence="0" value="Electricity"/>
+                <element dependent_value="500_market_constraints" inactive_on_update="false" label="Marking" sequence="0" value="Marking"/>
+                <element dependent_value="600_additional_info" inactive_on_update="false" label="User requests" sequence="0" value="User requests"/>
+                <element dependent_value="600_additional_info" inactive_on_update="false" label="Additional info - other" sequence="1" value="Additional info - other"/>
+                <element dependent_value="100_base_price" inactive_on_update="false" label="Base price - other" sequence="1" value="Base price - other"/>
+                <element dependent_value="200_beverage_processing" inactive_on_update="false" label="Boiler" sequence="1" value="Boiler"/>
+                <element dependent_value="400_consumer_interface" inactive_on_update="false" label="Consumer interface options" sequence="1" value="Consumer interface options"/>
+                <element dependent_value="500_market_constraints" inactive_on_update="false" label="Regulatory" sequence="1" value="Regulatory"/>
+                <element dependent_value="300_technical_interface" inactive_on_update="false" label="Settings and documents" sequence="1" value="Settings and documents"/>
+                <element dependent_value="200_beverage_processing" inactive_on_update="false" label="Canister configuration" sequence="2" value="Canister configuration"/>
+                <element dependent_value="400_consumer_interface" inactive_on_update="false" label="Cup station" sequence="2" value="Cup station"/>
+                <element dependent_value="500_market_constraints" inactive_on_update="false" label="Market constraints - other" sequence="2" value="Market constraints - other"/>
+                <element dependent_value="300_technical_interface" inactive_on_update="false" label="Technical interface options" sequence="2" value="Technical interface options"/>
+                <element dependent_value="200_beverage_processing" inactive_on_update="false" label="Machine configuration" sequence="3" value="Machine configuration"/>
+                <element dependent_value="300_technical_interface" inactive_on_update="false" label="Technical interface - other" sequence="3" value="Technical interface - other"/>
+                <element dependent_value="400_consumer_interface" inactive_on_update="false" label="User interface" sequence="3" value="User interface"/>
+                <element dependent_value="400_consumer_interface" inactive_on_update="false" label="Consumer interface - other" sequence="4" value="Consumer interface - other"/>
+                <element dependent_value="200_beverage_processing" inactive_on_update="false" label="Special modules" sequence="4" value="Special modules"/>
+                <element dependent_value="200_beverage_processing" inactive_on_update="false" label="Water connection" sequence="5" value="Water connection"/>
+                <element dependent_value="200_beverage_processing" inactive_on_update="false" label="Whipper configuration" sequence="6" value="Whipper configuration"/>
+                <element dependent_value="200_beverage_processing" inactive_on_update="false" label="Version" sequence="7" value="Version"/>
+                <element dependent_value="200_beverage_processing" inactive_on_update="false" label="Beverage processing - other" sequence="8" value="Beverage processing - other"/>
+            </choice>
+        </element>
+        <element comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Import unique key" max_length="800" name="import_unique_key" read_only="true" type="string"/>
+        <element display="true" label="Feature name" mandatory="true" max_length="100" name="name" type="string"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Feature Number" max_length="40" name="number" read_only="true" type="string"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Obsidian Model" max_length="32" name="obsidian_model" read_only="true" reference="x_nesa_ng_obsidian_obsidian_model" reference_cascade_rule="delete_no_workflow" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Specifications" max_length="1000" name="specifications" type="string"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" choice="1" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Standard option" max_length="32" name="standard_option" reference="x_nesa_ng_obsidian_obsidian_feature_option" reference_qual="javascript:&quot;active=true^model_feature=&quot;+current.sys_id;" type="reference" use_reference_qualifier="advanced">
+            <choice/>
+        </element>
+        <index name="index">
+            <element name="import_unique_key"/>
+        </index>
+        <index name="index2">
+            <element name="obsidian_model"/>
+        </index>
+        <index name="index3">
+            <element name="standard_option"/>
+        </index>
+    </element>
+</database>

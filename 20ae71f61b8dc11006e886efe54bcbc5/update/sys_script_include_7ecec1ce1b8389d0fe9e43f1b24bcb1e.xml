@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_nesa_ng_obsidian.DXCObsidianPreferenceUtils</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>DXCObsidianPreferenceUtils</name>
+        <script><![CDATA[var DXCObsidianPreferenceUtils = Class.create();
+DXCObsidianPreferenceUtils.prototype = {
+    initialize: function () {
+        this.obsidianCommonUtils = new x_nesa_ng_obsidian.DXCObsidianCommonUtils();
+        this.logger = new global.GSLog("com.dxc.global.debugging_enabled", "LMADebug");
+        this.preferenceTypes = {
+            "SHIPPING_INSTRUCTIONS": "shipping_instructions",
+            "PERSONAL_EMAIL_ADDRESS": "personal_email_address",
+            "COUNTRY": "country"
+        };
+    },
+
+
+    /**
+     * @author	DXC - Luu-Ly Mai
+     * 
+     * @desc stores a new preference to the database
+     * 
+     * @param Sys_id from the table "sys_user"
+     * @param string obsidian preference type
+     * @param string value for the preference
+     * @param boolean whether the new preference should become the new default
+
+     * @return string sys_id of the created user preference record
+     */
+    insertNewObsidianUserPreference: function (userID, preferenceType, preferenceValue, isDefault) {
+        try {
+            var obsidianPreference_GR = new GlideRecord(DXCObsidianConstants.OBSIDIAN_PREFERENCE_TABLE);
+            obsidianPreference_GR.initialize();
+            obsidianPreference_GR.setValue("user_related", userID);
+            obsidianPreference_GR.setValue("type", preferenceType);
+            obsidianPreference_GR.setValue(this._getPreferenceTargetFieldName(preferenceType), preferenceValue);
+            obsidianPreference_GR.setValue("default", isDefault);
+            return obsidianPreference_GR.insert();
+        } catch (e) {
+            this.logger.logErr("error in insertNewObsidianUserPreference: " + e);
+        }
+
+    },
+
+    /**
+     * @author	DXC - Luu-Ly Mai
+     * 
+     * @desc update an existing obsidian user preference 
+     * 
+     * @param Sys_id from the table "sys_user"
+     * @param string obsidian preference type
+     * @param string value for the preference
+     * @param boolean whether the new preference should become the new default
+
+     * @return string sys_id of the created user preference record
+     */
+    updateObsidianUserPreference: function (userID, preferenceType, preferenceValue, isDefault) {
+        try {
+            var obsidianPreference_GR = new GlideRecord(DXCObsidianConstants.OBSIDIAN_PREFERENCE_TABLE);
+
+            obsidianPreference_GR.addQuery("user_related", userID);
+            obsidianPreference_GR.addQuery("type", preferenceType);
+            obsidianPreference_GR.addQuery("default", true);
+            obsidianPreference_GR.query();
+            obsidianPreference_GR.next();
+            obsidianPreference_GR.setValue("user_related", userID);
+            obsidianPreference_GR.setValue("type", preferenceType);
+            obsidianPreference_GR.setValue(this._getPreferenceTargetFieldName(preferenceType), preferenceValue);
+            obsidianPreference_GR.setValue("default", isDefault);
+            return obsidianPreference_GR.update();
+        } catch (e) {
+            this.logger.logErr("error in updateObsidianUserPreference: " + e);
+        }
+
+    },
+
+    _getPreferenceTargetFieldName: function (preferenceType) {
+        switch (preferenceType) {
+            case "shipping_instructions":
+                return "value";
+            case "personal_email_address":
+                return "value";
+            case "country":
+                return "country_reference";
+        }
+        return value;
+    },
+
+
+
+    /**
+     * @author	DXC - Luu-Ly Mai
+     * 
+     * @desc stores a new preference to the database
+     * 
+     * @param Sys_id from the table "sys_user"
+     * @param string obsidian preference type
+     * 
+     * @return string the sys id of the user preference record
+     */
+    getObsidianDefaultUserPreferenceSysID: function (userID, preferenceType) {
+        var obsidianPreference_GR = new GlideRecord(DXCObsidianConstants.OBSIDIAN_PREFERENCE_TABLE);
+        obsidianPreference_GR.addQuery("user_related", userID);
+        obsidianPreference_GR.addQuery("type", preferenceType);
+        obsidianPreference_GR.addQuery("default", true);
+        obsidianPreference_GR.query();
+        if (obsidianPreference_GR.next()) {
+            return obsidianPreference_GR.sys_id;
+        } else {
+            return "";
+        }
+    },
+
+
+    /**
+     * @author	DXC - Luu-Ly Mai
+     * 
+     * @desc stores a new preference to the database
+     * 
+     * @param Sys_id from the table "sys_user"
+     * @param string obsidian preference type
+     * 
+     * @return string the value of the user preference
+     */
+    getObsidianDefaultUserPreferenceValue: function (userID, preferenceType) {
+        var obsidianPreference_GR = new GlideRecord(DXCObsidianConstants.OBSIDIAN_PREFERENCE_TABLE);
+        obsidianPreference_GR.addQuery("user_related", userID);
+        obsidianPreference_GR.addQuery("type", preferenceType);
+        obsidianPreference_GR.addQuery("default", true);
+        obsidianPreference_GR.query();
+        if (obsidianPreference_GR.next()) {
+            return obsidianPreference_GR.getValue(this._getPreferenceTargetFieldName(preferenceType));
+        } else {
+            return "";
+        }
+    },
+
+    /**
+     * @author	DXC - Luu-Ly Mai
+     * 
+     * @desc set a user preference as the new default
+     * 
+     * @param string sys_id of the obsidian user preference record
+     * 
+     * @return null
+     */
+    setObsidianUserPreferenceRecordAsNewDefault: function (obsidianUserPreferenceSysID) {
+        var obsidianPreference_GR = new GlideRecord(DXCObsidianConstants.OBSIDIAN_PREFERENCE_TABLE);
+        if (!obsidianPreference_GR.get(obsidianUserPreferenceSysID)) {
+            throw "setObsidianUserPreferenceAsNewDefault couldn't get obsidian user preference with sys_id" + obsidianUserPreferenceSysID;
+        }
+        obsidianPreference_GR.setValue("default", true);
+        obsidianPreference_GR.update();
+
+    },
+
+
+
+
+
+
+    type: 'DXCObsidianPreferenceUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-04-25 09:43:32</sys_created_on>
+        <sys_id>7ecec1ce1b8389d0fe9e43f1b24bcb1e</sys_id>
+        <sys_mod_count>25</sys_mod_count>
+        <sys_name>DXCObsidianPreferenceUtils</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_include_7ecec1ce1b8389d0fe9e43f1b24bcb1e</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-04-25 14:21:35</sys_updated_on>
+    </sys_script_include>
+</record_update>

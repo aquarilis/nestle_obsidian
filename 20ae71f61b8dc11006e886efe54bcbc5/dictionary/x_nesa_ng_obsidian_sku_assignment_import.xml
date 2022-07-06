@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element extends="sys_import_set_row" label="(DXC) Obsidian - 08 - SKU Assignment" max_length="40" name="x_nesa_ng_obsidian_sku_assignment_import" sizeclass="48" type="collection">
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=A" label="A" max_length="40" name="u_a" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=AA" label="AA" max_length="40" name="u_aa" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=AB" label="AB" max_length="40" name="u_ab" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=AC" label="AC" max_length="40" name="u_ac" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Account assignment" label="Account assignment" max_length="40" name="u_account_assignment" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Activation date" label="Activation date" max_length="40" name="u_activation_date" type="glide_date"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=AD" label="AD" max_length="40" name="u_ad" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Assignment country" label="Assignment country" max_length="40" name="u_assignment_country" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=B" label="B" max_length="40" name="u_b" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=C" label="C" max_length="40" name="u_c" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Cost Center" label="Cost Center" max_length="40" name="u_cost_center" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Current version" label="Current version" max_length="40" name="u_current_version" type="integer"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=D" label="D" max_length="40" name="u_d" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Deactivation date" label="Deactivation date" max_length="40" name="u_deactivation_date" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=E" label="E" max_length="40" name="u_e" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Estimated volume a year" label="Estimated volume a year" max_length="40" name="u_estimated_volume_a_year" type="integer"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=F" label="F" max_length="40" name="u_f" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=G" label="G" max_length="40" name="u_g" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=GL Account" label="GL Account" max_length="40" name="u_gl_account" type="integer"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=H" label="H" max_length="40" name="u_h" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=I" label="I" max_length="40" name="u_i" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=J" label="J" max_length="40" name="u_j" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Justification" label="Justification" max_length="173" name="u_justification" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=K" label="K" max_length="40" name="u_k" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=L" label="L" max_length="40" name="u_l" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=M" label="M" max_length="40" name="u_m" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Model configuration" label="Model configuration" max_length="40" name="u_model_configuration" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=N" label="N" max_length="40" name="u_n" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=O" label="O" max_length="40" name="u_o" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Obsidian Model" label="Obsidian Model" max_length="40" name="u_obsidian_model" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=P" label="P" max_length="40" name="u_p" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Previous version" label="Previous version" max_length="40" name="u_previous_version" type="integer"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Purchasing group" label="Purchasing group" max_length="40" name="u_purchasing_group" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Q" label="Q" max_length="40" name="u_q" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=R" label="R" max_length="40" name="u_r" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=S" label="S" max_length="40" name="u_s" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=SAP Material number" label="SAP Material number" max_length="40" name="u_sap_material_number" type="float"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=SAP Procurement plant" label="SAP Procurement plant" max_length="40" name="u_sap_procurement_plant" type="integer"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=SKU Assignment expiry date" label="SKU Assignment expiry date" max_length="40" name="u_sku_assignment_expiry_date" type="glide_date"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=SKU assignment unique code" label="SKU assignment unique code" max_length="500" name="u_sku_assignment_unique_code" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=SKU Assignment has expiry date" label="SKU Assignment has expiry date" max_length="40" name="u_sku_assignme_as_expiry_date" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=SKU Code" label="SKU Code" max_length="40" name="u_sku_code" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=SKU Code unique code" label="SKU Code unique code" max_length="40" name="u_sku_code_unique_code" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=SKU internal description" label="SKU internal description" max_length="40" name="u_sku_internal_description" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=SKU Requester group" label="SKU Requester group" max_length="40" name="u_sku_requester_group" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=SKU Supplier description" label="SKU Supplier description" max_length="152" name="u_sku_supplier_description" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=SKU Supplier detailed description" label="SKU Supplier detailed description" max_length="40" name="u_sku_supplier_ed_description" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=SKU Vendor" label="SKU Vendor" max_length="40" name="u_sku_vendor" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Storage location" label="Storage location" max_length="40" name="u_storage_location" type="integer"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Supplier" label="Supplier" max_length="40" name="u_supplier" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=T" label="T" max_length="40" name="u_t" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Theoretical feature price" label="Theoretical feature price" max_length="40" name="u_theoretical_feature_price" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Theoretical gross price" label="Theoretical gross price" max_length="40" name="u_theoretical_gross_price" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=U" label="U" max_length="40" name="u_u" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=V" label="V" max_length="40" name="u_v" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Validated price" label="Validated price" max_length="40" name="u_validated_price" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=W" label="W" max_length="40" name="u_w" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=WBS" label="WBS" max_length="40" name="u_wbs" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=X" label="X" max_length="40" name="u_x" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Y" label="Y" max_length="40" name="u_y" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Z" label="Z" max_length="40" name="u_z" type="string"/>
+    </element>
+</database>

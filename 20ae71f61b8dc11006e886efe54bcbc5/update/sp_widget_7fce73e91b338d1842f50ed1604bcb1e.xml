@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>standard</category>
+        <client_script><![CDATA[function($window, $rootScope) {
+	/* widget controller */
+	var c = this;
+	c.callAPI = function(click){
+		$rootScope.call = click;
+		//$rootScope.$emit('callInvoices', click);
+		$rootScope.$emit('callAPI', click);
+	}
+	
+	//DFCT0020767 - fix blank space in 
+	if(c.data.viewAccess == true) {
+		setTimeout(function(){ 
+			$('#' + c.options.id).parents('.col-md-3').show();
+		}, 100
+				  );
+	}
+
+	parent.jQuery(document).ready(function() {
+		$window.setTimeout(function(){parent.jQuery('.image-'+c.options.icon_src.replace(".", "\\.")).hover(
+			function() {
+				$(this).find('.button-circle-img').attr('src', c.options.icon_src_hover);
+			}, function() {
+				$(this).find('.button-circle-img').attr('src', c.options.icon_src);
+			}
+		); }, 1000);
+	});
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.iconlink a label,h2 {&#13;
+  display: block;&#13;
+  font-size: 2.5rem;&#13;
+  font-weight: 300;&#13;
+  line-height: 1.1;&#13;
+  padding: 0;&#13;
+  margin: 0 0 10px 0;&#13;
+}&#13;
+&#13;
+/* TOP ICON ---------- */&#13;
+&#13;
+a.top_icon {&#13;
+  display: block;&#13;
+  padding: 20px;&#13;
+  text-align: center;&#13;
+}&#13;
+&#13;
+a.top_icon .fa {&#13;
+  display: block;&#13;
+  text-align: center;&#13;
+}&#13;
+&#13;
+/* CIRCLE ICON ---------- */&#13;
+&#13;
+a.circle_icon {&#13;
+  display: block;&#13;
+  /*padding: 20px 0px 20px 70px;*/&#13;
+  position: relative;&#13;
+}&#13;
+&#13;
+/*a.circle_icon .fa {&#13;
+  position:absolute;&#13;
+  left: 0px;&#13;
+  top: 10px;&#13;
+}*/&#13;
+&#13;
+.homepage_button {&#13;
+    padding-left: 10px;&#13;
+    padding-right: 10px;&#13;
+    padding-top: 25px;&#13;
+    padding-bottom: 15px;&#13;
+    text-align: center;&#13;
+    color: #475064;&#13;
+}&#13;
+&#13;
+.button-circle-icon {&#13;
+    margin-bottom: 10px;&#13;
+    color: #007681;&#13;
+}&#13;
+&#13;
+.circle-icon-title {&#13;
+    font-size: 1.4em;&#13;
+    font-weight: 500;&#13;
+    margin-bottom: 5px;&#13;
+}&#13;
+&#13;
+/* COLOR BOX ---------- */&#13;
+&#13;
+a.color_box {&#13;
+  display: block;&#13;
+  position: relative;&#13;
+  padding: 20px 20px 20px 82px;&#13;
+  border-radius: 4px;&#13;
+  margin-bottom: 20px;&#13;
+}&#13;
+&#13;
+a.color_box .fa {&#13;
+  position:absolute;&#13;
+  left: 20px;&#13;
+  top: 20px;&#13;
+  width:42px;&#13;
+  text-align: center;&#13;
+}&#13;
+&#13;
+.icon-link-background-primary {&#13;
+  background-color: $brand-primary;&#13;
+}&#13;
+&#13;
+.icon-link-background-info {&#13;
+  background-color: $brand-info;&#13;
+}&#13;
+&#13;
+.icon-link-background-success {&#13;
+  background-color: $brand-success;&#13;
+}&#13;
+&#13;
+.icon-link-background-warning {&#13;
+  background-color: $brand-warning;&#13;
+}&#13;
+&#13;
+.icon-link-background-danger {&#13;
+  background-color: $brand-danger;&#13;
+}&#13;
+&#13;
+.icon-link-background-default {&#13;
+  background-color: $brand-primary;&#13;
+}&#13;
+&#13;
+.text-primary {&#13;
+  color: $brand-primary;&#13;
+  &#13;
+  &amp;:hover {&#13;
+    color: darken($brand-primary, 20%);&#13;
+  }&#13;
+}&#13;
+&#13;
+.text-info {&#13;
+  color: $brand-info;&#13;
+  &#13;
+  &amp;:hover {&#13;
+    color: darken($brand-info, 20%);&#13;
+  }&#13;
+}&#13;
+&#13;
+.text-success {&#13;
+  color: $brand-success;&#13;
+  &#13;
+  &amp;:hover {&#13;
+    color: darken($brand-success, 20%);&#13;
+  }&#13;
+}&#13;
+&#13;
+.text-warning {&#13;
+  color: $brand-warning;&#13;
+  &#13;
+  &amp;:hover {&#13;
+    color: darken($brand-warning, 20%);&#13;
+  }&#13;
+}&#13;
+&#13;
+.text-danger {&#13;
+  color: $brand-danger;&#13;
+  &#13;
+  &amp;:hover {&#13;
+    color: darken($brand-danger, 20%);&#13;
+  }&#13;
+}&#13;
+&#13;
+.text-default {&#13;
+  color: $brand-primary;&#13;
+  &#13;
+  &amp;:hover {&#13;
+    color: darken($brand-primary, 20%);&#13;
+  }&#13;
+}&#13;
+&#13;
+.text- {&#13;
+  color: black;&#13;
+  &#13;
+  &amp;:hover {&#13;
+    color: lighten(black, 60%);&#13;
+    .button-circle-img{&#13;
+          background: url();&#13;
+    }&#13;
+  }&#13;
+}&#13;
+&#13;
+.button-circle-img {&#13;
+    /*width: 50px;&#13;
+    height: 50px;*/&#13;
+    margin-top: 5px;&#13;
+    margin-bottom: 10px;&#13;
+}</css>
+        <data_table>sp_instance_link</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list>type,url,sc_category,sc_cat_item,kb_topic,kb_article,kb_category,sp_page,title,short_description,color,class_name,glyph</field_list>
+        <has_preview>false</has_preview>
+        <id>dxc-obsidian-icon-link</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Obsidian button-circle-img</name>
+        <option_schema>[{"name":"link_template","section":"Presentation","label":"Template","type":"choice","choices":[{"label":"Top Icon","value":"Top Icon"},{"label":"Circle Icon","value":"Circle Icon"},{"label":"Color Box","value":"Color Box"}]},{"name":"icon_src","section":"other","label":"Icon src","type":"string"},{"name":"icon_src_hover","section":"other","default_value":"","label":"Icon src Hover","type":"string"},{"name":"user_criteria_list","section":"other","label":"Available For","type":"string"},{"name":"not_available_for","section":"other","label":"Not Available For","type":"string"}]</option_schema>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function(){
+	var gr = $sp.getInstanceRecord();
+	data.href = $sp.getMenuHREF(gr);
+	data.target = options.target || "";
+	data.title = gs.getMessage(options.title);
+	data.short_description = gs.getMessage(options.short_description);
+	data.viewAccess=true;
+	/*if(options.user_criteria_list){
+		data.viewAccess  =false;
+		var usreCriteriaList = options.user_criteria_list.split(',');
+		var criteriaEvaluator = new global.UserCriteriaEvaluation();
+		for(var i in usreCriteriaList){
+			var grCriteria = new GlideRecord('user_criteria');
+			var scripted = grCriteria.get(usreCriteriaList[i]) ? grCriteria.advanced : false;
+			
+			if(scripted)
+				data.viewAccess = criteriaEvaluator.checkAdvancedUserCriteria(usreCriteriaList[i]);
+			else
+				data.viewAccess = criteriaEvaluator.checkUserMeetsUserCriteria(usreCriteriaList[i],gs.getUserID());
+		}
+	}
+	
+	if(options.not_available_for){
+		var notAvailableCriteria = options.not_available_for.split(',');
+		var mcriteriaEvaluator = new global.UserCriteriaEvaluation();
+		for(var j in notAvailableCriteria){
+			if(mcriteriaEvaluator.checkUserMeetsUserCriteria(notAvailableCriteria[j],gs.getUserID()))
+				data.viewAccess = false;
+		}
+	}*/
+	
+	if(options.user_criteria_list){
+		data.viewAccess  =false;
+		var usreCriteriaList = options.user_criteria_list.split(',');
+		
+		for(var i in usreCriteriaList){
+			if(checkCriteria(usreCriteriaList[i]))
+				data.viewAccess = true;
+		}
+	}
+	
+	if(options.not_available_for){
+		var notAvailableCriteria = options.not_available_for.split(',');
+		
+		for(var j in notAvailableCriteria){
+			if(checkCriteria(notAvailableCriteria[j]))
+				data.viewAccess = false;
+		}
+	}
+	function checkCriteria(criteriaID){
+		 var criterias = new sn_uc.UserCriteriaLoader.getUserCriteria('sc_cat_item_user_criteria_mtom');
+		return criterias.indexOf(criteriaID) >=0;
+	}
+	
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-05-31 16:02:41</sys_created_on>
+        <sys_id>7fce73e91b338d1842f50ed1604bcb1e</sys_id>
+        <sys_mod_count>45</sys_mod_count>
+        <sys_name>Obsidian button-circle-img</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sp_widget_7fce73e91b338d1842f50ed1604bcb1e</sys_update_name>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-05-31 17:21:28</sys_updated_on>
+        <template><![CDATA[<div id='{{::options.id}}'>
+  <div class="iconlink" ng-if="data.viewAccess">
+    <!--// Top Icon -->
+    <a ng-if="::(options.link_template == 'Top Icon' || !options.link_template)" ng-href="{{::data.href}}" class="top_icon {{::options.class_name}}" target="{{::data.target}}">
+      <div class="m-b fa fa-{{::options.glyph}} fa-4x {{::options.class_name}} text-{{::options.color}}"></div>
+      <h2>{{::data.title}}</h2>
+      <span class="text-muted">{{::data.short_description}}</span>
+    </a>
+
+    <!--// Circle Iconn -->
+    <a ng-if="::(options.link_template == 'Circle Icon')" ng-href="{{::data.href}}" ng-click="c.callAPI(true)" class="circle_icon {{::options.class_name}} text-{{::options.color}} image-{{::options.icon_src}}" target="{{::data.target}}">
+      <span ng-if="!options.icon_src" class="fa fa-stack fa-2x button-circle-icon">
+        <i class="fa fa-{{::options.glyph}} fa-stack-2x"></i>
+      </span>
+      <img class="button-circle-img" ng-if="options.icon_src" src="{{::options.icon_src}}" width="39" height="39"/>
+      <h2 class="circle-icon-title">{{::data.title}}</h2>
+      <span>{{::data.short_description}}</span>
+    </a>
+
+    <!--// Color Box -->
+    <a ng-if="::(options.link_template == 'Color Box')" ng-href="{{::data.href}}" class="color_box {{::options.class_name}} icon-link-background-{{::options.color}} text-white" target="{{::data.target}}">
+      <div class="fa fa-{{::options.glyph}} fa-3x {{::options.class_name}}"></div>
+      <h2>{{::data.title}}</h2>
+      <span>{{::data.short_description}}</span>
+    </a>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

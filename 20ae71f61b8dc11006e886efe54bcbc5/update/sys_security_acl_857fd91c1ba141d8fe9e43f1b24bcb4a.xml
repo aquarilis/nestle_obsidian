@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl">
+    <sys_security_acl action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <admin_overrides>true</admin_overrides>
+        <advanced>true</advanced>
+        <condition/>
+        <description>DXC - STRY0182533 - Obsidian Model access model 
+NBS and central team (i.e. the NP SBU Tech, NP SBU PL and NP SBU Read groups) can see all Obsidian Models
+Market and regional users (i.e. members of groups which can request NML) can see:
++ all Obsidian Models where NML stage is "active"
++ all Obsidian Models where they are part of the NML requester group (even if NML stage is not "active")
+3rd party can only see active Models where there is a SKU assigned to their country (being built during the "SKU assignment" sprint)
+Suppliers can only see active Models where they are the supplier for</description>
+        <name>x_nesa_ng_obsidian_obsidian_model</name>
+        <operation display_value="read">read</operation>
+        <script><![CDATA[var obsidianNmlHelper = new x_nesa_ng_obsidian.DXCObsidianNMLUtils();
+answer = obsidianNmlHelper.userCanReadModel(current.sys_id);]]></script>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>admin_Isaac_Perez</sys_created_by>
+        <sys_created_on>2022-02-04 10:52:47</sys_created_on>
+        <sys_id>857fd91c1ba141d8fe9e43f1b24bcb4a</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>x_nesa_ng_obsidian_obsidian_model</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_security_acl_857fd91c1ba141d8fe9e43f1b24bcb4a</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-04-03 22:32:28</sys_updated_on>
+        <type display_value="record">record</type>
+    </sys_security_acl>
+</record_update>

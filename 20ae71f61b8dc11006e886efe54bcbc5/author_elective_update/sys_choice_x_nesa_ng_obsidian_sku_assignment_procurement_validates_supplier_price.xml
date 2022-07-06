@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="procurement_validates_supplier_price" table="x_nesa_ng_obsidian_sku_assignment" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>procurement_validates_supplier_price</element>
+            <name>x_nesa_ng_obsidian_sku_assignment</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-05-20 11:14:38</sys_created_on>
+            <sys_id>c563d2821ba3c11806e886efe54bcbd4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>procurement_validates_supplier_price</sys_name>
+            <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+            <sys_update_name>sys_choice_x_nesa_ng_obsidian_sku_assignment_procurement_validates_supplier_price</sys_update_name>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-05-20 11:14:38</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>procurement_validates_supplier_price</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Yes</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_sku_assignment</name>
+            <sequence>0</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-05-20 11:14:38</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>4d63d2821ba3c11806e886efe54bcbd3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-05-20 11:14:38</sys_updated_on>
+            <value>Yes</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>procurement_validates_supplier_price</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>No</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_sku_assignment</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-05-20 11:14:38</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>8963d2821ba3c11806e886efe54bcbdb</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-05-20 11:14:38</sys_updated_on>
+            <value>No</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

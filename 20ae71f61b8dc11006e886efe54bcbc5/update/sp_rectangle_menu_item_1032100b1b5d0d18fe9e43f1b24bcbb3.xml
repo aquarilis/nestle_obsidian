@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_rectangle_menu_item">
+    <sp_rectangle_menu_item action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <color>default</color>
+        <condition/>
+        <display_1/>
+        <display_2/>
+        <display_date/>
+        <filter/>
+        <glyph>bell-o</glyph>
+        <hint/>
+        <kb_article/>
+        <kb_category/>
+        <kb_topic/>
+        <label>My To-Dos</label>
+        <order>300</order>
+        <record_script><![CDATA[// maximum number of entries in this Menu
+var max = 30;
+
+var t = data;  // shortcut
+t.items = [];
+
+var u = gs.getUser().getID();
+var username = gs.getUserName();
+var utils = new sn_uni_task.DXCUniversalTaskUtils();
+var groups = utils.getUserGroups(u);
+
+// use record watchers to tell header when to update dropdown counts
+t.record_watchers = [];
+t.record_watchers.push({'table':'sn_uni_task_universal_task','filter':'active=true^assigned_to='+u+'^ORassignment_groupIN' + groups.toString()});
+t.record_watchers.push({'table':'x_nesa_ng_obsidian_technical_ticket','filter':'active=true^opened_by='+u+'^state=' + x_nesa_ng_obsidian.DXCObsidianConstants.TECHNICAL_TICKET_STATE_REJECTED + '^ORstate=' + x_nesa_ng_obsidian.DXCObsidianConstants.TECHNICAL_TICKET_STATE_MARKET_CONCLUSION});
+
+var ticketsArray = [];
+var ticket = new GlideRecord('x_nesa_ng_obsidian_technical_ticket');
+ticket.addQuery('active', true);
+ticket.addQuery('opened_by', u);
+ticket.orderByDesc('sys_updated_on');
+ticket.addQuery('state',x_nesa_ng_obsidian.DXCObsidianConstants.TECHNICAL_TICKET_STATE_REJECTED).addOrCondition('state', x_nesa_ng_obsidian.DXCObsidianConstants.TECHNICAL_TICKET_STATE_MARKET_CONCLUSION); 
+ticket.setLimit(max);
+ticket.query();
+while (ticket.next()) {
+  if (!ticket.canRead())
+    continue;
+  
+  var b = {};
+  $sp.getRecordValues(b, ticket, 'title,sys_id,number,sys_updated_on,category');
+  b.short_description = ticket.getValue('title');
+  b.__page = 'standard_ticket';
+  b.__table = ticket.getTableName();
+  b.user = ticket.category.getDisplayValue();
+  b.date = ticket.sys_updated_on.getDisplayValue();
+  b.type = 'record';
+  var date = new GlideDateTime(ticket.getValue('sys_updated_on'));
+  b.sortOrder = date.getNumericValue();
+  
+  ticketsArray.push(ticket.getUniqueValue());
+  t.items.push(b);
+}
+
+var z = new GlideRecord('sn_uni_task_universal_task');
+z.addQuery('active', true);
+z.addQuery('assigned_to', u).addOrCondition('assignment_group', 'IN', groups.toString());
+z.orderByDesc('sys_updated_on');
+z.setLimit(max);
+z.query();
+while (z.next()) {  
+  var parent = z.parent.getRefRecord();
+  if (!parent.isValidRecord() || !parent.canRead())
+    continue;
+  
+  ticketsArray.push(parent.getUniqueValue());
+  var a = {};
+  $sp.getRecordValues(a, z, 'title,sys_id,number,sys_updated_on');
+  a.short_description = z.getValue('short_description');
+  a.__page = 'standard_ticket';
+  a.__table = parent.getTableName();
+  a.sys_id = parent.getUniqueValue();
+  a.user = parent.category.getDisplayValue();
+  a.date = z.sys_updated_on.getDisplayValue();
+  a.type = 'record';
+  var date = new GlideDateTime(z.getValue('sys_updated_on'));
+  a.sortOrder = date.getNumericValue();
+  t.items.push(a);
+}
+
+t.items.sort(function(a, b) {
+  return b.sortOrder - a.sortOrder;
+});
+
+t.items = t.items.slice(0,max);// only want first 30
+t.count = t.items.length;
+
+var link = {title: gs.getMessage(''), type: 'link', href: '#', items: []};
+t.items.push(link); // put 'View all requests' first]]></record_script>
+        <sc_cat_item/>
+        <sc_category/>
+        <short_description/>
+        <sp_page/>
+        <sp_rectangle_menu display_value="DXC Obsidian Header Menu">b2a1264f1bc9cd1006e886efe54bcbbd</sp_rectangle_menu>
+        <sp_rectangle_menu_item/>
+        <sys_class_name>sp_rectangle_menu_item</sys_class_name>
+        <sys_created_by>admin_Isaac_Perez</sys_created_by>
+        <sys_created_on>2022-01-31 08:09:48</sys_created_on>
+        <sys_id>1032100b1b5d0d18fe9e43f1b24bcbb3</sys_id>
+        <sys_mod_count>31</sys_mod_count>
+        <sys_name>My To-Dos</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sp_rectangle_menu_item_1032100b1b5d0d18fe9e43f1b24bcbb3</sys_update_name>
+        <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+        <sys_updated_on>2022-03-08 12:27:22</sys_updated_on>
+        <table/>
+        <type>scripted</type>
+        <u_class/>
+        <url/>
+        <url_target/>
+    </sp_rectangle_menu_item>
+    <sys_translated_text action="delete_multiple" query="documentkey=1032100b1b5d0d18fe9e43f1b24bcbb3"/>
+</record_update>

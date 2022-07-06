@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function($scope, $rootScope) {
+
+    var c = this;
+    c.onFieldChange = function(event, data) {
+
+        var form = $scope.page.g_form;
+        var fieldName = "obsidian_serial_numbers_associated";
+		
+        if (event && data) {
+            if (data.field.name != fieldName) {
+                return;
+            }
+        }
+
+        try {
+            /**
+             * Let's try to get the field's value and parse it as JSON
+             */
+            var rows = JSON.parse(form.getValue(fieldName));
+//             rows.map(function(row) {
+//             });
+			if (rows.length)
+				form.setValue('number_of_serials_hidden', rows.length); // TODO: delete this, just an example
+			else
+				form.setValue('number_of_serials_hidden', 0);
+        } catch (e) {
+			form.setValue('number_of_serials_hidden', 0);
+        }
+    };
+
+    $rootScope.$on('field.change', c.onFieldChange);
+    c.onFieldChange();
+
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id/>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) { 
+
+ }]]></link>
+        <name>(DXC) MVRS changes</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin_Isaac_Perez</sys_created_by>
+        <sys_created_on>2022-03-07 15:23:09</sys_created_on>
+        <sys_id>785646d61b4e4d50fe9e43f1b24bcbdf</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>(DXC) MVRS changes</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sp_widget_785646d61b4e4d50fe9e43f1b24bcbdf</sys_update_name>
+        <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+        <sys_updated_on>2022-03-07 15:37:23</sys_updated_on>
+        <template><![CDATA[<div>
+<!-- your widget template -->
+</div>]]></template>
+    </sp_widget>
+</record_update>

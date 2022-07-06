@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="self_managed" table="x_nesa_ng_obsidian_technical_ticket" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>self_managed</element>
+            <name>x_nesa_ng_obsidian_technical_ticket</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-01-18 11:19:15</sys_created_on>
+            <sys_id>8f720abe1b81051006e886efe54bcbb6</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>self_managed</sys_name>
+            <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+            <sys_update_name>sys_choice_x_nesa_ng_obsidian_technical_ticket_self_managed</sys_update_name>
+            <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+            <sys_updated_on>2022-01-18 11:19:15</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>self_managed</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Yes</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_technical_ticket</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-01-18 11:19:15</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>42720ef21bc1051006e886efe54bcb32</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+            <sys_updated_on>2022-01-18 11:19:18</sys_updated_on>
+            <value>yes</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>self_managed</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>No</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_technical_ticket</name>
+            <sequence>2</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-01-18 11:19:19</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>13724efe1b81051006e886efe54bcb8b</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+            <sys_updated_on>2022-01-18 11:19:22</sys_updated_on>
+            <value>no</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

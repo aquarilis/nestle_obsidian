@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function incidentTicketActions($scope, $http, spUtil, $timeout, spModal, i18n, $window, $uibModal) {
+    /* widget controller */
+    var c = this;
+    c.doneLoading = false;
+
+    var MOBILE_DEVICE_SCREEN_WIDTH = 767;
+    $scope.mobileDevice = c.data.isMobile || ($window.innerWidth < MOBILE_DEVICE_SCREEN_WIDTH);
+
+    $scope.actionSelected = function(action, commentsRequired) {
+        $scope.data.action = action;
+		if (commentsRequired){
+			c.openModal(action);
+			return;
+		}
+        $scope.server.update(init);
+    };
+
+    c.openModal = function(action) {
+        c.modalInstance = $uibModal.open({
+            templateUrl: 'modalTemplate',
+            scope: $scope,
+			action: action
+        });
+    };
+
+    c.closeModal = function(isCancelled) {
+		if ($scope.data.popup_comments == '' && !isCancelled){
+			return;
+		}
+		
+		c.modalInstance.close();
+		if (!isCancelled)
+			$scope.server.update(init);
+    };
+
+    function init() {}
+
+    $(document).on('click', 'div.modal-footer button.btn, ul#child-case-tabs .dropdown-menu', function(e) {
+        e.stopPropagation();
+    });
+
+    $(document).bind('dragover drop', function(event) {
+        event.preventDefault();
+        return false;
+    });
+
+    $scope.$on('sp_loading_indicator', function(e, value) {
+        if (!value && !c.doneLoading) {
+            c.doneLoading = true;
+        }
+    });
+
+
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.arrow {&#13;
+  position: absolute;&#13;
+  margin-left: 50px;&#13;
+  z-index: 150;&#13;
+  border-left: 12px solid transparent;&#13;
+  border-right: 12px solid transparent;&#13;
+  border-bottom: 12px solid #FFFFFF;&#13;
+}&#13;
+&#13;
+.question-tab{&#13;
+	font-size:1.4rem;&#13;
+}&#13;
+&#13;
+.dropdown-menu li {&#13;
+  cursor: pointer;&#13;
+}&#13;
+&#13;
+.action-btn {&#13;
+  width: 100%;&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>technical-ticket-actions</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>Technical Ticket Standard Ticket Actions</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	data.i18n = {};
+	
+	var utils = new x_nesa_ng_obsidian.DXCTechnicalTicketUtils();
+    var technicalTicketGR = new GlideRecord(x_nesa_ng_obsidian.DXCObsidianConstants.TECHNICAL_TICKET_TABLE);
+	var ticketId = options.sys_id;
+	
+	if (!ticketId && $sp.getParameter('table') == x_nesa_ng_obsidian.DXCObsidianConstants.TECHNICAL_TICKET_TABLE)
+		ticketId = $sp.getParameter('sys_id');
+	
+	if (!technicalTicketGR.get(ticketId)){
+		data.showActions = false;
+		return;
+	}
+	
+	/* Actions - Start */
+    if (input && input.action == 'declineRejection') {
+		technicalTicketGR.comments = input.popup_comments;
+		utils.resendRejectedTechnicalTicket(technicalTicketGR);
+    }
+	
+	if (input && input.action == 'confirmRejection') {
+		utils.cancelTechnicalTicket(technicalTicketGR);
+    }
+	
+	if (input && input.action == 'acceptConclusion') {
+		utils.closeTechnicalTicket(technicalTicketGR);
+    }
+	
+	if (input && input.action == 'rejectConclusion') {
+		technicalTicketGR.comments = input.popup_comments;
+		utils.rejectConclusionOnTechnicalTicket(technicalTicketGR);
+    }
+
+   /* Actions - End */
+	
+
+	/* Load incident data */
+	data.handleRejection = utils.canHandleRejectedTechnicalTicket(technicalTicketGR);
+	data.handleConclusion = utils.canManageConclusionInTechnicalTicket(technicalTicketGR);
+	data.showActions = data.handleRejection || data.handleConclusion;
+	data.popup_comments = "";
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin_Isaac_Perez</sys_created_by>
+        <sys_created_on>2022-02-08 12:15:35</sys_created_on>
+        <sys_id>15c89a251be5c110fe9e43f1b24bcb42</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_name>Technical Ticket Standard Ticket Actions</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sp_widget_15c89a251be5c110fe9e43f1b24bcb42</sys_update_name>
+        <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+        <sys_updated_on>2022-02-08 14:21:15</sys_updated_on>
+        <template><![CDATA[<div>
+    <div class="dropdown" id="child-case-tabs" ng-if="data.showActions">
+        <button type="button" class="btn btn-default dropdown-toggle action-btn" data-toggle="dropdown" style="width : 100%">
+            ${Actions}
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" id="actionList">
+            <li>
+                <a ng-if="data.handleRejection" href="javascript:void(0)" ng-click="$event.stopPropagation();actionSelected('declineRejection', true)">${Decline Rejection}</a>
+            </li>
+            <li>
+                <a ng-if="data.handleRejection" href="javascript:void(0)" ng-click="$event.stopPropagation();actionSelected('confirmRejection', false)">${Confirm Rejection}</a>
+            </li>
+            <li>
+                <a ng-if="data.handleConclusion" href="javascript:void(0)" ng-click="$event.stopPropagation();actionSelected('acceptConclusion', false)">${Accept Conclusion}</a>
+            </li>
+          	<li>
+                <a ng-if="data.handleConclusion" href="javascript:void(0)" ng-click="$event.stopPropagation();actionSelected('rejectConclusion', true)">${Reject Conclusion}</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script type="text/ng-template" id="modalTemplate">
+ <div class="panel panel-default">
+ <div class="panel-heading">
+ <h4 class="panel-title">${Provide information}</h4>
+   </div>
+ <div class="panel-body wrapper-xl">
+   <div class="form-group ng-scope ng-isolate-scope" aria-hidden="false" style="">
+ 	<label class="field-label ng-scope" tooltip-right="true"><span class="field-decorations"><span class="fa fa-asterisk mandatory" title="Required" style="padding-right: .25em" aria-label="Required " aria-hidden="false"></span></span><span style="padding-right: .25em" class="ng-binding">${Additional comments}</span></label>
+    <textarea style="resize: none; overflow: hidden; overflow-wrap: break-word; height: 54px;" aria-required="true" name="comments" id="comments" class="form-control ng-scope ng-isolate-scope ng-empty ng-valid ng-touched" ng-model="data.popup_comments" data-type="textarea" aria-invalid="false" role="textbox"></textarea>
+   </div>
+ </div>
+ <div class="panel-footer text-right">
+ <button class="btn btn-primary" ng-click="c.closeModal(true)">${Cancel}</button>
+ <button class="btn btn-primary" ng-click="c.closeModal(false)">${Confirm}</button>
+ </div>
+ </div>
+</script>]]></template>
+    </sp_widget>
+</record_update>

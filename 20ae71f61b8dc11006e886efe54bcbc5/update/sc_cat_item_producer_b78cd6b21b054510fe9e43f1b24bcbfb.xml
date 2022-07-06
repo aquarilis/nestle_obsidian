@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_producer">
+    <sc_cat_item_producer action="INSERT_OR_UPDATE">
+        <access_type>restricted</access_type>
+        <active>true</active>
+        <allow_edit>false</allow_edit>
+        <availability>on_desktop</availability>
+        <billable>false</billable>
+        <can_cancel>false</can_cancel>
+        <category/>
+        <checked_out/>
+        <cost>0</cost>
+        <custom_cart/>
+        <delivery_plan/>
+        <delivery_plan_script/>
+        <delivery_time>1970-01-03 00:00:00</delivery_time>
+        <description/>
+        <display_price_property>non_zero</display_price_property>
+        <entitlement_script/>
+        <flow_designer_flow/>
+        <fulfillment_automation_level/>
+        <group/>
+        <hide_sp>false</hide_sp>
+        <icon/>
+        <ignore_price>true</ignore_price>
+        <image/>
+        <location/>
+        <mandatory_attachment>false</mandatory_attachment>
+        <meta/>
+        <mobile_hide_price>false</mobile_hide_price>
+        <mobile_picture/>
+        <mobile_picture_type>use_desktop_picture</mobile_picture_type>
+        <model/>
+        <name>New Technical Ticket</name>
+        <no_attachment_v2>false</no_attachment_v2>
+        <no_cart>false</no_cart>
+        <no_cart_v2>false</no_cart_v2>
+        <no_delivery_time_v2>false</no_delivery_time_v2>
+        <no_order>false</no_order>
+        <no_order_now>false</no_order_now>
+        <no_proceed_checkout>false</no_proceed_checkout>
+        <no_quantity>false</no_quantity>
+        <no_quantity_v2>false</no_quantity_v2>
+        <no_search>false</no_search>
+        <no_wishlist_v2>false</no_wishlist_v2>
+        <omit_price>false</omit_price>
+        <order>0</order>
+        <ordered_item_link/>
+        <owner display_value="Isaac Pérez (admin) (isaac.perez2@dxc.com) ">bf51887bdbf2e014a0a803c3ca9619bc</owner>
+        <picture/>
+        <post_insert_script/>
+        <preview>JavaScript: popupOpenStandard("com.glideapp.servicecatalog_cat_item_view.do?v=1&amp;sysparm_id=b78cd6b21b054510fe9e43f1b24bcbfb&amp;sysparm_preview=true", "summary");</preview>
+        <price>0</price>
+        <published_ref/>
+        <recurring_frequency/>
+        <redirect_url>generated_record</redirect_url>
+        <request_method/>
+        <roles/>
+        <save_options/>
+        <save_script/>
+        <sc_catalogs/>
+        <sc_ic_item_staging/>
+        <sc_ic_version/>
+        <sc_template/>
+        <script><![CDATA[var technicalTicketutils = new DXCTechnicalTicketUtils();
+var obsidianCommonUtils = new x_nesa_ng_obsidian.DXCObsidianCommonUtils();
+var obsidianPreferenceUtils = new x_nesa_ng_obsidian.DXCObsidianPreferenceUtils();
+
+// Copy the serial numbers associated from the MRVS to the related table
+var serials = JSON.parse(producer.obsidian_serial_numbers_associated);
+for (var i = 0; i < serials.length; i++) {
+    technicalTicketutils.generateImpactedSerialFromObject(serials[i], current.getUniqueValue());
+}
+
+if (producer.food_safety == "true" || producer.operator_safety == "true") {
+    current.priority = 1;
+}
+
+current.requester_type = (obsidianCommonUtils.isUserMarketRelated(gs.getUserID()) ? "market" : "3rd_party");
+
+var impactedNestleCompany = obsidianCommonUtils.getObsidianNestleCompanyFromCountry(producer.u_country);
+
+if (!impactedNestleCompany){
+    current.setAbortAction(true);
+    gs.addErrorMessage(gs.getMessage("Couldn't create Ticket: couldn't find corresponding Nestlé company for selected country"));
+} else {
+    current.impacted_nestle_company = impactedNestleCompany;
+}
+
+
+//manage obsidian user preferences
+//Shipping instructions
+if (producer.confirm_below_question == 'new') {
+    // Create new preference with the shipping instructions
+    var new_obsidian_user_preference_sys_id = obsidianPreferenceUtils.insertNewObsidianUserPreference(gs.getUserID(), "shipping_instructions", producer.new_shipping_instructions, true);
+    current.confirm_below_shipping_instructions = new_obsidian_user_preference_sys_id;
+} else {
+    //set default
+    obsidianPreferenceUtils.setObsidianUserPreferenceRecordAsNewDefault(producer.confirm_below_shipping_instructions);
+}
+
+
+//save country user preference
+obsidianPreferenceUtils.updateObsidianUserPreference(gs.getUserID(), "country", producer.u_country, true);
+producer.portal_redirect = '?id=obsidian_index';
+
+
+//set supplier group
+current.supplier_group = obsidianCommonUtils.getSupplierGroupSysIDForSupplier(producer.supplier);]]></script>
+        <short_description>Raises a new Obsidian Technical ticket</short_description>
+        <show_variable_help_on_load>false</show_variable_help_on_load>
+        <start_closed>false</start_closed>
+        <state/>
+        <sys_class_name>sc_cat_item_producer</sys_class_name>
+        <sys_created_by>admin_Isaac_Perez</sys_created_by>
+        <sys_created_on>2022-01-18 13:14:15</sys_created_on>
+        <sys_id>b78cd6b21b054510fe9e43f1b24bcbfb</sys_id>
+        <sys_mod_count>35</sys_mod_count>
+        <sys_name>New Technical Ticket</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sc_cat_item_producer_b78cd6b21b054510fe9e43f1b24bcbfb</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-06-09 13:00:50</sys_updated_on>
+        <table_name>x_nesa_ng_obsidian_technical_ticket</table_name>
+        <taxonomy_topic/>
+        <template/>
+        <template_manager_roles/>
+        <type>item</type>
+        <u_add_all_available_companies>false</u_add_all_available_companies>
+        <u_allow_changes>false</u_allow_changes>
+        <u_audience/>
+        <u_automation_status/>
+        <u_available_for_override>false</u_available_for_override>
+        <u_available_for_restriction>unrestricted_global</u_available_for_restriction>
+        <u_available_translations/>
+        <u_business_application/>
+        <u_business_service/>
+        <u_cat_item_audience>End User</u_cat_item_audience>
+        <u_catalog_variables/>
+        <u_cim_catalog_item/>
+        <u_cim_content_item/>
+        <u_cim_error_log/>
+        <u_cim_has_approval>false</u_cim_has_approval>
+        <u_cim_has_approval_issue>false</u_cim_has_approval_issue>
+        <u_cim_has_cascade_issue>false</u_cim_has_cascade_issue>
+        <u_cim_has_conditional_variables>false</u_cim_has_conditional_variables>
+        <u_cim_has_notification>false</u_cim_has_notification>
+        <u_cim_has_notification_issue>false</u_cim_has_notification_issue>
+        <u_cim_has_task>false</u_cim_has_task>
+        <u_cim_has_task_assignment_issues>false</u_cim_has_task_assignment_issues>
+        <u_cim_has_terms_of_acceptance>false</u_cim_has_terms_of_acceptance>
+        <u_cim_has_variable_condition_issue>false</u_cim_has_variable_condition_issue>
+        <u_cim_has_variable_issue>false</u_cim_has_variable_issue>
+        <u_cim_import_log/>
+        <u_cim_is_secured_with_ad_list>false</u_cim_is_secured_with_ad_list>
+        <u_cim_is_split_item>false</u_cim_is_split_item>
+        <u_cim_issue_log/>
+        <u_cim_item>false</u_cim_item>
+        <u_cim_record_producer/>
+        <u_cim_require_manual_intervention>false</u_cim_require_manual_intervention>
+        <u_cim_scratchpad/>
+        <u_cim_staging_source/>
+        <u_cim_task_details/>
+        <u_company_scope/>
+        <u_dynamic_title>false</u_dynamic_title>
+        <u_enable_contextual_search>false</u_enable_contextual_search>
+        <u_expected_fulfillment>5</u_expected_fulfillment>
+        <u_filter_by_business_application>false</u_filter_by_business_application>
+        <u_geographical_scope/>
+        <u_hierarchy/>
+        <u_item_variables/>
+        <u_last_used/>
+        <u_legacy_id/>
+        <u_locked_by_system_administrator>false</u_locked_by_system_administrator>
+        <u_management_group display_value="SVC_MANAGER_GLOBAL IT Platforms" name="SVC_MANAGER_GLOBAL IT Platforms">1ab9dc02dbdf2b00eb8d81cc0b96195d</u_management_group>
+        <u_order>1000</u_order>
+        <u_owner/>
+        <u_owning_it_organization display_value="IT Platforms">f775df22db5da340ceccff261d961997</u_owning_it_organization>
+        <u_personnel_area_scope/>
+        <u_personnel_sub_area_scope/>
+        <u_populate_values_from_url>false</u_populate_values_from_url>
+        <u_product_group/>
+        <u_product_management_group/>
+        <u_product_stream/>
+        <u_refine_scope>false</u_refine_scope>
+        <u_responsible_ag/>
+        <u_restrict_based_on_personnel_areas>false</u_restrict_based_on_personnel_areas>
+        <u_restrict_based_on_personnel_sub_areas>false</u_restrict_based_on_personnel_sub_areas>
+        <u_restrict_to_nespresso>false</u_restrict_to_nespresso>
+        <u_retirement_message/>
+        <u_search_using_catalog_variable/>
+        <u_service_offering/>
+        <u_sla_run_schedule_type/>
+        <u_status/>
+        <u_superseded_global_item/>
+        <u_to_be_automated>false</u_to_be_automated>
+        <u_type_of_search/>
+        <u_user_feedback/>
+        <use_sc_layout>true</use_sc_layout>
+        <vendor/>
+        <view/>
+        <visible_bundle>true</visible_bundle>
+        <visible_guide>true</visible_guide>
+        <visible_standalone>true</visible_standalone>
+        <workflow/>
+    </sc_cat_item_producer>
+    <sys_translated_text action="delete_multiple" query="documentkey=b78cd6b21b054510fe9e43f1b24bcbfb"/>
+    <fx_price action="delete_multiple" query="id=b78cd6b21b054510fe9e43f1b24bcbfb"/>
+    <fx_price action="INSERT_OR_UPDATE">
+        <amount>0</amount>
+        <currency display_value="CHF">CHF</currency>
+        <field>price</field>
+        <id>b78cd6b21b054510fe9e43f1b24bcbfb</id>
+        <parent/>
+        <reference_amount>0</reference_amount>
+        <reference_currency display_value="CHF">CHF</reference_currency>
+        <sys_created_by>admin_Isaac_Perez</sys_created_by>
+        <sys_created_on>2022-01-18 13:14:15</sys_created_on>
+        <sys_id>67cc5af21b054510fe9e43f1b24bcbb1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+        <sys_updated_on>2022-01-18 13:14:15</sys_updated_on>
+        <table>sc_cat_item_producer</table>
+        <type>calculated</type>
+    </fx_price>
+    <sys_attachment action="INSERT_OR_UPDATE">
+        <average_image_color/>
+        <chunk_size_bytes>700000</chunk_size_bytes>
+        <compressed>true</compressed>
+        <content_type>application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</content_type>
+        <encryption_context/>
+        <file_name>Upload serials template.xlsx</file_name>
+        <hash>ceaa7b224469eec7d9e3e620ba3fef3ab7ec108e4efcbe90bb971d5bfee699fd</hash>
+        <image_height/>
+        <image_width/>
+        <size_bytes>10323</size_bytes>
+        <size_compressed>7646</size_compressed>
+        <state>available</state>
+        <sys_created_by>admin_Isaac_Perez</sys_created_by>
+        <sys_created_on>2022-02-28 09:55:09</sys_created_on>
+        <sys_id>cf68f8441bc2411006e886efe54bcb63</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2022-02-28 09:55:09</sys_updated_on>
+        <table_name>sc_cat_item_producer</table_name>
+        <table_sys_id>b78cd6b21b054510fe9e43f1b24bcbfb</table_sys_id>
+    </sys_attachment>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>H4sIAAAAAAAAAA==</data>
+        <length>16</length>
+        <position>0</position>
+        <sys_attachment display_value="Upload serials template.xlsx" sys_id="cf68f8441bc2411006e886efe54bcb63">cf68f8441bc2411006e886efe54bcb63</sys_attachment>
+        <sys_created_by>admin_Isaac_Perez</sys_created_by>
+        <sys_created_on>2022-02-28 09:55:09</sys_created_on>
+        <sys_id>0368f8441bc2411006e886efe54bcb64</sys_id>
+    </sys_attachment_doc>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>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</data>
+        <length>10184</length>
+        <position>1</position>
+        <sys_attachment display_value="Upload serials template.xlsx" sys_id="cf68f8441bc2411006e886efe54bcb63">cf68f8441bc2411006e886efe54bcb63</sys_attachment>
+        <sys_created_by>admin_Isaac_Perez</sys_created_by>
+        <sys_created_on>2022-02-28 09:55:09</sys_created_on>
+        <sys_id>8368f8441bc2411006e886efe54bcb64</sys_id>
+    </sys_attachment_doc>
+</record_update>

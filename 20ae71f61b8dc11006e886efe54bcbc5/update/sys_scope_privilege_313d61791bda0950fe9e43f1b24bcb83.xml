@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_scope_privilege">
+    <sys_scope_privilege action="INSERT_OR_UPDATE">
+        <operation>execute</operation>
+        <source_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</source_scope>
+        <status>allowed</status>
+        <sys_class_name>sys_scope_privilege</sys_class_name>
+        <sys_created_by>NBCIRAAN</sys_created_by>
+        <sys_created_on>2022-03-18 10:30:53</sys_created_on>
+        <sys_id>313d61791bda0950fe9e43f1b24bcb83</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>hr_WorkspaceUtils</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_scope_privilege_313d61791bda0950fe9e43f1b24bcb83</sys_update_name>
+        <sys_updated_by>NBCIRAAN</sys_updated_by>
+        <sys_updated_on>2022-03-18 10:30:53</sys_updated_on>
+        <target_name>hr_WorkspaceUtils</target_name>
+        <target_scope display_value="Human Resources: Workspace">113909d3533223007d70ddeeff7b12a7</target_scope>
+        <target_type>sys_script_include</target_type>
+    </sys_scope_privilege>
+</record_update>

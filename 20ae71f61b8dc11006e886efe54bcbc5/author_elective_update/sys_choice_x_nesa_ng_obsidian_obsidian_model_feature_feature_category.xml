@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="feature_category" table="x_nesa_ng_obsidian_obsidian_model_feature" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>feature_category</element>
+            <name>x_nesa_ng_obsidian_obsidian_model_feature</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-03-30 14:55:58</sys_created_on>
+            <sys_id>c6fc14b51ba64150fe9e43f1b24bcb90</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>feature_category</sys_name>
+            <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+            <sys_update_name>sys_choice_x_nesa_ng_obsidian_obsidian_model_feature_feature_category</sys_update_name>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-03-30 14:55:58</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>feature_category</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Base price</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model_feature</name>
+            <sequence>0</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-03-30 14:55:58</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>4efc14b51ba64150fe9e43f1b24bcb8f</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-03-30 14:57:34</sys_updated_on>
+            <value>100_base_price</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>feature_category</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Beverage processing</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model_feature</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-03-30 14:55:59</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>4efc14b51ba64150fe9e43f1b24bcb91</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-03-30 14:57:43</sys_updated_on>
+            <value>200_beverage_processing</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>feature_category</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Technical interface</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model_feature</name>
+            <sequence>2</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-03-30 14:55:59</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>42fc14b51ba64150fe9e43f1b24bcb93</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-03-30 14:57:50</sys_updated_on>
+            <value>300_technical_interface</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>feature_category</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Consumer interface</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model_feature</name>
+            <sequence>3</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-03-30 14:55:59</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>82fc94f51ba64150fe9e43f1b24bcb37</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-03-30 14:57:56</sys_updated_on>
+            <value>400_consumer_interface</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>feature_category</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Market constraints</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model_feature</name>
+            <sequence>4</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-03-30 14:55:59</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>86fc94f51ba64150fe9e43f1b24bcb38</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-03-30 14:58:06</sys_updated_on>
+            <value>500_market_constraints</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>feature_category</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Additional info</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model_feature</name>
+            <sequence>5</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-03-30 14:55:59</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>8afc94f51ba64150fe9e43f1b24bcb39</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-03-30 14:58:14</sys_updated_on>
+            <value>600_additional_info</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

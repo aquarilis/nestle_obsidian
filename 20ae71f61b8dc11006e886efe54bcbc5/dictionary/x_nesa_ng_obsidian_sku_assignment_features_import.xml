@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element extends="sys_import_set_row" label="(DXC) Obsidian - 09 - SKU Ass. features" max_length="40" name="x_nesa_ng_obsidian_sku_assignment_features_import" sizeclass="605" type="collection">
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=corresponding feature price" label="corresponding feature price" max_length="40" name="u_corresponding_feature_price" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=D" label="D" max_length="40" name="u_d" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=E" label="E" max_length="40" name="u_e" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=F" label="F" max_length="141" name="u_f" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Feature option" label="Feature option" max_length="1000" name="u_feature_option" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=SKU Assignment unique code" label="SKU Assignment unique code" max_length="1000" name="u_sku_assignment_unique_code" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Specification comments" label="Specification comments" max_length="1000" name="u_specification_comments" type="string"/>
+    </element>
+</database>

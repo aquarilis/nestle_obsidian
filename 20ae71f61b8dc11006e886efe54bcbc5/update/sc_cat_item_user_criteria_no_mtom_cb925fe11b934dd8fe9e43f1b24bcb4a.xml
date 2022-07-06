@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_user_criteria_no_mtom">
+    <sc_cat_item_user_criteria_no_mtom action="INSERT_OR_UPDATE">
+        <sc_cat_item display_value="GLOBE UK&amp;I">e0d19db11bd98d108d9d8735464bcb6d</sc_cat_item>
+        <sys_class_name>sc_cat_item_user_criteria_no_mtom</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-05-06 16:18:12</sys_created_on>
+        <sys_id>cb925fe11b934dd8fe9e43f1b24bcb4a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>GLOBE UK&amp;I.SNC External</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sc_cat_item_user_criteria_no_mtom_cb925fe11b934dd8fe9e43f1b24bcb4a</sys_update_name>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-05-06 16:18:12</sys_updated_on>
+        <u_superseding_catalog_item/>
+        <user_criteria display_value="SNC External">66c1b50e730333009508738234f6a7c9</user_criteria>
+    </sc_cat_item_user_criteria_no_mtom>
+</record_update>

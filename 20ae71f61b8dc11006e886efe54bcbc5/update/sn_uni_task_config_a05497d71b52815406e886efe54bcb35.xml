@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_uni_task_config">
+    <sn_uni_task_config action="INSERT_OR_UPDATE">
+        <default_assigned_to>opened_by</default_assigned_to>
+        <parent_table>x_nesa_ng_obsidian_obsidian_new_model_launch</parent_table>
+        <sys_class_name>sn_uni_task_config</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-03-23 09:52:49</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>a05497d71b52815406e886efe54bcb35</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_nesa_ng_obsidian_obsidian_new_model_launch</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sn_uni_task_config_a05497d71b52815406e886efe54bcb35</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-03-23 09:52:49</sys_updated_on>
+        <task_types>upload_documents,mark_when_complete,collect_employee_input</task_types>
+    </sn_uni_task_config>
+</record_update>

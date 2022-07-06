@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_nesa_ng_obsidian.DXCObsidianCommonUtils</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>DXCObsidianCommonUtils</name>
+        <script><![CDATA[var DXCObsidianCommonUtils = Class.create();
+//initialise with 
+//var obsidianCommonUtils = new x_nesa_ng_obsidian.DXCObsidianCommonUtils()
+DXCObsidianCommonUtils.prototype = {
+    initialize: function () {
+        this.logger = new global.GSLog("com.dxc.global.debugging_enabled", "LMADebug");
+        this.getRestrictedListOfCountries = true; //if true, getCountriesCoveredByGroup and getCountriesCoveredByUser will return a list of countries (sys_ids) validated against the Obsidian Country mapping table
+    },
+
+    /**
+       * @author	DXC - Luu-Ly Mai
+       * @desc create a Universal task for a given task using a universal Task Template;
+       * @param {String} parentTaskSysID the sys ID of the parent task of the universal task
+       * @param {String} universalTaskTemplateSysID the sys id of the universal task template to be used 
+       * @param {Object} fieldValues an object containing field Names and related values to apply to the created task
+       * @return {String} the sys_id of the created Task
+       */
+    createUniversalTask: function (parentTaskSysID, universalTaskTemplateSysID, fieldValues) {
+        var universalTaskGR = new GlideRecord("sn_uni_task_universal_task");
+        universalTaskGR.initialize();
+        universalTaskGR.setValue("parent", parentTaskSysID);
+        if (universalTaskTemplateSysID) {
+            var universalTaskTemplateGR = new GlideRecord("sn_uni_task_template");
+            if (universalTaskTemplateGR.get(universalTaskTemplateSysID)) {
+                universalTaskGR.setValue("template", universalTaskTemplateSysID);
+                universalTaskGR.applyEncodedQuery(universalTaskTemplateGR.getValue("template"));
+            }
+        }
+
+        if (fieldValues) {
+            for (var fieldName in fieldValues) {
+                universalTaskGR.setValue(fieldName, fieldValues[fieldName]);
+            }
+        }
+
+        universalTaskGR.setValue("state", 2);
+
+        return universalTaskGR.insert();
+    },
+
+    /**
+       * @author	DXC - Luu-Ly Mai
+       * @desc copy the value from one currency field to another currency field 
+       * @param {GlideRecord} sourceGlideRecord the source record 
+       * @param {String} sourceCurrencyFieldName the source record 
+       * @param {GlideRecord} targetGlideRecord the source record 
+       * @param {String} targetCurrencyFieldName the source record 
+       * @return {boolean} indicating whether a value update has occurred
+       */
+    alignCurrencyFieldValues: function (sourceGlideRecord, sourceCurrencyFieldName, targetGlideRecord, targetCurrencyFieldName) {
+        //this.logger.logDebug("comparing " + sourceGlideRecord.getUniqueValue() + "-" + sourceCurrencyFieldName + " (" + sourceGlideRecord.getDisplayValue(sourceCurrencyFieldName) + ") with " + targetGlideRecord.getDisplayValue() + "-" + targetCurrencyFieldName + " (" + targetGlideRecord.getDisplayValue(sourceCurrencyFieldName) + ")");
+        var targetRequiresUpdate = false;
+        if (sourceGlideRecord[sourceCurrencyFieldName].nil() && !targetGlideRecord[targetCurrencyFieldName].nil()) {
+            targetRequiresUpdate = true;
+            targetGlideRecord.setValue(targetCurrencyFieldName, "");
+        }
+
+        if (!sourceGlideRecord[sourceCurrencyFieldName].nil()) {
+            if (
+                targetGlideRecord[targetCurrencyFieldName].nil() ||
+                (
+                    !targetGlideRecord[targetCurrencyFieldName].nil() &&
+                    (
+                        sourceGlideRecord[sourceCurrencyFieldName].currency != targetGlideRecord[targetCurrencyFieldName].currency
+                        || sourceGlideRecord[sourceCurrencyFieldName].amount != targetGlideRecord[targetCurrencyFieldName].amount
+                    )
+                )
+            ) {
+                targetRequiresUpdate = true;
+                global.DXCObsidianGlobalUtils.setDisplayValue(targetGlideRecord, targetCurrencyFieldName, sourceGlideRecord[sourceCurrencyFieldName].currency + ";" + sourceGlideRecord[sourceCurrencyFieldName].amount);
+            }
+        }
+
+        return targetRequiresUpdate;
+
+    },
+
+
+    /** 
+     * @desc returns the sys_id of the nestlé company corresponding to a country according to the Obsidian Country mapping table
+     *
+     * @param {String} countrySysID String the sys_id of a country location
+     * 
+     * 
+     * @return {String}   the sys_id of a core_company record
+     */
+    getObsidianNestleCompanyFromCountry: function (countrySysID) {
+        var obsidianCountryMappingGR = new GlideRecord("x_nesa_ng_obsidian_obsidian_country_mapping");
+        obsidianCountryMappingGR.addQuery("country", countrySysID);
+        obsidianCountryMappingGR.query();
+        if (obsidianCountryMappingGR.next()) {
+            return obsidianCountryMappingGR.getValue("nestle_company");
+        } else {
+            return null;
+        }
+    },
+
+    
+
+    /** 
+     * @desc returns the sys_id of the regional approval group for a given country
+     *
+     * @param
+     * countrySysID String the sys_id of a country location
+     * 
+     * 
+     * @return
+     *  string   the sys_id of the approver group
+     */
+    getRegionalApprovalGroupSysID: function (countrySysID) {
+        if (!countrySysID) {
+            throw ("getRegionalApprovalGroupSysID has received an empty parameter");
+        }
+
+        var requestingCountry_GR = new GlideRecord("cmn_location");
+
+        if (!requestingCountry_GR.get(countrySysID)) {
+            throw ("getRegionalApprovalGroupSysID couldn't get location glideRecord with sys_id " + countrySysID);
+        }
+
+        if (requestingCountry_GR.getValue("u_type") !== "country") {
+            throw ("getRegionalApprovalGroupSysID got a location GlideRecord which is not a country with sys_id " + countrySysID);
+        }
+
+        var parentZoneSysID = requestingCountry_GR.parent.parent.parent.toString();
+
+        var coveredLocation_GR = new GlideRecord("sys_group_covers_location");
+        coveredLocation_GR.addQuery("location", parentZoneSysID);
+        coveredLocation_GR.addQuery("group.type", "CONTAINS", this._getGroupTypeID("obsidian-regional_approval"));
+        coveredLocation_GR.query();
+        if (coveredLocation_GR.next()) {
+            return coveredLocation_GR.getValue("group");
+        } else {
+            return null;
+        }
+
+    },
+
+
+    /**
+     * @author	DXC - Luu-Ly Mai
+     * @desc Retrieve the list of countries the given group is related to
+     * @param Sys_id from the table "group" table
+     * @return Array  - array of sys_id from the cmn_location table
+     */
+    getCountriesCoveredByGroup: function (groupSysID) {
+
+        var coveredCountrySysId_array = [];
+
+        var coveredLocation_GR = new GlideRecord('sys_group_covers_location');
+        coveredLocation_GR.addQuery("group", groupSysID);
+        coveredLocation_GR.query();
+        while (coveredLocation_GR.next()) {
+
+            locationType = coveredLocation_GR.location.u_type.toString();
+            locationSysId = coveredLocation_GR.getValue("location");
+
+            if (locationType == "country") {
+
+                if (coveredCountrySysId_array.indexOf(locationSysId) == -1) {
+                    coveredCountrySysId_array.push(locationSysId);
+                }
+
+            } else {
+
+                //retrieving child country locations of non-country covered location
+                var locationEncodedQuery = "u_type=country^";
+                switch (locationType) {
+                    case "market":
+                        locationEncodedQuery += "parent=";
+                        break;
+                    case "region":
+                        locationEncodedQuery += "parent.parent=";
+                        break;
+                    case "zone":
+                        locationEncodedQuery += "parent.parent.parent=";
+                        break;
+                }
+                locationEncodedQuery += locationSysId;
+
+                var countryLocationGR = new GlideRecord("cmn_location");
+                countryLocationGR.addEncodedQuery(locationEncodedQuery);
+                countryLocationGR.query();
+
+                if (!countryLocationGR.hasNext()) {
+                    this.logger.logWarning("location of type " + locationType + " with sys_id " + locationSysId + " has 0 active child country location (" + gs.getProperty("glide.servlet.uri") + "cmn_location_list.do?sysparm_query=" + countryLocationGR.getEncodedQuery() + ")");
+                } else {
+                    while (countryLocationGR.next()) {
+                        if (coveredCountrySysId_array.indexOf(countryLocationGR.getValue("sys_id")) === -1) {
+                            coveredCountrySysId_array.push(countryLocationGR.getValue("sys_id"));
+                        }
+                    }
+                }
+
+            }
+
+        }
+
+        if (coveredCountrySysId_array.length === 0) {
+            this.logger.logErr("unable to find any covered country locations for group with sys_id " + groupSysID);
+            return null;
+        }
+
+        if (this.getRestrictedListOfCountries) {
+            return this._getRestrictedCountryArray(coveredCountrySysId_array);
+        } else {
+            return coveredCountrySysId_array;
+        }
+
+    },
+
+
+
+    /**
+     * @author	DXC - Luu-Ly Mai
+     * @desc Retrieve the list of countries the given user is related to
+     * @param Sys_id from the table "user" table
+     * @return Array  - array of sys_id from the cmn_location table
+     */
+    getCountriesCoveredByUser: function (userID) {
+        var coveredCountrySysId_array = [];
+
+        var obsidianGroupMembership_GR = new GlideRecord("sys_user_grmember");
+        obsidianGroupMembership_GR.addQuery("user", userID);
+        obsidianGroupMembership_GR.addQuery("group.name", "STARTSWITH", "Obsidian");
+        obsidianGroupMembership_GR.query();
+
+        while (obsidianGroupMembership_GR.next()) {
+           // this.logger.logDebug("checking covered location of group " + obsidianGroupMembership_GR.group.name);
+            if ((locationCoveredByGroup = this.getCountriesCoveredByGroup(obsidianGroupMembership_GR.getValue("group")))) {
+                locationCoveredByGroup.forEach(function (countryLocationSysId) {
+                    if (coveredCountrySysId_array.indexOf(countryLocationSysId) == -1) {
+                        coveredCountrySysId_array.push(countryLocationSysId);
+                    }
+                });
+            }
+        }
+
+        if (coveredCountrySysId_array.length === 0) {
+            this.logger.logWarning("unable to find any covered country locations for user with sys_id " + userID);
+            return null;
+        }
+
+        if (this.getRestrictedListOfCountries) {
+            return this._getRestrictedCountryArray(coveredCountrySysId_array);
+        } else {
+            return coveredCountrySysId_array;
+        }
+
+
+
+    },
+
+    /**
+     * @author	DXC - Luu-Ly Mai
+     * @desc filter so that the country array passed as parameter is returned with only countries 
+     * that have been validated against the Obsidian Country mapping table
+     * 
+     * @param array of sys_id from the cmn_location table
+     * @return array of sys_id from the cmn_location table
+     */
+    _getRestrictedCountryArray: function (coveredCountrySysId_array) {
+        var validCountrySysID_array = [];
+
+        var obsidianCountryMappingGR = new GlideRecord('x_nesa_ng_obsidian_obsidian_country_mapping');
+        obsidianCountryMappingGR.addQuery("active", true);
+        obsidianCountryMappingGR.query();
+        while (obsidianCountryMappingGR.next()) {
+            validCountrySysID_array.push(obsidianCountryMappingGR.getValue("country"));
+        }
+
+        var filteredCountrySysId_array = [];
+
+        coveredCountrySysId_array.forEach(function (countrySysID) {
+
+            if (validCountrySysID_array.indexOf(countrySysID) != -1) {
+                filteredCountrySysId_array.push(countrySysID.toString());
+            }
+        });
+
+        return filteredCountrySysId_array;
+    },
+
+
+    // /**
+    //  * @author	DXC - Isaac Perez
+    //  * @desc Retrieve the list of countriesthe given user is related to
+    //  * @param Sys_id from the table "sys_user"
+    //  * @return Array [string] - sys_id from the cmn_location table
+    //  */
+    // getValidCountriesForUser: function (userID) {
+    //     var result = [];
+
+    //     var memberGR = new GlideRecord('sys_group_covers_location');
+    //     memberGR.addQuery('location.u_type', 'country');
+    //     memberGR.addQuery('group', 'IN', this._getUserGroups(userID));
+    //     memberGR.query();
+
+    //     while (memberGR.next()) {
+    //         result.push(memberGR.getValue('location'));
+    //     }
+
+    //     return result;
+    // },
+
+    // /**
+    //  * @author	DXC - Isaac Perez
+    //  * @desc Retrieve the list of countries the given user is related to
+    //  * @param Sys_id from the table "sys_user"
+    //  * @return Array [string] - sys_id from the cmn_location table
+    //  */
+    // getValidMarketsForUser: function (userID) {
+    //     var result = [];
+    //     var groups = this._getUserGroups(userID);
+
+    //     var memberGR = new GlideRecord('sys_group_covers_location');
+    //     memberGR.addQuery('location.u_type', 'market');
+    //     memberGR.addQuery('group', 'IN', groups);
+    //     memberGR.query();
+
+    //     while (memberGR.next()) {
+    //         result.push(memberGR.getValue('location'));
+    //     }
+
+    //     var countryParentGR = new GlideRecord('sys_group_covers_location');
+    //     countryParentGR.addQuery('location.u_type', 'country');
+    //     countryParentGR.addQuery('group', 'IN', groups);
+    //     countryParentGR.query();
+
+    //     while (countryParentGR.next()) {
+    //         var parent = countryParentGR.location.parent.toString();
+    //         if (result.indexOf(parent) != -1)
+    //             continue;
+
+    //         result.push(parent);
+    //     }
+
+    //     return result;
+    // },
+
+    // /**
+    //  * @author	DXC - Isaac Perez
+    //  * @desc Retrieve the list of groups the user is member
+    //  * @param userID from the table "sys_user"
+    //  * @return Array [string] - sys_id from the sys_user_group table
+    //  */
+    // _getUserGroups: function (userID) {
+    //     var groups = [];
+
+    //     var groupGR = new GlideRecord('sys_user_grmember');
+    //     groupGR.addQuery('user', userID);
+    //     groupGR.addQuery('group.name', 'STARTSWITH', 'Obsidian');
+    //     groupGR.query();
+
+    //     while (groupGR.next()) {
+    //         groups.push(groupGR.getValue('group'));
+    //     }
+
+    //     return groups.toString();
+    // },
+
+
+    /**
+     * @author	DXC - Luu-Ly Mai
+     * @desc get the obsidian supplier group that supports the provided supplier sysID 
+     * @param supplierSysID from the table "core_company"
+     * @return string - the sys_id of the assignment group, null if not found
+     */
+    getSupplierGroupSysIDForSupplier: function (supplierSysID) {
+        if (!supplierSysID) {
+            return null;
+        }
+        var supplierGroup_GR = new GlideRecord('sys_user_group');
+        supplierGroup_GR.addEncodedQuery("typeLIKE" + this._getGroupTypeID("obsidian-org-supplier") + "^active=true^vendorsLIKE" + supplierSysID);
+        supplierGroup_GR.query();
+        if (supplierGroup_GR.next()) {
+            return supplierGroup_GR.getValue("sys_id");
+        } else {
+            return null;
+        }
+    },
+
+
+    /**
+     * @author	DXC - Luu-Ly Mai
+     * @desc Check if the user has back end access
+     * @param {String} userID sys_id from the table "sys_user"
+     * @return Boolean - true if the user has back-end access
+     */
+     userHasBackEndAccess: function (userID) {
+        var assignedToBackEndRolesGR = new GlideRecord('sys_user_has_role');
+        assignedToBackEndRolesGR.addEncodedQuery("role.nameSTARTSWITHx_nesa_ng_obsidian^user=" + userID);
+        assignedToBackEndRolesGR.setLimit(1);
+        assignedToBackEndRolesGR.query();
+        return assignedToBackEndRolesGR.hasNext();
+     },
+
+
+    /**
+     * @author	DXC - Luu-Ly Mai
+     * @desc Check if the user is member of a "central team" group
+     * @param Sys_id from the table "sys_user"
+     * @return Boolean - true if the user is member of a "central team" group
+     */
+    isUserSBUCentralTeamRelated: function (userID) {
+        if (!userID) {
+            return false;
+        }
+        var centralTeamGroupName_array = [
+            "Obsidian-NP SBU PL",
+            "Obsidian-NP SBU Read",
+            "Obsidian-NP SBU Tech"
+        ];
+
+        var memberGR = new GlideRecord('sys_user_grmember');
+        var membershipEncodedQuery = "user=" + userID + "^group.nameIN" + centralTeamGroupName_array.join(",");
+        memberGR.addEncodedQuery(membershipEncodedQuery);
+        memberGR.setLimit(1);
+        memberGR.query();
+        return memberGR.hasNext();
+    },
+
+    /**
+     * @author	DXC - Luu-Ly Mai
+     * @desc Check if the user is member of an Obsidian group
+     * @param Sys_id from the table "sys_user"
+     * @return Boolean - true if the user is member of a obsidian group
+     */
+    isUserObsidianRelated: function (userID) {
+        if (!userID) {
+            return false;
+        }
+        var memberGR = new GlideRecord('sys_user_grmember');
+        memberGR.addQuery('user', userID);
+        memberGR.addQuery('group.name', 'STARTSWITH', 'Obsidian');
+        memberGR.setLimit(1);
+        memberGR.query();
+        return memberGR.hasNext();
+    },
+
+    /**
+     * @author	DXC - Isaac Perez
+     * @desc Retrieve the list of suppliers the given user is related to
+     * @param Sys_id from the table "sys_user"
+     * @return Array [string] - sys_id from the core_company table
+     */
+    getSuppliersForUser: function (userID) {
+        var supplierArray = [];
+
+        var groupGR = new GlideRecord('sys_user_grmember');
+        groupGR.addQuery('user', userID);
+        groupGR.addQuery('group.name', 'STARTSWITH', 'Obsidian');
+        groupGR.addQuery('group.vendors', '!=', '');
+        groupGR.query();
+
+        while (groupGR.next()) {
+            var vendors = groupGR.group.vendors.split(',');
+            for (var i = 0; i < vendors.length; i++) {
+                supplierArray.push(vendors[i]);
+            }
+        }
+
+        return supplierArray;
+    },
+
+    /**
+     * @author	DXC - Isaac Perez
+     * @desc Check if the user is member of a Market group
+     * @param Sys_id from the table "sys_user"
+     * @return Boolean - true if the user is member of a market group, false otherwise
+     */
+    isUserMarketRelated: function (userID) {
+        var marketType = this._getGroupTypeID('obsidian-org-np');
+        if (!marketType)
+            return false;
+
+        var memberGR = new GlideRecord('sys_user_grmember');
+        memberGR.addQuery('user', userID);
+        memberGR.addQuery('group.type', 'CONTAINS', marketType);
+        memberGR.query();
+
+        return memberGR.hasNext();
+    },
+
+    /**
+     * @author	DXC - Luu-Ly Mai 
+     * @desc Check if the user is member of a 3rd party group
+     * @param Sys_id from the table "sys_user"
+     * @return Boolean - true if the user is member of a 3rd party group, false otherwise
+     */
+    isUser3rdPartyRelated: function (userID) {
+        var thirdPartyType = this._getGroupTypeID('obsidian-org-3rd-party');
+        if (!thirdPartyType)
+            return false;
+
+        var memberGR = new GlideRecord('sys_user_grmember');
+        memberGR.addQuery('user', userID);
+        memberGR.addQuery('group.type', 'CONTAINS', thirdPartyType);
+        memberGR.query();
+
+        return memberGR.hasNext();
+    },
+
+    /**
+     * @author	DXC - Isaac Perez
+     * @desc Check if the user is member of a Supplier group
+     * @param Sys_id from the table "sys_user"
+     * @return Boolean - true if the user is member of a market group, false otherwise
+     */
+    isUserSupplierRelated: function (userID) {
+        var supplierType = this._getGroupTypeID('obsidian-org-supplier');
+        if (!supplierType)
+            return false;
+
+        var memberGR = new GlideRecord('sys_user_grmember');
+        memberGR.addQuery('user', userID);
+        memberGR.addQuery('group.type', 'CONTAINS', supplierType);
+        memberGR.query();
+
+        return memberGR.hasNext();
+    },
+
+    /** 
+    * @desc returns the sys_id of a group type which name is passed as parameter
+    *
+    * @param
+    * groupTypeName String the name of the group type
+    * 
+    * 
+    * @return
+    *  string   the sys_id of the group type
+    */
+    _getGroupTypeID: function (groupTypeName) {
+        var groupTypeGR = new GlideRecord('sys_user_group_type');
+        if (!groupTypeGR.get('name', groupTypeName))
+            return '';
+
+        return groupTypeGR.getUniqueValue();
+    },
+
+
+    /** 
+    * @desc returns whether the user is part of a group that contains one of the group type
+    *
+    * @param
+    * groupTypeNames Array array of group type names
+    * 
+    * 
+    * @return
+    *  Boolean   whether the user fulfils the group type criteria
+    */
+    _userIsMemberOfGroupWithType: function (userSysID, groupTypeNames) {
+        if (typeof groupTypeNames == "string") {
+            groupTypeNames = [groupTypeNames];
+        }
+        var groupTypeSysIDs = [];
+        var groupTypeName_array_length = groupTypeNames.length;
+
+        for (var i = 0; i < groupTypeName_array_length; i++) {
+            groupTypeSysIDs.push(this._getGroupTypeID(groupTypeNames[i]));
+        }
+        var encodedQuery = "group.active=true^user=" + userSysID + "^group.typeLIKE" + groupTypeSysIDs.join("^ORgroup.typeLIKE");
+
+        var groupMembership_GR = new GlideRecord("sys_user_grmember");
+        groupMembership_GR.addEncodedQuery(encodedQuery);
+        groupMembership_GR.setLimit(1);
+        groupMembership_GR.query();
+        return groupMembership_GR.hasNext();
+
+    },
+
+    /**
+     * @author	DXC - Isaac Perez
+     * @desc Retrieves the list of users related with the groups supporting the supplier
+     * @param Sys_id from the table core_company
+     * @return Array [string] with sys_id from sys_user table
+     * 
+     *  DXC deprecated since the addition of supplier group on TSM (STRY0195958 - STSK0020517)
+
+     */
+    // getEmailUsersRelatedWithSupplier: function (supplierID) {
+    //     var users = [];
+
+    //     var membersGR = new GlideRecord('sys_user_grmember');
+    //     membersGR.addQuery('group.vendors', 'CONTAINS', supplierID);
+    //     membersGR.addQuery('group.type', 'CONTAINS', this._getGroupTypeID('obsidian-org-supplier'));
+    //     membersGR.query();
+
+
+    //     while (membersGR.next()) {
+    //         users.push(membersGR.getValue('user'));
+    //     }
+
+    //     return users;
+    // },
+
+    type: 'DXCObsidianCommonUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_Isaac_Perez</sys_created_by>
+        <sys_created_on>2022-01-20 10:14:36</sys_created_on>
+        <sys_id>18b68c6b1b0d855006e886efe54bcb37</sys_id>
+        <sys_mod_count>171</sys_mod_count>
+        <sys_name>DXCObsidianCommonUtils</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_include_18b68c6b1b0d855006e886efe54bcb37</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-06-09 13:33:14</sys_updated_on>
+    </sys_script_include>
+</record_update>

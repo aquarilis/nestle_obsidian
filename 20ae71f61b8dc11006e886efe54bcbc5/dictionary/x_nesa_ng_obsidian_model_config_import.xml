@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" extends="sys_import_set_row" label="(DXC) Obsidian - 02 - Model configs" max_length="40" name="x_nesa_ng_obsidian_model_config_import" sizeclass="537" type="collection">
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=D" label="D" max_length="141" name="u_d" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Model configuration full name" label="Model configuration full name" max_length="40" name="u_model_config_tion_full_name" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Name" label="Name" max_length="40" name="u_name" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Obsidian Model" label="Obsidian Model" max_length="40" name="u_obsidian_model" type="string"/>
+    </element>
+</database>

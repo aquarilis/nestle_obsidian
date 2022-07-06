@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
+        <description>Estimated days to have a Technical ticket resolved after the ticket is created</description>
+        <ignore_cache>true</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_nesa_ng_obsidian.technical_ticket.estimated_resolution_days</name>
+        <read_roles/>
+        <suffix>technical_ticket.estimated_resolution_days</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>admin_Isaac_Perez</sys_created_by>
+        <sys_created_on>2022-03-01 08:37:56</sys_created_on>
+        <sys_id>3950b9581b820910fe9e43f1b24bcbc0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_nesa_ng_obsidian.technical_ticket.estimated_resolution_days</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_properties_3950b9581b820910fe9e43f1b24bcbc0</sys_update_name>
+        <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+        <sys_updated_on>2022-03-01 08:37:56</sys_updated_on>
+        <type>integer</type>
+        <value>90</value>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=3950b9581b820910fe9e43f1b24bcbc0"/>
+</record_update>

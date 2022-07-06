@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="is_replaced_by" label="Is replaced by" language="en" table="x_nesa_ng_obsidian_obsidian_spare_part">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>is_replaced_by</element>
+            <help/>
+            <hint/>
+            <label>Is replaced by</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_spare_part</name>
+            <plural>Is replaced by</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-05-13 09:52:45</sys_created_on>
+            <sys_id>558d3db31b5b45d006e886efe54bcbde</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Is replaced by</sys_name>
+            <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+            <sys_update_name>sys_documentation_x_nesa_ng_obsidian_obsidian_spare_part_is_replaced_by_en</sys_update_name>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-05-13 09:52:45</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

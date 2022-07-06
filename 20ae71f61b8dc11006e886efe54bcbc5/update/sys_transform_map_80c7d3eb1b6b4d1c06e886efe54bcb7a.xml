@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_transform_map">
+    <sys_transform_map action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copy_empty_fields>false</copy_empty_fields>
+        <create_new_record_on_empty_coalesce_fields>false</create_new_record_on_empty_coalesce_fields>
+        <enforce_mandatory_fields>No</enforce_mandatory_fields>
+        <name>(DXC) Obsidian - 08 - SKU Assignment TM</name>
+        <order>100</order>
+        <run_business_rules>true</run_business_rules>
+        <run_script>true</run_script>
+        <script><![CDATA[(function transformRow(source, target, map, log, isUpdate) {
+    try {
+
+
+
+        var obsidianModel_GR = target.obsidian_model.getRefRecord();
+        if (!obsidianModel_GR.isValidRecord()) {
+            throw "invalid obsidianModel_GR in set prices part of TM main script";
+        }
+
+        // var obsidianCommonUtils = new x_nesa_ng_obsidian.DXCObsidianCommonUtils();
+
+        target.model_configuration = (function (modelConfigurationFullName) {
+            if (modelConfigurationFullName == "") {
+                return "";
+            }
+
+            var modelConfigurationFullNameArray = modelConfigurationFullName.split("---");
+
+            if (modelConfigurationFullNameArray.length != 2) {
+                throw "modelConfigurationFullNameArray is not 2 in " + modelConfigurationFullName;
+            }
+
+            var modelName = modelConfigurationFullNameArray[0].toString();
+            var modelConfigurationName = modelConfigurationFullNameArray[1].toString();
+
+            var modelConfiguration_GR = new GlideRecord(x_nesa_ng_obsidian.DXCObsidianConstants.NML_TABLE_NAMES.MODEL_CONFIGURATION_TABLE);
+            modelConfiguration_GR.addQuery("obsidian_model.name", modelName);
+            modelConfiguration_GR.addQuery("name", modelConfigurationName);
+            modelConfiguration_GR.query();
+
+
+            if (!modelConfiguration_GR.next()) {
+                throw "couldn't find model configuration GR " + modelConfigurationFullName;
+            }
+
+            if (modelConfiguration_GR.getValue("obsidian_model") != obsidianModel_GR.getUniqueValue()) {
+                throw "model configuration model and sku assignment model don't match for " + modelConfigurationFullName;
+
+            }
+
+            return modelConfiguration_GR.sys_id;
+        })(source.u_model_configuration.toString());
+
+        if (target.model_configuration == "") {
+            throw "cannot proceed - model configuration reference is empty";
+        }
+
+
+
+
+
+        target.sap_procurement_plant = (function (sapProcurementPlantCode) {
+            if (sapProcurementPlantCode == "") {
+                return "";
+            }
+
+
+            if (sapProcurementPlantCode.length == 3) {
+                sapProcurementPlantCode = "0" + sapProcurementPlantCode;
+            }
+
+            sapProcurementPlantCode = "-" + sapProcurementPlantCode;
+            // log.warn("looking for sapProcurementPlantCode ending with " + sapProcurementPlantCode);
+
+            var siteLocationGR = new GlideRecord("cmn_location");
+            siteLocationGR.addEncodedQuery("u_type=site_plant^parent.name=" + source.u_assignment_country);
+            siteLocationGR.addQuery("u_hr_object_id", "ENDSWITH", sapProcurementPlantCode);
+            siteLocationGR.query();
+
+            if (siteLocationGR.next()) {
+                return siteLocationGR.getUniqueValue();
+            }
+
+            log.error("couldn't find site location with code " + sapProcurementPlantCode + " for country " + source.u_assignment_country);
+            return "";
+
+
+        })(source.u_sap_procurement_plant.toString());
+
+
+        target.sap_material_number = (function (sapMaterialNumber) {
+            if (sapMaterialNumber == "") {
+                return "";
+            }
+
+            var sapMaterialNumberGR = new GlideRecord('x_nesa_ng_obsidian_sap_material');
+            sapMaterialNumberGR.addEncodedQuery("obsidian_model=" + obsidianModel_GR.getUniqueValue() + "^sap_material_number=" + sapMaterialNumber);
+            sapMaterialNumberGR.query();
+            if (sapMaterialNumberGR.next()) {
+                return sapMaterialNumberGR.getUniqueValue();
+            }
+
+            log.error("couldn't find SAP Material number " + sapMaterialNumber + " for model " + obsidianModel_GR.name);
+            return "";
+
+        })(source.u_sap_material_number.toString());
+
+
+        target.sku_vendor = (function (skuVendorCode) {
+            if (skuVendorCode == "") {
+                return "";
+            }
+
+            var obsidianVendorGR = new GlideRecord('core_company');
+            obsidianVendorGR.addEncodedQuery("u_restrict_visibility_toLIKEec2686691b61c110f" + "e9e43f1b24bcbeb^parent=" + obsidianModel_GR.getValue("supplier") + "^u_code=" + skuVendorCode);
+            obsidianVendorGR.query();
+            if (obsidianVendorGR.next()) {
+                return obsidianVendorGR.getUniqueValue();
+            }
+
+            log.error("couldn't find Obsidian vendor with code " + skuVendorCode + " for supplier " + obsidianModel_GR.supplier.name);
+            return "";
+        })(source.u_sku_vendor.toString());
+
+
+        target.sku_stage = "100";
+
+
+        // SETTING THE PRICES
+        if (!(defaultCurrency = obsidianModel_GR.getValue("default_currency"))) {
+            throw obsidianModel_GR.getDisplayValue() + " hasn't got any default currency set";
+        }
+
+        if ((sourceValidatedPrice = source.getValue("u_validated_price"))) {
+            global.DXCObsidianGlobalUtils.setDisplayValue(target, "validated_price", defaultCurrency + ";" + sourceValidatedPrice.replace(",", "."));
+        } else {
+            global.DXCObsidianGlobalUtils.setDisplayValue(target, "validated_price", defaultCurrency + ";" + "0.00");
+        }
+
+        // if ((sourceTheoreticalFeaturePriceValue = source.getValue("u_theoretical_feature_price"))) {
+        //     log.warn("this is sourceTheoreticalFeaturePriceValue: " + typeof sourceTheoreticalFeaturePriceValue + "'" + sourceTheoreticalFeaturePriceValue + "'");
+        //     global.DXCObsidianGlobalUtils.setDisplayValue(target, "theoretical_feature_price", defaultCurrency + ";" + sourceTheoreticalFeaturePriceValue.replace(",", "."));
+        // } else {
+        //     global.DXCObsidianGlobalUtils.setDisplayValue(target, "theoretical_feature_price", defaultCurrency + ";" + "0.00");
+        // }
+
+        // // if ((sourceTheoreticalGrossPrice = source.getValue("u_theoretical_gross_price"))) {
+        // //     global.DXCObsidianGlobalUtils.setDisplayValue(target, "theoretical_gross_price", defaultCurrency + ";" + sourceTheoreticalGrossPrice.replace(",", "."));
+        // // } else {
+        // //     global.DXCObsidianGlobalUtils.setDisplayValue(target, "theoretical_gross_price", defaultCurrency + ";" + "0.00");
+        // // }
+
+
+    } catch (e) {
+        error = true;
+        log.error("error in SKU assignment TM main script for " + source.u_sku_assignment_unique_code + ": " + e);
+    }
+
+})(source, target, map, log, action === "update");]]></script>
+        <source_table>x_nesa_ng_obsidian_sku_assignment_import</source_table>
+        <sys_class_name>sys_transform_map</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-05-25 08:04:49</sys_created_on>
+        <sys_id>80c7d3eb1b6b4d1c06e886efe54bcb7a</sys_id>
+        <sys_mod_count>47</sys_mod_count>
+        <sys_name>(DXC) Obsidian - 08 - SKU Assignment TM</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_transform_map_80c7d3eb1b6b4d1c06e886efe54bcb7a</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-06-03 10:13:28</sys_updated_on>
+        <target_table>x_nesa_ng_obsidian_sku_assignment</target_table>
+    </sys_transform_map>
+</record_update>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
+        <description>SKU Assignment activity formatter fields</description>
+        <ignore_cache>false</ignore_cache>
+        <is_private>false</is_private>
+        <name>glide.ui.x_nesa_ng_obsidian_sku_assignment_activity.fields</name>
+        <read_roles/>
+        <suffix>x_nesa_ng_obsidian</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-05-05 09:26:08</sys_created_on>
+        <sys_id>59ba28d11b9f81d8fe9e43f1b24bcb87</sys_id>
+        <sys_mod_count>11</sys_mod_count>
+        <sys_name>glide.ui.x_nesa_ng_obsidian_sku_assignment_activity.fields</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_properties_59ba28d11b9f81d8fe9e43f1b24bcb87</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-05-31 13:03:31</sys_updated_on>
+        <type>string</type>
+        <value>number,sku_stage,model_configuration,assignment_country,assignment_company,obsidian_sku,supplier,obsidian_model,validated_price,assignment_company_sap_code,sap_procurement_plant,account_assignment,gl_account,sku_vendor,sku_vendor_sap_code,purchasing_group,storage_location,sap_material_number,approval_history,*Attachments*,*Email*,cost_center,comments,work_notes,work_notes_list,watch_list,wbs,theoretical_feature_price,theoretical_gross_price,sku_assignment_expiry_date,sku_assignment_has_expiry_date,sku_regional_approval_group,sku_requester_group,new_sap_material_number_batched_managed,new_sap_material_number_justification,new_sap_material_number_required,estimated_volume_a_year,activation_date,deactivation_date,comments_and_work_notes</value>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=59ba28d11b9f81d8fe9e43f1b24bcb87"/>
+</record_update>

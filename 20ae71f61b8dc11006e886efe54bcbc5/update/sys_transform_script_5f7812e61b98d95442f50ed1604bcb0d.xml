@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_transform_script">
+    <sys_transform_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <map display_value="(DXC) Obsidian - 01 - Models TM">8a5b699e1b034514fe9e43f1b24bcb24</map>
+        <order>200</order>
+        <script><![CDATA[(function runTransformScript(source, map, log, target /*undefined onStart*/) {
+	try {
+		// Set Image record - test
+		if (!(imageFileName = source.getValue("u_picture_filename"))) {
+			return;
+		}
+
+		if (!target.isValidRecord()) {
+			throw "target is not valid record";
+		}
+
+		var targetRecord_GR = new GlideRecord("x_nesa_ng_obsidian_obsidian_model");
+		if (!targetRecord_GR.get(target.sys_id)) {
+			throw "couldn't get targetRecord_GR";
+		}
+
+
+		imageFileName = imageFileName.replace(/\s/g, "_").replace(/\+/g, "_").replace(/-/g, "_").replace("&", "_");
+		var dbImage_GR = new GlideRecord('db_image');
+		dbImage_GR.addQuery("name", imageFileName);
+		dbImage_GR.query();
+		if (!dbImage_GR.next()) {
+			throw "couldn't find image " + imageFileName;
+		}
+
+		var imageFieldName = "picture";
+
+
+		//get the attachment GlideRecord related to the DB image record
+		var dbImageAttachment_GR = new GlideRecord("sys_attachment");
+		dbImageAttachment_GR.addQuery("table_name", "ZZ_YYdb_image");
+		dbImageAttachment_GR.addQuery("file_name", "image");
+		dbImageAttachment_GR.addQuery("table_sys_id", dbImage_GR.getUniqueValue());
+		dbImageAttachment_GR.query();
+
+		if (!dbImageAttachment_GR.next()) {
+			throw "couldn't get dbImageAttachment_GR for dbImage " + dbImage_GR.getDisplayValue();
+		}
+
+		//remove the previous image attached to the record's image field
+		var previousImageAttachment_GR = new GlideRecord("sys_attachment");
+		previousImageAttachment_GR.addQuery("table_sys_id", targetRecord_GR.getUniqueValue());
+		previousImageAttachment_GR.addQuery("table_name", "ZZ_YY" + targetRecord_GR.getTableName());
+		previousImageAttachment_GR.addQuery("file_name", imageFieldName);
+		previousImageAttachment_GR.deleteMultiple();
+
+		//create a new copy of the attachment for the target GlideRecord
+		var glideAttachment = new GlideSysAttachment();
+		var newAttachment_sysID = glideAttachment.writeContentStream(
+			targetRecord_GR,
+			imageFieldName,
+			dbImageAttachment_GR.getValue('content_type'),
+			glideAttachment.getContentStream(dbImageAttachment_GR.getUniqueValue())
+		);
+
+		if (!newAttachment_sysID) {
+			throw "new GlideSysAttachment().writeContentStream() failed to return a valid newAttachment_sysID";
+		}
+
+		//update the new attachment to fit into the user_image field
+		var newImageAttachment_GR = new GlideRecord("sys_attachment");
+		if (!newImageAttachment_GR.get(newAttachment_sysID)) {
+			throw "couldn't get newModelPictureAttachment_GR with sys_id " + newAttachment_sysID;
+		}
+		newImageAttachment_GR.setValue("table_name", "ZZ_YY" + targetRecord_GR.getTableName());
+
+
+
+	} catch (e) {
+		//error = true;
+		log.error("error in onAfter setImage transform script: " + e);
+	}
+
+})(source, map, log, target);
+]]></script>
+        <sys_class_name>sys_transform_script</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-06-28 07:41:17</sys_created_on>
+        <sys_id>5f7812e61b98d95442f50ed1604bcb0d</sys_id>
+        <sys_mod_count>20</sys_mod_count>
+        <sys_name>onAfter</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_transform_script_5f7812e61b98d95442f50ed1604bcb0d</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-06-28 09:20:34</sys_updated_on>
+        <when>onAfter</when>
+    </sys_transform_script>
+</record_update>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this table is used for &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this table has been created or updated &gt;" label="Obsidian Feature Option" max_length="40" name="x_nesa_ng_obsidian_obsidian_feature_option" sizeclass="4841" type="collection">
+        <element attributes="edge_encryption_enabled=true" default="true" label="Feature Option active" max_length="40" name="active" type="boolean"/>
+        <element label="Details" max_length="500" name="details" type="string"/>
+        <element attributes="edge_encryption_enabled=true,omit_sys_original=true,serializer=com.glide.currency2.Currency2XMLSerializer" label="Feature price" mandatory="true" max_length="32" name="feature_price" type="currency2"/>
+        <element attributes="edge_encryption_enabled=true,omit_sys_original=true,serializer=com.glide.currency2.Currency2XMLSerializer" label="Gross price" max_length="32" name="gross_price" type="currency2"/>
+        <element comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Import unique key" max_length="500" name="import_unique_key" read_only="true" type="string"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" choice="1" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Model configuration" max_length="32" name="model_configuration" reference="x_nesa_ng_obsidian_obsidian_model_configuration" reference_cascade_rule="delete_no_workflow" reference_qual="javascript:&quot;obsidian_model=&quot;+current.model_feature.obsidian_model;" type="reference" use_reference_qualifier="advanced">
+            <choice/>
+        </element>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Model feature" max_length="32" name="model_feature" read_only="true" reference="x_nesa_ng_obsidian_obsidian_model_feature" reference_cascade_rule="delete_no_workflow" type="reference"/>
+        <element display="true" label="Name" mandatory="true" max_length="200" name="name" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Is standard option within feature" max_length="40" name="standard_option" read_only="true" type="boolean"/>
+        <index name="index">
+            <element name="model_feature"/>
+        </index>
+        <index name="index2">
+            <element name="import_unique_key"/>
+        </index>
+        <index name="index3">
+            <element name="model_configuration"/>
+        </index>
+        <index name="index4">
+            <element name="feature_price"/>
+        </index>
+        <index name="index5">
+            <element name="gross_price"/>
+        </index>
+    </element>
+</database>

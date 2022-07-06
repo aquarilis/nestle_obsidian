@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description/>
+        <field>active</field>
+        <global>true</global>
+        <isolate_script>true</isolate_script>
+        <messages/>
+        <name>(DXC) Redirect to Obsidian Model record</name>
+        <order/>
+        <script><![CDATA[function onLoad() {
+	try {
+		//whenever a non-admin user tries to open an Obsidian New Model Launch record, he/she is automatically redirected to the Obsidian Model record referenced by that Obsidian New Model Launch
+		if(!g_user.hasRole('admin')){
+			
+			var msg = 'Redirecting to ' + g_form.getDisplayValue('obsidian_model') + ' model page...';
+			var gdw = new GlideDialogWindow('dialog_loading', true);
+			gdw.setTitle(msg);
+			gdw.render();
+
+			addLateLoadEvent(function(){
+				g_navigation.openRecord('x_nesa_ng_obsidian_obsidian_model',g_form.getValue('obsidian_model'));
+			});
+		}
+
+	} catch(exception) {
+		// Specify the name of the Client Script in the log message
+		jslog('Error in Client Script <script_name>: ' + exception);
+	}
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-05-23 15:01:17</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>e59362c71b6f01d806e886efe54bcbee</sys_id>
+        <sys_mod_count>24</sys_mod_count>
+        <sys_name>(DXC) Redirect to Obsidian Model record</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_client_e59362c71b6f01d806e886efe54bcbee</sys_update_name>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-06-28 07:42:31</sys_updated_on>
+        <table>x_nesa_ng_obsidian_obsidian_new_model_launch</table>
+        <type>onLoad</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

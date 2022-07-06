@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_nesa_ng_obsidian.DXCObsidianSKUUtils</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>DXCObsidianSKUUtils</name>
+        <script><![CDATA[var DXCObsidianSKUUtils = Class.create();
+//initialize with         
+//var obsidianSKUUtils = new x_nesa_ng_obsidian.DXCObsidianSKUUtils();
+DXCObsidianSKUUtils.prototype = {
+    initialize: function () {
+        this.logger = new global.GSLog("com.dxc.global.debugging_enabled", "LMADebug");
+        this.obsidianCommonUtils = new x_nesa_ng_obsidian.DXCObsidianCommonUtils();
+
+    },
+
+   
+
+    /** 
+     * @desc
+     * returns whether the user can read a given Obsidian SKU record
+     * Used in Obsidian SKU read ACL
+     * 
+     * @param obsidianSKU_GR the glideRecord of the obsidian record being evaluated for read access
+     *
+     * @return
+     *  Boolean whether the logged in user can read the record
+     */
+    userCanReadObsidianSKU: function (obsidianSKU_GR) {
+        try {
+
+            //NBS users can read all Obsidian Models
+            if (gs.hasRole("admin") || gs.hasRole("x_nesa_ng_obsidian.nbs_user")) {
+                return true;
+            }
+
+            var currentGlideUser = gs.getUser();
+            var userID = currentGlideUser.getID();
+
+            if (currentGlideUser.isMemberOf("Obsidian-NP Procurement")) {
+                return true;
+            }
+
+            //Central team users can read all Obsidian Models
+            if (this.obsidianCommonUtils.isUserSBUCentralTeamRelated(userID)) {
+                return true;
+            }
+
+            if (this.obsidianCommonUtils.isUserSupplierRelated(userID)) {
+                var supplierSysID_array = this.obsidianCommonUtils.getSuppliersForUser(userID);
+                if (supplierSysID_array.indexOf(obsidianSKU_GR.obsidian_model.supplier.toString()) != -1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            if (this.obsidianCommonUtils.isUserMarketRelated(userID)) {
+                var countryCoveredByUserArray = this.obsidianCommonUtils.getCountriesCoveredByUser(userID);
+
+                var skuAssignmentGR = new GlideRecord('x_nesa_ng_obsidian_sku_assignment');
+                skuAssignmentGR.addEncodedQuery("obsidian_sku=" + obsidianSKU_GR.getValue("sys_id") + "^assignment_country.sys_idIN" + countryCoveredByUserArray.join(","));
+                skuAssignmentGR.setLimit(1);
+                skuAssignmentGR.query();
+                return skuAssignmentGR.hasNext();
+            }
+
+
+            return false;
+
+
+        } catch (e) {
+            this.logger.logErr("error in userCanReadSKUAssignment function (DXCObsidianSKUUtils): " + e);
+        }
+    },
+
+    /** 
+     * @desc
+     * returns whether the user can read a given Obsidian SKU Assignmentrecord
+     * Used in Obsidian SKU Assignment read ACL
+     * 
+     * @param skuAssignmentGR the glideRecord of the obsidian record being evaluated for read access
+     *
+     * @return
+     *  Boolean whether the logged in user can read the record
+     */
+    userCanReadSKUAssignment: function (skuAssignmentGR) {
+        try {
+
+            //NBS users can read all Obsidian Models
+            if (gs.hasRole("admin") || gs.hasRole("x_nesa_ng_obsidian.nbs_user")) {
+                return true;
+            }
+
+            var currentGlideUser = gs.getUser();
+            var userID = currentGlideUser.getID();
+
+            if (currentGlideUser.isMemberOf("Obsidian-NP Procurement")) {
+                return true;
+            }
+
+            //Central team users can read all Obsidian Models
+            if (this.obsidianCommonUtils.isUserSBUCentralTeamRelated(userID)) {
+                return true;
+            }
+
+            if (this.obsidianCommonUtils.isUserMarketRelated(userID)) {
+                var countryCoveredByUserArray = this.obsidianCommonUtils.getCountriesCoveredByUser(userID);
+                var assignmentCountrySysID = skuAssignmentGR.getValue("assignment_country");
+
+                if (countryCoveredByUserArray.length > 0 && countryCoveredByUserArray.indexOf(assignmentCountrySysID) != -1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+
+            if (this.obsidianCommonUtils.isUserSupplierRelated(userID)) {
+                var supplierSysID_array = this.obsidianCommonUtils.getSuppliersForUser(userID);
+                if (supplierSysID_array.indexOf(skuAssignmentGR.obsidian_model.supplier.toString()) != -1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+
+            return false;
+
+        } catch (e) {
+            this.logger.logErr("error in userCanReadSKUAssignment function (DXCObsidianSKUUtils): " + e);
+        }
+    },
+
+
+
+    canConfigureFeatures: function (skuAssignmentSysID) {
+        var skuAssignmentGR = new GlideRecord(x_nesa_ng_obsidian.DXCObsidianConstants.SKU_TABLE_NAMES.SKU_ASSIGNMENT_TABLE);
+        if (skuAssignmentGR.get(skuAssignmentSysID)) {
+            if (skuAssignmentGR.getValue("sku_stage") != "200") {
+                return false;
+            }
+
+            if (gs.hasRole("admin")) {
+                return true;
+            }
+
+            var currentUser = gs.getUser();
+            if (currentUser.isMemberOf(skuAssignmentGR.getValue("sku_requester_group"))) {
+                return true;
+            }
+
+            return false;
+        }
+        return false;
+    },
+
+    /**
+     * @author	DXC - Luu-Ly Mai
+     * @desc Check if the user is NML requester
+     * @param userID Sys_id string from the table "sys_user"
+     * @return Boolean - true if the user is member of a SKU requester group
+     */
+    isUserSKURequester: function (userID) {
+        if (!userID) {
+            return false;
+        }
+
+        return this.obsidianCommonUtils._userIsMemberOfGroupWithType(userID, "obsidian-org-sku_requester");
+
+    },
+
+    /** 
+     * @author	DXC - Luu-Ly Mai
+     * @desc updates the set of SKU Assignment feature rows related to a SKU Assignment 
+     * @param assignmentFeatureJSON an object describing all the assignment feature details
+     * @return null
+     */
+    updateSKUAssignmentFeatures: function (assignmentFeatureJSON) {
+
+        var default_currency_symbol = null;
+        var default_currency_string = null;
+
+        var skuAssignmentGR = null;
+
+
+        for (var featureCategoryName in assignmentFeatureJSON) {
+            for (var featureSubcategoryName in assignmentFeatureJSON[featureCategoryName]) {
+                for (var assignmentFeatureSysID in assignmentFeatureJSON[featureCategoryName][featureSubcategoryName]) {
+                    var selectedOptionJSON = assignmentFeatureJSON[featureCategoryName][featureSubcategoryName][assignmentFeatureSysID].selection;
+
+                    if (!default_currency_symbol) {
+                        default_currency_symbol = selectedOptionJSON.feature_price_currency_value[0];
+                        default_currency_string = assignmentFeatureJSON[featureCategoryName][featureSubcategoryName][assignmentFeatureSysID].default_currency;
+                    }
+
+                    //update SKU Assignment feature row
+                    var assignmentFeatureGR = new GlideRecord(x_nesa_ng_obsidian.DXCObsidianConstants.SKU_TABLE_NAMES.SKU_ASSIGNMENT_FEATURE_TABLE);
+                    if (!assignmentFeatureGR.get(assignmentFeatureSysID)) {
+                        throw "couldn't get assignmentFeatureGR with sys id " + assignmentFeatureSysID + " for feature option labelled " + selectedOptionJSON.label;
+                    }
+
+                    if (!skuAssignmentGR) {
+                        skuAssignmentGR = assignmentFeatureGR.sku_assignment.getRefRecord();
+                    }
+                    assignmentFeatureGR.setValue("feature_option", selectedOptionJSON.feature_option_sys_id);
+                    assignmentFeatureGR.setValue("specification_comments", assignmentFeatureJSON[featureCategoryName][featureSubcategoryName][assignmentFeatureSysID].specification_comments);
+                    assignmentFeatureGR.update();
+                }
+            }
+        }
+
+        this.recalculateTheoreticalPrices(skuAssignmentGR);
+    },
+
+
+    /**
+    * @author	DXC - Luu-Ly Mai
+    * @desc recalculate the theoretical Feature and Gross price fields of sku Assignment or obsidian SKU record
+    * @param {GlideRecord} skuAssignmentGR the record for which the theoretical prices need to be recalculated
+    
+    * @return nothing
+    */
+    recalculateTheoreticalPrices: function (skuAssignmentGR) {
+        if (!skuAssignmentGR.isValidRecord()) {
+            throw "recalculateTheoreticalPrices received an invalid skuAssignmentGR glideRecord";
+        }
+
+        var theoretical_feature_price = 0.00;
+        var theoretical_gross_price = 0.00;
+
+        var parentFieldName = (skuAssignmentGR.getTableName() == x_nesa_ng_obsidian.DXCObsidianConstants.SKU_TABLE_NAMES.SKU_ASSIGNMENT_TABLE ? "sku_assignment" : "obsidian_sku");
+
+        var skuAssignmentFeatureGR = new GlideRecord(x_nesa_ng_obsidian.DXCObsidianConstants.SKU_TABLE_NAMES.SKU_ASSIGNMENT_FEATURE_TABLE);
+        skuAssignmentFeatureGR.addQuery(parentFieldName, skuAssignmentGR.getValue("sys_id"));
+        skuAssignmentFeatureGR.query();
+
+        while (skuAssignmentFeatureGR.next()) {
+            theoretical_feature_price += parseFloat(skuAssignmentFeatureGR.feature_option.feature_price.amount);
+            theoretical_gross_price += parseFloat(skuAssignmentFeatureGR.feature_option.gross_price.amount);
+        }
+        global.DXCObsidianGlobalUtils.setDisplayValue(skuAssignmentGR, "theoretical_gross_price", skuAssignmentGR.obsidian_model.default_currency.toString() + ";" + theoretical_gross_price.toString());
+        global.DXCObsidianGlobalUtils.setDisplayValue(skuAssignmentGR, "theoretical_feature_price", skuAssignmentGR.obsidian_model.default_currency.toString() + ";" + theoretical_feature_price.toString());
+
+        skuAssignmentGR.update();
+
+    },
+
+    /** 
+    * @author	DXC - Luu-Ly Mai
+    * @desc verifies that the selected Model and Configuration have valid feature model data
+    * @param {string} obsidianModelSysID sys id of a Obsidian model
+    * @return {boolean} whether the model is valid to trigger a SKU assignment with
+    */
+    modelCanBeUsedInSKUAssignment: function (obsidianModelSysID) {
+        var modelFeature_GR = new GlideRecord('x_nesa_ng_obsidian_obsidian_model_feature');
+        modelFeature_GR.addQuery("obsidian_model", obsidianModelSysID);
+        modelFeature_GR.setLimit(1);
+        modelFeature_GR.query();
+
+        if (!modelFeature_GR.hasNext()){
+            return false;
+        }
+
+        modelFeature_GR = new GlideRecord('x_nesa_ng_obsidian_obsidian_model_feature');
+        modelFeature_GR.addEncodedQuery("standard_optionISEMPTY^ORactive_option_count=0^ORactive_option_countISEMPTY^obsidian_model=" + obsidianModelSysID);
+        modelFeature_GR.query();
+        if (modelFeature_GR.hasNext()){
+            return false;
+        }
+
+
+        return true;
+
+
+    },
+
+    /** 
+     * @author	DXC - Luu-Ly Mai
+     * @desc creates/refreshes the set of SKU Assignment feature rows related to a SKU Assignment and its selected model configuration
+     * @param skuAssignmentGR a GlideRecord of the SKU assignment record
+     * @return null
+     */
+    initializeSKUAssignmentFeatures: function (skuAssignmentGR) {
+        try {
+            var obsidianModelSysID = skuAssignmentGR.getValue("obsidian_model");
+            var modelConfigurationSysID = skuAssignmentGR.getValue("model_configuration");
+
+            // var modelConfigurationGR = skuAssignmentGR.model_configuration.getRefRecord();
+            // if (!modelConfigurationGR.isValidRecord()){
+            //     throw "modelConfigurationGR is not a valid record";
+            // }
+
+            var associatedFeatureSysID_array = (skuAssignmentGR.model_configuration.associated_features != "" ? skuAssignmentGR.model_configuration.associated_features.toString().split(",") : []);
+
+            var modelFeatureGR = new GlideRecord(x_nesa_ng_obsidian.DXCObsidianConstants.NML_TABLE_NAMES.MODEL_FEATURE_TABLE);
+            modelFeatureGR.addQuery("obsidian_model", obsidianModelSysID);
+            modelFeatureGR.orderBy("feature_category");
+            modelFeatureGR.orderBy("feature_subcategory");
+            modelFeatureGR.query();
+            while (modelFeatureGR.next()) {
+                if (modelFeatureGR.active_option_count == "" || modelFeatureGR.active_option_count == "0") {
+                    this.logger.logErr("initializeSKUAssignmentFeatures: " + modelFeatureGR.getDisplayValue() + " has no active feature option");
+                    continue;
+                }
+
+                if (modelFeatureGR.getValue("standard_option") == null) {
+                    this.logger.logErr("initializeSKUAssignmentFeatures: " + modelFeatureGR.getDisplayValue() + " has no standard feature option set");
+                    continue;
+                }
+
+
+                var skuAssignmentFeatureGR = new GlideRecord(x_nesa_ng_obsidian.DXCObsidianConstants.SKU_TABLE_NAMES.SKU_ASSIGNMENT_FEATURE_TABLE);
+                skuAssignmentFeatureGR.addQuery("sku_assignment", skuAssignmentGR.sys_id);
+                skuAssignmentFeatureGR.addQuery("model_feature", modelFeatureGR.sys_id);
+                skuAssignmentFeatureGR.query();
+
+
+                skuAssignmentFeatureGR.next();
+                skuAssignmentFeatureGR.setValue("sku_assignment", skuAssignmentGR.sys_id);
+                skuAssignmentFeatureGR.setValue("model_feature", modelFeatureGR.sys_id);
+
+                var featureOptionSysID = (function () {
+
+                    if (associatedFeatureSysID_array.indexOf(modelFeatureGR.getValue("sys_id")) != -1) {
+
+                        skuAssignmentFeatureGR.setValue("feature_option_choice", "Restricted");
+                        var optionDependencyGR = new GlideRecord('x_nesa_ng_obsidian_m2m_obsidian_option_dependency');
+                        optionDependencyGR.addQuery("obsidian_model_configuration", modelConfigurationSysID);
+                        optionDependencyGR.addQuery("obsidian_feature_option.model_feature", modelFeatureGR.sys_id);
+
+                        optionDependencyGR.query();
+
+                        if (!optionDependencyGR.next()) {
+                            throw "couldn't find option dependency related to restricted model feature " + modelFeatureGR.getDisplayValue() + " for config " + skuAssignmentGR.model_configuration.name;
+                        }
+
+                        return optionDependencyGR.getValue("obsidian_feature_option");
+
+
+                    }
+                    if (modelFeatureGR.getValue("active_option_count") == "1") {
+
+                        skuAssignmentFeatureGR.setValue("feature_option_choice", "Defaulted");
+                        return modelFeatureGR.getValue("standard_option");
+                    }
+
+
+                    skuAssignmentFeatureGR.setValue("feature_option_choice", "Allowed");
+                    return modelFeatureGR.getValue("standard_option");
+
+
+                })();
+
+
+
+                skuAssignmentFeatureGR.setValue("feature_option", featureOptionSysID);
+                skuAssignmentFeatureGR.update();
+
+
+            }
+
+            this.recalculateTheoreticalPrices(skuAssignmentGR);
+
+
+        } catch (e) {
+            this.logger.logErr("error in initializeSKUAssignmentFeatures: " + e);
+        }
+    },
+
+
+
+
+    /** 
+     * @desc
+     * Get reference qualifier for "model requester group" variable
+     * Used in "new SKU Assignment" record producer
+     *
+     * @return
+     *  String containing a reference qualifier
+     */
+    getRecordProducer_RequesterGroup_RQ: function (userID) {
+        try {
+
+            if (gs.hasRole("admin")) {
+                return "active=true^typeLIKE" + this.obsidianCommonUtils._getGroupTypeID("obsidian-org-sku_requester");
+            }
+            var selectableGroupSysId_array = [];
+
+            var requesterGroupMembership_GR = new GlideRecord("sys_user_grmember");
+            requesterGroupMembership_GR.addEncodedQuery("group.active=true^group.typeLIKE" + this.obsidianCommonUtils._getGroupTypeID("obsidian-org-np") + "^user=" + userID);
+            requesterGroupMembership_GR.query();
+            while (requesterGroupMembership_GR.next()) {
+                selectableGroupSysId_array.push(requesterGroupMembership_GR.getValue("group"));
+            }
+
+            if (selectableGroupSysId_array.length > 0) {
+                var refQual = "sys_idIN" + selectableGroupSysId_array.join(",");
+                return refQual;
+            } else {
+                return "active=true^typeLIKE" + this.obsidianCommonUtils._getGroupTypeID("obsidian-org-sku_requester");
+            }
+        } catch (e) {
+            this.logger.logErr("error in getRecordProducer_RequesterGroup_RQ: " + e);
+        }
+    },
+
+
+    /** 
+     * @desc
+     * Get the default value for model requester group variable
+     * Used in "new SKU Assignment" record producer
+     *
+     * @return
+     *  String containing a reference qualifier
+     */
+    getRecordProducer_RequesterGroup_default_value: function () {
+        try {
+            var requesterGroupMembership_GR = new GlideRecord("sys_user_grmember");
+            requesterGroupMembership_GR.addEncodedQuery("group.active=true^group.typeLIKE" + this.obsidianCommonUtils._getGroupTypeID("obsidian-org-sku_requester") + "^user=" + gs.getUserID());
+            requesterGroupMembership_GR.query();
+            if (requesterGroupMembership_GR.next() && !requesterGroupMembership_GR.hasNext()) {
+                return requesterGroupMembership_GR.group;
+            } else {
+                return "";
+            }
+
+        } catch (e) {
+            this.logger.logErr("error in getRecordProducer_RequesterGroup_default_value: " + e);
+        }
+    },
+
+
+
+
+
+
+
+
+
+
+    type: 'DXCObsidianSKUUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-04-21 09:20:20</sys_created_on>
+        <sys_id>b713e4701b4f0910fe9e43f1b24bcb47</sys_id>
+        <sys_mod_count>139</sys_mod_count>
+        <sys_name>DXCObsidianSKUUtils</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_include_b713e4701b4f0910fe9e43f1b24bcb47</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-06-03 09:35:16</sys_updated_on>
+    </sys_script_include>
+</record_update>

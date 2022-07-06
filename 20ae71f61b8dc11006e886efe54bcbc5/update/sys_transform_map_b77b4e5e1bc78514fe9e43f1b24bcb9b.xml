@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_transform_map">
+    <sys_transform_map action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copy_empty_fields>false</copy_empty_fields>
+        <create_new_record_on_empty_coalesce_fields>false</create_new_record_on_empty_coalesce_fields>
+        <enforce_mandatory_fields>No</enforce_mandatory_fields>
+        <name>(DXC) Obsidian - 04 - Feature options TM</name>
+        <order>100</order>
+        <run_business_rules>true</run_business_rules>
+        <run_script>true</run_script>
+        <script><![CDATA[(function transformRow(source, target, map, log, isUpdate) {
+	try {
+		log.info("source model config = " + source.u_model_configuration.toString());
+		var obsidianModel_GR = target.model_feature.obsidian_model.getRefRecord();
+		if (!obsidianModel_GR.isValidRecord()) {
+			throw "couldn't get  obsidianModel_GR";
+		}
+
+
+		if (target.model_configuration != ""){
+			var modelConfiguration_GR = target.model_configuration.getRefRecord();
+			if (!modelConfiguration_GR.isValidRecord()){
+				throw "couldn't get modelConfiguration_GR";
+			}
+			log.info("modelConfiguration_GR = " + modelConfiguration_GR.import_unique_key.toString() + " vs. source = " + source.u_model_configuration);
+
+
+			if (modelConfiguration_GR.getValue("obsidian_model") != obsidianModel_GR.getUniqueValue()) {
+				throw "model configuration model and obsidianModel_GR don't match for feature option" + source.u_feature_option_full_name;
+			}
+		}
+
+
+
+
+
+		// SETTING THE PRICES
+        if (!(defaultCurrency = obsidianModel_GR.getValue("default_currency"))) {
+            throw obsidianModel_GR.getDisplayValue() + " hasn't got any default currency set";
+        }
+
+		if ((sourceFeaturePriceValue = source.getValue("u_feature_price"))) {
+			global.DXCObsidianGlobalUtils.setDisplayValue(target, "feature_price", defaultCurrency + ";" + sourceFeaturePriceValue.replace(",", "."));
+		} else {
+			global.DXCObsidianGlobalUtils.setDisplayValue(target, "feature_price", defaultCurrency + ";" + "0.00");
+		}
+
+		if ((sourceGrossPrice = source.getValue("u_gross_price"))) {
+			global.DXCObsidianGlobalUtils.setDisplayValue(target, "gross_price", defaultCurrency + ";" + sourceGrossPrice.replace(",", "."));
+		} else {
+			target.setValue("gross_price", "");
+		}
+
+
+
+	} catch (e) {
+		error = true;
+		log.error("error in feature option TM main script for " + source.u_feature_option_full_name + " : " + e);
+	}
+})(source, target, map, log, action === "update");
+
+
+function getDecimalValue(stringValue) {
+	return parseFloat(stringValue.replace(",", ".")).toFixed(2);
+}]]></script>
+        <source_table>x_nesa_ng_obsidian_feature_option_import</source_table>
+        <sys_class_name>sys_transform_map</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-04-26 08:47:40</sys_created_on>
+        <sys_id>b77b4e5e1bc78514fe9e43f1b24bcb9b</sys_id>
+        <sys_mod_count>61</sys_mod_count>
+        <sys_name>(DXC) Obsidian - 04 - Feature options TM</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_transform_map_b77b4e5e1bc78514fe9e43f1b24bcb9b</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-06-20 07:15:52</sys_updated_on>
+        <target_table>x_nesa_ng_obsidian_obsidian_feature_option</target_table>
+    </sys_transform_map>
+</record_update>

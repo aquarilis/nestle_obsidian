@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="catalog_ui_policy_action">
+    <catalog_ui_policy_action action="INSERT_OR_UPDATE">
+        <catalog_item display_value="Submit New Model Launch">965cc8331b928d5406e886efe54bcbf4</catalog_item>
+        <catalog_variable>IO:2123efd51b260510fe9e43f1b24bcb04</catalog_variable>
+        <cleared>true</cleared>
+        <disabled>ignore</disabled>
+        <field/>
+        <mandatory>false</mandatory>
+        <order>100</order>
+        <sys_class_name>catalog_ui_policy_action</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-03-29 16:07:35</sys_created_on>
+        <sys_id>d1c36bd91b260510fe9e43f1b24bcb57</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>model_requesting_country</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>catalog_ui_policy_action_d1c36bd91b260510fe9e43f1b24bcb57</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-03-29 16:39:42</sys_updated_on>
+        <table/>
+        <ui_policy display_value="(DXC) manage &quot;model requesting country&quot; variable">18c3a3991b260510fe9e43f1b24bcb83</ui_policy>
+        <variable>model_requesting_country</variable>
+        <variable_set/>
+        <visible>false</visible>
+    </catalog_ui_policy_action>
+</record_update>

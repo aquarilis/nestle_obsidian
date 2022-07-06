@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module">
+    <sys_app_module action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <application display_value="Obsidian Administration">cef6078f1b8b499406e886efe54bcb66</application>
+        <assessment/>
+        <content_page/>
+        <device_type/>
+        <filter table="sys_user_group">nameSTARTSWITHobsidian^EQ<item endquery="false" field="name" goto="false" newquery="false" operator="STARTSWITH" or="false" value="obsidian"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter>
+        <hint/>
+        <homepage/>
+        <image/>
+        <link_type>LIST</link_type>
+        <map_page/>
+        <mobile_title>Open tickets </mobile_title>
+        <mobile_view_name>Mobile</mobile_view_name>
+        <name>sys_user_group</name>
+        <order>5010</order>
+        <override_menu_roles>false</override_menu_roles>
+        <query/>
+        <report/>
+        <roles/>
+        <survey/>
+        <survey_overwrite>true</survey_overwrite>
+        <sys_class_name>sys_app_module</sys_class_name>
+        <sys_created_by>admin_Agata_Swoboda</sys_created_by>
+        <sys_created_on>2022-03-03 11:15:25</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>c89760451bc20d5006e886efe54bcb67</sys_id>
+        <sys_mod_count>11</sys_mod_count>
+        <sys_name>Obsidian Groups</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_app_module_c89760451bc20d5006e886efe54bcb67</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-05-12 08:04:21</sys_updated_on>
+        <timeline_page/>
+        <title>Obsidian Groups</title>
+        <uncancelable>false</uncancelable>
+        <view_name>Obsidian</view_name>
+        <window_name/>
+    </sys_app_module>
+</record_update>

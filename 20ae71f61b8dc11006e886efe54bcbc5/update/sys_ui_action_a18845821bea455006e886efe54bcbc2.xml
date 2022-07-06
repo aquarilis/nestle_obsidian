@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_action">
+    <sys_ui_action action="INSERT_OR_UPDATE">
+        <action_name>sysverb_edit_m2m</action_name>
+        <active>true</active>
+        <client>false</client>
+        <client_script_v2><![CDATA[function onClick(g_form) {
+
+}]]></client_script_v2>
+        <comments>STRY0181847 - (DXC) "Edit" button override on Obsidian Model configurations related list to add default filter in slushbucket screen</comments>
+        <condition>(new GlideRecord(current.getTableName())).canCreate() &amp;&amp; RP.isManyToMany() &amp;&amp; !RP.getListControl().isOmitEditButton() &amp;&amp; RP.isRelatedList()</condition>
+        <form_action>false</form_action>
+        <form_button>false</form_button>
+        <form_button_v2>false</form_button_v2>
+        <form_context_menu>false</form_context_menu>
+        <form_link>false</form_link>
+        <form_menu_button_v2>false</form_menu_button_v2>
+        <form_style/>
+        <format_for_configurable_workspace>false</format_for_configurable_workspace>
+        <hint/>
+        <isolate_script>false</isolate_script>
+        <list_action>true</list_action>
+        <list_banner_button>true</list_banner_button>
+        <list_button>false</list_button>
+        <list_choice>false</list_choice>
+        <list_context_menu>false</list_context_menu>
+        <list_link>false</list_link>
+        <list_save_with_form_button>false</list_save_with_form_button>
+        <list_style/>
+        <messages/>
+        <name>Edit...</name>
+        <onclick/>
+        <order>200</order>
+        <script><![CDATA[var uri = action.getGlideURI();
+var path = uri.getFileFromPath();
+uri.set('sysparm_m2m_ref', current.getTableName());
+uri.set('sysparm_stack', 'no');
+if (parent.getTableName() == 'x_nesa_ng_obsidian_obsidian_feature_option'){
+	uri.set('sysparm_query', 'obsidian_model=' + parent.model_feature.obsidian_model);
+}else if (parent.getTableName() == 'x_nesa_ng_obsidian_obsidian_model_configuration'){
+	uri.set('sysparm_query', 'model_feature.obsidian_model=' + parent.obsidian_model);
+}
+action.setRedirectURL(uri.toString('sys_m2m_template.do'));]]></script>
+        <show_insert>true</show_insert>
+        <show_multiple_update>false</show_multiple_update>
+        <show_query>false</show_query>
+        <show_update>true</show_update>
+        <sys_class_name>sys_ui_action</sys_class_name>
+        <sys_created_by>admin_Diego_Casillas</sys_created_by>
+        <sys_created_on>2022-03-31 13:10:51</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>a18845821bea455006e886efe54bcbc2</sys_id>
+        <sys_mod_count>11</sys_mod_count>
+        <sys_name>Edit...</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_ui_action_a18845821bea455006e886efe54bcbc2</sys_update_name>
+        <sys_updated_by>admin_Diego_Casillas</sys_updated_by>
+        <sys_updated_on>2022-04-01 08:25:48</sys_updated_on>
+        <table>x_nesa_ng_obsidian_m2m_obsidian_option_dependency</table>
+        <ui11_compatible>true</ui11_compatible>
+        <ui16_compatible>false</ui16_compatible>
+    </sys_ui_action>
+</record_update>

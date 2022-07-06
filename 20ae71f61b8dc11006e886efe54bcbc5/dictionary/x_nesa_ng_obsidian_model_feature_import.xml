@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" extends="sys_import_set_row" label="(DXC) Obsidian - 03 - Model features" max_length="40" name="x_nesa_ng_obsidian_model_feature_import" sizeclass="4254" type="collection">
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Description" label="Description" max_length="163" name="u_description" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Editable" label="Editable" max_length="40" name="u_editable" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Feature category" label="Feature category" max_length="40" name="u_feature_category" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Feature category-subcategory" label="Feature category-subcategory" max_length="143" name="u_feature_category_subcategory" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Feature full name" label="Feature full name" max_length="180" name="u_feature_full_name" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Feature name" label="Feature name" max_length="63" name="u_feature_name" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Feature subcategory" label="Feature subcategory" max_length="40" name="u_feature_subcategory" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=K" label="K" max_length="40" name="u_k" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Obsidian Model" label="Obsidian Model" max_length="40" name="u_obsidian_model" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Specifications" label="Specifications" max_length="40" name="u_specifications" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Standard option" label="Standard option" max_length="213" name="u_standard_option" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Standard option is ok" label="Standard option is ok" max_length="40" name="u_standard_option_is_ok" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Standard option belongs to Model ?" label="Standard option belongs to Model ?" max_length="40" name="u_standard_opt_ngs_to_model__" type="string"/>
+    </element>
+</database>
