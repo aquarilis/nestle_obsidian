@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_transform_map">
+    <sys_transform_map action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copy_empty_fields>false</copy_empty_fields>
+        <create_new_record_on_empty_coalesce_fields>false</create_new_record_on_empty_coalesce_fields>
+        <enforce_mandatory_fields>No</enforce_mandatory_fields>
+        <name>(DXC) Obsidian - 07 - NML checklist item TM</name>
+        <order>100</order>
+        <run_business_rules>true</run_business_rules>
+        <run_script>true</run_script>
+        <script><![CDATA[(function transformRow(source, target, map, log, isUpdate) {
+	try {
+
+		target.obsidian_new_model_launch = target.obsidian_model.getRefRecord().getValue("obsidian_new_model_launch");
+
+
+	} catch (e) {
+		error = true;
+		log.error("error in NML checklist item selection TM main script: " + e);
+	}
+})(source, target, map, log, action === "update");]]></script>
+        <source_table>x_nesa_ng_obsidian_nml_checklist_item_import</source_table>
+        <sys_class_name>sys_transform_map</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-04-26 16:27:19</sys_created_on>
+        <sys_id>68b4f7d61b078914fe9e43f1b24bcb59</sys_id>
+        <sys_mod_count>39</sys_mod_count>
+        <sys_name>(DXC) Obsidian - 07 - NML checklist item TM</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_transform_map_68b4f7d61b078914fe9e43f1b24bcb59</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-04-28 12:50:45</sys_updated_on>
+        <target_table>x_nesa_ng_obsidian_m2m_nml_checklist</target_table>
+    </sys_transform_map>
+</record_update>

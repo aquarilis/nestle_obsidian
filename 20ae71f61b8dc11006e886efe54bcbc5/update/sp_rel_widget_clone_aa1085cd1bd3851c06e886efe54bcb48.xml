@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_rel_widget_clone">
+    <sp_rel_widget_clone action="INSERT_OR_UPDATE">
+        <child display_value="SKU Assignment Standard Ticket">f5100d091bd3851c06e886efe54bcbec</child>
+        <cloned>2022-02-08 12:15:40</cloned>
+        <last_validated>2022-02-08 12:15:40</last_validated>
+        <parent display_value="Incident Standard Ticket Actions">9bd06ce173070010cbb654eb7df6a7d4</parent>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;sp_widget&gt;&lt;category&gt;custom&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[function incidentTicketActions($scope, $http, spUtil, $timeout, spModal, i18n, $window, $uibModal) {
+    /* widget controller */
+    var c = this;
+    c.doneLoading = false;
+
+    var MOBILE_DEVICE_SCREEN_WIDTH = 767;
+    $scope.mobileDevice = c.data.isMobile || ($window.innerWidth &lt; MOBILE_DEVICE_SCREEN_WIDTH);
+
+
+	$scope.resolveIncident = function() {
+        $scope.data.action = 'resolveIncident';
+        $scope.server.update(init);
+    };
+	
+	$scope.closeIncident = function() {
+		$scope.data.action = 'closeIncident';
+        $scope.server.update(init);
+	};
+
+    $scope.reopenIncident = function() {
+        $scope.data.action = 'reopenIncident';
+        $scope.server.update(init);
+    };
+
+    function init() {}
+	
+    $(document).on('click', 'div.modal-footer button.btn, ul#child-case-tabs .dropdown-menu', function(e) {
+        e.stopPropagation();
+    });
+
+    $(document).bind('dragover drop', function(event) {
+        event.preventDefault();
+        return false;
+    });
+
+    $scope.$on('sp_loading_indicator', function(e, value) {
+        if (!value &amp;&amp; !c.doneLoading) {
+            c.doneLoading = true;
+        }
+    });
+
+
+}]]&gt;&lt;/client_script&gt;&lt;controller_as&gt;c&lt;/controller_as&gt;&lt;css&gt;.arrow {&amp;#13;
+  position: absolute;&amp;#13;
+  margin-left: 50px;&amp;#13;
+  z-index: 150;&amp;#13;
+  border-left: 12px solid transparent;&amp;#13;
+  border-right: 12px solid transparent;&amp;#13;
+  border-bottom: 12px solid #FFFFFF;&amp;#13;
+}&amp;#13;
+&amp;#13;
+.question-tab{&amp;#13;
+	font-size:1.4rem;&amp;#13;
+}&amp;#13;
+&amp;#13;
+.dropdown-menu li {&amp;#13;
+  cursor: pointer;&amp;#13;
+}&amp;#13;
+&amp;#13;
+.action-btn {&amp;#13;
+  width: 100%;&amp;#13;
+}&lt;/css&gt;&lt;data_table&gt;sp_instance&lt;/data_table&gt;&lt;demo_data/&gt;&lt;description/&gt;&lt;docs/&gt;&lt;field_list/&gt;&lt;has_preview&gt;false&lt;/has_preview&gt;&lt;id&gt;incident-standard-ticket-actions&lt;/id&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link&gt;&lt;![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]&gt;&lt;/link&gt;&lt;name&gt;Incident Standard Ticket Actions&lt;/name&gt;&lt;option_schema/&gt;&lt;public&gt;true&lt;/public&gt;&lt;roles/&gt;&lt;script&gt;&lt;![CDATA[(function() {
+    var incidentGr = new GlideRecord('incident');
+	var incidentSysId = options.sys_id;
+	
+	if (!incidentSysId &amp;&amp; $sp.getParameter('table') == 'incident')
+		incidentSysId = $sp.getParameter('sys_id');
+	
+	if (!incidentSysId &amp;&amp; $sp.getParameter('table') == 'universal_request') {
+		var urGr = new GlideRecord('universal_request');
+		urGr.get($sp.getParameter('sys_id'));
+		incidentSysId = urGr.primary_task + "";
+	}
+	
+	/* Actions - Start */
+    if (input &amp;&amp; input.action == 'resolveIncident' &amp;&amp; incidentGr.get(incidentSysId)) {
+        incidentGr.incident_state = global.IncidentState.RESOLVED;
+		incidentGr.state = global.IncidentState.RESOLVED;
+		incidentGr.resolved_by = gs.getUserID();
+		incidentGr.update();
+    }
+	
+	if (input &amp;&amp; input.action == 'reopenIncident' &amp;&amp; incidentGr.get(incidentSysId)) {
+        incidentGr.incident_state = global.IncidentState.IN_PROGRESS;
+		incidentGr.state = global.IncidentState.IN_PROGRESS;
+		incidentGr.update();
+		gs.addInfoMessage(gs.getMessage("Request reopened"));
+    }
+	
+	if (input &amp;&amp; input.action == 'closeIncident' &amp;&amp; incidentGr.get(incidentSysId)) {
+		incidentGr.incident_state = global.IncidentState.CLOSED;
+		incidentGr.state = global.IncidentState.CLOSED;
+		incidentGr.update();
+    }
+
+   /* Actions - End */
+	
+
+	/* Load incident data */
+    if (incidentGr.get(incidentSysId)) {
+		var incidentUtils = new global.IncidentUtils();
+		data.canResolve = incidentUtils.canResolveIncident(incidentGr);
+		data.canReopen = incidentUtils.canReopenIncident(incidentGr);
+		data.canClose = incidentUtils.canCloseIncident(incidentGr);
+		data.showActions = data.canResolve || data.canReopen || data.canClose;
+    }
+
+    data.i18n = {};
+
+})();]]&gt;&lt;/script&gt;&lt;servicenow&gt;false&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2020-02-18 08:21:28&lt;/sys_created_on&gt;&lt;sys_id&gt;9bd06ce173070010cbb654eb7df6a7d4&lt;/sys_id&gt;&lt;sys_mod_count&gt;66&lt;/sys_mod_count&gt;&lt;sys_name&gt;Incident Standard Ticket Actions&lt;/sys_name&gt;&lt;sys_package display_value="Service Portal - Standard Ticket" source="sn_std_tkt"&gt;c9f1df5787f50010e0ef0cf888cb0b2c&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Service Portal - Standard Ticket"&gt;c9f1df5787f50010e0ef0cf888cb0b2c&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_9bd06ce173070010cbb654eb7df6a7d4&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2020-05-07 04:09:03&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;div&gt;
+    &lt;div class="dropdown" id="child-case-tabs" ng-if="data.showActions"&gt;
+        &lt;button type="button" class="btn btn-default dropdown-toggle action-btn" data-toggle="dropdown" style="width : 100%"&gt;
+            ${Actions}
+            &lt;span class="caret"&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;ul class="dropdown-menu" id="actionList"&gt;
+            &lt;li&gt;
+                &lt;a ng-if="data.canResolve" href="javascript:void(0)" ng-click="$event.stopPropagation();resolveIncident()"&gt;${Resolve}&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a ng-if="data.canReopen" href="javascript:void(0)" ng-click="$event.stopPropagation();reopenIncident()"&gt;${Reopen}&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a ng-if="data.canClose" href="javascript:void(0)" ng-click="$event.stopPropagation();closeIncident()"&gt;${Close}&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+  
+&lt;/div&gt;]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;</payload>
+        <sys_class_name>sp_rel_widget_clone</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-05-04 16:21:06</sys_created_on>
+        <sys_id>aa1085cd1bd3851c06e886efe54bcb48</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>f5100d091bd3851c06e886efe54bcbec</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sp_rel_widget_clone_aa1085cd1bd3851c06e886efe54bcb48</sys_update_name>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-05-04 16:21:06</sys_updated_on>
+    </sp_rel_widget_clone>
+</record_update>

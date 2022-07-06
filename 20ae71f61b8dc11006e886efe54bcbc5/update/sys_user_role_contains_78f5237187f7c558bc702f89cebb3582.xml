@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role_contains">
+    <sys_user_role_contains action="INSERT_OR_UPDATE">
+        <contains display_value="u_cmn_activity_emails_viewer" name="u_cmn_activity_emails_viewer">86c0a18ddb9d97c0c2832dcb0b9619ee</contains>
+        <role display_value="x_nesa_ng_obsidian.nbs_user" name="x_nesa_ng_obsidian.nbs_user">9bbbd86b1bd2455406e886efe54bcb68</role>
+        <sys_class_name>sys_user_role_contains</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-06-01 08:52:33</sys_created_on>
+        <sys_id>78f5237187f7c558bc702f89cebb3582</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>u_cmn_activity_emails_viewer.x_nesa_ng_obsidian.nbs_user</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_user_role_contains_78f5237187f7c558bc702f89cebb3582</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-06-01 08:52:33</sys_updated_on>
+    </sys_user_role_contains>
+</record_update>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module">
+    <sys_app_module action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <application display_value="Obsidian Model Management">abc603cf1b8b499406e886efe54bcb82</application>
+        <assessment/>
+        <content_page/>
+        <device_type/>
+        <filter table="sn_uni_task_universal_task">parent.sys_class_name=x_nesa_ng_obsidian_obsidian_new_model_launch^active=true^assignment_groupDYNAMIC9b17a8401b768954fe9e43f1b24bcb67^assigned_toISEMPTY^EQ<item display_value="x_nesa_ng_obsidian_obsidian_new_model_launch" endquery="false" field="parent.sys_class_name" goto="false" newquery="false" operator="=" or="false" value="x_nesa_ng_obsidian_obsidian_new_model_launch"/>
+            <item endquery="false" field="active" goto="false" newquery="false" operator="=" or="false" value="true"/>
+            <item endquery="false" field="assignment_group" goto="false" newquery="false" operator="DYNAMIC" or="false" value="9b17a8401b768954fe9e43f1b24bcb67"/>
+            <item endquery="false" field="assigned_to" goto="false" newquery="false" operator="ISEMPTY" or="false" value=""/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter>
+        <hint/>
+        <homepage/>
+        <image/>
+        <link_type>LIST</link_type>
+        <map_page/>
+        <mobile_title>NML Tasks</mobile_title>
+        <mobile_view_name>Mobile</mobile_view_name>
+        <name>sn_uni_task_universal_task</name>
+        <order>510</order>
+        <override_menu_roles>false</override_menu_roles>
+        <query/>
+        <report/>
+        <roles/>
+        <survey/>
+        <survey_overwrite>true</survey_overwrite>
+        <sys_class_name>sys_app_module</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-04-06 07:29:59</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>550af23f1baa059406e886efe54bcb09</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Assigned to my groups</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_app_module_550af23f1baa059406e886efe54bcb09</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-05-12 07:33:52</sys_updated_on>
+        <timeline_page/>
+        <title>Assigned to my groups</title>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+        <window_name/>
+    </sys_app_module>
+</record_update>

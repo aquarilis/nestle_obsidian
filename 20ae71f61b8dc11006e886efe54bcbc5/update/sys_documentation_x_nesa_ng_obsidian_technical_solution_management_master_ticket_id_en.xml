@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="master_ticket_id" label="Master Ticket ID" language="en" table="x_nesa_ng_obsidian_technical_solution_management">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>master_ticket_id</element>
+            <help/>
+            <hint/>
+            <label>Master Ticket ID</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_technical_solution_management</name>
+            <plural>Master Ticket IDs</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin_Agata_Swoboda</sys_created_by>
+            <sys_created_on>2022-02-28 13:22:52</sys_created_on>
+            <sys_id>b5f7ed0c1bc6811006e886efe54bcb7c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Master Ticket ID</sys_name>
+            <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+            <sys_update_name>sys_documentation_x_nesa_ng_obsidian_technical_solution_management_master_ticket_id_en</sys_update_name>
+            <sys_updated_by>admin_Agata_Swoboda</sys_updated_by>
+            <sys_updated_on>2022-02-28 13:22:52</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

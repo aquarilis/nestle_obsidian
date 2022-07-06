@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl">
+    <sys_security_acl action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <admin_overrides>true</admin_overrides>
+        <advanced>true</advanced>
+        <condition table="x_nesa_ng_obsidian_sku_assignment">sku_stageIN100,200,300,400,600^EQ<item display_value="100,200,300,400,600" endquery="false" field="sku_stage" goto="false" newquery="false" operator="IN" or="false" value="100,200,300,400,600"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </condition>
+        <description>Allow write for records in x_nesa_ng_obsidian_sku_assignment, for users with role snc_internal, and if the ACL script returns true, and if the ACL condition (sku_stageIN100,200,300,400,600^EQ) evaluates to true.</description>
+        <name>x_nesa_ng_obsidian_sku_assignment</name>
+        <operation display_value="write">write</operation>
+        <script><![CDATA[answer = new x_nesa_ng_obsidian.DXCObsidianSKUUtils().userCanReadSKUAssignment(current);]]></script>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-05-23 14:10:30</sys_created_on>
+        <sys_id>d758d2c31b2701d806e886efe54bcb01</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>x_nesa_ng_obsidian_sku_assignment</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_security_acl_d758d2c31b2701d806e886efe54bcb01</sys_update_name>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-05-24 07:26:21</sys_updated_on>
+        <type display_value="record">record</type>
+    </sys_security_acl>
+</record_update>

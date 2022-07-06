@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this table is used for &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this table has been created or updated &gt;" label="Obsidian Country Mapping" max_length="40" name="x_nesa_ng_obsidian_obsidian_country_mapping" sizeclass="100" type="collection">
+        <element attributes="edge_encryption_enabled=true" default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Country" mandatory="true" max_length="32" name="country" reference="cmn_location" reference_qual="u_type=country^EQ" reference_qual_condition="u_type=country^EQ" type="reference" unique="true"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Nestle company" mandatory="true" max_length="32" name="nestle_company" reference="core_company" reference_qual="javascript:&quot;vendor=false^u_location!=NULL^u_location=&quot; + current.country;" type="reference" use_reference_qualifier="advanced"/>
+        <index name="index">
+            <element name="country"/>
+        </index>
+        <index name="index2">
+            <element name="nestle_company"/>
+        </index>
+    </element>
+</database>

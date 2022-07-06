@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_user_criteria_mtom">
+    <sc_cat_item_user_criteria_mtom action="INSERT_OR_UPDATE">
+        <sc_cat_item display_value="New Technical Ticket">b78cd6b21b054510fe9e43f1b24bcbfb</sc_cat_item>
+        <sys_class_name>sc_cat_item_user_criteria_mtom</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-05-17 17:50:33</sys_created_on>
+        <sys_id>d33154911b6b8dd4fe9e43f1b24bcb96</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>New Technical Ticket.Obsidian Technical Ticket Users</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sc_cat_item_user_criteria_mtom_d33154911b6b8dd4fe9e43f1b24bcb96</sys_update_name>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-05-17 17:50:33</sys_updated_on>
+        <u_restriction_override>false</u_restriction_override>
+        <user_criteria display_value="Obsidian Technical Ticket Users">620fdcb01b0f0910fe9e43f1b24bcbfa</user_criteria>
+    </sc_cat_item_user_criteria_mtom>
+</record_update>

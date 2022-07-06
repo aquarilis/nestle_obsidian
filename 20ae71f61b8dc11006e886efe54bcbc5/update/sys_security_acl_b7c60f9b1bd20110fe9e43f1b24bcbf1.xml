@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl">
+    <sys_security_acl action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <admin_overrides>true</admin_overrides>
+        <advanced>false</advanced>
+        <condition/>
+        <description>DXC - STRY0182589 :&#13;
+Obsidian project records access is restricted as follows:&#13;
+&#13;
+- Read: by all Obsidian stakeholders (all users part of a group that has an obsidian group type)&#13;
+- Create Write: Obsidian-NPOS/NBS group members&#13;
+- delete: only admins</description>
+        <name>x_nesa_ng_obsidian_obsidian_project</name>
+        <operation display_value="write">write</operation>
+        <script/>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>admin_Dung Tri_Ly</sys_created_by>
+        <sys_created_on>2022-03-23 08:53:12</sys_created_on>
+        <sys_id>b7c60f9b1bd20110fe9e43f1b24bcbf1</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>x_nesa_ng_obsidian_obsidian_project</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_security_acl_b7c60f9b1bd20110fe9e43f1b24bcbf1</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-03-30 09:44:23</sys_updated_on>
+        <type display_value="record">record</type>
+    </sys_security_acl>
+</record_update>

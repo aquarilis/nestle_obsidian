@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope, $location, spUtil) {
+	/* widget controller */
+	var c = this;
+
+	// set default filter for my tickets tab
+	if(c.data.tab == 'approvals') {
+		c.filter_option = c.options.tabs[1].filter_by_options[0][1];
+		c.options.selected_tab = 1;
+	}
+	else c.filter_option = c.options.tabs[0].filter_by_options[0][1];
+
+
+	// display the number of items on the tab without needing to select it when loading the page
+	var arr = [];
+	for (var i in c.options.tabs) {
+		arr.push({
+			table: c.options.tabs[i].table,
+			filter: c.options.tabs[i].filter,
+		})
+	}
+
+	var ga = new GlideAjax('DXCPortalRecordCount');
+	ga.addParam('sysparm_name', 'countMultiple');
+	ga.addParam('list_filter', JSON.stringify(arr));
+	ga.getXML(getAnswer);
+
+	function getAnswer(response) {
+		var answer = response.responseXML.documentElement.getAttribute("answer");
+		var countList = JSON.parse(answer);
+		c.options.header_count = countList;
+	}
+
+	function update_record_count(table, query, index) {
+		var ga = new GlideAjax('DXCPortalRecordCount');
+		ga.addParam('sysparm_name', 'count');
+		ga.addParam('table_name', table);
+		ga.addParam('query_statement', query);
+		ga.getXML(parseResult);
+
+		function parseResult(response) {
+			var answer = response.responseXML.documentElement.getAttribute("answer");
+			c.options.header_count[index] = answer;
+			c.load_queue[index] = false;
+		}
+	}
+	update_record_count(c.options.tabs[0].table, c.options.tabs[0].filter, 0);
+	// 	for (var i = 0; i< c.options.tabs.length; i++)
+	// 		{
+	// 			var t = c.options.tabs[i];
+	// 			update_record_count(t.table, t.filter, i);
+	// 		}
+	c.load_queue = [];
+	for (var i = 0; i < c.options.tabs.length; i++) {
+		c.load_queue.push(false);
+	}
+	c.tab_changed = function(index) {
+		if (index == '0' || index == '1' || index == '2')
+			c.filter_option = c.options.tabs[index].filter_by_options[0][1];
+		else
+			c.filter_option = '';
+
+		c.sort_field = "";
+		c.data.sort_options = c.options.tabs[index].sort_options;
+		c.data.filter_options = c.options.tabs[index].filter_by_options;
+
+		c.options.selected_tab = index;
+		var tab_obj = c.options.tabs[index];
+		var params = $scope.data.widgetParams;
+		params.title = tab_obj.title;
+		params.table = tab_obj.table;
+		params.fields = tab_obj.fields;
+		params.filter = tab_obj.filter;
+		params.filter_by_options = tab_obj.filter_by_options;
+		params.o = 'sys_updated_on';
+		params.d = c.sort_field;
+		params.collapsed = "false";
+		params.id = tab_obj.id;
+		params.header_display = tab_obj.title;
+
+		update_record_count(tab_obj.table, tab_obj.filter, index);
+
+		spUtil.get('dxc-data-tabe-separate-survey', params).then(function(response) {
+			$scope.data.dataTableWidget = response;
+		});
+	}
+
+	$scope.$watch('c.sort_field', function() {
+		if (c.sort_field) {
+			var index = c.options.selected_tab;
+			c.data.sort_options = c.options.tabs[index].sort_options;
+			c.data.filter_options = c.options.tabs[index].filter_by_options;
+
+			c.options.selected_tab = index;
+			var tab_obj = c.options.tabs[index];
+			var params = $scope.data.widgetParams;
+			params.title = tab_obj.title;
+			params.table = tab_obj.table;
+			params.fields = tab_obj.fields;
+			if (c.filter_option)
+				params.filter = c.filter_option
+			else
+				params.filter = tab_obj.filter;
+
+			params.o = "sys_updated_on";
+			params.d = c.sort_field;
+			params.collapsed = "false";
+			params.id = c.options.tabs[index].id;
+
+
+
+			spUtil.get('dxc-data-tabe-separate-survey', params).then(function(response) {
+				$scope.data.dataTableWidget = response;
+			});
+		}
+
+	});
+
+	$scope.$watch('c.filter_option', function() {
+		if (c.filter_option != "" && c.filter_option != undefined) {
+			var index = c.options.selected_tab;
+			c.data.sort_options = c.options.tabs[index].sort_options;
+			c.data.filter_options = c.options.tabs[index].filter_by_options;
+			c.options.selected_tab = index;
+			var tab_obj = c.options.tabs[index];
+			var params = $scope.data.widgetParams;
+			params.title = tab_obj.title;
+			params.table = tab_obj.table;
+			params.fields = tab_obj.fields;
+			params.filter = c.filter_option;
+			params.filter_by_options = tab_obj.filter_by_options;
+			params.o = "sys_updated_on";
+			params.d = c.sort_field;
+			params.collapsed = "false";
+			params.id = c.options.tabs[index].id;
+			c.load_queue[index] = true;
+			update_record_count(tab_obj.table, c.filter_option, index);
+
+			spUtil.get('dxc-data-tabe-separate-survey', params).then(function(response) {
+				$scope.data.dataTableWidget = response;
+			});
+		}
+	});
+
+	$scope.$on('$sp.updateHeaderCount', function() {
+		var currentCount = parseInt(c.options.header_count[c.options.selected_tab]);
+		c.options.header_count[c.options.selected_tab] = currentCount - 1;
+	});
+
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.filter-select {&#13;
+  height: 35px;&#13;
+  background-color: black;&#13;
+  color: white;&#13;
+  border-radius: 3px;&#13;
+  margin: 15px;&#13;
+&#13;
+  text-align-last: center;&#13;
+}&#13;
+&#13;
+.header {&#13;
+  height: 35px;&#13;
+}&#13;
+&#13;
+.header_tab {&#13;
+  float: left;&#13;
+  min-width: 180px;&#13;
+  background-color: #000 ;&#13;
+  height: 35px;&#13;
+&#13;
+  text-align: center;&#13;
+  padding-top: 8px;&#13;
+  color: white;&#13;
+&#13;
+}&#13;
+&#13;
+.header_tab_selected {&#13;
+  float: left;&#13;
+  min-width: 180px;&#13;
+  background-color: #c1c1c1;&#13;
+  height: 35px;&#13;
+&#13;
+  text-align: center;&#13;
+  padding-top: 8px;&#13;
+  color: #838383;&#13;
+&#13;
+}&#13;
+&#13;
+&#13;
+.header_title {&#13;
+  width: 100%;&#13;
+&#13;
+  text-align: center;&#13;
+  font-weight: bold;&#13;
+}&#13;
+&#13;
+.table-content-inner {&#13;
+  background-color: teal;&#13;
+}&#13;
+&#13;
+table {&#13;
+  font-family: arial, sans-serif;&#13;
+  border-collapse: collapse;&#13;
+  width: 100%;&#13;
+}&#13;
+&#13;
+td,&#13;
+th {&#13;
+  border: 1px solid #dddddd;&#13;
+  text-align: left;&#13;
+  padding: 8px;&#13;
+}&#13;
+&#13;
+tr:nth-child(even) {&#13;
+  background-color: #dddddd;&#13;
+}&#13;
+.table-component{&#13;
+  border: 1px solid #262626;&#13;
+  border-radius: 0px 5px 5px 5px;&#13;
+}&#13;
+.panel{&#13;
+  margin-bottom: 0px !important;&#13;
+  border-radius: 0px 0px 5px 5px !important;&#13;
+}&#13;
+&#13;
+.panel-body {&#13;
+  padding: 0px 1px !important;&#13;
+}&#13;
+&#13;
+thead{&#13;
+  background: #838383;&#13;
+}&#13;
+.th-title{&#13;
+  color: #141414 !important;&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>dxc-obsidian-models</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) { 
+
+ }]]></link>
+        <name>DXC Obsidian Models</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+
+	var utils = new x_nesa_ng_obsidian.DXCObsidianCommonUtils();
+
+	var obsidianCasesGR = new GlideRecord('x_nesa_nexgen_core_nexgen_case_configuration');
+	obsidianCasesGR.addQuery('list_cases_in_my_cases_generic_page', true);
+	obsidianCasesGR.addQuery('my_cases_columns', '!=', '');
+	obsidianCasesGR.addQuery('my_cases_query', '!=', '').addOrCondition('my_cases_advanced_query', '!=', '');
+	obsidianCasesGR.query();
+
+	while (obsidianCasesGR.next()){	
+		var obj = {};
+		var table = obsidianCasesGR.getValue('table');
+		if (table == x_nesa_ng_obsidian.DXCObsidianConstants.TECHNICAL_TICKET_TABLE && !utils.isUserMarketRelated(gs.getUserID()))
+			continue;
+		else if (table == x_nesa_ng_obsidian.DXCObsidianConstants.TSM_TABLE && !utils.isUserSupplierRelated(gs.getUserID()))
+			continue;
+
+		var grTemp = new GlideRecord(table);
+		obj.title = grTemp.getClassDisplayValue();
+		obj.id = table;
+		obj.table = table;
+		obj.filter = obsidianCasesGR.getValue('my_cases_query') ? obsidianCasesGR.getValue('my_cases_query') : '';
+		obj.page = 'standard_ticket_page';
+		obj.fields = obsidianCasesGR.getValue('my_cases_columns');
+		obj.sort_options = [['Sort by', ''], ['Newest', 'desc'], 'Oldest', 'asc'];
+		obj.filter_by_options = [['Open', 'active=true^' + obj.filter], ['Closed', 'active=false^' + obj.filter]];
+
+		options.tabs.unshift(obj);
+	}
+
+
+	for (var i = 0; i< options.tabs.length; i++)
+	{
+		options.tabs[i].title = gs.getMessage(options.tabs[i].title);
+		for (var j = 0 ; j<  options.tabs[i].filter_by_options.length; j++)
+		{
+			options.tabs[i].filter_by_options[j][0] = gs.getMessage(options.tabs[i].filter_by_options[j][0]);
+		}
+		for (var k = 0 ; k<  options.tabs[i].sort_options.length; k++)
+		{
+			options.tabs[i].sort_options[k][0] = gs.getMessage(options.tabs[i].sort_options[k][0]);
+		}
+	}
+
+	var tab_obj;
+	data.tab = $sp.getParameter("tab");
+	tab_obj = options.tabs[0];
+	data.sort_options = options.tabs[0].sort_options;
+	data.filter_options = options.tabs[0].filter_by_options;
+
+	data.widgetParams = {
+		title: tab_obj.title,
+		table: tab_obj.table,
+		fields: tab_obj.fields,
+		filter: tab_obj.filter,
+		filter_by_options: tab_obj.filter_by_options,
+		o: 'sys_created_on',
+		d: 'descending',
+		"collapsed": "false",
+		id: tab_obj.id,
+		header_display: "My Tickets"
+
+	};
+
+	data.dataTableWidget = $sp.getWidget('dxc-data-tabe-separate-survey', data.widgetParams);
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-04-06 09:50:27</sys_created_on>
+        <sys_id>432a137b1b6a859406e886efe54bcbba</sys_id>
+        <sys_mod_count>20</sys_mod_count>
+        <sys_name>DXC Obsidian Models</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sp_widget_432a137b1b6a859406e886efe54bcbba</sys_update_name>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-04-06 12:21:27</sys_updated_on>
+        <template><![CDATA[<div>
+        <div class="header">
+            <div class="header-tabs" ng-repeat="tab in c.options.tabs track by $index">
+             
+                <div ng-click="c.tab_changed($index)" ng-class="{'header_tab': c.options.selected_tab == $index , 'header_tab_selected': c.options.selected_tab != $index}">
+                    <span class="header_title" >${{{tab.title}}} <span ng-if="!c.load_queue[$index]&&c.options.header_count[$index]!=-1">({{c.options.header_count[$index]}})</span></span>
+                </div>
+              
+            </div>
+        </div>
+        <div class="table-component">
+            <div class="table-content">
+                <div class="filter-options">
+                    <select class="filter-select" ng-model="c.filter_option">
+                      <option value="" selected>${Filter by}</option>
+                      <option  ng-repeat="fo in data.filter_options" value="{{fo[1]}}">${{{fo[0]}}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="table-content-inner">
+					<sp-widget ng-if="data.dataTableWidget" widget="data.dataTableWidget" />
+                </div>
+            </div>
+        </div>
+    </div>]]></template>
+    </sp_widget>
+</record_update>

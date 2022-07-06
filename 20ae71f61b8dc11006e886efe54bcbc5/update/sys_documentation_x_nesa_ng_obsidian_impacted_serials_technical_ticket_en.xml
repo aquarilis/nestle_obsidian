@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="technical_ticket" label="Technical Ticket" language="en" table="x_nesa_ng_obsidian_impacted_serials">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>technical_ticket</element>
+            <help/>
+            <hint/>
+            <label>Technical Ticket</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_impacted_serials</name>
+            <plural>Technical Tickets</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-01-18 11:55:54</sys_created_on>
+            <sys_id>8ceace7e1b810510fe9e43f1b24bcbaf</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Technical Ticket</sys_name>
+            <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+            <sys_update_name>sys_documentation_x_nesa_ng_obsidian_impacted_serials_technical_ticket_en</sys_update_name>
+            <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+            <sys_updated_on>2022-01-18 11:55:54</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

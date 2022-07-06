@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_nesa_ng_obsidian_technical_ticket</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>(DXC) Technical ticket events</name>
+        <order>50</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
+    try {
+
+        var agentRecipientIDs = (current.assigned_to != "" ? current.getValue('assigned_to') : (current.assignment_group.email != "" ? current.assignment_group.email : current.getValue('assignment_group')));
+
+        if (current.operation() == 'insert') {
+            gs.eventQueue("x_nesa_ng_obsidian.technical_ticket.crea", current, gs.getUserID());
+            return;
+        }
+        if (current.priority == 1 && current.state.changesTo(DXCObsidianConstants.TECHNICAL_TICKET_STATE_INFO_COLLECTION)) {
+            gs.eventQueue("x_nesa_ng_obsidian.technical_ticket.p1_v", current, gs.getUserID());
+        }
+        if (current.state.changesTo(DXCObsidianConstants.TECHNICAL_TICKET_STATE_CLOSED) && current.priority == 1) {
+            gs.eventQueue("x_nesa_ng_obsidian.technical_ticket.p1_c", current, gs.getUserID());
+        }
+        if (current.state.changes()) {
+            gs.eventQueue("x_nesa_ng_obsidian.technical_ticket.stat", current, gs.getUserID());
+        }
+        if (current.comments.changes()) {
+            gs.eventQueue("x_nesa_ng_obsidian.technical_ticket.comm", current, agentRecipientIDs, null);
+        }
+
+        
+    } catch (exception) {
+        var dxcLogger = new global.DXCGSLog("com.dxc.global.debugging_level", "(DXC) Technical ticket events");
+        dxcLogger.logError(exception);
+    }
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin_Isaac_Perez</sys_created_by>
+        <sys_created_on>2022-02-10 13:29:38</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>e00cfc1a1be98950fe9e43f1b24bcbdb</sys_id>
+        <sys_mod_count>19</sys_mod_count>
+        <sys_name>(DXC) Technical ticket events</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_e00cfc1a1be98950fe9e43f1b24bcbdb</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-06-09 12:44:48</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=e00cfc1a1be98950fe9e43f1b24bcbdb"/>
+</record_update>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function incidentTicketActions($scope, $http, spUtil, $timeout, spModal, i18n, $window, $uibModal) {
+    /* widget controller */
+    var c = this;
+
+    c.openForm = function() { // open SKU Assignment Feature configuration record producer as a popup
+        spModal.open({
+            size: 'extra',
+            buttons: [],
+            widget: 'dxc-obsidian-sc-catalog-item',
+            widgetInput: {
+                sys_id: c.data.sku_form_id,
+                sku_assignment: c.data.sku_assignment
+            }
+        });
+	
+
+    };
+
+
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.arrow {&#13;
+  position: absolute;&#13;
+  margin-left: 50px;&#13;
+  z-index: 150;&#13;
+  border-left: 12px solid transparent;&#13;
+  border-right: 12px solid transparent;&#13;
+  border-bottom: 12px solid #FFFFFF;&#13;
+}&#13;
+&#13;
+.question-tab{&#13;
+	font-size:1.4rem;&#13;
+}&#13;
+&#13;
+.dropdown-menu li {&#13;
+  cursor: pointer;&#13;
+}&#13;
+&#13;
+.action-btn {&#13;
+  width: 100%;&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>sku-assignment-standard-ticket</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>SKU Assignment Standard Ticket</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	data.sku_form_id = gs.getProperty('x_nesa_ng_obsidian.sku_assignment_feature_configuration_sys_ids');
+	data.sku_assignment = $sp.getParameter('sys_id');
+	data.showButton = new x_nesa_ng_obsidian.DXCObsidianSKUUtils().canConfigureFeatures(data.sku_assignment);
+	
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-05-04 16:21:04</sys_created_on>
+        <sys_id>f5100d091bd3851c06e886efe54bcbec</sys_id>
+        <sys_mod_count>22</sys_mod_count>
+        <sys_name>SKU Assignment Standard Ticket</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sp_widget_f5100d091bd3851c06e886efe54bcbec</sys_update_name>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-05-06 09:33:14</sys_updated_on>
+        <template><![CDATA[<div ng-if="data.showButton">
+  <button class="btn btn-info" ng-click="c.openForm()">${Configure Features}</button>
+</div>]]></template>
+    </sp_widget>
+</record_update>

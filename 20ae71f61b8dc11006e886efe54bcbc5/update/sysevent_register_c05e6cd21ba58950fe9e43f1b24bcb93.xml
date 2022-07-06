@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysevent_register">
+    <sysevent_register action="INSERT_OR_UPDATE">
+        <caller_access/>
+        <description>Universal task have has been inserted and assigned</description>
+        <event_name>x_nesa_ng_obsidian.universal_task.create</event_name>
+        <fired_by>(DXC) Trigger event task created for ITT</fired_by>
+        <queue/>
+        <suffix>universal_task.create</suffix>
+        <sys_class_name>sysevent_register</sys_class_name>
+        <sys_created_by>admin_Agata_Swoboda</sys_created_by>
+        <sys_created_on>2022-02-10 12:25:55</sys_created_on>
+        <sys_id>c05e6cd21ba58950fe9e43f1b24bcb93</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>x_nesa_ng_obsidian.universal_task.create</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sysevent_register_c05e6cd21ba58950fe9e43f1b24bcb93</sys_update_name>
+        <sys_updated_by>admin_Agata_Swoboda</sys_updated_by>
+        <sys_updated_on>2022-02-10 13:45:34</sys_updated_on>
+        <table>sn_uni_task_universal_task</table>
+    </sysevent_register>
+</record_update>

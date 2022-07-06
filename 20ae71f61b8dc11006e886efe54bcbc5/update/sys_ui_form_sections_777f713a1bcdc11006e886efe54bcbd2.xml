@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_form_sections form_id="777f713a1bcdc11006e886efe54bcbd2" sys_domain="global" table="x_nesa_ng_obsidian_technical_ticket" version="3">
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>0</position>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-01-18 11:06:11</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>fb7f7d7a1bcdc11006e886efe54bcbb2</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_nesa_ng_obsidian_technical_ticket" name="x_nesa_ng_obsidian_technical_ticket" sys_domain="global" view="Default view">777f713a1bcdc11006e886efe54bcbd2</sys_ui_form>
+            <sys_ui_section caption="NULL" display_value="" name="x_nesa_ng_obsidian_technical_ticket" sys_domain="global" view="Default view">7b7f713a1bcdc11006e886efe54bcbd5</sys_ui_section>
+            <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+            <sys_updated_on>2022-01-18 11:06:11</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>1</position>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-01-18 11:18:11</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>67328efe1b81051006e886efe54bcb8f</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_nesa_ng_obsidian_technical_ticket" name="x_nesa_ng_obsidian_technical_ticket" sys_domain="global" view="Default view">777f713a1bcdc11006e886efe54bcbd2</sys_ui_form>
+            <sys_ui_section caption="Machine information" display_value="Machine information" name="x_nesa_ng_obsidian_technical_ticket" sys_domain="global" view="Default view">2f328efe1b81051006e886efe54bcb8c</sys_ui_section>
+            <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+            <sys_updated_on>2022-01-18 11:18:56</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>2</position>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-02-07 16:24:24</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>cc288a5d1ba1415cfe9e43f1b24bcb07</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_nesa_ng_obsidian_technical_ticket" name="x_nesa_ng_obsidian_technical_ticket" sys_domain="global" view="Default view">777f713a1bcdc11006e886efe54bcbd2</sys_ui_form>
+            <sys_ui_section caption="Additional information" display_value="Additional information" name="x_nesa_ng_obsidian_technical_ticket" sys_domain="global" view="Default view">40284a5d1ba1415cfe9e43f1b24bcbb2</sys_ui_section>
+            <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+            <sys_updated_on>2022-02-07 16:24:24</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>3</position>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-01-18 11:06:11</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>b77f7d7a1bcdc11006e886efe54bcbb7</sys_id>
+            <sys_mod_count>6</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_nesa_ng_obsidian_technical_ticket" name="x_nesa_ng_obsidian_technical_ticket" sys_domain="global" view="Default view">777f713a1bcdc11006e886efe54bcbd2</sys_ui_form>
+            <sys_ui_section caption="Communication" display_value="Communication" name="x_nesa_ng_obsidian_technical_ticket" sys_domain="global" view="Default view">777f7d7a1bcdc11006e886efe54bcbb3</sys_ui_section>
+            <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+            <sys_updated_on>2022-02-07 16:24:24</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>4</position>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-01-18 11:51:13</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>57c946ba1b810510fe9e43f1b24bcbf6</sys_id>
+            <sys_mod_count>4</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_nesa_ng_obsidian_technical_ticket" name="x_nesa_ng_obsidian_technical_ticket" sys_domain="global" view="Default view">777f713a1bcdc11006e886efe54bcbd2</sys_ui_form>
+            <sys_ui_section caption="History &amp; Logs" display_value="History &amp; Logs" name="x_nesa_ng_obsidian_technical_ticket" sys_domain="global" view="Default view">cfc946ba1b810510fe9e43f1b24bcbf2</sys_ui_section>
+            <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+            <sys_updated_on>2022-02-07 16:24:24</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>5</position>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-02-07 16:09:26</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>f0b40e951b21415cfe9e43f1b24bcb3a</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_nesa_ng_obsidian_technical_ticket" name="x_nesa_ng_obsidian_technical_ticket" sys_domain="global" view="Default view">777f713a1bcdc11006e886efe54bcbd2</sys_ui_form>
+            <sys_ui_section caption="Technical Solution Management" display_value="Technical Solution Management" name="x_nesa_ng_obsidian_technical_ticket" sys_domain="global" view="Default view">38b40e951b21415cfe9e43f1b24bcb36</sys_ui_section>
+            <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+            <sys_updated_on>2022-02-07 16:38:08</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form action="INSERT_OR_UPDATE">
+            <name>x_nesa_ng_obsidian_technical_ticket</name>
+            <roles/>
+            <sys_class_name>sys_ui_form</sys_class_name>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-01-18 11:06:11</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>777f713a1bcdc11006e886efe54bcbd2</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_nesa_ng_obsidian_technical_ticket</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+            <sys_update_name>sys_ui_form_sections_777f713a1bcdc11006e886efe54bcbd2</sys_update_name>
+            <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+            <sys_updated_on>2022-01-18 11:06:11</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_form>
+    </sys_ui_form_sections>
+</record_update>

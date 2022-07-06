@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this table is used for &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this table has been created or updated &gt;" label="Obsidian SKU" max_length="40" name="x_nesa_ng_obsidian_obsidian_sku" sizeclass="40" type="collection">
+        <element label="Current version" max_length="40" name="current_version" type="string"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Model Configuration" max_length="32" name="model_configuration" read_only="true" reference="x_nesa_ng_obsidian_obsidian_model_configuration" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Obsidian model" max_length="32" name="obsidian_model" read_only="true" reference="x_nesa_ng_obsidian_obsidian_model" type="reference"/>
+        <element label="Previous version" max_length="40" name="previous_version" type="string"/>
+        <element label="SKU Internal description" max_length="40" name="sku_internal_description" type="string"/>
+        <element display="true" label="SKU Supplier code" mandatory="true" max_length="40" name="sku_supplier_code" type="string"/>
+        <element label="SKU Supplier description" mandatory="true" max_length="40" name="sku_supplier_description" type="string"/>
+        <element label="SKU Supplier detailed description" mandatory="true" max_length="40" name="sku_supplier_detailed_description" type="string"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="SKU Vendor" max_length="32" name="sku_vendor" read_only="true" reference="core_company" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Source SKU Assignment" max_length="32" name="source_sku_assignment" read_only="true" reference="x_nesa_ng_obsidian_sku_assignment" reference_cascade_rule="delete" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,omit_sys_original=true,serializer=com.glide.currency2.Currency2XMLSerializer" label="Theoretical feature price" max_length="32" name="theoretical_feature_price" read_only="true" type="currency2"/>
+        <element attributes="edge_encryption_enabled=true,omit_sys_original=true,serializer=com.glide.currency2.Currency2XMLSerializer" label="Theoretical gross price" max_length="32" name="theoretical_gross_price" read_only="true" type="currency2"/>
+        <element attributes="edge_encryption_enabled=true,omit_sys_original=true,serializer=com.glide.currency2.Currency2XMLSerializer" label="Validated price" max_length="32" name="validated_price" read_only="true" type="currency2"/>
+        <index name="index">
+            <element name="theoretical_gross_price"/>
+        </index>
+        <index name="index2">
+            <element name="source_sku_assignment"/>
+        </index>
+        <index name="index3">
+            <element name="validated_price"/>
+        </index>
+        <index name="index4">
+            <element name="model_configuration"/>
+        </index>
+        <index name="index5">
+            <element name="theoretical_feature_price"/>
+        </index>
+        <index name="index6">
+            <element name="obsidian_model"/>
+        </index>
+        <index name="index7">
+            <element name="sku_vendor"/>
+        </index>
+    </element>
+</database>

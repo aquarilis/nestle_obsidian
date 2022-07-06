@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this table is used for &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this table has been created or updated &gt;" extends="cmdb_model" label="Obsidian Spare Part" max_length="40" name="x_nesa_ng_obsidian_obsidian_spare_part" sizeclass="0" type="collection">
+        <element attributes="edge_encryption_enabled=true,omit_sys_original=true,serializer=com.glide.currency2.Currency2XMLSerializer" label="Gross price" max_length="32" name="gross_price" type="currency2"/>
+        <element attributes="edge_encryption_enabled=true" label="Is replaced by" max_length="100" name="is_replaced_by" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Is replacement for" max_length="100" name="is_replacement_for" type="string"/>
+        <element label="Model version" max_length="40" name="model_version" type="string"/>
+        <element attributes="edge_encryption_enabled=true,omit_sys_original=true,serializer=com.glide.currency2.Currency2XMLSerializer" label="Price" mandatory="true" max_length="32" name="price" type="currency2"/>
+        <element label="SAP Material number" mandatory="true" max_length="40" name="sap_material_number" type="string"/>
+        <element label="SAP Material number description" mandatory="true" max_length="40" name="sap_material_number_description" type="string"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Supplier" mandatory="true" max_length="32" name="supplier" reference="core_company" reference_qual="u_active=true^u_is_parent_vendor=true^u_restrict_visibility_toLIKEec2686691b61c110fe9e43f1b24bcbeb^EQ" reference_qual_condition="u_active=true^u_is_parent_vendor=true^u_restrict_visibility_toLIKEec2686691b61c110fe9e43f1b24bcbeb^EQ" type="reference"/>
+        <element label="Supplier SKU code" mandatory="true" max_length="40" name="supplier_sku_code" type="string"/>
+        <element label="Supplier SKU description" mandatory="true" max_length="40" name="supplier_sku_description" type="string"/>
+        <index name="index">
+            <element name="price"/>
+        </index>
+        <index name="index2">
+            <element name="supplier"/>
+        </index>
+        <index name="index3">
+            <element name="gross_price"/>
+        </index>
+    </element>
+</database>

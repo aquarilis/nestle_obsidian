@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" extends="sys_import_set_row" label="(DXC) Obsidian - 06 - SAP Materials" max_length="40" name="x_nesa_ng_obsidian_sap_material_import" sizeclass="262" type="collection">
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Batch managed" label="Batch managed" max_length="40" name="u_batch_managed" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=E" label="E" max_length="151" name="u_e" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Obsidian Model" label="Obsidian Model" max_length="40" name="u_obsidian_model" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=SAP Material Description" label="SAP Material Description" max_length="40" name="u_sap_material_description" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=SAP Material number" label="SAP Material number" max_length="40" name="u_sap_material_number" type="string"/>
+    </element>
+</database>

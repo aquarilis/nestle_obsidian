@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>Clear the value of the Model variable if the Supplier is populated</description>
+        <field>supplier</field>
+        <global>true</global>
+        <isolate_script>false</isolate_script>
+        <messages/>
+        <name>(DXC) Handle model and supplier</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+    try {
+        if (g_form.getValue('model') != '') {
+            var ajax = new GlideAjax("DXCTechnicalTicketUtilsAJAX");
+            ajax.addParam("sysparm_name", "getObsidianModelInformation");
+            ajax.addParam("sysparm_model_id", g_form.getValue('model'));
+            ajax.getXML(ajaxResponseSupplierChanges);
+        }
+    } catch (exception) {
+        // Specify the name of the Client Script in the log message
+        jslog('Error in Client Script <(DXC) Handle model and supplier>: ' + exception);
+    }
+}
+
+function ajaxResponseSupplierChanges(serverResponse) {
+    // get result element and attributes
+    var result = serverResponse.responseXML.getElementsByTagName("result");
+	
+    var supplier = result[0].getAttribute("manufacturer");
+	var model = result[0].getAttribute("model");
+	
+	if (g_form.getValue('supplier') != supplier)
+		g_form.setValue('model', '');
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin_Agata_Swoboda</sys_created_by>
+        <sys_created_on>2022-02-08 13:35:34</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>7d68eaa11be9c110fe9e43f1b24bcb4d</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>(DXC) Handle model and supplier</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_client_7d68eaa11be9c110fe9e43f1b24bcb4d</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-05-09 16:00:02</sys_updated_on>
+        <table>x_nesa_ng_obsidian_technical_ticket</table>
+        <type>onChange</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="default_currency" table="x_nesa_ng_obsidian_obsidian_model" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>default_currency</element>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-03-30 07:49:44</sys_created_on>
+            <sys_id>da6b7a291be24d10fe9e43f1b24bcbdf</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>default_currency</sys_name>
+            <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+            <sys_update_name>sys_choice_x_nesa_ng_obsidian_obsidian_model_default_currency</sys_update_name>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-03-30 07:49:44</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>default_currency</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>CHF</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sequence>0</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-03-30 07:49:44</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>526b7a291be24d10fe9e43f1b24bcbdf</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-03-30 07:49:44</sys_updated_on>
+            <value>CHF</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>default_currency</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>CNY</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-03-30 07:49:44</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>9e6b7a291be24d10fe9e43f1b24bcbe0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-03-30 07:49:44</sys_updated_on>
+            <value>CNY</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>default_currency</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>EUR</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sequence>2</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-03-30 07:49:44</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>166b7a291be24d10fe9e43f1b24bcbe2</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-03-30 07:49:44</sys_updated_on>
+            <value>EUR</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>default_currency</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>GBP</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sequence>3</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-03-30 07:49:44</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>9a6b7a291be24d10fe9e43f1b24bcbe3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-03-30 07:49:44</sys_updated_on>
+            <value>GBP</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>default_currency</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>JPY</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sequence>4</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-03-30 07:49:44</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>126b7a291be24d10fe9e43f1b24bcbe5</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-03-30 07:49:44</sys_updated_on>
+            <value>JPY</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>default_currency</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>USD</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sequence>5</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-03-30 07:49:44</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>9a6b36611b264d10fe9e43f1b24bcb12</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-03-30 07:49:44</sys_updated_on>
+            <value>USD</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

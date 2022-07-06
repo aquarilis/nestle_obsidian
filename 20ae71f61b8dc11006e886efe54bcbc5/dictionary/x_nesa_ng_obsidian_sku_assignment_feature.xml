@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this table is used for &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this table has been created or updated &gt;" label="SKU Assignment Feature" max_length="40" name="x_nesa_ng_obsidian_sku_assignment_feature" sizeclass="1767" type="collection">
+        <element attributes="edge_encryption_enabled=true" choice="1" choice_field="editable" choice_table="x_nesa_ng_obsidian_obsidian_model_feature" label="Editable" max_length="40" name="editable" read_only="true" type="string">
+            <choice/>
+        </element>
+        <element attributes="edge_encryption_enabled=true" choice="1" choice_field="feature_category" choice_table="x_nesa_ng_obsidian_obsidian_model_feature" label="Feature category" max_length="40" name="feature_category" read_only="true" type="string">
+            <choice/>
+        </element>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Feature option" mandatory="true" max_length="32" name="feature_option" read_only="true" reference="x_nesa_ng_obsidian_obsidian_feature_option" reference_qual="javascript:&quot;active=true^model_feature=&quot;+ current.model_feature;" type="reference" use_reference_qualifier="advanced"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Feature option choice" max_length="40" name="feature_option_choice" read_only="true" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Allowed" sequence="0" value="Allowed"/>
+                <element inactive_on_update="false" label="Defaulted" sequence="1" value="Defaulted"/>
+                <element inactive_on_update="false" label="Restricted" sequence="2" value="Restricted"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true,omit_sys_original=true,serializer=com.glide.currency2.Currency2XMLSerializer" label="Feature price" max_length="32" name="feature_price" read_only="true" type="currency2"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" choice_field="feature_subcategory" choice_table="x_nesa_ng_obsidian_obsidian_model_feature" label="Feature subcategory" max_length="40" name="feature_subcategory" read_only="true" type="string">
+            <choice/>
+        </element>
+        <element attributes="edge_encryption_enabled=true,omit_sys_original=true,serializer=com.glide.currency2.Currency2XMLSerializer" label="Gross price" max_length="32" name="gross_price" read_only="true" type="currency2"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" display="true" label="Model feature" max_length="32" name="model_feature" read_only="true" reference="x_nesa_ng_obsidian_obsidian_model_feature" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Obsidian Model" max_length="32" name="obsidian_model" read_only="true" reference="x_nesa_ng_obsidian_obsidian_model" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Obsidian SKU" max_length="32" name="obsidian_sku" read_only="true" reference="x_nesa_ng_obsidian_obsidian_sku" reference_cascade_rule="delete" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="SKU Assignment" max_length="32" name="sku_assignment" read_only="true" reference="x_nesa_ng_obsidian_sku_assignment" reference_cascade_rule="delete" type="reference"/>
+        <element label="Specification comments" max_length="1000" name="specification_comments" type="string"/>
+        <index name="index">
+            <element name="model_feature"/>
+        </index>
+        <index name="index2">
+            <element name="sku_assignment"/>
+        </index>
+        <index name="index3">
+            <element name="feature_option"/>
+        </index>
+        <index name="index4">
+            <element name="feature_price"/>
+        </index>
+        <index name="index5">
+            <element name="gross_price"/>
+        </index>
+        <index name="index6">
+            <element name="obsidian_model"/>
+        </index>
+        <index name="index7">
+            <element name="obsidian_sku"/>
+        </index>
+    </element>
+</database>

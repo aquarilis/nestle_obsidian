@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_m2m">
+    <sys_m2m action="INSERT_OR_UPDATE">
+        <from_table>x_nesa_ng_obsidian_obsidian_new_model_launch</from_table>
+        <m2m_from_field>obsidian_new_model_launch</m2m_from_field>
+        <m2m_from_label>NML Checklist Items</m2m_from_label>
+        <m2m_table>x_nesa_ng_obsidian_m2m_nml_checklist</m2m_table>
+        <m2m_to_field>nml_checklist_item</m2m_to_field>
+        <m2m_to_label>Obsidian New Model Launches</m2m_to_label>
+        <sys_class_name>sys_m2m</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-03-24 16:32:22</sys_created_on>
+        <sys_id>534935f71b12c19406e886efe54bcb1f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_nesa_ng_obsidian_m2m_nml_checklist</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_m2m_534935f71b12c19406e886efe54bcb1f</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-03-24 16:32:22</sys_updated_on>
+        <to_table>x_nesa_ng_obsidian_nml_checklist_item</to_table>
+    </sys_m2m>
+</record_update>

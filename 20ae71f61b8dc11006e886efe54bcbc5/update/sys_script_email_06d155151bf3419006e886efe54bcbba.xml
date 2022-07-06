@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_email">
+    <sys_script_email action="INSERT_OR_UPDATE">
+        <name>x_nesa_ng_obsidian.universal_task.assignment_notification_body</name>
+        <new_lines_to_html>true</new_lines_to_html>
+        <script><![CDATA[(function runMailScript( /* GlideRecord */ current, /* TemplatePrinter */ template,
+    /* Optional EmailOutbound */
+    email, /* Optional GlideRecord */ email_action,
+    /* Optional GlideRecord */
+    event) {
+    try {
+
+        var lmaLogger = new global.GSLog("com.dxc.global.debugging_enabled", "LMADebug");
+        template.print('<p>A task has been assigned to ' + (current.assigned_to == "" ? current.assignment_group.getDisplayValue() : "you") + '.' + '</p>');
+
+
+        var parentGR = current.parent.getRefRecord();
+
+        if (!parentGR.isValidRecord()) {
+            throw "couldn't get parent Task record for " + current.getDisplayValue();
+        }
+
+        var parentTableLabel = parentGR.getClassDisplayValue();
+        var parentTableName = parentGR.getTableName();
+
+        var impactedProcessDescription = (function () {
+            switch (parentTableName) {
+                case "x_nesa_ng_obsidian_technical_ticket":
+                    return parentTableLabel + " " + parentGR.getValue("short_description");
+                case "x_nesa_ng_obsidian_technical_solution_management":
+                    return parentTableLabel + " " + parentGR.getValue("short_description");
+                case "x_nesa_ng_obsidian_obsidian_new_model_launch":
+                    return "New Model launch for '" + parentGR.obsidian_model.getDisplayValue() + "' (" + parentGR.obsidian_model.supplier.name + ")";
+                case "x_nesa_ng_obsidian_sku_assignment":
+                    return "SKU Assignment for model '" + parentGR.obsidian_model.getDisplayValue() + "' (" + parentGR.obsidian_model.supplier.name + ") in " + parentGR.assignment_country.getDisplayValue();
+                default:
+                    return parentTableLabel + " (" + parentGR.getValue("short_description") + ")";
+            }
+
+        })();
+
+        template.print('<table style="width: 90%; height: 65px; vertical-align: top;">');
+        template.print('    <tbody>');
+        template.print('        <tr style="height: 13px;">');
+        template.print('            <td style="width: 33%; height: 13px;"><strong>Impacted process:</strong></td>');
+        template.print('            <td style="height: 13px;">' + impactedProcessDescription + '</td>');
+        template.print('        </tr>');
+        template.print('        <tr style="height: 13px;">');
+        template.print('            <td style="width: 33%; height: 13px;"><strong>Assigned task description:</strong></td>');
+        template.print('            <td style="height: 13px;">' + current.getValue("short_description") + '</td>');
+        template.print('        </tr>');
+        template.print('    </tbody>');
+        template.print('</table>');
+
+
+        var taskLink = (function () {
+            var notificationTaskLink = gs.getProperty('glide.servlet.uri'); //https://nestledev.service-now.com/
+
+            var linkPointsToBackEnd = (function () {
+
+                if ((universalTaskAssignmentGroupSysID = current.getValue("assignment_group"))) {
+                    var assignmentGroupBackEndRolesGR = new GlideRecord('sys_group_has_role');
+                    assignmentGroupBackEndRolesGR.addEncodedQuery("role.nameSTARTSWITHx_nesa_ng_obsidian^group=" + universalTaskAssignmentGroupSysID);
+                    assignmentGroupBackEndRolesGR.setLimit(1);
+                    assignmentGroupBackEndRolesGR.query();
+                    if (assignmentGroupBackEndRolesGR.hasNext()) {
+                        return true;
+                    }
+                }
+
+                if ((universalTaskAssignedToSysID = current.getValue("assigned_to"))) {
+                    var assignedToBackEndRolesGR = new GlideRecord('sys_user_has_role');
+                    assignedToBackEndRolesGR.addEncodedQuery("role.nameSTARTSWITHx_nesa_ng_obsidian^user=" + universalTaskAssignedToSysID);
+                    assignedToBackEndRolesGR.setLimit(1);
+                    assignedToBackEndRolesGR.query();
+                    if (assignedToBackEndRolesGR.hasNext()){
+                        return true;
+                    }
+                }
+
+                return false;
+
+            })();
+
+
+            //if task is of "Collect employee input" type, point to front end because back-end doesn't offer ways to fill in the survey
+            if (current.type == "collect_employee_input"){
+                linkPointsToBackEnd = false;
+            }
+
+
+
+            if (linkPointsToBackEnd){
+                if (parentTableName == "x_nesa_ng_obsidian_obsidian_new_model_launch"){
+                    parentGR = parentGR.obsidian_model.getRefRecord();
+                }
+                return notificationTaskLink + "nav_to.do?uri=" + parentGR.getLink();
+            }
+
+            //return the portal link
+            return notificationTaskLink + "nsc?id=standard_ticket&table=" + parentTableName + "&sys_id=" + parentGR.getUniqueValue() + "&view=sp";
+        })();
+
+
+        template.print('<p>Click <a href="' + taskLink + '">here</a> to view the task in its context.</p>');
+
+
+    } catch (e) {
+        template.print("error in x_nesa_ng_obsidian.universal_task.assignment_notification_body email script: " + e);
+    }
+
+})(current, template, email, email_action, event);]]></script>
+        <sys_class_name>sys_script_email</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-05-30 08:48:30</sys_created_on>
+        <sys_id>06d155151bf3419006e886efe54bcbba</sys_id>
+        <sys_mod_count>40</sys_mod_count>
+        <sys_name>x_nesa_ng_obsidian.universal_task.assignment_notification_body</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_email_06d155151bf3419006e886efe54bcbba</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-05-30 11:52:38</sys_updated_on>
+    </sys_script_email>
+</record_update>

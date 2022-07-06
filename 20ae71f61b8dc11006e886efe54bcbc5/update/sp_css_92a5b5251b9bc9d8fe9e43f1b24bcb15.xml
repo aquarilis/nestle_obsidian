@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_css">
+    <sp_css action="INSERT_OR_UPDATE">
+        <css>.modal-extra {&#13;
+  width: 1100px;&#13;
+  .feature-content {&#13;
+    max-height: 80vh;&#13;
+    overflow-y: auto;&#13;
+  }&#13;
+}&#13;
+&#13;
+/* Fix Pencil icon for MRVS action */&#13;
+#std-uib-tabset {&#13;
+  .fa-pencil:before {&#13;
+    content: "\f040" !important;&#13;
+  }&#13;
+}&#13;
+&#13;
+/* Hide reference icon */&#13;
+#obsidian-nml-modal {&#13;
+&#13;
+  .field-has-reference &gt; .add-on .lookup{&#13;
+&#13;
+    display:none;&#13;
+&#13;
+  }&#13;
+}</css>
+        <name>obsidian_stylesheet</name>
+        <sys_class_name>sp_css</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-05-06 09:32:28</sys_created_on>
+        <sys_id>92a5b5251b9bc9d8fe9e43f1b24bcb15</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>obsidian_stylesheet</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sp_css_92a5b5251b9bc9d8fe9e43f1b24bcb15</sys_update_name>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-06-23 14:07:10</sys_updated_on>
+    </sp_css>
+</record_update>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_application">
+    <sys_ui_application action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <hint/>
+        <name>Obsidian project</name>
+        <order/>
+        <roles>x_nesa_ng_obsidian.technical_ticket_user</roles>
+        <sys_class_name>sys_ui_application</sys_class_name>
+        <sys_created_by>admin_Dung Tri_Ly</sys_created_by>
+        <sys_created_on>2022-03-23 08:53:06</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>9ac68b9b1bd20110fe9e43f1b24bcbcf</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Obsidian project</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_ui_application_9ac68b9b1bd20110fe9e43f1b24bcbcf</sys_update_name>
+        <sys_updated_by>admin_Dung Tri_Ly</sys_updated_by>
+        <sys_updated_on>2022-03-23 08:53:06</sys_updated_on>
+    </sys_ui_application>
+</record_update>

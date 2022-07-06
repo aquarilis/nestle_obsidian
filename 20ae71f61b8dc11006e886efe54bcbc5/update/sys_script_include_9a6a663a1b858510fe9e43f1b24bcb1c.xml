@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_nesa_ng_obsidian.DXCTechnicalTicketUtilsAJAX</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>DXCTechnicalTicketUtilsAJAX</name>
+        <script><![CDATA[var DXCTechnicalTicketUtilsAJAX = Class.create();
+DXCTechnicalTicketUtilsAJAX.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+
+
+
+    processRequesterGroup: function () {
+        var lmaLogger = new global.GSLog("com.dxc.global.debugging_enabled", "LMADebug");
+        var groupSysId = this.getParameter("sysparm_group_sys_id");
+
+        var answerJSON = {
+            impacted_country_sys_id: null,
+            impacted_country_display_value: null,
+        };
+
+
+        var coveredLocation_GR = new GlideRecord('sys_group_covers_location');
+        coveredLocation_GR.addQuery("group", groupSysId);
+        coveredLocation_GR.addQuery("location.u_type", "country");
+        coveredLocation_GR.query();
+        if (coveredLocation_GR.next()) {
+            answerJSON.impacted_country_sys_id = coveredLocation_GR.getValue("location");
+            answerJSON.impacted_country_display_value = coveredLocation_GR.getDisplayValue("location");
+        }
+
+
+        return JSON.stringify(answerJSON, null, 4, 4);
+
+
+    },
+
+    getObsidianModelInformation: function () {
+        var modelId = this.getParameter('sysparm_model_id');
+
+        var result = this.newItem("result");
+        result.setAttribute("supplier", "");
+        result.setAttribute("model", "");
+        result.setAttribute("version", "");
+
+        var modelGR = new GlideRecord(x_nesa_ng_obsidian.DXCObsidianConstants.NML_TABLE_NAMES.MODEL_TABLE);
+        if (!modelGR.get(modelId)) {
+            return;
+        }
+
+        result.setAttribute("supplier", modelGR.getValue('supplier'));
+        result.setAttribute("model", modelGR.getUniqueValue());
+        result.setAttribute("version", modelGR.version);
+    },
+
+
+
+
+    processExcelFileInToVariableSet: function () {
+        var attachmentID = this.getParameter('sysparm_attachment_id');
+        var attachmentGR = new GlideRecord('sys_attachment');
+        if (!attachmentGR.get(attachmentID))
+            return "";
+
+        var utils = new DXCTechnicalTicketUtils();
+        var serialsArray = utils.processExcelFileWithImpactedSerials(attachmentID);
+
+        return JSON.stringify(serialsArray);
+    },
+
+
+    // getUserInformation: function() {
+    //     var userId = this.getParameter('sysparm_user');
+
+    // 	var result = this.newItem("result");
+    //     result.setAttribute("company", "");
+    // 	result.setAttribute("market", "");
+    // 	result.setAttribute("country", "");
+
+    //     var userGR = new GlideRecord('sys_user');
+    //     if (!userGR.get(userId)) {
+    //         return;
+    //     }
+
+    // 	result.setAttribute("company", userGR.getValue('company'));
+    // 	result.setAttribute("market", userGR.getValue('u_market'));
+    // 	result.setAttribute("country", userGR.getValue('location'));
+    // },
+
+
+    // getDefaultShippingInstruction: function() {
+    //     var userId = this.getParameter('sysparm_user_id');
+
+    //     var utils = new DXCTechnicalTicketUtils();
+    // 	var shippingInstructions = utils.getDefaultShippingInstructions(userId);
+
+    // 	var result = this.newItem("result");
+    //     result.setAttribute("shipping_instructions", shippingInstructions);
+
+    // },
+
+    type: 'DXCTechnicalTicketUtilsAJAX'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_Isaac_Perez</sys_created_by>
+        <sys_created_on>2022-01-18 14:16:08</sys_created_on>
+        <sys_id>9a6a663a1b858510fe9e43f1b24bcb1c</sys_id>
+        <sys_mod_count>42</sys_mod_count>
+        <sys_name>DXCTechnicalTicketUtilsAJAX</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_include_9a6a663a1b858510fe9e43f1b24bcb1c</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-07-04 12:47:17</sys_updated_on>
+    </sys_script_include>
+</record_update>

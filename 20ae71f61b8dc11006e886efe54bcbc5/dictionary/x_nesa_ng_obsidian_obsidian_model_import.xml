@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" extends="sys_import_set_row" label="(DXC) Obsidian - 01 - Models" max_length="40" name="x_nesa_ng_obsidian_obsidian_model_import" sizeclass="99" type="collection">
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Air pallet loading (units)" label="Air pallet loading (units)" max_length="40" name="u_air_pallet_loading__units_" type="integer"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=AJ" label="AJ" max_length="156" name="u_aj" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Beverage Temperature" label="Beverage Temperature" max_length="40" name="u_beverage_temperature" type="string"/>
+        <element attributes="import_attribute_name=Box height  (cm)" label="Box height  (cm)" max_length="15" name="u_box_height___cm_" type="string"/>
+        <element attributes="import_attribute_name=Box length (cm)" label="Box length (cm)" max_length="15" name="u_box_length__cm_" type="string"/>
+        <element attributes="import_attribute_name=Box width (cm)" label="Box width (cm)" max_length="15" name="u_box_width__cm_" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Class-model category" label="Class-model category" max_length="40" name="u_class_model_category" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Class(model_class)" label="Class(model_class)" max_length="40" name="u_class_model_class_" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Container loading - 40ft  (pallets)" label="Container loading - 40ft  (pallets)" max_length="40" name="u_container_lo_0ft___pallets_" type="integer"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Container loading - 20ft (pallets)" label="Container loading - 20ft (pallets)" max_length="40" name="u_container_lo_20ft__pallets_" type="integer"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Container loading - 40ft HC  (pallets)" label="Container loading - 40ft HC  (pallets)" max_length="40" name="u_container_lo__hc___pallets_" type="integer"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Description(obsidian_model_description)" label="Description(obsidian_model_description)" max_length="299" name="u_description__l_description_" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Expected launch date" label="Expected launch date" max_length="40" name="u_expected_launch_date" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Feature default currency" label="Feature default currency" max_length="40" name="u_feature_default_currency" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Feature expiry date" label="Feature expiry date" max_length="40" name="u_feature_expiry_date" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Feature expiry notice lead-time (days)" label="Feature expiry notice lead-time (days)" max_length="40" name="u_feature_expi_ad_time__days_" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Feature price has expiry date" label="Feature price has expiry date" max_length="40" name="u_feature_pric_as_expiry_date" type="string"/>
+        <element attributes="import_attribute_name=Gross Weight (Kg)" label="Gross Weight (Kg)" max_length="15" name="u_gross_weight__kg_" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=HS Code" label="HS Code" max_length="40" name="u_hs_code" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Ingredient format" label="Ingredient format" max_length="40" name="u_ingredient_format" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=IP Ownership" label="IP Ownership" max_length="40" name="u_ip_ownership" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Lorry loading  (pallets)" label="Lorry loading  (pallets)" max_length="40" name="u_lorry_loading___pallets_" type="integer"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Machine Type" label="Machine Type" max_length="40" name="u_machine_type" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Model Category" label="Model Category" max_length="40" name="u_model_category" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Model Group" label="Model Group" max_length="40" name="u_model_group" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Model Requester group" label="Model Requester group" max_length="200" name="u_model_requester_group" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Model segment" label="Model segment" max_length="40" name="u_model_segment" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Name" label="Name" max_length="40" name="u_name" type="string"/>
+        <element attributes="import_attribute_name=Net Weight (Kg)" label="Net Weight (Kg)" max_length="15" name="u_net_weight__kg_" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Picture filename" label="Picture filename" max_length="40" name="u_picture_filename" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Positioning" label="Positioning" max_length="40" name="u_positioning" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Preferred Model list" label="Preferred Model list" max_length="40" name="u_preferred_model_list" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Price Matrix provided" label="Price Matrix provided" max_length="40" name="u_price_matrix_provided" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Production lead time (days)" label="Production lead time (days)" max_length="40" name="u_production_lead_time__days_" type="integer"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Project" label="Project" max_length="40" name="u_project" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Road/Sea Pallet loading (units)" label="Road/Sea Pallet loading (units)" max_length="40" name="u_road_sea_pal_oading__units_" type="integer"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Shipping information comments" label="Shipping information comments" max_length="1000" name="u_shipping_inf_ation_comments" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Supplier" label="Supplier" max_length="40" name="u_supplier" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=System Brand" label="System Brand" max_length="40" name="u_system_brand" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Version/Generation" label="Version/Generation" max_length="40" name="u_version_generation" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Warranty duration (months)" label="Warranty duration (months)" max_length="40" name="u_warranty_duration__months_" type="integer"/>
+        <index name="index">
+            <element name="u_name"/>
+        </index>
+    </element>
+</database>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_page_route_map">
+    <sp_page_route_map action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <order>10</order>
+        <portals>c25fa6841b39cd1406e886efe54bcbc8</portals>
+        <route_from_page display_value="sc_cat_item">9f12251147132100ba13a5554ee490f4</route_from_page>
+        <route_to_page display_value="obsidian_sc_cat_item">061c5be51baa8d10fe9e43f1b24bcbda</route_to_page>
+        <short_description/>
+        <sys_class_name>sp_page_route_map</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-03-30 12:30:00</sys_created_on>
+        <sys_id>f33b7f251ba20150fe9e43f1b24bcbb1</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>9f12251147132100ba13a5554ee490f4</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sp_page_route_map_f33b7f251ba20150fe9e43f1b24bcbb1</sys_update_name>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-04-07 12:48:28</sys_updated_on>
+    </sp_page_route_map>
+</record_update>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_nesa_ng_obsidian.UniversalTaskParentAccess</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Implements extension point sn_uni_task.UniversalTaskParentAccess
+Specifies the logic for parent access in universal task application.</description>
+        <name>UniversalTaskParentAccess</name>
+        <script><![CDATA[var UniversalTaskParentAccess = Class.create();
+UniversalTaskParentAccess.prototype = {
+  initialize: function () { },
+
+  /*
+   * Called to check agent access on parent table(Example:- incident) in universal task application
+   *
+   * @param {parentTableName} - parent table name for which agent access needs to be checked, useful
+   *                            to separate logic when single implementation for multiple tables is created.
+   * @param {parentGr} - Parent Glide record will contain parent record on which agent access needs to be checked.
+   *                     This will be undefined when parent record is not available to evaluate. 
+   * Return true if agent access is available else false
+   */
+  isAgent: function (parentTableName, parentGr) {
+    //         if (parentGr && parentGr.isValidRecord())
+    //             return parentGr.canWrite();
+
+    // if (parentTableName == x_nesa_ng_obsidian.DXCObsidianConstants.SKU_TABLE_NAMES.SKU_ASSIGNMENT_TABLE
+    //   || parentTableName == x_nesa_ng_obsidian.DXCObsidianConstants.NML_TABLE_NAMES.NML_TABLE) {
+    //   if (parentGr.canWrite()) {
+    //     return true;
+    //   }
+
+    // }
+
+    if (gs.hasRole('x_nesa_ng_obsidian.technical_ticket_user') || gs.hasRole("x_nesa_ng_obsidian.nbs_user")) {
+      return true;
+    }
+
+    return false;
+  },
+
+  /*
+   * Returns the list of parent table name for which extention point is implemented
+   *	
+   * @returns [string] array of parent table names for which extention point is implemented
+   */
+  getImplementerTables: function () {
+    var implementerTables = [];
+    implementerTables.push(x_nesa_ng_obsidian.DXCObsidianConstants.SKU_TABLE_NAMES.SKU_ASSIGNMENT_TABLE);
+    implementerTables.push(x_nesa_ng_obsidian.DXCObsidianConstants.NML_TABLE_NAMES.NML_TABLE);
+    implementerTables.push(DXCObsidianConstants.TECHNICAL_TICKET_TABLE);
+    implementerTables.push(DXCObsidianConstants.TSM_TABLE);
+
+    return implementerTables;
+  },
+
+  type: 'UniversalTaskParentAccess'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_Isaac_Perez</sys_created_by>
+        <sys_created_on>2022-01-31 10:52:22</sys_created_on>
+        <sys_id>7ff83c431b1d4d18fe9e43f1b24bcb19</sys_id>
+        <sys_mod_count>22</sys_mod_count>
+        <sys_name>UniversalTaskParentAccess</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_include_7ff83c431b1d4d18fe9e43f1b24bcb19</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-06-09 08:52:10</sys_updated_on>
+    </sys_script_include>
+</record_update>

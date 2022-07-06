@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_policy_action">
+    <sys_ui_policy_action action="INSERT_OR_UPDATE">
+        <cleared>true</cleared>
+        <disabled>ignore</disabled>
+        <field>wbs</field>
+        <mandatory>false</mandatory>
+        <sys_class_name>sys_ui_policy_action</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-05-05 08:47:21</sys_created_on>
+        <sys_id>0ac124551b9b81d8fe9e43f1b24bcb03</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>wbs</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_ui_policy_action_0ac124551b9b81d8fe9e43f1b24bcb03</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-05-05 08:47:21</sys_updated_on>
+        <table>x_nesa_ng_obsidian_sku_assignment</table>
+        <ui_policy display_value="(DXC) manage WBS field">7281a8d11b9b81d8fe9e43f1b24bcbd9</ui_policy>
+        <visible>false</visible>
+    </sys_ui_policy_action>
+</record_update>

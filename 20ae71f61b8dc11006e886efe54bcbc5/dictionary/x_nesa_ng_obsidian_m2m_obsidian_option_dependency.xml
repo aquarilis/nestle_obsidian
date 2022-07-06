@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" label="Obsidian Option Dependency" max_length="40" name="x_nesa_ng_obsidian_m2m_obsidian_option_dependency" sizeclass="2391" type="collection">
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Obsidian Feature Option" max_length="32" name="obsidian_feature_option" read_only="true" reference="x_nesa_ng_obsidian_obsidian_feature_option" reference_floats="true" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Obsidian Model configuration" max_length="32" name="obsidian_model_configuration" read_only="true" reference="x_nesa_ng_obsidian_obsidian_model_configuration" type="reference"/>
+        <index name="index">
+            <element name="obsidian_feature_option"/>
+        </index>
+        <index name="index2">
+            <element name="obsidian_model_configuration"/>
+        </index>
+    </element>
+</database>

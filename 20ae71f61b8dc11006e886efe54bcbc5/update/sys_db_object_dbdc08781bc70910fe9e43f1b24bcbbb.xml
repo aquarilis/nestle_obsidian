@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_db_object">
+    <sys_db_object action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <actions_access>false</actions_access>
+        <alter_access>false</alter_access>
+        <caller_access/>
+        <client_scripts_access>false</client_scripts_access>
+        <configuration_access>false</configuration_access>
+        <create_access>true</create_access>
+        <create_access_controls>true</create_access_controls>
+        <delete_access>true</delete_access>
+        <extension_model/>
+        <is_extendable>false</is_extendable>
+        <label>SKU Assignment</label>
+        <live_feed_enabled>false</live_feed_enabled>
+        <name>x_nesa_ng_obsidian_sku_assignment</name>
+        <number_ref display_value="SKUA">b7cdc83c1bc70910fe9e43f1b24bcbbb</number_ref>
+        <provider_class/>
+        <read_access>true</read_access>
+        <scriptable_table>false</scriptable_table>
+        <super_class display_value="NexGen Core Case" name="x_nesa_nexgen_core_nexgen_core_case">ae58227d87614994c04bb9d09bbb358d</super_class>
+        <sys_class_code/>
+        <sys_class_name>sys_db_object</sys_class_name>
+        <sys_class_path/>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-04-21 07:47:03</sys_created_on>
+        <sys_id>dbdc08781bc70910fe9e43f1b24bcbbb</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>SKU Assignment</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_db_object_dbdc08781bc70910fe9e43f1b24bcbbb</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-04-21 07:47:13</sys_updated_on>
+        <update_access>true</update_access>
+        <user_role display_value="x_nesa_ng_obsidian.nbs_user" name="x_nesa_ng_obsidian.nbs_user">9bbbd86b1bd2455406e886efe54bcb68</user_role>
+        <ws_access>true</ws_access>
+    </sys_db_object>
+</record_update>

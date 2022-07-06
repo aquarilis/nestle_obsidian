@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>true</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>false</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_nesa_ng_obsidian_m2m_obsidian_option_dependency</collection>
+        <condition/>
+        <description>(DXC) ensure that option dependency data remain structurally consistent</description>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>(DXC) Process Option dependency change</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
+   try {
+      if (current.operation() === "delete") {
+         //check if the related feature option is still relating to the model configuration, in which case, remove the reference
+         if (current.obsidian_feature_option.model_configuration.toString() === current.obsidian_model_configuration.toString()) {
+            var featureOption_GR = current.obsidian_feature_option.getRefRecord();
+            if (!featureOption_GR.isValidRecord()) {
+               throw ("couldn't get feature option glideRecord to remove model configuration reference");
+            }
+            featureOption_GR.setValue("model_configuration", "");
+            featureOption_GR.update();
+         }
+      }
+
+
+
+      //refresh the "associated features" field on Model configuration record
+      var modelConfiguration_GR = current.obsidian_model_configuration.getRefRecord();
+      if (!modelConfiguration_GR.isValidRecord()) {
+         throw ("couldn't get model configuration glideRecord to update associated features");
+      }
+
+      var associatedFeatureSysID_array = [];
+
+      var relatedOption_GR = new GlideRecord("x_nesa_ng_obsidian_m2m_obsidian_option_dependency");
+      relatedOption_GR.addQuery("obsidian_model_configuration", modelConfiguration_GR.sys_id);
+      relatedOption_GR.orderBy("obsidian_feature_option.model_feature.name");
+      relatedOption_GR.query();
+      var optionCount = 0;
+      while (relatedOption_GR.next()) {
+         optionCount++;
+         if (associatedFeatureSysID_array.indexOf(relatedOption_GR.obsidian_feature_option.model_feature.toString()) === -1) {
+            associatedFeatureSysID_array.push(relatedOption_GR.obsidian_feature_option.model_feature.toString());
+         }
+      }
+      modelConfiguration_GR.setValue("option_count", optionCount);
+      modelConfiguration_GR.setValue("associated_features", associatedFeatureSysID_array.join(","));
+      modelConfiguration_GR.update();
+
+
+
+
+
+   } catch (exception) {
+      gs.addErrorMessage("Error in '(DXC) Process Option dependency change' business rule: " + exception);
+      var dxcLogger = new global.DXCGSLog("com.dxc.global.debugging_level", "(DXC) Process Option dependency change");
+      dxcLogger.logError(exception);
+   }
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-03-31 10:48:15</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>42ad64c61ba2c950fe9e43f1b24bcb50</sys_id>
+        <sys_mod_count>13</sys_mod_count>
+        <sys_name>(DXC) Process Option dependency change</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_42ad64c61ba2c950fe9e43f1b24bcb50</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-04-03 18:04:06</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=42ad64c61ba2c950fe9e43f1b24bcb50"/>
+</record_update>

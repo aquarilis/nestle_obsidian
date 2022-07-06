@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_related sys_domain="global" table="x_nesa_ng_obsidian_technical_ticket" version="2" view="ess">
+        <sys_ui_related_list_entry action="INSERT_OR_UPDATE">
+            <filter/>
+            <list_id display_value="Technical Ticket - Self Service" name="x_nesa_ng_obsidian_technical_ticket" related_list="NULL" sys_domain="global" view="ae1f1141db0303008e0214a05b96196e">e3e07a7d1bad811006e886efe54bcb4e</list_id>
+            <order_by/>
+            <position>0</position>
+            <related_list>x_nesa_ng_obsidian_impacted_serials.technical_ticket</related_list>
+            <sys_class_name>sys_ui_related_list_entry</sys_class_name>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-02-09 08:39:38</sys_created_on>
+            <sys_id>23e07a7d1bad811006e886efe54bcb4f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+            <sys_updated_on>2022-02-09 08:39:38</sys_updated_on>
+        </sys_ui_related_list_entry>
+        <sys_ui_related_list action="INSERT_OR_UPDATE">
+            <calculated_name>Technical Ticket - Self Service</calculated_name>
+            <filter/>
+            <name>x_nesa_ng_obsidian_technical_ticket</name>
+            <order_by/>
+            <position/>
+            <related_list/>
+            <sys_class_name>sys_ui_related_list</sys_class_name>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-02-09 08:39:38</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>e3e07a7d1bad811006e886efe54bcb4e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Technical Ticket - Self Service</sys_name>
+            <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+            <sys_update_name>sys_ui_related_x_nesa_ng_obsidian_technical_ticket_ess</sys_update_name>
+            <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+            <sys_updated_on>2022-02-09 08:39:38</sys_updated_on>
+            <sys_user/>
+            <view display_value="Self Service" name="ess">ae1f1141db0303008e0214a05b96196e</view>
+            <view_name/>
+        </sys_ui_related_list>
+    </sys_ui_related>
+</record_update>

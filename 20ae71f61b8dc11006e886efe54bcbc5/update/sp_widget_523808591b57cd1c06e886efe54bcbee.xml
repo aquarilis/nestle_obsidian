@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function($rootScope, $scope, $window) {
+	/* widget controller */
+	var c = this;
+	c.data.selected = {};
+	c.clickCat = function(key) {
+		c.data[key] = !c.data[key];
+	};
+
+
+	c.clickSubCat = function(key, subKey) {
+		c.data[key + '-' + subKey] = !c.data[key + '-' + subKey];
+	};
+
+	c.onSelect = function(key, subKey, subKey2) {
+		var value = JSON.parse(c.data['a_' + subKey2]);
+		c.data.checklistItem[key][subKey][subKey2].selection = value;
+		$scope.page.g_form.setValue('assignment_features_json', JSON.stringify(c.data.checklistItem, null, 4, 4));
+	};
+
+	c.onSelected = function(a, b) {
+		return a.toString() == b.toString();
+	};
+
+	c.genName = function(label, price, price_value) {
+		var name = label;
+		if(price > 0) name = label + ' - ' + price_value;
+		return name;
+	};
+
+
+	$scope.$watch(function() {
+		return $scope.page.g_form.getValue('assignment_features_json');
+	}, function(value) {
+		c.data.checklistItem  = JSON.parse(value);
+		
+		for(var i in c.data.checklistItem) {
+			var sub = c.data.checklistItem[i];
+			for(var j in sub) {
+				var sub2 = sub[j];
+				for(var k in sub2)
+					c.data['a_' + k] = JSON.stringify(c.data.checklistItem[i][j][k].selection);
+			}
+		}
+		
+		c.data.checklistLength = Object.keys(c.data.checklistItem).length;
+	});
+
+	c.updateComment = function() {
+		$scope.page.g_form.setValue('assignment_features_json', JSON.stringify(c.data.checklistItem, null, 4, 4));
+	};
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.item {&#13;
+  margin-bottom: 15px;&#13;
+  .value, .sub-value {&#13;
+    margin-left: 20px;&#13;
+  }&#13;
+}&#13;
+.sub {&#13;
+  display: flex;&#13;
+  cursor: pointer;&#13;
+  width: fit-content;&#13;
+}&#13;
+.key {&#13;
+  width: fit-content;&#13;
+  display: flex;&#13;
+  .item-icon {&#13;
+    margin-top: 14px;&#13;
+  }&#13;
+  .item-close {&#13;
+    margin-top: 10px;&#13;
+  }&#13;
+}&#13;
+.feature-name {&#13;
+  width: 250px;&#13;
+  margin-right: 20px;&#13;
+}&#13;
+.item-icon {&#13;
+  display: flex;&#13;
+  justify-content: center;&#13;
+  align-items: center;&#13;
+  font-size: 20px;&#13;
+  margin-right: 10px;&#13;
+}&#13;
+&#13;
+.item-close {&#13;
+  display: flex;&#13;
+  justify-content: center;&#13;
+  align-items: center;&#13;
+  font-size: 20px;&#13;
+  margin-right: 10px;&#13;
+}&#13;
+&#13;
+.select-box {&#13;
+  max-width: 424px;&#13;
+}&#13;
+.comment {&#13;
+  border: 1px solid #ccc;&#13;
+  font-family: inherit;&#13;
+  font-size: inherit;&#13;
+  padding: 1px 6px;&#13;
+  display: block;&#13;
+  width: 100%;&#13;
+  overflow: hidden;&#13;
+  resize: both;&#13;
+  min-height: 40px;&#13;
+  line-height: 20px;&#13;
+  height: unset !important;&#13;
+  flex: 1 0 auto;&#13;
+  word-wrap: break-word;&#13;
+}&#13;
+&#13;
+.comment[contenteditable]:empty::before {&#13;
+  content: "specification comments...";&#13;
+  color: gray;&#13;
+}&#13;
+&#13;
+select {&#13;
+  /* styling */&#13;
+  background-color: white;&#13;
+  text-align: left;&#13;
+  border-radius: 4px;&#13;
+  display: inline-block;&#13;
+  font: inherit;&#13;
+  line-height: 1.5em;&#13;
+  padding: 0.5em 3.5em 0.5em 1em;&#13;
+  height: 100%;&#13;
+  width: 100%;&#13;
+&#13;
+  /* reset */&#13;
+  margin: 0;   &#13;
+  margin-right: 15px;&#13;
+  -webkit-box-sizing: border-box;&#13;
+  -moz-box-sizing: border-box;&#13;
+  box-sizing: border-box;&#13;
+  -webkit-appearance: none;&#13;
+  -moz-appearance: none;&#13;
+}&#13;
+&#13;
+select.minimal {&#13;
+  background-image:&#13;
+    linear-gradient(45deg, transparent 50%, gray 50%),&#13;
+    linear-gradient(135deg, gray 50%, transparent 50%),&#13;
+    linear-gradient(to right, #ccc, #ccc);&#13;
+  background-position:&#13;
+    calc(100% - 20px) calc(1em + 2px),&#13;
+    calc(100% - 15px) calc(1em + 2px),&#13;
+    calc(100% - 2.5em) 0.5em;&#13;
+  background-size:&#13;
+    5px 5px,&#13;
+    5px 5px,&#13;
+    1px 1.5em;&#13;
+  background-repeat: no-repeat;&#13;
+  margin-bottom: 6px;&#13;
+}&#13;
+&#13;
+select.minimal:focus {&#13;
+  background-image:&#13;
+    linear-gradient(45deg, green 50%, transparent 50%),&#13;
+    linear-gradient(135deg, transparent 50%, green 50%),&#13;
+    linear-gradient(to right, #ccc, #ccc);&#13;
+  background-position:&#13;
+    calc(100% - 15px) 1em,&#13;
+    calc(100% - 20px) 1em,&#13;
+    calc(100% - 2.5em) 0.5em;&#13;
+  background-size:&#13;
+    5px 5px,&#13;
+    5px 5px,&#13;
+    1px 1.5em;&#13;
+  background-repeat: no-repeat;&#13;
+  border-color: green;&#13;
+  outline: 0;&#13;
+}&#13;
+&#13;
+&#13;
+select:-moz-focusring {&#13;
+  color: transparent;&#13;
+  text-shadow: 0 0 0 #000;&#13;
+}&#13;
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description>Used in "SKU Assignment Feature configuration" record producer </description>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>dxc-obsidian-sku-features</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) { 
+
+ }]]></link>
+        <name>DXC Obsidian SKU Features</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-05-05 06:55:27</sys_created_on>
+        <sys_id>523808591b57cd1c06e886efe54bcbee</sys_id>
+        <sys_mod_count>290</sys_mod_count>
+        <sys_name>DXC Obsidian SKU Features</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sp_widget_523808591b57cd1c06e886efe54bcbee</sys_update_name>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-05-17 08:27:01</sys_updated_on>
+        <template><![CDATA[<div ng-controller="c" class="feature-content">
+  <div ng-repeat="(key, value) in c.data.checklistItem">
+    <div class="item">
+      <div class="key" ng-click="c.clickCat(key)">
+        <i class="fas fa-angle-down item-icon" ng-hide="c.data['{{key}}']"></i><i class="fas fa-angle-right item-close"
+                                                                                  ng-show="c.data['{{key}}']"></i>
+        <h3>{{key}}</h3>
+      </div>
+      <div ng-hide="c.data['{{key}}']">
+        <div class="value" ng-repeat="(subKey, subValue) in value">
+          <div class="sub" ng-click="c.clickSubCat(key, subKey)">
+            <i class="fas fa-angle-down item-icon" ng-hide="c.data['{{key}}-{{subKey}}']"></i><i
+                                                                                                 class="fas fa-angle-right item-close" ng-show="c.data['{{key}}-{{subKey}}']"></i>
+            <h4>{{subKey}}</h4>
+          </div>
+          <div ng-hide="c.data['{{key}}-{{subKey}}']">
+            <table style="width:95%; margin-left: 23px;" class="table table-bordered table-striped">
+              <tr class="sub-value" ng-repeat="(subKey2, subValue2) in subValue">
+                <th class="feature-name"><span>{{subValue2.feature_name}}: </span></th>
+                <td class="select-box">
+                  <!-- <select class="minimal" ng-model="selected"
+ng-change="c.onSelect(selected, key, subKey, subKey2)"
+ng-options="obj as c.genName(obj.label,obj.feature_price_numeric, obj.feature_price_currency_value) for obj in subValue2.choices"
+ng-disabled="subValue2.feature_option_choice != 'Allowed'"
+>
+
+</select> -->
+
+                  <select class="minimal" required="" 
+                          ng-model="c.data['a_' + subKey2]" 
+                          ng-change="c.onSelect(key, subKey, subKey2)" 
+                          ng-disabled="subValue2.feature_option_choice != 'Allowed'"
+                          >
+                    <option ng-repeat="obj in subValue2.choices" 
+                            value="{{obj}}" 
+                            ng-bind-html="c.genName(obj.label, obj.feature_price_numeric, obj.feature_price_currency_value)"></option>
+                  </select>
+
+                  <!--  <input class="form-control" style="width: 70%;" type="text" placeholder="specification comments..." >
+--> <span class="form-control textarea comment" ng-if="subValue2.editable == 'yes'"
+          ng-change="c.updateComment()" ng-model="subValue2.specification_comments" role="textbox"
+          contenteditable></span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>]]></template>
+    </sp_widget>
+</record_update>

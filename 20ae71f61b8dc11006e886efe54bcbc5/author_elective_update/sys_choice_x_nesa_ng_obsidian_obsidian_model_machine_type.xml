@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="machine_type" table="x_nesa_ng_obsidian_obsidian_model" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>machine_type</element>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>admin_Dung Tri_Ly</sys_created_by>
+            <sys_created_on>2022-03-23 12:39:03</sys_created_on>
+            <sys_id>408abf131bd24110fe9e43f1b24bcbfa</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>machine_type</sys_name>
+            <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+            <sys_update_name>sys_choice_x_nesa_ng_obsidian_obsidian_model_machine_type</sys_update_name>
+            <sys_updated_by>admin_Dung Tri_Ly</sys_updated_by>
+            <sys_updated_on>2022-03-23 12:39:03</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>machine_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>AVM</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sequence>10</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Dung Tri_Ly</sys_created_by>
+            <sys_created_on>2022-03-23 12:39:03</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>387aff131bd24110fe9e43f1b24bcb54</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Dung Tri_Ly</sys_updated_by>
+            <sys_updated_on>2022-03-23 12:39:03</sys_updated_on>
+            <value>avm</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>machine_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Mobile</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sequence>20</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Dung Tri_Ly</sys_created_by>
+            <sys_created_on>2022-03-23 12:39:20</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>318af7531bd24110fe9e43f1b24bcbf4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Dung Tri_Ly</sys_updated_by>
+            <sys_updated_on>2022-03-23 12:39:20</sys_updated_on>
+            <value>mobile</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>machine_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Table Tops</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sequence>30</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Dung Tri_Ly</sys_created_by>
+            <sys_created_on>2022-03-23 12:39:38</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>919a3f131bd24110fe9e43f1b24bcb98</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Dung Tri_Ly</sys_updated_by>
+            <sys_updated_on>2022-03-23 12:39:38</sys_updated_on>
+            <value>table_tops</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>machine_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Other</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <sequence>40</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Dung Tri_Ly</sys_created_by>
+            <sys_created_on>2022-03-23 12:39:52</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>5daabb531bd24110fe9e43f1b24bcbc0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Dung Tri_Ly</sys_updated_by>
+            <sys_updated_on>2022-03-23 12:39:52</sys_updated_on>
+            <value>other</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" label="NML Checklist item selection" max_length="40" name="x_nesa_ng_obsidian_m2m_nml_checklist" sizeclass="4026" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Active in this NML" max_length="40" name="active_in_this_nml" read_only="true" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="NML Checklist Item" max_length="32" name="nml_checklist_item" read_only="true" reference="x_nesa_ng_obsidian_nml_checklist_item" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Obsidian Model" max_length="32" name="obsidian_model" read_only="true" reference="x_nesa_ng_obsidian_obsidian_model" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Obsidian New Model Launch" max_length="32" name="obsidian_new_model_launch" read_only="true" reference="x_nesa_ng_obsidian_obsidian_new_model_launch" reference_floats="true" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Universal task" max_length="32" name="universal_task" read_only="true" reference="sn_uni_task_universal_task" type="reference"/>
+        <index name="index">
+            <element name="obsidian_new_model_launch"/>
+        </index>
+        <index name="index2">
+            <element name="nml_checklist_item"/>
+        </index>
+        <index name="index3">
+            <element name="obsidian_model"/>
+        </index>
+        <index name="index4">
+            <element name="universal_task"/>
+        </index>
+    </element>
+</database>

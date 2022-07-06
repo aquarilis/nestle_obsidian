@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="Model Features" section_id="c7f686ed1b61c110fe9e43f1b24bcbb2" sys_domain="global" table="x_nesa_ng_obsidian_obsidian_model" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>default_currency</element>
+            <position>0</position>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-05-16 07:53:06</sys_created_on>
+            <sys_id>06ee78f01b2f815406e886efe54bcb1f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Model Features" display_value="Model Features" name="x_nesa_ng_obsidian_obsidian_model" sys_domain="global" view="Default view">c7f686ed1b61c110fe9e43f1b24bcbb2</sys_ui_section>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-05-16 07:53:06</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>warranty_duration</element>
+            <position>1</position>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-05-16 07:53:06</sys_created_on>
+            <sys_id>ceee78f01b2f815406e886efe54bcb1f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Model Features" display_value="Model Features" name="x_nesa_ng_obsidian_obsidian_model" sys_domain="global" view="Default view">c7f686ed1b61c110fe9e43f1b24bcbb2</sys_ui_section>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-05-16 07:53:06</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>ip_ownership</element>
+            <position>2</position>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-05-16 07:53:06</sys_created_on>
+            <sys_id>46ee78f01b2f815406e886efe54bcb20</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Model Features" display_value="Model Features" name="x_nesa_ng_obsidian_obsidian_model" sys_domain="global" view="Default view">c7f686ed1b61c110fe9e43f1b24bcbb2</sys_ui_section>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-05-16 07:53:06</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>3</position>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-05-16 07:53:06</sys_created_on>
+            <sys_id>caee78f01b2f815406e886efe54bcb20</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Model Features" display_value="Model Features" name="x_nesa_ng_obsidian_obsidian_model" sys_domain="global" view="Default view">c7f686ed1b61c110fe9e43f1b24bcbb2</sys_ui_section>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-05-16 07:53:06</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>feature_price_has_expiry_date</element>
+            <position>4</position>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-05-16 07:53:06</sys_created_on>
+            <sys_id>42ee78f01b2f815406e886efe54bcb21</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Model Features" display_value="Model Features" name="x_nesa_ng_obsidian_obsidian_model" sys_domain="global" view="Default view">c7f686ed1b61c110fe9e43f1b24bcbb2</sys_ui_section>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-05-16 07:53:06</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>feature_expiry_date</element>
+            <position>5</position>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-05-16 07:53:06</sys_created_on>
+            <sys_id>c6ee78f01b2f815406e886efe54bcb21</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Model Features" display_value="Model Features" name="x_nesa_ng_obsidian_obsidian_model" sys_domain="global" view="Default view">c7f686ed1b61c110fe9e43f1b24bcbb2</sys_ui_section>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-05-16 07:53:06</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>feature_expiry_notice_leadtime</element>
+            <position>6</position>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-05-16 07:53:06</sys_created_on>
+            <sys_id>4eee78f01b2f815406e886efe54bcb21</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Model Features" display_value="Model Features" name="x_nesa_ng_obsidian_obsidian_model" sys_domain="global" view="Default view">c7f686ed1b61c110fe9e43f1b24bcbb2</sys_ui_section>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-05-16 07:53:06</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>price_matrix_provided</element>
+            <position>7</position>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-05-16 07:53:06</sys_created_on>
+            <sys_id>c2ee78f01b2f815406e886efe54bcb22</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Model Features" display_value="Model Features" name="x_nesa_ng_obsidian_obsidian_model" sys_domain="global" view="Default view">c7f686ed1b61c110fe9e43f1b24bcbb2</sys_ui_section>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-05-16 07:53:06</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption>Model Features</caption>
+            <header>false</header>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-02-08 10:57:54</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>c7f686ed1b61c110fe9e43f1b24bcbb2</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_name>x_nesa_ng_obsidian_obsidian_model</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+            <sys_update_name>sys_ui_section_c7f686ed1b61c110fe9e43f1b24bcbb2</sys_update_name>
+            <sys_updated_by>admin_Dung Tri_Ly</sys_updated_by>
+            <sys_updated_on>2022-03-24 12:25:52</sys_updated_on>
+            <sys_user/>
+            <title>false</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

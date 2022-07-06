@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_email">
+    <sys_script_email action="INSERT_OR_UPDATE">
+        <name>x_nesa_ng_obsidian.case_portal_link_from_task</name>
+        <new_lines_to_html>false</new_lines_to_html>
+        <script><![CDATA[(function runMailScript( /* GlideRecord */ current, /* TemplatePrinter */ template,
+    /* Optional EmailOutbound */
+    email, /* Optional GlideRecord */ email_action,
+    /* Optional GlideRecord */
+    event) {
+
+    try {
+
+        var case_GR = new GlideRecord(current.parent.sys_class_name);
+        if (!case_GR.get(current.parent)){
+            throw("couldn't NexGen Case GlideRecord on " + current.sys_class_name + " table with sys_id " + current.sys_id);
+            
+        }
+
+        var case_url = "";
+        var case_portal_page_url = current.parent.nexgen_case_configuration.case_portal_page_url;
+        
+        if (case_portal_page_url == ""){
+            case_url = case_GR.getLink();
+        } else {
+           
+           // replace the ${fieldname} occurrences with the actual values
+            var regex = /(\${(\w*)})/gm;
+
+            while ((result = regex.exec(case_portal_page_url)) !== null) {
+                case_portal_page_url = case_portal_page_url.replace(result[1].toString(), case_GR.getValue(result[2]));
+            }
+
+            if (case_portal_page_url[0] == "/"){
+                case_portal_page_url = case_portal_page_url.substring(1);
+            }
+
+            case_url = gs.getProperty("glide.servlet.uri") + case_portal_page_url;
+        }
+
+
+        template.print('<a href="' + case_url + '" title="${number}">${number}</a>');
+    } catch (e) {
+        template.print('Error in case portal link script: ' + e);
+    }
+
+})(current, template, email, email_action, event);]]></script>
+        <sys_class_name>sys_script_email</sys_class_name>
+        <sys_created_by>admin_Isaac_Perez</sys_created_by>
+        <sys_created_on>2022-02-11 09:33:53</sys_created_on>
+        <sys_id>358095aa1ba5495006e886efe54bcb7d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_nesa_ng_obsidian.case_portal_link_from_task</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_email_358095aa1ba5495006e886efe54bcb7d</sys_update_name>
+        <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+        <sys_updated_on>2022-02-11 09:33:53</sys_updated_on>
+    </sys_script_email>
+</record_update>

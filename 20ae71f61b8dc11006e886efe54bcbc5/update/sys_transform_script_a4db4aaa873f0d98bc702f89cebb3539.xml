@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_transform_script">
+    <sys_transform_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <map display_value="(DXC) Obsidian - 08 - SKU Assignment TM">80c7d3eb1b6b4d1c06e886efe54bcb7a</map>
+        <order>100</order>
+        <script><![CDATA[(function runTransformScript(source, map, log, target /*undefined onStart*/ ) {
+
+    // set sku stage to active without triggering BR
+    var skuAssignmentGR = new GlideRecord('x_nesa_ng_obsidian_sku_assignment');
+    if (skuAssignmentGR.get(target.sys_id)) {
+        skuAssignmentGR.setWorkflow(false);
+        skuAssignmentGR.setValue("sku_stage", "600");
+        skuAssignmentGR.update();
+    }
+
+})(source, map, log, target);]]></script>
+        <sys_class_name>sys_transform_script</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-06-03 10:16:14</sys_created_on>
+        <sys_id>a4db4aaa873f0d98bc702f89cebb3539</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>onAfter</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_transform_script_a4db4aaa873f0d98bc702f89cebb3539</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-06-03 10:16:14</sys_updated_on>
+        <when>onAfter</when>
+    </sys_transform_script>
+</record_update>

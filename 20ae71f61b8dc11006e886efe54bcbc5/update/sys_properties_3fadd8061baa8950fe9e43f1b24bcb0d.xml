@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
+        <description>JSON description of fields being synchronized between Obsidian New Model Launch and Obsidian Model records in the following format&#13;
+{&#13;
+"source_obsidian_new_model_launch_fieldname": "target_obsidian_model_fieldname"&#13;
+}&#13;
+&#13;
+&#13;
+processed by "(DXC) Sync changes to Obsidian Model" business rule on New Model Launch table</description>
+        <ignore_cache>true</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_nesa_ng_obsidian.nml.synchro_field_map</name>
+        <read_roles/>
+        <suffix>nml.synchro_field_map</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-03-31 09:43:29</sys_created_on>
+        <sys_id>3fadd8061baa8950fe9e43f1b24bcb0d</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>x_nesa_ng_obsidian.nml.synchro_field_map</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_properties_3fadd8061baa8950fe9e43f1b24bcb0d</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-03-31 09:46:36</sys_updated_on>
+        <type>string</type>
+        <value>{&#13;
+"model_approval_group":"model_approval_group",&#13;
+"model_approval_date" : "model_approval_date",&#13;
+"nml_stage": "nml_stage"&#13;
+}</value>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=3fadd8061baa8950fe9e43f1b24bcb0d"/>
+</record_update>

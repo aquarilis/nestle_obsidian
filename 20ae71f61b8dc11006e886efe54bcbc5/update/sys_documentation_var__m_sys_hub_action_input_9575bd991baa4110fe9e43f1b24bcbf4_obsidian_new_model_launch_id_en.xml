@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="obsidian_new_model_launch_id" label="obsidian_new_model_launch_id" language="en" table="var__m_sys_hub_action_input_9575bd991baa4110fe9e43f1b24bcbf4">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>obsidian_new_model_launch_id</element>
+            <help/>
+            <hint/>
+            <label>obsidian_new_model_launch_id</label>
+            <language>en</language>
+            <name>var__m_sys_hub_action_input_9575bd991baa4110fe9e43f1b24bcbf4</name>
+            <plural/>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin_Diego_Casillas</sys_created_by>
+            <sys_created_on>2022-03-29 08:05:38</sys_created_on>
+            <sys_id>e975fd991baa4110fe9e43f1b24bcb0b</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_name>obsidian_new_model_launch_id</sys_name>
+            <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+            <sys_update_name>sys_documentation_var__m_sys_hub_action_input_9575bd991baa4110fe9e43f1b24bcbf4_obsidian_new_model_launch_id_en</sys_update_name>
+            <sys_updated_by>admin_Diego_Casillas</sys_updated_by>
+            <sys_updated_on>2022-03-29 12:07:17</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

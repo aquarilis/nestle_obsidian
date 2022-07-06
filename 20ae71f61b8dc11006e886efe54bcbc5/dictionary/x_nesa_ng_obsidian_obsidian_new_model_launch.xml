@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this table is used for &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this table has been created or updated &gt;" extends="x_nesa_nexgen_core_nexgen_core_case" label="Obsidian New Model Launch" max_length="40" name="x_nesa_ng_obsidian_obsidian_new_model_launch" sizeclass="99" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Model approval date" max_length="40" name="model_approval_date" read_only="true" type="glide_date"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Model approval group" max_length="32" name="model_approval_group" read_only="true" reference="sys_user_group" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Model requester group" max_length="32" name="model_requester_group" read_only="true" reference="sys_user_group" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Model requester type" max_length="40" name="model_requester_type" read_only="true" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Market" sequence="0" value="market"/>
+                <element inactive_on_update="false" label="SBU" sequence="1" value="sbu"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Model requesting country" max_length="32" name="model_requesting_country" read_only="true" reference="cmn_location" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="NML Checklist Item JSON" max_length="4000" name="nml_checklist_item_json" read_only="true" type="string"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="NML Stage" max_length="40" name="nml_stage" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Authorization" sequence="0" value="100"/>
+                <element inactive_on_update="false" label="Kick-off" sequence="1" value="200"/>
+                <element inactive_on_update="false" label="Pre-deployment" sequence="2" value="300"/>
+                <element inactive_on_update="false" label="Deployment" sequence="3" value="400"/>
+                <element inactive_on_update="false" label="Post-deployment" sequence="4" value="500"/>
+                <element inactive_on_update="false" label="Active" sequence="5" value="600"/>
+                <element inactive_on_update="false" label="Retired" sequence="6" value="700"/>
+                <element inactive_on_update="false" label="Rejected" sequence="7" value="800"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="NML Stage Completed" max_length="40" name="nml_stage_completed" read_only="true" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Obsidian Model" max_length="32" name="obsidian_model" read_only="true" reference="x_nesa_ng_obsidian_obsidian_model" reference_cascade_rule="delete_no_workflow" type="reference"/>
+        <index name="index">
+            <element name="model_requester_group"/>
+        </index>
+        <index name="index2">
+            <element name="model_approval_group"/>
+        </index>
+        <index name="index3">
+            <element name="obsidian_model"/>
+        </index>
+        <index name="index4">
+            <element name="model_requesting_country"/>
+        </index>
+    </element>
+</database>

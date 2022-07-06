@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="fx_configuration">
+    <fx_configuration action="INSERT_OR_UPDATE">
+        <aggregation_source>default</aggregation_source>
+        <conversion_date_source/>
+        <display_digits>2</display_digits>
+        <display_value>as_entered</display_value>
+        <rate_filter_rate_table_field/>
+        <rate_filter_target_table_field/>
+        <rate_table>fx_system_rate</rate_table>
+        <reference_currency/>
+        <reference_currency_source/>
+        <sys_class_name>fx_configuration</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-05-25 09:49:11</sys_created_on>
+        <sys_id>42cf67e31b6f8d1c06e886efe54bcb21</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>fx_configuration_42cf67e31b6f8d1c06e886efe54bcb21</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-05-25 09:49:11</sys_updated_on>
+        <target_field>theoretical_gross_price</target_field>
+        <target_table>x_nesa_ng_obsidian_sku_assignment</target_table>
+    </fx_configuration>
+</record_update>

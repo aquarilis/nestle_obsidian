@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="catalog_ui_policy_action">
+    <catalog_ui_policy_action action="INSERT_OR_UPDATE">
+        <catalog_item display_value="Submit New Model Launch">965cc8331b928d5406e886efe54bcbf4</catalog_item>
+        <catalog_variable>IO:3d0b203b1b52cd5406e886efe54bcbda</catalog_variable>
+        <cleared>true</cleared>
+        <disabled>ignore</disabled>
+        <field/>
+        <mandatory>false</mandatory>
+        <order>100</order>
+        <sys_class_name>catalog_ui_policy_action</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-03-24 11:38:06</sys_created_on>
+        <sys_id>47163cb71b96cd5406e886efe54bcbdf</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>project</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>catalog_ui_policy_action_47163cb71b96cd5406e886efe54bcbdf</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-03-24 11:38:06</sys_updated_on>
+        <table/>
+        <ui_policy display_value="(DXC) manage &quot;Project&quot; variable">acf57c771b96cd5406e886efe54bcba3</ui_policy>
+        <variable>project</variable>
+        <variable_set/>
+        <visible>false</visible>
+    </catalog_ui_policy_action>
+</record_update>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>(DXC) script to ensure that no other currency than default currency is used</description>
+        <field>feature_price</field>
+        <global>true</global>
+        <isolate_script>true</isolate_script>
+        <messages/>
+        <name>(DXC) Enforce default currency (feature_price)</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+   try {
+      var currencyFieldName = "feature_price";
+
+      if (isLoading || newValue == ''){
+         return;
+      }
+
+      if (!g_scratchpad.default_currency){
+         return;
+      }
+      
+      var newValueCurrency = newValue.substring(0, 3, 0);
+      if (newValueCurrency !== g_scratchpad.default_currency) {
+         g_form.setValue(currencyFieldName, newValue.replace(newValueCurrency, g_scratchpad.default_currency));
+         g_form.showFieldMsg(currencyFieldName, getMessage("Only the default currency can be used:") + " " + g_scratchpad.default_currency, "error");
+      } else {
+         g_form.hideFieldMsg(currencyFieldName, true);
+      }
+
+
+   } catch (exception) {
+      alert("enforce currency script error: " + exception);
+      // Specify the name of the Client Script in the log message
+      jslog('Error in Client Script <(DXC) Enforce default currency (feature_price)>: ' + exception);
+   }
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-03-30 20:58:40</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>c7ffa9351b2e0550fe9e43f1b24bcb65</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>(DXC) Enforce default currency (feature_price)</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_client_c7ffa9351b2e0550fe9e43f1b24bcb65</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-04-03 21:50:36</sys_updated_on>
+        <table>x_nesa_ng_obsidian_obsidian_feature_option</table>
+        <type>onChange</type>
+        <ui_type>0</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

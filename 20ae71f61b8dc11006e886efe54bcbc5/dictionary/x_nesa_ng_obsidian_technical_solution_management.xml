@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this table is used for &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this table has been created or updated &gt;" extends="x_nesa_nexgen_core_nexgen_core_case" label="Technical Solution Management" max_length="40" name="x_nesa_ng_obsidian_technical_solution_management" sizeclass="0" text_index="true" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Crisis flag" max_length="40" name="crisis_flag" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" label="Critical flag" max_length="40" name="critical_flag" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" choice_field="defective_component" choice_table="x_nesa_ng_obsidian_technical_ticket" label="Defective component" max_length="40" name="defective_component" read_only="true" type="choice">
+            <choice/>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="8D Report" max_length="40" name="d_report" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" label="8D report first date of issuance" max_length="40" name="d_report_first_date" type="glide_date"/>
+        <element attributes="edge_encryption_enabled=true" label="8D Report number" max_length="80" name="d_report_number" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="ECR Document" max_length="40" name="ecr_document" type="file_attachment"/>
+        <element attributes="edge_encryption_enabled=true" label="Epidemic flag" max_length="40" name="epidemic_flag" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="First Reported Model" max_length="32" name="first_reported_model" read_only="true" reference="x_nesa_ng_obsidian_obsidian_model" reference_qual="javascript:new DXCTechnicalTicketUtils().getQueryForModel(current) + ''" type="reference" use_reference_qualifier="advanced"/>
+        <element attributes="edge_encryption_enabled=true" label="Issue name" mandatory="true" max_length="80" name="issue_name" type="string"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Master Ticket ID" max_length="32" name="master_ticket_id" read_only="true" reference="x_nesa_ng_obsidian_technical_ticket" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" calculation="(function calculatedFieldValue(current) {&#10;&#10;&#9;var impactedSerials = 0;&#10;    var impactedSerialGA = new GlideAggregate(DXCObsidianConstants.OBSIDIAN_IMPACTED_SERIALS_TABLE);&#10;    impactedSerialGA.addQuery('technical_ticket.tsm', current.getUniqueValue());&#10;&#9;impactedSerialGA.addAggregate('COUNT');&#10;    impactedSerialGA.query();&#10;&#10;    if (impactedSerialGA.next()){&#10;&#9;&#9;impactedSerials = impactedSerialGA.getAggregate('COUNT');&#10;&#9;}&#10;&#9;&#9;&#10;    return impactedSerials;&#10;&#10;})(current);" default="0" label="Number of serials reported" max_length="40" name="number_serials_reported" read_only="true" type="integer" virtual="true"/>
+        <element attributes="edge_encryption_enabled=true" calculation="(function calculatedFieldValue(current) {&#10;&#10;&#9;var relatedTickets = 0;&#10;    var relatedTicketsGA = new GlideAggregate(DXCObsidianConstants.TECHNICAL_TICKET_TABLE);&#10;    relatedTicketsGA.addQuery('tsm', current.getUniqueValue());&#10;&#9;relatedTicketsGA.addAggregate('COUNT');&#10;    relatedTicketsGA.query();&#10;&#10;    if (relatedTicketsGA.next()){&#10;&#9;&#9;relatedTickets = relatedTicketsGA.getAggregate('COUNT');&#10;&#9;}&#10;&#9;&#9;&#10;    return relatedTickets;&#10;&#9;&#10;})(current);" default="0" label="Number of tickets linked" max_length="40" name="number_tickets_linked" read_only="true" type="integer" virtual="true"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Origin" max_length="80" name="origin" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Design" sequence="0" value="design"/>
+                <element inactive="true" inactive_on_update="true" label="Performance Gap" sequence="0" value="performance_gap"/>
+                <element inactive_on_update="false" label="Design-Manufacturing" sequence="1" value="design_manufactoring"/>
+                <element inactive="true" inactive_on_update="true" label="Training field / Knowledge Gap" sequence="1" value="training_field_knowledge_gap"/>
+                <element inactive_on_update="false" label="Manufacturing" sequence="2" value="manufacturing"/>
+                <element inactive_on_update="false" label="Performance gap" sequence="3" value="performance gap"/>
+                <element inactive_on_update="false" label="Random failure" sequence="4" value="random_failure"/>
+                <element inactive_on_update="false" label="Training field/Knowledge gap" sequence="5" value="training field/knowledge gap"/>
+                <element inactive_on_update="false" label="Transportation" sequence="6" value="transportation"/>
+            </choice>
+        </element>
+        <element attributes="no_text_index=true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Resolution plan" max_length="5000" name="resolution_plan" type="string"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Supplier" max_length="32" name="supplier" read_only="true" reference="core_company" reference_qual="u_restrict_visibility_toLIKE^EQ" reference_qual_condition="u_restrict_visibility_toLIKE^EQ" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false,no_text_index=true" label="Supplier group" max_length="32" name="supplier_group" read_only="true" reference="sys_user_group" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Estimated TSM Resolution time" max_length="40" name="tsm_estimated_resolution_time" type="glide_date"/>
+        <element attributes="edge_encryption_enabled=true" label="With ECR" max_length="40" name="with_ecr" type="boolean"/>
+        <index name="index">
+            <element name="master_ticket_id"/>
+        </index>
+        <index name="index2">
+            <element name="first_reported_model"/>
+        </index>
+        <index name="index3">
+            <element name="supplier"/>
+        </index>
+        <index name="index4">
+            <element name="supplier_group"/>
+        </index>
+    </element>
+</database>

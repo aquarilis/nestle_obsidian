@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this table is used for &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this table has been created or updated &gt;" extends="cmdb_model" label="Obsidian Model" max_length="40" name="x_nesa_ng_obsidian_obsidian_model" sizeclass="99" type="collection">
+        <element comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Additional comments" max_length="4000" name="additional_comments" type="journal_input"/>
+        <element attributes="edge_encryption_enabled=true" label="Air pallet loading (units)" max_length="40" name="air_loading" type="integer"/>
+        <element comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Approval history" max_length="4000" name="approval_history" read_only="true" type="journal"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;Create in 23/03/2022: STSK0019926" label="Beverage Temperature" max_length="40" name="beverage_temperature" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Cold" sequence="10" value="cold"/>
+                <element inactive_on_update="false" label="Frozen" sequence="20" value="frozen"/>
+                <element inactive_on_update="false" label="Hot" sequence="30" value="hot"/>
+                <element inactive_on_update="false" label="Hot &amp; Cold" sequence="40" value="hot&amp;cold"/>
+                <element inactive_on_update="false" label="Other" sequence="50" value="other"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="Box height (cm)" max_length="15" name="box_height" type="decimal"/>
+        <element attributes="edge_encryption_enabled=true" label="Box length (cm)" max_length="15" name="box_length" type="decimal"/>
+        <element attributes="edge_encryption_enabled=true" label="Box width (cm)" max_length="15" name="box_width" type="decimal"/>
+        <element attributes="edge_encryption_enabled=true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Container loading - 20ft (pallets)" max_length="40" name="container_loading_20ft" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;&#13;&#10;Create in 23/03/2022: STSK0019926" label="Container loading - 40ft  (pallets)" max_length="40" name="container_loading_40ft" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;&#13;&#10;Create in 23/03/2022: STSK0019926" label="Container loading - 40ft HC  (pallets)" max_length="40" name="container_loading_40ft_hc" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Feature default currency" max_length="40" name="default_currency" type="string">
+            <choice>
+                <element inactive_on_update="false" label="CHF" sequence="0" value="CHF"/>
+                <element inactive_on_update="false" label="CNY" sequence="1" value="CNY"/>
+                <element inactive_on_update="false" label="EUR" sequence="2" value="EUR"/>
+                <element inactive_on_update="false" label="GBP" sequence="3" value="GBP"/>
+                <element inactive_on_update="false" label="JPY" sequence="4" value="JPY"/>
+                <element inactive_on_update="false" label="USD" sequence="5" value="USD"/>
+            </choice>
+        </element>
+        <element comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;&#13;&#10;Create in 23/03/2022: STSK0019926" label="Expected launch date" max_length="40" name="expected_launch_date" type="glide_date"/>
+        <element comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;&#13;&#10;Create in 23/03/2022: STSK0019926" label="Feature price expiry date" max_length="40" name="feature_expiry_date" type="glide_date"/>
+        <element attributes="edge_encryption_enabled=true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;&#13;&#10;Create in 23/03/2022: STSK0019926" default="90" label="Feature price expiry notice lead-time (days)" max_length="40" name="feature_expiry_notice_leadtime" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Feature price has expiry date" max_length="40" name="feature_price_has_expiry_date" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Yes" sequence="0" value="Yes"/>
+                <element inactive_on_update="false" label="No" sequence="1" value="No"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="Gross weight (kg)" max_length="15" name="gross_weight" type="decimal"/>
+        <element comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;&#13;&#10;Create in 23/03/2022: STSK0019926" label="HS Code" max_length="100" name="hs_code" type="string"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Ingredient Format" max_length="40" name="ingredient_format" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Capsules" sequence="10" value="capsules"/>
+                <element inactive_on_update="false" label="Cold Concentrate" sequence="20" value="cold_concentrate"/>
+                <element inactive_on_update="false" label="Combi R&amp;G" sequence="30" value="combi_r&amp;g"/>
+                <element inactive_on_update="false" label="Food or Snack" sequence="40" value="food_or_snack"/>
+                <element inactive_on_update="false" label="Ice" sequence="50" value="ice"/>
+                <element inactive_on_update="false" label="Liquid" sequence="60" value="liquid"/>
+                <element inactive_on_update="false" label="Liquid or Soluble" sequence="70" value="liquid_or_soluble"/>
+                <element inactive_on_update="false" label="Pure R&amp;G" sequence="80" value="pure_r&amp;g"/>
+                <element inactive_on_update="false" label="Soluble" sequence="90" value="soluble"/>
+                <element inactive_on_update="false" label="Water" sequence="100" value="water"/>
+                <element inactive_on_update="false" label="Other" sequence="110" value="other"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" choice="1" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;&#13;&#10;Create in 23/03/2022: STSK0019926" label="IP Ownership" max_length="40" name="ip_ownership" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Yes" sequence="10" value="yes"/>
+                <element inactive_on_update="false" label="No" sequence="20" value="no"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Lorry loading  (pallets)" max_length="40" name="lorry_loading" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;Create in 23/03/2022: STSK0019926" label="Machine Type" max_length="40" name="machine_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="AVM" sequence="10" value="avm"/>
+                <element inactive_on_update="false" label="Mobile" sequence="20" value="mobile"/>
+                <element inactive_on_update="false" label="Table Tops" sequence="30" value="table_tops"/>
+                <element inactive_on_update="false" label="Other" sequence="40" value="other"/>
+            </choice>
+        </element>
+        <element comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Model Approval date" max_length="40" name="model_approval_date" read_only="true" type="glide_date"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Model Approval group" max_length="32" name="model_approval_group" read_only="true" reference="sys_user_group" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" dependent="model_class" dependent_on_field="model_class" label="Model Category" max_length="40" name="model_category" type="choice" use_dependent_field="true">
+            <choice>
+                <element dependent_value="dispenser" inactive_on_update="false" label="Cold" sequence="10" value="cold"/>
+                <element dependent_value="dispenser" inactive_on_update="false" label="Combi R&amp;G" sequence="20" value="combi_r&amp;g"/>
+                <element dependent_value="dispenser" inactive_on_update="false" label="Food or Snack" sequence="30" value="food_or_snack"/>
+                <element dependent_value="dispenser" inactive_on_update="false" label="Hot Liquid" sequence="40" value="hot _liquid"/>
+                <element dependent_value="dispenser" inactive_on_update="false" label="Hot Water" sequence="50" value="hot_water"/>
+                <element dependent_value="dispenser" inactive_on_update="false" label="Pure R&amp;G" sequence="60" value="pure_r&amp;g"/>
+                <element dependent_value="dispenser" inactive_on_update="false" label="Roaster" sequence="70" value="roaster"/>
+                <element dependent_value="dispenser" inactive_on_update="false" label="Soluble" sequence="80" value="soluble"/>
+                <element dependent_value="accessory" inactive_on_update="false" label="Capsules" sequence="100" value="capsules"/>
+                <element dependent_value="accessory" inactive_on_update="false" label="Base Cabinet" sequence="110" value="base_cabinet"/>
+                <element dependent_value="accessory" inactive_on_update="false" label="Coffee Corner" sequence="120" value="coffee_corner"/>
+                <element dependent_value="accessory" inactive_on_update="false" label="Filtration" sequence="130" value="filtration"/>
+                <element dependent_value="accessory" inactive_on_update="false" label="Fridge" sequence="140" value="fridge"/>
+                <element dependent_value="accessory" inactive_on_update="false" label="Grinder" sequence="150" value="grinder"/>
+                <element dependent_value="accessory" inactive_on_update="false" label="Milk Module" sequence="160" value="milk_module"/>
+                <element dependent_value="accessory" inactive_on_update="false" label="Payment System" sequence="175" value="payment_system"/>
+                <element dependent_value="accessory" inactive_on_update="false" label="Telemetry" sequence="180" value="telemetry"/>
+                <element dependent_value="accessory" inactive_on_update="false" label="Other" sequence="190" value="other"/>
+                <element dependent_value="dispenser" inactive_on_update="false" label="Other" sequence="200" value="other"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" choice="1" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Model class" max_length="40" name="model_class" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Dispenser" sequence="10" value="dispenser"/>
+                <element inactive_on_update="false" label="Accessory" sequence="20" value="accessory"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" choice="1" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;Create in 23/03/2022: STSK0019926&#13;&#10;" label="Model Group" max_length="40" name="model_group" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="CoolPro" sequence="10" value="coolpro"/>
+                <element inactive_on_update="false" label="Express" sequence="20" value="express"/>
+                <element inactive_on_update="false" label="EZCare" sequence="30" value="ezcare"/>
+                <element inactive_on_update="false" label="NA1" sequence="40" value="na1"/>
+                <element inactive_on_update="false" label="NA2" sequence="50" value="na2"/>
+                <element inactive_on_update="false" label="NDG" sequence="60" value="ndg"/>
+                <element inactive_on_update="false" label="NM1" sequence="70" value="nm1"/>
+                <element inactive_on_update="false" label="NM2" sequence="80" value="nm2"/>
+                <element inactive_on_update="false" label="Real" sequence="90" value="real"/>
+                <element inactive_on_update="false" label="Roastelier" sequence="100" value="roastelier"/>
+                <element inactive_on_update="false" label="SBUX" sequence="110" value="sbux"/>
+                <element inactive_on_update="false" label="Slush" sequence="120" value="slush"/>
+                <element inactive_on_update="false" label="Visual Bowl" sequence="130" value="visual_bowl"/>
+                <element inactive_on_update="false" label="NA Legacy" sequence="140" value="na_legacy"/>
+                <element inactive_on_update="false" label="Other" sequence="150" value="other"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Model Requester group" max_length="32" name="model_requester_group" read_only="true" reference="sys_user_group" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" choice_field="model_requester_type" choice_table="x_nesa_ng_obsidian_obsidian_new_model_launch" label="Model requester type" max_length="40" name="model_requester_type" read_only="true" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Market" sequence="0" value="market"/>
+                <element inactive_on_update="false" label="SBU" sequence="1" value="sbu"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Model requesting country" max_length="32" name="model_requesting_country" read_only="true" reference="cmn_location" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;&#13;&#10;Create in 23/03/2022: STSK0019926" label="Model segment" max_length="40" name="model_segment" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Brewer" sequence="10" value="brewer"/>
+                <element inactive_on_update="false" label="Cold" sequence="20" value="cold"/>
+                <element inactive_on_update="false" label="Frozen" sequence="30" value="frozen"/>
+                <element inactive_on_update="false" label="Hot Liquid" sequence="40" value="hot_liquid"/>
+                <element inactive_on_update="false" label="Hot Soluble" sequence="50" value="hot_soluble"/>
+                <element inactive_on_update="false" label="Mainstream B2C" sequence="60" value="mainstream_b2c"/>
+                <element inactive_on_update="false" label="Premium B2C" sequence="70" value="premium_b2c"/>
+                <element inactive_on_update="false" label="Traditional" sequence="80" value="traditional"/>
+                <element inactive_on_update="false" label="Other" sequence="90" value="other"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="Net weight (kg)" max_length="15" name="net_weight" type="decimal"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" choice_field="nml_stage" choice_table="x_nesa_ng_obsidian_obsidian_new_model_launch" label="NML Stage" max_length="40" name="nml_stage" read_only="true" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Authorization" sequence="0" value="100"/>
+                <element inactive_on_update="false" label="Kick-off" sequence="1" value="200"/>
+                <element inactive_on_update="false" label="Pre-deployment" sequence="2" value="300"/>
+                <element inactive_on_update="false" label="Deployment" sequence="3" value="400"/>
+                <element inactive_on_update="false" label="Post-deployment" sequence="4" value="500"/>
+                <element inactive_on_update="false" label="Active" sequence="5" value="600"/>
+                <element inactive_on_update="false" label="Retired" sequence="6" value="700"/>
+                <element inactive_on_update="false" label="Rejected" sequence="7" value="800"/>
+            </choice>
+        </element>
+        <element comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;&#13;&#10;Create in 23/03/2022: STSK0019926" label="NML submission date" max_length="40" name="nml_submission_date" read_only="true" type="glide_date"/>
+        <element comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;CREATED IN 23/03/2022: STSK0019926" label="Description" mandatory="true" max_length="500" name="obsidian_model_description" type="string"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Obsidian New Model Launch" max_length="32" name="obsidian_new_model_launch" read_only="true" reference="x_nesa_ng_obsidian_obsidian_new_model_launch" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" choice="1" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;&#13;&#10;Create in 23/03/2022: STSK0019926" label="Project" max_length="32" name="obsidian_project" reference="x_nesa_ng_obsidian_obsidian_project" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference">
+            <choice/>
+        </element>
+        <element attributes="edge_encryption_enabled=true" choice="1" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;Create in 23/03/2022: STSK0019926" label="Positioning" max_length="40" name="positioning" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Entry" sequence="10" value="entry"/>
+                <element inactive_on_update="false" label="Mainstream" sequence="20" value="mainstream"/>
+                <element inactive_on_update="false" label="Premium" sequence="30" value="premium"/>
+                <element inactive_on_update="false" label="Other" sequence="40" value="other"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" choice="1" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;Create in 23/03/2022: STSK0019926" label="Preferred Model List" max_length="40" name="preferred_model_list" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Global" sequence="10" value="global"/>
+                <element inactive_on_update="false" label="Regional" sequence="20" value="regional"/>
+                <element inactive_on_update="false" label="Local" sequence="30" value="local"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;&#13;&#10;Create in 23/03/2022: STSK0019926" label="Price Matrix provided" max_length="40" name="price_matrix_provided" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;&#13;&#10;Create in 23/03/2022: STSK0019926" label="Production lead time (days)" max_length="40" name="prod_lead_time" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Road/Sea Pallet loading (units)" max_length="40" name="road_sea_pallet_loading" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" label="Shipping information comments" max_length="1000" name="shipping_information_comments" type="string"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" choice="1" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Supplier" mandatory="true" max_length="32" name="supplier" reference="core_company" reference_qual="u_restrict_visibility_toLIKEec2686691b61c110fe9e43f1b24bcbeb^u_active=true^u_is_parent_vendor=true^EQ" reference_qual_condition="u_restrict_visibility_toLIKEec2686691b61c110fe9e43f1b24bcbeb^u_active=true^u_is_parent_vendor=true^EQ" type="reference">
+            <choice/>
+        </element>
+        <element attributes="edge_encryption_enabled=true" choice="1" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;Create in 23/03/2022: STSK0019926" label="System Brand" max_length="40" name="system_brand" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Alegria" sequence="10" value="alegria"/>
+                <element inactive_on_update="false" label="CoolPro" sequence="20" value="coolpro"/>
+                <element inactive_on_update="false" label="Express" sequence="30" value="express"/>
+                <element inactive_on_update="false" label="EZCare" sequence="40" value="ezcare"/>
+                <element inactive_on_update="false" label="Fusion" sequence="50" value="fusion"/>
+                <element inactive_on_update="false" label="Milano" sequence="60" value="milano"/>
+                <element inactive_on_update="false" label="Nescafé Branded" sequence="70" value="nescafe_branded"/>
+                <element inactive_on_update="false" label="Roastelier" sequence="80" value="roastelier"/>
+                <element inactive_on_update="false" label="SBUX" sequence="90" value="sbux"/>
+                <element inactive_on_update="false" label="Branded others" sequence="100" value="branded_others"/>
+                <element inactive_on_update="false" label="Not branded" sequence="110" value="not_branded"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="New Long" max_length="40" name="u_longint_1" type="longint"/>
+        <element attributes="edge_encryption_enabled=true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;UPDATED IN 23/03/2022 - STSK0019926 update field label name." label="Version/Generation" max_length="40" name="version" type="string"/>
+        <element attributes="edge_encryption_enabled=true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Warranty duration (months)" max_length="40" name="warranty_duration" type="integer"/>
+        <index name="index">
+            <element name="model_requester_group"/>
+        </index>
+        <index name="index2">
+            <element name="obsidian_new_model_launch"/>
+        </index>
+        <index name="index3">
+            <element name="model_approval_group"/>
+        </index>
+        <index name="index4">
+            <element name="supplier"/>
+        </index>
+        <index name="index5">
+            <element name="model_requesting_country"/>
+        </index>
+        <index name="index6">
+            <element name="obsidian_project"/>
+        </index>
+    </element>
+</database>

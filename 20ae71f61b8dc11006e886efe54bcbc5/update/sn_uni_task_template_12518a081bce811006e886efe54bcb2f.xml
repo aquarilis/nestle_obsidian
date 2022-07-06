@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_uni_task_template">
+    <sn_uni_task_template action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <global>true</global>
+        <group/>
+        <groups/>
+        <link_element/>
+        <name>Request impacted serials file</name>
+        <next/>
+        <next_child/>
+        <parent_table>x_nesa_ng_obsidian_technical_ticket</parent_table>
+        <roles/>
+        <short_description>Request the impacted serials in a Excel file</short_description>
+        <show_on_template_bar>true</show_on_template_bar>
+        <stand_alone>false</stand_alone>
+        <sys_class_name>sn_uni_task_template</sys_class_name>
+        <sys_created_by>admin_Isaac_Perez</sys_created_by>
+        <sys_created_on>2022-02-28 15:16:57</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>12518a081bce811006e886efe54bcb2f</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Request impacted serials file</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sn_uni_task_template_12518a081bce811006e886efe54bcb2f</sys_update_name>
+        <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+        <sys_updated_on>2022-02-28 16:08:31</sys_updated_on>
+        <table>sn_uni_task_universal_task</table>
+        <template>short_description=Please, provide the impacted serials in the excel file template^rich_description=&lt;p&gt;Please, download and fill &lt;a href="/sys_attachment.do?sys_id=cf68f8441bc2411006e886efe54bcb63" rel="nofollow" title="this template"&gt;this template&lt;/a&gt; to upload the serials from an Excel file.&lt;/p&gt;^type=upload_documents^priority=3^EQ</template>
+        <user/>
+        <view/>
+    </sn_uni_task_template>
+</record_update>

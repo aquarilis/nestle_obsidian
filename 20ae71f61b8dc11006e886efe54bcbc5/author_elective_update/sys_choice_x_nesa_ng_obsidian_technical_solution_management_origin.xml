@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="origin" table="x_nesa_ng_obsidian_technical_solution_management" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>origin</element>
+            <name>x_nesa_ng_obsidian_technical_solution_management</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-02-07 16:01:21</sys_created_on>
+            <sys_id>5ad242151bed015cfe9e43f1b24bcb2a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>origin</sys_name>
+            <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+            <sys_update_name>sys_choice_x_nesa_ng_obsidian_technical_solution_management_origin</sys_update_name>
+            <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+            <sys_updated_on>2022-02-07 16:01:21</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>origin</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Design</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_technical_solution_management</name>
+            <sequence>0</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-02-07 16:01:21</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>2cd24e511bed015cfe9e43f1b24bcb4b</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin_Agata_Swoboda</sys_updated_by>
+            <sys_updated_on>2022-02-28 15:17:26</sys_updated_on>
+            <value>design</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>origin</element>
+            <hint/>
+            <inactive>true</inactive>
+            <label>Performance Gap</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_technical_solution_management</name>
+            <sequence>0</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-02-07 16:01:50</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>0be202151bed015cfe9e43f1b24bcb40</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin_Agata_Swoboda</sys_updated_by>
+            <sys_updated_on>2022-02-28 15:17:26</sys_updated_on>
+            <value>performance_gap</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>origin</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Design-Manufacturing</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_technical_solution_management</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-02-07 16:01:29</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>1ad24e911bed015cfe9e43f1b24bcbe6</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin_Agata_Swoboda</sys_updated_by>
+            <sys_updated_on>2022-02-28 15:17:26</sys_updated_on>
+            <value>design_manufactoring</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>origin</element>
+            <hint/>
+            <inactive>true</inactive>
+            <label>Training field / Knowledge Gap</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_technical_solution_management</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-02-07 16:02:20</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>a7f20e151bed015cfe9e43f1b24bcb64</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin_Agata_Swoboda</sys_updated_by>
+            <sys_updated_on>2022-02-28 15:17:26</sys_updated_on>
+            <value>training_field_knowledge_gap</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>origin</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Manufacturing</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_technical_solution_management</name>
+            <sequence>2</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-02-07 16:01:40</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>58e242151bed015cfe9e43f1b24bcbe0</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin_Agata_Swoboda</sys_updated_by>
+            <sys_updated_on>2022-02-28 15:17:26</sys_updated_on>
+            <value>manufacturing</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>origin</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Performance gap</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_technical_solution_management</name>
+            <sequence>3</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Agata_Swoboda</sys_created_by>
+            <sys_created_on>2022-02-28 15:17:26</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>003242cc1bce811006e886efe54bcbd0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Agata_Swoboda</sys_updated_by>
+            <sys_updated_on>2022-02-28 15:17:26</sys_updated_on>
+            <value>performance gap</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>origin</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Random failure</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_technical_solution_management</name>
+            <sequence>4</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-02-07 16:01:59</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>1df2c2551bed015cfe9e43f1b24bcb9d</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin_Agata_Swoboda</sys_updated_by>
+            <sys_updated_on>2022-02-28 15:17:26</sys_updated_on>
+            <value>random_failure</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>origin</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Training field/Knowledge gap</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_technical_solution_management</name>
+            <sequence>5</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Agata_Swoboda</sys_created_by>
+            <sys_created_on>2022-02-28 15:17:26</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>8c3282cc1bce811006e886efe54bcb04</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin_Agata_Swoboda</sys_updated_by>
+            <sys_updated_on>2022-02-28 15:17:26</sys_updated_on>
+            <value>training field/knowledge gap</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>origin</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Transportation</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_technical_solution_management</name>
+            <sequence>6</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Isaac_Perez</sys_created_by>
+            <sys_created_on>2022-02-07 16:02:36</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>34138e551bed015cfe9e43f1b24bcb89</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin_Agata_Swoboda</sys_updated_by>
+            <sys_updated_on>2022-02-28 15:17:26</sys_updated_on>
+            <value>transportation</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

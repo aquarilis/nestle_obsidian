@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_transform_map">
+    <sys_transform_map action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copy_empty_fields>false</copy_empty_fields>
+        <create_new_record_on_empty_coalesce_fields>false</create_new_record_on_empty_coalesce_fields>
+        <enforce_mandatory_fields>No</enforce_mandatory_fields>
+        <name>(DXC) Obsidian - 10 - SKU Codes TM</name>
+        <order>100</order>
+        <run_business_rules>true</run_business_rules>
+        <run_script>true</run_script>
+        <script><![CDATA[(function transformRow(source, target, map, log, isUpdate) {
+	try {
+
+
+		var skuCodeDetails = {
+			obsidian_model: target.getValue("obsidian_model"),
+			model_configuration: target.getValue("model_configuration"),
+			sku_supplier_code: source.u_sku_code.toString(),
+			sku_vendor: target.getValue("sku_vendor"),
+			source_sku_assignment: target.getValue("sys_id"),
+			sku_supplier_description: source.u_sku_supplier_description.toString(),
+			sku_supplier_detailed_description: source.u_sku_supplier_ed_description.toString(),
+			sku_internal_description: source.u_sku_internal_description.toString(),
+		};
+
+
+		target.obsidian_sku = (function () {
+			var obsidianSKU_GR = new GlideRecord("x_nesa_ng_obsidian_obsidian_sku");
+			obsidianSKU_GR.addQuery("obsidian_model", skuCodeDetails.obsidian_model);
+			obsidianSKU_GR.addQuery("model_configuration", skuCodeDetails.model_configuration);
+			obsidianSKU_GR.addQuery("sku_supplier_code", skuCodeDetails.sku_supplier_code);
+			obsidianSKU_GR.addQuery("sku_vendor", skuCodeDetails.sku_vendor);
+			obsidianSKU_GR.query();
+			if (!obsidianSKU_GR.next()) {
+				log.info("creating SKU code " + skuCodeDetails.sku_supplier_code);
+				obsidianSKU_GR.initialize();
+				obsidianSKU_GR.setValue("source_sku_assignment", skuCodeDetails.source_sku_assignment);
+			} else {
+				log.info("reusing SKU code " + obsidianSKU_GR.getDisplayValue());
+			}
+
+			obsidianSKU_GR.setValue("obsidian_model", skuCodeDetails.obsidian_model);
+			obsidianSKU_GR.setValue("model_configuration", skuCodeDetails.model_configuration);
+			obsidianSKU_GR.setValue("sku_supplier_code", skuCodeDetails.sku_supplier_code);
+			obsidianSKU_GR.setValue("sku_supplier_description", skuCodeDetails.sku_supplier_description);
+			obsidianSKU_GR.setValue("sku_supplier_detailed_description", skuCodeDetails.sku_supplier_detailed_description);
+			obsidianSKU_GR.setValue("sku_internal_description", skuCodeDetails.sku_internal_description);
+			obsidianSKU_GR.setValue("sku_vendor", skuCodeDetails.sku_vendor);
+			obsidianSKU_GR.setValue("previous_version", source.u_previous_version.toString());
+			obsidianSKU_GR.setValue("current_version", source.u_current_version.toString());
+
+			obsidianSKU_GR.update();
+
+			return obsidianSKU_GR.getUniqueValue();
+		})();
+
+
+	} catch (e) {
+		error = true;
+		log.error("error in SKU code TM main script: " + e);
+	}
+
+
+})(source, target, map, log, action === "update");]]></script>
+        <source_table>x_nesa_ng_obsidian_sku_codes_import</source_table>
+        <sys_class_name>sys_transform_map</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-05-25 14:37:35</sys_created_on>
+        <sys_id>87a17c7b1b6f415c06e886efe54bcbad</sys_id>
+        <sys_mod_count>27</sys_mod_count>
+        <sys_name>(DXC) Obsidian - 10 - SKU Codes TM</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_transform_map_87a17c7b1b6f415c06e886efe54bcbad</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-05-25 16:14:23</sys_updated_on>
+        <target_table>x_nesa_ng_obsidian_sku_assignment</target_table>
+    </sys_transform_map>
+</record_update>

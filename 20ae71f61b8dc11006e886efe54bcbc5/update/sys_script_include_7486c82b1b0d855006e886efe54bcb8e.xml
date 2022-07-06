@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_nesa_ng_obsidian.UniversalTaskCloseEvents</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Implements extension point sn_uni_task.UniversalTaskCloseEvents
+Specifies the logic for all child task close and individual task close events.</description>
+        <name>UniversalTaskCloseEvents</name>
+        <script><![CDATA[var UniversalTaskCloseEvents = Class.create();
+UniversalTaskCloseEvents.prototype = {
+    initialize: function () { },
+
+    /*
+     * Triggered when all child task of a parent closed(Completed/Cancelled) state.
+     *
+     * @param {GlideRecord} parentGr - Glide record of parent of task
+     * @param {string} taskSysId - Last closed task sys id
+     */
+    childTasksClosed: function (parentGr, taskSysId) {
+
+    },
+
+
+    /*
+     * Triggered when child task of a parent goes into completed state.
+     *
+     * @param {GlideRecord} parentGr - Glide record of parent of task
+     * @param {string} taskSysId - Sys id of completed task
+     */
+    childTaskCompleted: function (parentGr, taskSysId) {
+        if (this.getImplementerTables().indexOf(parentGr.getTableName()) == -1)
+            return;
+
+        var dxcTechnicalTicketUtils = new DXCTechnicalTicketUtils();
+        var uniTaskGR = new GlideRecord('sn_uni_task_universal_task');
+        if (!uniTaskGR.get(taskSysId))
+            return;
+
+
+        var taskType = uniTaskGR.getValue('type');
+        var templateSysID = uniTaskGR.getValue('template');
+
+        if (taskType == 'collect_employee_input') {
+            if (templateSysID == gs.getProperty("x_nesa_ng_obsidian.provide_impacted_serials_info_template_id")) {
+                dxcTechnicalTicketUtils.generateImpactedSerialFromEmployeeForm(parentGr, taskSysId);
+            } else {
+              //  dxcTechnicalTicketUtils.copyQuestionsIntoParentRecordFields(parentGr, taskSysId); //replaced by implementation of STRY0178875
+              
+            }
+        } else if (taskType == 'upload_documents') {
+            if (templateSysID == gs.getProperty('x_nesa_ng_obsidian.request_impacted_serials_file_template_id')) {
+                dxcTechnicalTicketUtils.processImpactedSerialsFile(parentGr, taskSysId);
+            }
+        }
+
+        return;
+    },
+
+
+    /*
+     * Triggered when child task of a parent goes into cancelled state.
+     *
+     * @param {GlideRecord} parentGr - Glide record of parent of task
+     * @param {string} taskSysId - Sys id of cancelled task
+     */
+    childTaskCancelled: function (parentGr, taskSysId) {
+
+
+    },
+
+
+    /*
+     * Returns the list of sys_class_name of parent of task
+     *	
+     * @returns [string] array of sys class name of tables having ability to create universal task on them
+     */
+    getImplementerTables: function () {
+        var implementerTables = [];
+        //implementerTables.push('x_nesa_ng_obsidian_new_model_launch');
+        implementerTables.push(DXCObsidianConstants.TECHNICAL_TICKET_TABLE);
+        implementerTables.push(DXCObsidianConstants.TSM_TABLE);
+
+
+        return implementerTables;
+    },
+
+    type: 'UniversalTaskCloseEvents'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_Isaac_Perez</sys_created_by>
+        <sys_created_on>2022-01-20 10:13:03</sys_created_on>
+        <sys_id>7486c82b1b0d855006e886efe54bcb8e</sys_id>
+        <sys_mod_count>27</sys_mod_count>
+        <sys_name>UniversalTaskCloseEvents</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_include_7486c82b1b0d855006e886efe54bcb8e</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-06-08 12:44:56</sys_updated_on>
+    </sys_script_include>
+</record_update>

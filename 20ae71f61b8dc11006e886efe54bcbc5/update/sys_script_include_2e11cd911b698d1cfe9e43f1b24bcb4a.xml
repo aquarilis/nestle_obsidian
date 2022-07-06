@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_nesa_ng_obsidian.DXCObsidianConstants</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Constants used by Obsidian processes.</description>
+        <name>DXCObsidianConstants</name>
+        <script><![CDATA[var DXCObsidianConstants = Class.create();
+DXCObsidianConstants.prototype = {
+    initialize: function () {},
+
+    type: 'DXCObsidianConstants'
+};
+
+// OBSIDIAN IMPACTED SERIALS - TABLE_NAME
+DXCObsidianConstants.OBSIDIAN_IMPACTED_SERIALS_TABLE = 'x_nesa_ng_obsidian_impacted_serials';
+
+// OBSIDIAN PREFERENCE - TABLE_NAME
+DXCObsidianConstants.OBSIDIAN_PREFERENCE_TABLE = 'x_nesa_ng_obsidian_obsidian_preference';
+
+// TECHNICAL TICKET - TABLE NAME
+DXCObsidianConstants.TECHNICAL_TICKET_TABLE = 'x_nesa_ng_obsidian_technical_ticket';
+
+// TECHNICAL TICKET - STATUSES
+DXCObsidianConstants.TECHNICAL_TICKET_STATE_VALIDATION = 10;
+DXCObsidianConstants.TECHNICAL_TICKET_STATE_REJECTED = 11;
+DXCObsidianConstants.TECHNICAL_TICKET_STATE_INFO_COLLECTION = 12;
+DXCObsidianConstants.TECHNICAL_TICKET_STATE_TECHNICAL_SOLUTION_MANAGEMENT = 13;
+DXCObsidianConstants.TECHNICAL_TICKET_STATE_SOLUTION_COMMUNICATION_TO_MARKET = 14;
+DXCObsidianConstants.TECHNICAL_TICKET_STATE_MARKET_CONCLUSION = 15;
+DXCObsidianConstants.TECHNICAL_TICKET_STATE_CLOSED = 3;
+DXCObsidianConstants.TECHNICAL_TICKET_STATE_CANCELLED = 7;
+
+// TECHNICAL TICKET - COMMON VALUES
+DXCObsidianConstants.TECHNICAL_TICKET_AUTO_CLOSURE_PROPERTY_NAME = 'x_nesa_ng_obsidian.technical_ticket.auto_close_time';
+
+// TECHNICAL TICKET - TABLE NAME
+DXCObsidianConstants.TSM_TABLE = 'x_nesa_ng_obsidian_technical_solution_management';
+
+// TECHNICAL SOLUTION MANAGEMENT - STATUSES
+DXCObsidianConstants.TSM_STATE_RCA = 10;
+DXCObsidianConstants.TSM_STATE_DEVELOPMENT = 11;
+DXCObsidianConstants.TSM_STATE_VALIDATION = 12;
+DXCObsidianConstants.TSM_STATE_INDUSTRIALIZATION = 13;
+DXCObsidianConstants.TSM_STATE_CONFIRMED = 3;
+DXCObsidianConstants.TSM_STATE_CANCELLED = 7;
+
+DXCObsidianConstants.NML_TABLE_NAMES = {
+    NML_TABLE: 'x_nesa_ng_obsidian_obsidian_new_model_launch',
+    MODEL_TABLE: 'x_nesa_ng_obsidian_obsidian_model',
+    MODEL_FEATURE_TABLE: 'x_nesa_ng_obsidian_obsidian_model_feature',
+    FEATURE_OPTION_TABLE: 'x_nesa_ng_obsidian_obsidian_feature_option',
+    MODEL_CONFIGURATION_TABLE: 'x_nesa_ng_obsidian_obsidian_model_configuration'
+};
+
+DXCObsidianConstants.SKU_TABLE_NAMES = {
+    SKU_ASSIGNMENT_TABLE: 'x_nesa_ng_obsidian_sku_assignment',
+    SKU_ASSIGNMENT_FEATURE_TABLE: 'x_nesa_ng_obsidian_sku_assignment_feature',
+    SKU_TABLE: 'x_nesa_ng_obsidian_obsidian_sku'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_Isaac_Perez</sys_created_by>
+        <sys_created_on>2022-02-07 11:18:28</sys_created_on>
+        <sys_id>2e11cd911b698d1cfe9e43f1b24bcb4a</sys_id>
+        <sys_mod_count>19</sys_mod_count>
+        <sys_name>DXCObsidianConstants</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_include_2e11cd911b698d1cfe9e43f1b24bcb4a</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-05-18 07:57:49</sys_updated_on>
+    </sys_script_include>
+</record_update>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_transform_map">
+    <sys_transform_map action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copy_empty_fields>false</copy_empty_fields>
+        <create_new_record_on_empty_coalesce_fields>false</create_new_record_on_empty_coalesce_fields>
+        <enforce_mandatory_fields>No</enforce_mandatory_fields>
+        <name>(DXC) Obsidian - 09 - SKU Assignment features TM</name>
+        <order>100</order>
+        <run_business_rules>true</run_business_rules>
+        <run_script>true</run_script>
+        <script><![CDATA[(function transformRow(source, target, map, log, isUpdate) {
+
+	try {
+
+		if (ignore == true){
+			log.warn("this is ignored");
+			return;
+		}
+
+		if (action == 'insert') {
+
+			var skuAssignmentGR = target.sku_assignment.getRefRecord();
+			var modelFeatureOptionFullName = source.u_feature_option;
+
+			if (modelFeatureOptionFullName == "") {
+				return "modelFeatureFullName_is_empty";
+			}
+
+			var modelFeatureOptionFullNameArray = modelFeatureOptionFullName.split("---");
+
+			if (modelFeatureOptionFullNameArray.length != 3) {
+				return "modelFeatureFullNameArray.length_is_not_3";
+			}
+
+			var modelName = modelFeatureOptionFullNameArray[0].toString();
+			var featureName = modelFeatureOptionFullNameArray[1].toString();
+
+
+			var modelFeature_GR = new GlideRecord(x_nesa_ng_obsidian.DXCObsidianConstants.NML_TABLE_NAMES.MODEL_FEATURE_TABLE);
+			modelFeature_GR.addQuery("obsidian_model.name", modelName);
+			modelFeature_GR.addQuery("name", featureName);
+			modelFeature_GR.query();
+			if (modelFeature_GR.next()) {
+				if (modelFeature_GR.getValue("obsidian_model") != skuAssignmentGR.getValue("obsidian_model")) {
+					throw "feature option '" + modelFeatureOptionFullName + "' doesn't belong to the same model as SKU assignment '" + skuAssignmentGR.getValue("import_unique_key") + "'";
+				}
+			} else {
+				throw "cannot find model feature for feature option " + modelFeatureOptionFullName;
+			}
+
+			throw "trying to insert a SKU assignment feature - investigate reason";
+
+		}
+
+
+
+
+		var featureOptionSysID = (function (featureOptionFullName) {
+			if (source.u_standard_option == "") {
+				return "";
+			}
+
+			var featureOptionFullName_array = featureOptionFullName.split("---");
+
+			if (featureOptionFullName_array.length != 3) {
+				throw "standardOptionFullName_array.length != 3";
+			}
+
+			var modelName = featureOptionFullName_array[0].trim();
+			var featureName = featureOptionFullName_array[1].trim();
+			var optionName = featureOptionFullName_array[2].trim();
+
+
+
+			var featureOption_GR = new GlideRecord(x_nesa_ng_obsidian.DXCObsidianConstants.NML_TABLE_NAMES.FEATURE_OPTION_TABLE);
+			featureOption_GR.addQuery("model_feature.obsidian_model.name", modelName);
+			featureOption_GR.addQuery("model_feature.name", featureName);
+			featureOption_GR.addQuery("name", optionName);
+			featureOption_GR.query();
+
+			if (!featureOption_GR.next()) {
+				throw "couldn't get featureOption_GR " + featureOptionFullName;
+			}
+
+			if (featureOption_GR.model_feature != target.model_feature) {
+				throw "provided feature option '" + featureOptionFullName + "' doesn't belong to feature '" + target.model_feature.name;
+			}
+
+			return featureOption_GR.sys_id;
+
+
+
+		})(source.u_feature_option.toString());
+
+
+		if ((target.feature_option_choice == "Defaulted" || target.feature_option_choice == "Restricted") && target.feature_option != featureOptionSysID) {
+			throw "trying to change a defaulted or restricted choice";
+		}
+
+		target.feature_option = featureOptionSysID;
+
+
+	} catch (e) {
+		error = true;
+		log.error("error in SKU assignment feature TM main script for " + source.u_sku_assignment_unique_code + " / " + source.u_feature_option + ": " + e);
+	}
+
+})(source, target, map, log, action === "update");
+
+]]></script>
+        <source_table>x_nesa_ng_obsidian_sku_assignment_features_import</source_table>
+        <sys_class_name>sys_transform_map</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-05-25 12:52:41</sys_created_on>
+        <sys_id>f119d0b31beb015c06e886efe54bcbc6</sys_id>
+        <sys_mod_count>14</sys_mod_count>
+        <sys_name>(DXC) Obsidian - 09 - SKU Assignment features TM</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_transform_map_f119d0b31beb015c06e886efe54bcbc6</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-06-15 14:20:56</sys_updated_on>
+        <target_table>x_nesa_ng_obsidian_sku_assignment_feature</target_table>
+    </sys_transform_map>
+</record_update>

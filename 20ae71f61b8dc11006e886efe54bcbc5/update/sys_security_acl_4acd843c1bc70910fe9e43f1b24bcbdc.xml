@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl">
+    <sys_security_acl action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <admin_overrides>true</admin_overrides>
+        <advanced>true</advanced>
+        <condition/>
+        <description>(DXC) SKU Assignment can be READ as follows:&#13;
+NBS and Procurement (Obsidian-NP Procurement group) can read all&#13;
+market and regional group members can see the ones assigned to the countries they cover&#13;
+Suppliers can see the ones related to their models&#13;
+3rd party don't have any visibility</description>
+        <name>x_nesa_ng_obsidian_sku_assignment</name>
+        <operation display_value="read">read</operation>
+        <script><![CDATA[answer = new x_nesa_ng_obsidian.DXCObsidianSKUUtils().userCanReadSKUAssignment(current);]]></script>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-04-21 07:47:06</sys_created_on>
+        <sys_id>4acd843c1bc70910fe9e43f1b24bcbdc</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>x_nesa_ng_obsidian_sku_assignment</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_security_acl_4acd843c1bc70910fe9e43f1b24bcbdc</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-05-06 09:36:55</sys_updated_on>
+        <type display_value="record">record</type>
+    </sys_security_acl>
+</record_update>

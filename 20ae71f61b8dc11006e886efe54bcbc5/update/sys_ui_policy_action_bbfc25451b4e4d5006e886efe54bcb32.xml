@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_policy_action">
+    <sys_ui_policy_action action="INSERT_OR_UPDATE">
+        <cleared>false</cleared>
+        <disabled>true</disabled>
+        <field>due_date</field>
+        <mandatory>ignore</mandatory>
+        <sys_class_name>sys_ui_policy_action</sys_class_name>
+        <sys_created_by>admin_Agata_Swoboda</sys_created_by>
+        <sys_created_on>2022-03-03 16:18:46</sys_created_on>
+        <sys_id>bbfc25451b4e4d5006e886efe54bcb32</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>due_date</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_ui_policy_action_bbfc25451b4e4d5006e886efe54bcb32</sys_update_name>
+        <sys_updated_by>admin_Agata_Swoboda</sys_updated_by>
+        <sys_updated_on>2022-03-03 16:18:46</sys_updated_on>
+        <table>x_nesa_ng_obsidian_technical_solution_management</table>
+        <ui_policy display_value="(DXC) Fields read-only for ESS">d1d765451bca4d5006e886efe54bcb95</ui_policy>
+        <visible>ignore</visible>
+    </sys_ui_policy_action>
+</record_update>

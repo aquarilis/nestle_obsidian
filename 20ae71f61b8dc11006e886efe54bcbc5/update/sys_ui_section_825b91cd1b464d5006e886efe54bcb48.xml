@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="Machine information" section_id="825b91cd1b464d5006e886efe54bcb48" sys_domain="global" table="x_nesa_ng_obsidian_technical_solution_management" version="3" view="ess">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>supplier</element>
+            <position>0</position>
+            <sys_created_by>admin_Agata_Swoboda</sys_created_by>
+            <sys_created_on>2022-03-03 15:03:44</sys_created_on>
+            <sys_id>e0db19c11b864d5006e886efe54bcb95</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Machine information" display_value="Machine information" name="x_nesa_ng_obsidian_technical_solution_management" sys_domain="global" view="ae1f1141db0303008e0214a05b96196e">825b91cd1b464d5006e886efe54bcb48</sys_ui_section>
+            <sys_updated_by>admin_Agata_Swoboda</sys_updated_by>
+            <sys_updated_on>2022-03-03 15:03:44</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>first_reported_model</element>
+            <position>1</position>
+            <sys_created_by>admin_Agata_Swoboda</sys_created_by>
+            <sys_created_on>2022-03-03 15:04:23</sys_created_on>
+            <sys_id>06fbd9451b864d5006e886efe54bcbd4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Machine information" display_value="Machine information" name="x_nesa_ng_obsidian_technical_solution_management" sys_domain="global" view="ae1f1141db0303008e0214a05b96196e">825b91cd1b464d5006e886efe54bcb48</sys_ui_section>
+            <sys_updated_by>admin_Agata_Swoboda</sys_updated_by>
+            <sys_updated_on>2022-03-03 15:04:23</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>defective_component</element>
+            <position>2</position>
+            <sys_created_by>admin_Agata_Swoboda</sys_created_by>
+            <sys_created_on>2022-03-03 15:04:46</sys_created_on>
+            <sys_id>2f0cd9451b864d5006e886efe54bcbfa</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Machine information" display_value="Machine information" name="x_nesa_ng_obsidian_technical_solution_management" sys_domain="global" view="ae1f1141db0303008e0214a05b96196e">825b91cd1b464d5006e886efe54bcb48</sys_ui_section>
+            <sys_updated_by>admin_Agata_Swoboda</sys_updated_by>
+            <sys_updated_on>2022-03-03 15:04:46</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>3</position>
+            <sys_created_by>admin_Agata_Swoboda</sys_created_by>
+            <sys_created_on>2022-03-03 15:05:07</sys_created_on>
+            <sys_id>382c99c51b864d5006e886efe54bcb6c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Machine information" display_value="Machine information" name="x_nesa_ng_obsidian_technical_solution_management" sys_domain="global" view="ae1f1141db0303008e0214a05b96196e">825b91cd1b464d5006e886efe54bcb48</sys_ui_section>
+            <sys_updated_by>admin_Agata_Swoboda</sys_updated_by>
+            <sys_updated_on>2022-03-03 15:05:07</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>number_serials_reported</element>
+            <position>4</position>
+            <sys_created_by>admin_Agata_Swoboda</sys_created_by>
+            <sys_created_on>2022-03-03 15:05:21</sys_created_on>
+            <sys_id>183c59c51b864d5006e886efe54bcb75</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Machine information" display_value="Machine information" name="x_nesa_ng_obsidian_technical_solution_management" sys_domain="global" view="ae1f1141db0303008e0214a05b96196e">825b91cd1b464d5006e886efe54bcb48</sys_ui_section>
+            <sys_updated_by>admin_Agata_Swoboda</sys_updated_by>
+            <sys_updated_on>2022-03-03 15:05:21</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>number_tickets_linked</element>
+            <position>5</position>
+            <sys_created_by>admin_Agata_Swoboda</sys_created_by>
+            <sys_created_on>2022-03-03 15:05:38</sys_created_on>
+            <sys_id>5c4c9dc51b864d5006e886efe54bcb26</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Machine information" display_value="Machine information" name="x_nesa_ng_obsidian_technical_solution_management" sys_domain="global" view="ae1f1141db0303008e0214a05b96196e">825b91cd1b464d5006e886efe54bcb48</sys_ui_section>
+            <sys_updated_by>admin_Agata_Swoboda</sys_updated_by>
+            <sys_updated_on>2022-03-03 15:05:38</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption>Machine information</caption>
+            <header>false</header>
+            <name>x_nesa_ng_obsidian_technical_solution_management</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>admin_Agata_Swoboda</sys_created_by>
+            <sys_created_on>2022-03-03 15:01:39</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>825b91cd1b464d5006e886efe54bcb48</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_nesa_ng_obsidian_technical_solution_management</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+            <sys_update_name>sys_ui_section_825b91cd1b464d5006e886efe54bcb48</sys_update_name>
+            <sys_updated_by>admin_Agata_Swoboda</sys_updated_by>
+            <sys_updated_on>2022-03-03 15:01:39</sys_updated_on>
+            <sys_user/>
+            <title>false</title>
+            <view display_value="Self Service" name="ess">ae1f1141db0303008e0214a05b96196e</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

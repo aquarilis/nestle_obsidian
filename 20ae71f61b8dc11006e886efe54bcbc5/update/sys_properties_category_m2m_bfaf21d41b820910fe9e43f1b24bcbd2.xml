@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties_category_m2m">
+    <sys_properties_category_m2m action="INSERT_OR_UPDATE">
+        <category display_value="Obsidian Processes">3f8fe9541b820910fe9e43f1b24bcbc7</category>
+        <order>200</order>
+        <property display_value="x_nesa_ng_obsidian.technical_ticket.auto_close_time" name="x_nesa_ng_obsidian.technical_ticket.auto_close_time">2a0b85dd1bad8d1cfe9e43f1b24bcb4e</property>
+        <sys_class_name>sys_properties_category_m2m</sys_class_name>
+        <sys_created_by>admin_Isaac_Perez</sys_created_by>
+        <sys_created_on>2022-03-01 08:35:05</sys_created_on>
+        <sys_id>bfaf21d41b820910fe9e43f1b24bcbd2</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>x_nesa_ng_obsidian.technical_ticket.auto_close_time.Obsidian Processes</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_properties_category_m2m_bfaf21d41b820910fe9e43f1b24bcbd2</sys_update_name>
+        <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+        <sys_updated_on>2022-03-09 14:30:21</sys_updated_on>
+    </sys_properties_category_m2m>
+</record_update>

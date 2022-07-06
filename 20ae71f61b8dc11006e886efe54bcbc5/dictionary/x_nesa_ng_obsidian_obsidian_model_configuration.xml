@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this table is used for &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this table has been created or updated &gt;" label="Obsidian Model Configuration" max_length="40" name="x_nesa_ng_obsidian_obsidian_model_configuration" sizeclass="537" type="collection">
+        <element attributes="edge_encryption_enabled=true,no_sort=true,slushbucket_ref_no_expand=true" label="Associated features" max_length="4000" name="associated_features" read_only="true" reference="x_nesa_ng_obsidian_obsidian_model_feature" type="glide_list"/>
+        <element comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Import unique key" max_length="500" name="import_unique_key" read_only="true" type="string"/>
+        <element display="true" label="Name" mandatory="true" max_length="80" name="name" type="string"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Obsidian model" max_length="32" name="obsidian_model" read_only="true" reference="x_nesa_ng_obsidian_obsidian_model" reference_cascade_rule="delete_no_workflow" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" default="0" label="Option count" max_length="40" name="option_count" read_only="true" type="integer"/>
+        <index name="index">
+            <element name="obsidian_model"/>
+        </index>
+    </element>
+</database>

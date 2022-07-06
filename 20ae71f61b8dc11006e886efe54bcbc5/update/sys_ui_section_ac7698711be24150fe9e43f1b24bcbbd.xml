@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="Model details" section_id="ac7698711be24150fe9e43f1b24bcbbd" sys_domain="global" table="x_nesa_ng_obsidian_obsidian_model" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>model_category</element>
+            <position>0</position>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-04-07 09:36:05</sys_created_on>
+            <sys_id>1a70a49c1b7e4594fe9e43f1b24bcb1e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Model details" display_value="Model details" name="x_nesa_ng_obsidian_obsidian_model" sys_domain="global" view="Default view">ac7698711be24150fe9e43f1b24bcbbd</sys_ui_section>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-04-07 09:36:05</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>beverage_temperature</element>
+            <position>1</position>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-04-07 09:36:05</sys_created_on>
+            <sys_id>9270a49c1b7e4594fe9e43f1b24bcb1f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Model details" display_value="Model details" name="x_nesa_ng_obsidian_obsidian_model" sys_domain="global" view="Default view">ac7698711be24150fe9e43f1b24bcbbd</sys_ui_section>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-04-07 09:36:05</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>ingredient_format</element>
+            <position>2</position>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-04-07 09:36:05</sys_created_on>
+            <sys_id>1a70a49c1b7e4594fe9e43f1b24bcb1f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Model details" display_value="Model details" name="x_nesa_ng_obsidian_obsidian_model" sys_domain="global" view="Default view">ac7698711be24150fe9e43f1b24bcbbd</sys_ui_section>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-04-07 09:36:05</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>model_segment</element>
+            <position>3</position>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-04-07 09:36:05</sys_created_on>
+            <sys_id>9a70a49c1b7e4594fe9e43f1b24bcb51</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Model details" display_value="Model details" name="x_nesa_ng_obsidian_obsidian_model" sys_domain="global" view="Default view">ac7698711be24150fe9e43f1b24bcbbd</sys_ui_section>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-04-07 09:36:05</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>machine_type</element>
+            <position>4</position>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-04-07 09:36:05</sys_created_on>
+            <sys_id>1270a49c1b7e4594fe9e43f1b24bcb52</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Model details" display_value="Model details" name="x_nesa_ng_obsidian_obsidian_model" sys_domain="global" view="Default view">ac7698711be24150fe9e43f1b24bcbbd</sys_ui_section>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-04-07 09:36:05</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>5</position>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-04-07 09:36:05</sys_created_on>
+            <sys_id>9670a49c1b7e4594fe9e43f1b24bcb52</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Model details" display_value="Model details" name="x_nesa_ng_obsidian_obsidian_model" sys_domain="global" view="Default view">ac7698711be24150fe9e43f1b24bcbbd</sys_ui_section>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-04-07 09:36:05</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>positioning</element>
+            <position>6</position>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-04-07 09:36:05</sys_created_on>
+            <sys_id>1e70a49c1b7e4594fe9e43f1b24bcb52</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Model details" display_value="Model details" name="x_nesa_ng_obsidian_obsidian_model" sys_domain="global" view="Default view">ac7698711be24150fe9e43f1b24bcbbd</sys_ui_section>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-04-07 09:36:05</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>system_brand</element>
+            <position>7</position>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-04-07 09:36:05</sys_created_on>
+            <sys_id>9270a49c1b7e4594fe9e43f1b24bcb53</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Model details" display_value="Model details" name="x_nesa_ng_obsidian_obsidian_model" sys_domain="global" view="Default view">ac7698711be24150fe9e43f1b24bcbbd</sys_ui_section>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-04-07 09:36:05</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>model_group</element>
+            <position>8</position>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-04-07 09:36:05</sys_created_on>
+            <sys_id>1a70a49c1b7e4594fe9e43f1b24bcb53</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Model details" display_value="Model details" name="x_nesa_ng_obsidian_obsidian_model" sys_domain="global" view="Default view">ac7698711be24150fe9e43f1b24bcbbd</sys_ui_section>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-04-07 09:36:05</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption>Model details</caption>
+            <header>false</header>
+            <name>x_nesa_ng_obsidian_obsidian_model</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-03-30 14:27:28</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>ac7698711be24150fe9e43f1b24bcbbd</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_nesa_ng_obsidian_obsidian_model</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+            <sys_update_name>sys_ui_section_ac7698711be24150fe9e43f1b24bcbbd</sys_update_name>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-03-30 14:27:28</sys_updated_on>
+            <sys_user/>
+            <title>false</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

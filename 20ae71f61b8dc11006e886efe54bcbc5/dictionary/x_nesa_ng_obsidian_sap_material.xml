@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this table is used for &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this table has been created or updated &gt;" label="SAP Material Number" max_length="40" name="x_nesa_ng_obsidian_sap_material" sizeclass="262" type="collection">
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Batch managed" mandatory="true" max_length="40" name="batch_managed" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Yes" sequence="0" value="yes"/>
+                <element inactive_on_update="false" label="No" sequence="1" value="no"/>
+                <element inactive_on_update="false" label="N/A" sequence="2" value="N/A"/>
+            </choice>
+        </element>
+        <element label="SAP Material Description" max_length="1000" name="description" type="string"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Obsidian model" max_length="32" name="obsidian_model" read_only="true" reference="x_nesa_ng_obsidian_obsidian_model" reference_cascade_rule="delete_no_workflow" type="reference"/>
+        <element display="true" label="SAP Material number" mandatory="true" max_length="40" name="sap_material_number" type="string"/>
+        <index name="index">
+            <element name="obsidian_model"/>
+        </index>
+        <index name="index2">
+            <element name="sap_material_number"/>
+        </index>
+    </element>
+</database>

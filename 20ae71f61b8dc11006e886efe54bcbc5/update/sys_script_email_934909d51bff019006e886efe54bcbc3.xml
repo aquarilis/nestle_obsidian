@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_email">
+    <sys_script_email action="INSERT_OR_UPDATE">
+        <name>x_nesa_ng_obsidian.default_layout.header_text</name>
+        <new_lines_to_html>true</new_lines_to_html>
+        <script><![CDATA[(function runMailScript( /* GlideRecord */ current, /* TemplatePrinter */ template,
+	/* Optional EmailOutbound */
+	email, /* Optional GlideRecord */ email_action,
+	/* Optional GlideRecord */
+	event) {
+		var lmaLogger = new global.GSLog("com.dxc.global.debugging_enabled", "LMADebug");
+	try {
+
+
+		var classLabel = current.getClassDisplayValue();
+
+		if (current.getTableName() == "sn_uni_task_universal_task"){
+			var parentGR = current.parent.getRefRecord();
+			if (parentGR.isValidRecord()){
+				classLabel = parentGR.getClassDisplayValue();
+			}
+		}
+
+		template.print(classLabel);
+	} catch (e) {
+		lmaLogger.logErr("error in x_nesa_ng_obsidian.default_layout.header_text: " + e);
+		template.print("error in x_nesa_ng_obsidian.default_layout.header_text: " + e);
+	}
+
+})(current, template, email, email_action, event);]]></script>
+        <sys_class_name>sys_script_email</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-05-30 08:11:59</sys_created_on>
+        <sys_id>934909d51bff019006e886efe54bcbc3</sys_id>
+        <sys_mod_count>23</sys_mod_count>
+        <sys_name>x_nesa_ng_obsidian.default_layout.header_text</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_email_934909d51bff019006e886efe54bcbc3</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-05-30 08:33:18</sys_updated_on>
+    </sys_script_email>
+</record_update>

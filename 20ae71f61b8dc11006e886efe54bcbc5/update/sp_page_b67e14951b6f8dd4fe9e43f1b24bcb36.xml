@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_page">
+    <sp_page action="INSERT_OR_UPDATE">
+        <category>standard</category>
+        <css/>
+        <draft>false</draft>
+        <dynamic_title_structure/>
+        <id>obsidian_form</id>
+        <internal>false</internal>
+        <omit_watcher>false</omit_watcher>
+        <public>false</public>
+        <roles/>
+        <seo_script/>
+        <short_description>Record Form</short_description>
+        <sys_class_name>sp_page</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-05-17 18:48:25</sys_created_on>
+        <sys_id>b67e14951b6f8dd4fe9e43f1b24bcb36</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>obsidian_form</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sp_page_b67e14951b6f8dd4fe9e43f1b24bcb36</sys_update_name>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-05-17 18:48:42</sys_updated_on>
+        <title>Form</title>
+        <use_seo_script>false</use_seo_script>
+    </sp_page>
+    <sys_translated_text action="delete_multiple" query="documentkey=b67e14951b6f8dd4fe9e43f1b24bcb36"/>
+</record_update>

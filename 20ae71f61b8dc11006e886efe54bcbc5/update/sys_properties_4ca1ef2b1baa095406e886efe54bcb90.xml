@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
+        <description>JSON defining the assignment group sys_id based on NML checklist assigned to choice&#13;
+&#13;
+processed by DXCObsidianNMLUtils.getUniversalTaskAssignmentGroup() function</description>
+        <ignore_cache>true</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_nesa_ng_obsidian.nml.checklist_item_assignment_map</name>
+        <read_roles/>
+        <suffix>nml.checklist_item_assignment_map</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-04-05 15:44:32</sys_created_on>
+        <sys_id>4ca1ef2b1baa095406e886efe54bcb90</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>x_nesa_ng_obsidian.nml.checklist_item_assignment_map</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_properties_4ca1ef2b1baa095406e886efe54bcb90</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-04-05 16:10:50</sys_updated_on>
+        <type>string</type>
+        <value>{&#13;
+"nbs":"c29d03661b4e8590fe9e43f1b24bcb7a",&#13;
+"procurement" : "f59d03661b4e8590fe9e43f1b24bcb54"&#13;
+}</value>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=4ca1ef2b1baa095406e886efe54bcb90"/>
+</record_update>

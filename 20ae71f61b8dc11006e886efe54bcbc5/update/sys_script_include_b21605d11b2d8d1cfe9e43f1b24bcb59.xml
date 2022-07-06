@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_nesa_ng_obsidian.DXCTechnicalTicketUtils</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>DXCTechnicalTicketUtils</name>
+        <script><![CDATA[var DXCTechnicalTicketUtils = Class.create();
+DXCTechnicalTicketUtils.prototype = {
+    initialize: function () {
+        this.obsidianCommonUtils = new x_nesa_ng_obsidian.DXCObsidianCommonUtils();
+        this.obsidianPreferenceUtils = new x_nesa_ng_obsidian.DXCObsidianPreferenceUtils();
+        this.logger = new global.GSLog("com.dxc.global.debugging_enabled", "LMADebug");
+
+    },
+
+
+    /** 
+    * @desc
+    * Get reference qualifier for " requester group" variable
+    * Used in "new technical ticket" record producer
+    *
+    * @return
+    *  String containing a reference qualifier
+    */
+    getRecordProducer_RequesterGroup_RQ: function (userID) {
+        try {
+
+            var technicalTicketRequesterGroupTypeSysID = this.obsidianCommonUtils._getGroupTypeID("obsidian-org-technical_ticket_requester");
+
+            if (gs.hasRole("admin")) {
+                return "active=true^typeLIKE" + technicalTicketRequesterGroupTypeSysID;
+            }
+
+            var selectableGroupSysId_array = [];
+
+            var requesterGroupMembership_GR = new GlideRecord("sys_user_grmember");
+            requesterGroupMembership_GR.addEncodedQuery("group.active=true^group.typeLIKE" + technicalTicketRequesterGroupTypeSysID + "^user=" + userID);
+            requesterGroupMembership_GR.query();
+            while (requesterGroupMembership_GR.next()) {
+                selectableGroupSysId_array.push(requesterGroupMembership_GR.getValue("group"));
+            }
+
+            if (selectableGroupSysId_array.length > 0) {
+                var refQual = "sys_idIN" + selectableGroupSysId_array.join(",");
+                return refQual;
+            } else {
+                return "active=true^typeLIKE" + "n/A";
+            }
+        } catch (e) {
+            this.logger.logErr("error in getRecordProducer_RequesterGroup_RQ: " + e);
+        }
+    },
+
+    /** 
+ * @desc
+ * Get the default value for  requester group variable
+ * Used in "new technical ticket" record producer
+ *
+ * @return
+ *  a group sys ID
+ */
+    getRecordProducer_RequesterGroup_default_value: function () {
+        try {
+            var technicalTicketRequesterGroupTypeSysID = this.obsidianCommonUtils._getGroupTypeID("obsidian-org-technical_ticket_requester");
+
+            var requesterGroupMembership_GR = new GlideRecord("sys_user_grmember");
+            requesterGroupMembership_GR.addEncodedQuery("group.active=true^group.typeLIKE" + technicalTicketRequesterGroupTypeSysID + "^user=" + gs.getUserID());
+            requesterGroupMembership_GR.query();
+            if (requesterGroupMembership_GR.next() && !requesterGroupMembership_GR.hasNext()) {
+                return requesterGroupMembership_GR.group;
+            } else {
+                return "";
+            }
+
+        } catch (e) {
+            this.logger.logErr("error in getRecordProducer_RequesterGroup_default_value: " + e);
+        }
+    },
+
+    /**
+   * @author	DXC - Luu-Ly Mai
+   * @desc indicates whether the user can see and use the "raise technical ticket" feature
+   * @param Sys_id from the table "sys_user"
+   * @return boolean
+   */
+    canRaiseTechnicalTicket: function (userID) {
+        if (!userID) {
+            return false;
+        }
+        var memberGR = new GlideRecord('sys_user_grmember');
+        memberGR.addEncodedQuery("group.typeLIKE" + this.obsidianCommonUtils._getGroupTypeID("obsidian-org-technical_ticket_requester") + "^user=" + userID);
+        memberGR.setLimit(1);
+        memberGR.query();
+        return memberGR.hasNext();
+    },
+
+
+
+    /**
+     * @author	DXC - Luu-Ly Mai
+     * @desc Retrieve the default shipping instruction for the given user
+     * @param Sys_id from the table "sys_user"
+     * @return string - sys_id from the Obsidian preferences table
+     */
+    getRecordProducer_DefaultShippingInstructions: function (userID) {
+        return this.obsidianPreferenceUtils.getObsidianDefaultUserPreferenceSysID(userID, "shipping_instructions");
+    },
+
+    // /**
+    //  * @author	DXC - Luu-Ly Mai
+    //  * @desc Retrieve the default "Impacted country for the given user
+    //  * @param Sys_id from the table "sys_user"
+    //  * @return string - sys_id from the location table
+    //  */
+    // getRecordProducer_DefaultImpactedCountry: function (userID) {
+    //     var countryCoveredByUserArray = this.obsidianCommonUtils.getCountriesCoveredByUser(userID);
+    //     if (countryCoveredByUserArray.length == 1) {
+    //         return countryCoveredByUserArray[0];
+    //     } else {
+    //         var defaultCountrySysIDFromUserPref = this.obsidianPreferenceUtils.getObsidianDefaultUserPreferenceValue(userID, "country");
+    //         if (defaultCountrySysIDFromUserPref) {
+    //             return defaultCountrySysIDFromUserPref;
+    //         } else {
+    //             return "";
+    //         }
+    //     }
+    // },
+
+
+
+
+
+
+    /**
+     * @author	DXC - Isaac Perez
+     * @desc check if the current user can see the UI Action "Validate" and "Invalidate"
+     * @param GlideRecord from the table "x_nesa_ng_obsidian_technical_ticket"
+     * @return boolean
+     */
+    canManageValidationTechnicalTicket: function (ticketGR) {
+        var active = ticketGR.getValue('active') == true;
+        var canWrite = ticketGR.canWrite();
+        var state = ticketGR.getValue('state') == DXCObsidianConstants.TECHNICAL_TICKET_STATE_VALIDATION;
+        var memberAssignmentGroup = gs.getUser().isMemberOf(ticketGR.getValue('assignment_group'));
+
+        return active && canWrite && state && memberAssignmentGroup;
+    },
+
+    /**
+     * @author	DXC - Agata Swoboda
+     * @desc check if the state is correct to show the UI Action "Create TSM"
+     * @param GlideRecord from the table "x_nesa_ng_obsidian_technical_ticket"
+     * @return boolean
+     */
+    canCreateTSM: function (ticketGR) {
+        if (gs.hasRole("admin")){
+            return true;
+        }
+        var infoCollection = ticketGR.getValue('state') == DXCObsidianConstants.TECHNICAL_TICKET_STATE_INFO_COLLECTION;
+        var tsm = ticketGR.getValue('state') == DXCObsidianConstants.TECHNICAL_TICKET_STATE_TECHNICAL_SOLUTION_MANAGEMENT;
+        var solutionCommunication = ticketGR.getValue('state') == DXCObsidianConstants.TECHNICAL_TICKET_STATE_SOLUTION_COMMUNICATION_TO_MARKET;
+        var marketConclusion = ticketGR.getValue('state') == DXCObsidianConstants.TECHNICAL_TICKET_STATE_MARKET_CONCLUSION;
+        var memberAssignmentGroup = gs.getUser().isMemberOf(ticketGR.getValue('assignment_group'));
+
+        return memberAssignmentGroup && (infoCollection || tsm || solutionCommunication || marketConclusion);
+    },
+
+    /**
+     * @author	DXC - Isaac Perez
+     * @desc check if the current user can see the UI Action "Cancel"
+     * @param GlideRecord from the table "x_nesa_ng_obsidian_technical_ticket"
+     * @return boolean
+     */
+    canCancelTechnicalTicket: function (ticketGR) {
+        var active = ticketGR.getValue('active') == true;
+        var canWrite = ticketGR.canWrite();
+        var state = ticketGR.getValue('state') == DXCObsidianConstants.TECHNICAL_TICKET_STATE_VALIDATION;
+        var memberAssignmentGroup = gs.getUser().isMemberOf(ticketGR.getValue('assignment_group'));
+        var previouslyRejected = ticketGR.getValue('previously_rejected') == true;
+
+        return active && canWrite && state && memberAssignmentGroup && previouslyRejected;
+    },
+
+    /**
+     * @author	DXC - Isaac Perez
+     * @desc check if the current user can see the UI Action "Re-send ticket" and "Confirm rejection"
+     * @param GlideRecord from the table "x_nesa_ng_obsidian_technical_ticket"
+     * @return boolean
+     */
+    canHandleRejectedTechnicalTicket: function (ticketGR) {
+        var active = ticketGR.getValue('active') == true;
+        var canWrite = ticketGR.canWrite();
+        var state = ticketGR.getValue('state') == DXCObsidianConstants.TECHNICAL_TICKET_STATE_REJECTED;
+        var owner = ticketGR.getValue('opened_by') == gs.getUserID();
+
+        return active && canWrite && state && owner;
+    },
+
+    /*
+     * @author	DXC - Isaac Perez
+     * @desc check if the current user can see the UI Action "Request Market conclusion"
+     * @param GlideRecord from the table "x_nesa_ng_obsidian_technical_ticket"
+     * @return boolean
+     */
+    canRequestMarketConclusion: function (ticketGR) {
+        var active = ticketGR.getValue('active') == true;
+        var canWrite = ticketGR.canWrite();
+        var state = ticketGR.getValue('state') == DXCObsidianConstants.TECHNICAL_TICKET_STATE_SOLUTION_COMMUNICATION_TO_MARKET;
+        var memberAssignmentGroup = gs.getUser().isMemberOf(ticketGR.getValue('assignment_group'));
+
+        return active && canWrite && state && memberAssignmentGroup;
+    },
+
+    /**
+     * @author	DXC - Isaac Perez
+     * @desc check if the current user can see the UI Action "Accept conclusion" and "Reject conclusion"
+     * @param GlideRecord from the table "x_nesa_ng_obsidian_technical_ticket"
+     * @return boolean
+     */
+    canManageConclusionInTechnicalTicket: function (ticketGR) {
+        var active = ticketGR.getValue('active') == true;
+        var canWrite = ticketGR.canWrite();
+        var state = ticketGR.getValue('state') == DXCObsidianConstants.TECHNICAL_TICKET_STATE_MARKET_CONCLUSION;
+        var owner = ticketGR.getValue('opened_by') == gs.getUserID();
+
+        return active && canWrite && state && owner;
+    },
+
+    /**
+     * @author	DXC - Isaac Perez
+     * @desc Validates the technical ticket and moves it to the Info Collection state
+     * @param GlideRecord from the table "x_nesa_ng_obsidian_technical_ticket"
+     * @return N/A
+     */
+    validateTechnicalTicket: function (ticketGR) {
+        ticketGR.state = DXCObsidianConstants.TECHNICAL_TICKET_STATE_INFO_COLLECTION;
+        ticketGR.assignment_group = gs.getProperty('x_nesa_ng_obsidian.central_team');
+        ticketGR.update();
+        return;
+    },
+
+    /**
+     * @author	DXC - Isaac Perez
+     * @desc Reject the technical ticket and moves it to the Rejected state
+     * @param GlideRecord from the table "x_nesa_ng_obsidian_technical_ticket"
+     * @return N/A
+     */
+    rejectTechnicalTicket: function (ticketGR) {
+        ticketGR.state = DXCObsidianConstants.TECHNICAL_TICKET_STATE_REJECTED;
+        ticketGR.previously_rejected = true;
+        ticketGR.update();
+        return;
+    },
+
+    /**
+     * @author	DXC - Isaac Perez
+     * @desc Cancel the technical ticket and moves it to the Cancelled state
+     * @param GlideRecord from the table "x_nesa_ng_obsidian_technical_ticket"
+     * @return N/A
+     */
+    cancelTechnicalTicket: function (ticketGR) {
+        ticketGR.state = DXCObsidianConstants.TECHNICAL_TICKET_STATE_CANCELLED;
+        ticketGR.update();
+        return;
+    },
+
+    /**
+     * @author	DXC - Isaac Perez
+     * @desc Send the technical ticket back to the Validation state
+     * @param GlideRecord from the table "x_nesa_ng_obsidian_technical_ticket"
+     * @return N/A
+     */
+    resendRejectedTechnicalTicket: function (ticketGR) {
+        ticketGR.state = DXCObsidianConstants.TECHNICAL_TICKET_STATE_VALIDATION;
+        ticketGR.update();
+        return;
+    },
+
+    /**
+     * @author	DXC - Isaac Perez
+     * @desc Updates the status for a Technical ticket based on the TSM id associated
+     * @param GlideRecord from the table "x_nesa_ng_obsidian_technical_ticket"
+     * @param String - sys_id of a record in the table x_nesa_ng_obsidian_technical_solution_management
+     * @return N/A
+     */
+    updateStateForAssociatedTSM: function (ticketGR, tsmID) {
+        var tsmGR = new GlideRecord(DXCObsidianConstants.TSM_TABLE);
+        if (!tsmGR.get(tsmID))
+            return;
+
+        var tsmState = tsmGR.getValue('state');
+        if (tsmState == DXCObsidianConstants.TSM_STATE_CONFIRMED) {
+            if (ticketGR.state == DXCObsidianConstants.TECHNICAL_TICKET_STATE_MARKET_CONCLUSION)
+                return;
+
+            ticketGR.state = DXCObsidianConstants.TECHNICAL_TICKET_STATE_SOLUTION_COMMUNICATION_TO_MARKET;
+        } else {
+            ticketGR.state = DXCObsidianConstants.TECHNICAL_TICKET_STATE_TECHNICAL_SOLUTION_MANAGEMENT;
+        }
+    },
+
+    /**
+     * @author	DXC - Isaac Perez
+     * @desc Updates the technical ticket and moves it to the Market Conclusion state
+     * @param GlideRecord from the table "x_nesa_ng_obsidian_technical_ticket"
+     * @return N/A
+     */
+    requestMarketConclusionOnTechnicalTicket: function (ticketGR) {
+        ticketGR.state = DXCObsidianConstants.TECHNICAL_TICKET_STATE_MARKET_CONCLUSION;
+        ticketGR.update();
+        return;
+    },
+
+    /**
+     * @author	DXC - Isaac Perez
+     * @desc Update the technical ticket and moves it to the Close state
+     * @param GlideRecord from the table "x_nesa_ng_obsidian_technical_ticket"
+     * @return N/A
+     */
+    closeTechnicalTicket: function (ticketGR) {
+        ticketGR.state = DXCObsidianConstants.TECHNICAL_TICKET_STATE_CLOSED;
+        ticketGR.update();
+        return;
+    },
+
+    /**
+     * @author	DXC - Isaac Perez
+     * @desc Updates the technical ticket and moves it to the Solution Communication to Market state
+     * @param GlideRecord from the table "x_nesa_ng_obsidian_technical_ticket"
+     * @return N/A
+     */
+    rejectConclusionOnTechnicalTicket: function (ticketGR) {
+        ticketGR.state = DXCObsidianConstants.TECHNICAL_TICKET_STATE_SOLUTION_COMMUNICATION_TO_MARKET;
+        ticketGR.conclusion_rejected = true;
+        ticketGR.update();
+        return;
+    },
+
+    /**
+     * @author	DXC - Isaac Perez
+     * @desc Autoclose the technical tickets in state "Market Conclusion" without response for more than the maximum number of days established
+     * @return N/A
+     */
+    autocloseTechnicalTickets: function () {
+        var days = gs.getProperty(DXCObsidianConstants.TECHNICAL_TICKET_AUTO_CLOSURE_PROPERTY_NAME);
+        if (days == 0)
+            return;
+
+        var queryTime = new GlideDateTime();
+        queryTime.addDaysUTC(-days);
+
+        var ticketGR = new GlideRecord(DXCObsidianConstants.TECHNICAL_TICKET_TABLE);
+        ticketGR.addQuery('state', DXCObsidianConstants.TECHNICAL_TICKET_STATE_MARKET_CONCLUSION);
+        ticketGR.addQuery('sys_updated_on', '<', queryTime);
+        ticketGR.query();
+
+        while (ticketGR.next()) {
+            ticketGR.state = DXCObsidianConstants.TECHNICAL_TICKET_STATE_CLOSED;
+            ticketGR.update();
+        }
+    },
+
+    /**
+     * @author	DXC - Agata Swoboda
+     * @desc Calculate the query for the reference qual in the Model field
+     * @param GlideRecord from the table "x_nesa_ng_obsidian_technical_ticket"
+     * @return N/A
+     */
+    getQueryForModel: function (ticketGR) {
+        var query = "";
+
+        if (ticketGR.getValue('supplier')) {
+            query += "manufacturer=" + ticketGR.getValue('supplier');
+        }
+
+        return query;
+    },
+
+    /**
+     * @author	DXC - Isaac Perez
+     * @desc Calculate the query for the reference qual in the Model variable in the catalog forms
+     * @paramform in the catalog
+     * @return N/A
+     */
+    getQueryForModelCatalogForm: function (form) {
+        var query = "nml_stage=600";
+
+        if (form.variables.supplier) {
+            query += "^supplier=" + form.variables.supplier;
+        }
+
+        return query;
+    },
+
+
+
+    canCreateNewTaskForTechnicalTicket: function (ticketGR) {
+        var notValidation = ticketGR.state != x_nesa_ng_obsidian.DXCObsidianConstants.TECHNICAL_TICKET_STATE_VALIDATION;
+        var notClosed = ticketGR.state != x_nesa_ng_obsidian.DXCObsidianConstants.TECHNICAL_TICKET_STATE_INFO_CLOSED;
+        var notRejected = ticketGR.state != x_nesa_ng_obsidian.DXCObsidianConstants.TECHNICAL_TICKET_STATE_REJECTED;
+        var notCancelled = ticketGR.state != x_nesa_ng_obsidian.DXCObsidianConstants.TECHNICAL_TICKET_STATE_CANCELLED;
+        var notMarketConclusion = ticketGR.state != x_nesa_ng_obsidian.DXCObsidianConstants.TECHNICAL_TICKET_STATE_MARKET_CONCLUSION;
+        var member = gs.getUser().isMemberOf(ticketGR.getValue('assignment_group'));
+        var canWriteParent = ticketGR.canWrite();
+
+        return (gs.hasRole("admin") || (notValidation && notClosed && notRejected && notCancelled && notMarketConclusion && member && canWriteParent));
+    },
+
+    /**
+     * @author	DXC - Isaac Perez
+     * @desc Check if the current user can see the UI Action "Close"
+     * @param GlideRecord from the table "x_nesa_ng_obsidian_technical_ticket"
+     * @return N/A
+     */
+    canCloseWithoutMarketConclusionTechnicalTicket: function (ticketGR) {
+        var active = ticketGR.getValue('active') == true;
+        var canWrite = ticketGR.canWrite();
+        var state = ticketGR.getValue('state') == DXCObsidianConstants.TECHNICAL_TICKET_STATE_SOLUTION_COMMUNICATION_TO_MARKET;
+        var memberAssignmentGroup = gs.getUser().isMemberOf(ticketGR.getValue('assignment_group'));
+        var alreadyRejected = ticketGR.getValue('conclusion_rejected') == true;
+
+        return active && canWrite && state && memberAssignmentGroup && alreadyRejected;
+    },
+
+    /**
+     * @author	DXC - Isaac Perez
+     * @desc Process an attachment to generate a JSON with the information to be used in a impacted serial
+     * @param sys_id of a record in the sys_attachment table
+     * @return Array of objects with the content of an excel file processed to populate the impacted serials table
+     */
+    processExcelFileWithImpactedSerials: function (attachmentID) {
+        var serialsArray = [];
+        var parser = new sn_impex.GlideExcelParser();
+        var attachment = new GlideSysAttachment();
+        try {
+            var validHeaders = ['Serial number', 'Installation date', 'Throughput', 'Prev/Corrr Maintenance records'];
+            var attachmentStream = attachment.getContentStream(attachmentID);
+            parser.parse(attachmentStream);
+
+            var headers = parser.getColumnHeaders();
+            for (var i = 0; i < headers.length; i++) {
+                if (validHeaders.indexOf(headers[i]) == -1) {
+                    gs.addErrorMessage('Wrong Excel file attached to upload serials. Please, download the template and fill it.');
+                    return "";
+                }
+            }
+
+            var msg = '';
+            var noSerialMessageAdded = false;
+            // Process each row to create an impacted serial number
+            while (parser.next()) {
+                var row = parser.getRow();
+
+                var throughput = row['Throughput'];
+                var date = row['Installation date'];
+                var serial = row['Serial number'];
+
+                if (!serial) {
+                    if (!noSerialMessageAdded) {
+                        msg += 'There is at least a row without serial, and it has been excluded<br>';
+                        noSerialMessageAdded = true;
+                    }
+                    continue;
+                }
+
+                if (isNaN(throughput)) {
+                    msg += 'The serial ' + serial + ' has an invalid throughput. Only numbers are allowed. The row has been excluded<br>';
+                    continue;
+                }
+
+                var regexDate = /^([0-2][0-9]|(3)[0-1])-(((0)[0-9])|((1)[0-2]))-\d{4}$/i;
+                if (!regexDate.test(date)) {
+                    msg += 'The serial ' + serial + ' has an invalid date. The date format must be dd-mm-yyyy. The row has been excluded<br>';
+                    continue;
+                }
+
+                var dateStr = row['Installation date'];
+                var dateObj = new GlideDateTime(dateStr);
+                if (dateObj.after(new GlideDateTime())) {
+                    msg += 'The serial ' + serial + ' has the installation date in future. The row has been excluded<br>';
+                    continue;
+                }
+
+                var serialObj = {};
+                serialObj.serial_number = row['Serial number'];
+                serialObj.installation_date = row['Installation date'];
+                serialObj.throughput = row['Throughput'];
+                serialObj.prev_corrr_maintenance_records = row['Prev/Corrr Maintenance records'];
+
+                serialsArray.push(serialObj);
+            }
+            parser.close();
+
+            if (msg != '')
+                gs.addErrorMessage(msg);
+
+            return serialsArray;
+        } catch (e) {
+            gs.error('Error in function DXCTechnicalTicketUtils.processExcelFileWithImpactedSerials: ' + e.toString());
+        }
+    },
+
+    /**
+     * @author	DXC - Isaac Perez
+     * @desc Generates a record in the Impacted serials table linked to a technical ticket from an object
+     * @param Object with all impacted serial parameters
+     * @param String - sys_id of the record in the technical ticket table
+     * @return N/A
+     */
+    generateImpactedSerialFromObject: function (serialObj, ticketID) {
+        var impactedSerialsGR = new GlideRecord(DXCObsidianConstants.OBSIDIAN_IMPACTED_SERIALS_TABLE);
+        impactedSerialsGR.initialize();
+        impactedSerialsGR.serial_number = serialObj.serial_number;
+        impactedSerialsGR.installation_date = serialObj.installation_date;
+        impactedSerialsGR.throughput = serialObj.throughput;
+        impactedSerialsGR.prev_corrr_maintenance_records = serialObj.prev_corrr_maintenance_records;
+        impactedSerialsGR.technical_ticket = ticketID;
+        impactedSerialsGR.insert();
+    },
+
+    /**
+     * @author	DXC - Isaac Perez
+     * @desc Calculates the estimated resolution time for a technical ticket when created
+     * @return String with the date of the resolution time
+     */
+    calculateEstimatedResolutionTime: function () {
+        var estimatedDays = gs.getProperty('x_nesa_ng_obsidian.technical_ticket.estimated_resolution_days');
+
+        var currentDate = new GlideDateTime();
+        currentDate.addDaysLocalTime(estimatedDays);
+
+        return currentDate.getDisplayValue();
+    },
+
+
+    // DEPRECATED DUE TO implementation of STRY0178875
+    // copyQuestionsIntoParentRecordFields: function (parentGr, taskSysId) {
+    //     var uniTaskGR = new GlideRecord('sn_uni_task_universal_task');
+    //     if (!uniTaskGR.get(taskSysId))
+    //         return;
+
+    //     var instanceQuestionGR = new GlideRecord('asmt_assessment_instance_question');
+    //     instanceQuestionGR.addQuery('instance', uniTaskGR.getValue('survey_instance'));
+    //     instanceQuestionGR.query();
+
+    //     while (instanceQuestionGR.next()) {
+    //         var parmName = instanceQuestionGR.metric.name.toString();
+    //         var value = '';
+    //         var msg = '';
+
+    //         if (instanceQuestionGR.metric.datatype == 'reference') {
+    //             value = instanceQuestionGR.getValue('reference_id');
+    //         } else {
+    //             value = instanceQuestionGR.getValue('string_value');
+    //         }
+
+    //         if (parentGr.isValidField(parmName)) {
+    //             parentGr[parmName] = value;
+    //         } else {
+    //             msg += instanceQuestionGR.metric.question + ': ' + instanceQuestionGR.string_value + '\n';
+    //         }
+    //     }
+
+    //     parentGr.comments = msg;
+    //     parentGr.work_notes = 'The assigned task ' + uniTaskGR.getValue('number') + ' has been completed.';
+    //     parentGr.update();
+    // },
+
+    processImpactedSerialsFile: function (parentGr, taskSysId) {
+        var uniTaskGR = new GlideRecord('sn_uni_task_universal_task');
+        if (!uniTaskGR.get(taskSysId))
+            return;
+
+        var requestImpactedSerialsTemplateID = gs.getProperty('x_nesa_ng_obsidian.request_impacted_serials_file_template_id');
+        var utils = new DXCTechnicalTicketUtils();
+        if (uniTaskGR.getValue('template') == requestImpactedSerialsTemplateID) {
+            var attachmentGR = new GlideRecord('sys_attachment');
+            attachmentGR.addQuery('table_sys_id', taskSysId);
+            attachmentGR.query();
+
+            while (attachmentGR.next()) {
+                // Process the impacted serials and upload them into the Impacted serials table
+                var serialsArray = utils.processExcelFileWithImpactedSerials(attachmentGR.getUniqueValue());
+                for (var i = 0; i < serialsArray.length; i++) {
+                    utils.generateImpactedSerialFromObject(serialsArray[i], parentGr.getUniqueValue());
+                }
+            }
+        }
+
+        parentGr.work_notes = 'The assigned task ' + uniTaskGR.getValue('number') + ' has been completed.';
+        parentGr.update();
+    },
+
+    generateImpactedSerialFromEmployeeForm: function (parentGr, taskSysId) {
+        var uniTaskGR = new GlideRecord('sn_uni_task_universal_task');
+        if (!uniTaskGR.get(taskSysId)) {
+            return;
+        }
+
+        var instanceQuestionGR = new GlideRecord('asmt_assessment_instance_question');
+        instanceQuestionGR.addQuery('instance', uniTaskGR.getValue('survey_instance'));
+        instanceQuestionGR.query();
+        var obj = {};
+        while (instanceQuestionGR.next()) {
+            var parmName = instanceQuestionGR.metric.name.toString();
+            var value = instanceQuestionGR.getValue('string_value') ? instanceQuestionGR.getValue('string_value') : instanceQuestionGR.getValue('value');
+
+            obj[parmName] = value;
+        }
+
+        var utils = new DXCTechnicalTicketUtils();
+        utils.generateImpactedSerialFromObject(obj, parentGr.getUniqueValue());
+
+        parentGr.work_notes = 'The assigned task ' + uniTaskGR.getValue('number') + ' has been completed.';
+        parentGr.update();
+    },
+
+    type: 'DXCTechnicalTicketUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_Isaac_Perez</sys_created_by>
+        <sys_created_on>2022-02-07 11:36:08</sys_created_on>
+        <sys_id>b21605d11b2d8d1cfe9e43f1b24bcb59</sys_id>
+        <sys_mod_count>125</sys_mod_count>
+        <sys_name>DXCTechnicalTicketUtils</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_include_b21605d11b2d8d1cfe9e43f1b24bcb59</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-06-22 08:57:15</sys_updated_on>
+    </sys_script_include>
+</record_update>

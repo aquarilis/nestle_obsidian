@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="model_requester_type" table="x_nesa_ng_obsidian_obsidian_new_model_launch" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>model_requester_type</element>
+            <name>x_nesa_ng_obsidian_obsidian_new_model_launch</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-03-24 12:12:07</sys_created_on>
+            <sys_id>17edbcff1b5acd5406e886efe54bcb78</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>model_requester_type</sys_name>
+            <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+            <sys_update_name>sys_choice_x_nesa_ng_obsidian_obsidian_new_model_launch_model_requester_type</sys_update_name>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-03-24 12:12:07</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>model_requester_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Market</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_new_model_launch</name>
+            <sequence>0</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-03-24 12:12:07</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>5bedbcff1b5acd5406e886efe54bcb77</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-03-24 12:12:16</sys_updated_on>
+            <value>market</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>model_requester_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>SBU</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_obsidian_new_model_launch</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-03-24 12:12:07</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>d7ed7c331b9acd5406e886efe54bcb13</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-03-24 12:12:18</sys_updated_on>
+            <value>sbu</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

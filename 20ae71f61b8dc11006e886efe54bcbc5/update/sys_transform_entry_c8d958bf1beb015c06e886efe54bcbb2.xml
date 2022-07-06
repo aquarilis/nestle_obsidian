@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_transform_entry">
+    <sys_transform_entry action="INSERT_OR_UPDATE">
+        <choice_action>reject</choice_action>
+        <coalesce>true</coalesce>
+        <coalesce_case_sensitive>false</coalesce_case_sensitive>
+        <coalesce_empty_fields>false</coalesce_empty_fields>
+        <date_format>yyyy-MM-dd HH:mm:ss</date_format>
+        <map display_value="(DXC) Obsidian - 09 - SKU Assignment features TM">f119d0b31beb015c06e886efe54bcbc6</map>
+        <reference_value_field>sys_id</reference_value_field>
+        <source_field>[Script]</source_field>
+        <source_script><![CDATA[answer = (function transformEntry(source) {
+
+	var modelFeatureOptionFullName = source.u_feature_option;
+
+	if (modelFeatureOptionFullName == ""){
+		return "modelFeatureFullName_is_empty";
+	}
+
+	var modelFeatureOptionFullNameArray = modelFeatureOptionFullName.split("---");
+
+	if (modelFeatureOptionFullNameArray.length != 3){
+		return "modelFeatureFullNameArray.length_is_not_3";
+	}
+
+	var modelName = modelFeatureOptionFullNameArray[0].toString();
+	var featureName = modelFeatureOptionFullNameArray[1].toString();
+
+
+	var modelFeature_GR = new GlideRecord(x_nesa_ng_obsidian.DXCObsidianConstants.NML_TABLE_NAMES.MODEL_FEATURE_TABLE);
+	modelFeature_GR.addQuery("obsidian_model.name", modelName);
+	modelFeature_GR.addQuery("name", featureName);
+	modelFeature_GR.query();
+	if (modelFeature_GR.next()){
+		return modelFeature_GR.getUniqueValue();
+	} else {
+		return "cant_find_model_feature------" + modelFeatureOptionFullName;
+	}
+
+
+})(source);]]></source_script>
+        <source_table>x_nesa_ng_obsidian_sku_assignment_features_import</source_table>
+        <sys_class_name>sys_transform_entry</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-05-25 12:52:49</sys_created_on>
+        <sys_id>c8d958bf1beb015c06e886efe54bcbb2</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>[Script]</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_transform_entry_c8d958bf1beb015c06e886efe54bcbb2</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-06-15 14:18:39</sys_updated_on>
+        <target_field>model_feature</target_field>
+        <target_table>x_nesa_ng_obsidian_sku_assignment_feature</target_table>
+        <use_source_script>true</use_source_script>
+    </sys_transform_entry>
+</record_update>

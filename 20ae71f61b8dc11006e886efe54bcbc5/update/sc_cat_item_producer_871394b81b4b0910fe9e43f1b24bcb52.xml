@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_producer">
+    <sc_cat_item_producer action="INSERT_OR_UPDATE">
+        <access_type>restricted</access_type>
+        <active>true</active>
+        <allow_edit>false</allow_edit>
+        <availability>on_desktop</availability>
+        <billable>false</billable>
+        <can_cancel>false</can_cancel>
+        <category/>
+        <checked_out/>
+        <cost>0</cost>
+        <custom_cart/>
+        <delivery_plan/>
+        <delivery_plan_script/>
+        <delivery_time>1970-01-03 00:00:00</delivery_time>
+        <description/>
+        <display_price_property>non_zero</display_price_property>
+        <entitlement_script/>
+        <flow_designer_flow/>
+        <fulfillment_automation_level/>
+        <group/>
+        <hide_sp>false</hide_sp>
+        <icon/>
+        <ignore_price>true</ignore_price>
+        <image/>
+        <location/>
+        <mandatory_attachment>false</mandatory_attachment>
+        <meta/>
+        <mobile_hide_price>false</mobile_hide_price>
+        <mobile_picture/>
+        <mobile_picture_type>use_desktop_picture</mobile_picture_type>
+        <model/>
+        <name>New SKU Assignment</name>
+        <no_attachment_v2>false</no_attachment_v2>
+        <no_cart>false</no_cart>
+        <no_cart_v2>false</no_cart_v2>
+        <no_delivery_time_v2>false</no_delivery_time_v2>
+        <no_order>false</no_order>
+        <no_order_now>false</no_order_now>
+        <no_proceed_checkout>false</no_proceed_checkout>
+        <no_quantity>false</no_quantity>
+        <no_quantity_v2>false</no_quantity_v2>
+        <no_search>false</no_search>
+        <no_wishlist_v2>false</no_wishlist_v2>
+        <omit_price>false</omit_price>
+        <order>0</order>
+        <ordered_item_link/>
+        <owner display_value="Luu-Ly Mai (admin) (luuly.mai@dxc.com) ">1fe822acdb901f00c2832dcb0b9619be</owner>
+        <picture/>
+        <post_insert_script/>
+        <preview>JavaScript: popupOpenStandard("com.glideapp.servicecatalog_cat_item_view.do?v=1&amp;sysparm_id=871394b81b4b0910fe9e43f1b24bcb52&amp;sysparm_preview=true", "summary");</preview>
+        <price>0</price>
+        <published_ref/>
+        <recurring_frequency/>
+        <redirect_url>generated_record</redirect_url>
+        <request_method/>
+        <roles/>
+        <save_options/>
+        <save_script/>
+        <sc_catalogs/>
+        <sc_ic_item_staging/>
+        <sc_ic_version/>
+        <sc_template/>
+        <script><![CDATA[producer.portal_redirect = '?id=obsidian_index';]]></script>
+        <short_description>Use this form to submit a new SKU Assignment request</short_description>
+        <show_variable_help_on_load>false</show_variable_help_on_load>
+        <start_closed>false</start_closed>
+        <state/>
+        <sys_class_name>sc_cat_item_producer</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-04-21 08:11:21</sys_created_on>
+        <sys_id>871394b81b4b0910fe9e43f1b24bcb52</sys_id>
+        <sys_mod_count>14</sys_mod_count>
+        <sys_name>New SKU Assignment</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sc_cat_item_producer_871394b81b4b0910fe9e43f1b24bcb52</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-05-25 12:35:56</sys_updated_on>
+        <table_name>x_nesa_ng_obsidian_sku_assignment</table_name>
+        <taxonomy_topic/>
+        <template/>
+        <template_manager_roles/>
+        <type>item</type>
+        <u_add_all_available_companies>false</u_add_all_available_companies>
+        <u_allow_changes>false</u_allow_changes>
+        <u_audience/>
+        <u_automation_status/>
+        <u_available_for_override>false</u_available_for_override>
+        <u_available_for_restriction>restricted</u_available_for_restriction>
+        <u_available_translations/>
+        <u_business_application/>
+        <u_business_service/>
+        <u_cat_item_audience>End User</u_cat_item_audience>
+        <u_catalog_variables/>
+        <u_cim_catalog_item/>
+        <u_cim_content_item/>
+        <u_cim_error_log/>
+        <u_cim_has_approval>false</u_cim_has_approval>
+        <u_cim_has_approval_issue>false</u_cim_has_approval_issue>
+        <u_cim_has_cascade_issue>false</u_cim_has_cascade_issue>
+        <u_cim_has_conditional_variables>false</u_cim_has_conditional_variables>
+        <u_cim_has_notification>false</u_cim_has_notification>
+        <u_cim_has_notification_issue>false</u_cim_has_notification_issue>
+        <u_cim_has_task>false</u_cim_has_task>
+        <u_cim_has_task_assignment_issues>false</u_cim_has_task_assignment_issues>
+        <u_cim_has_terms_of_acceptance>false</u_cim_has_terms_of_acceptance>
+        <u_cim_has_variable_condition_issue>false</u_cim_has_variable_condition_issue>
+        <u_cim_has_variable_issue>false</u_cim_has_variable_issue>
+        <u_cim_import_log/>
+        <u_cim_is_secured_with_ad_list>false</u_cim_is_secured_with_ad_list>
+        <u_cim_is_split_item>false</u_cim_is_split_item>
+        <u_cim_issue_log/>
+        <u_cim_item>false</u_cim_item>
+        <u_cim_record_producer/>
+        <u_cim_require_manual_intervention>false</u_cim_require_manual_intervention>
+        <u_cim_scratchpad/>
+        <u_cim_staging_source/>
+        <u_cim_task_details/>
+        <u_company_scope/>
+        <u_dynamic_title>false</u_dynamic_title>
+        <u_enable_contextual_search>false</u_enable_contextual_search>
+        <u_expected_fulfillment>5</u_expected_fulfillment>
+        <u_filter_by_business_application>false</u_filter_by_business_application>
+        <u_geographical_scope/>
+        <u_hierarchy/>
+        <u_item_variables/>
+        <u_last_used/>
+        <u_legacy_id/>
+        <u_locked_by_system_administrator>false</u_locked_by_system_administrator>
+        <u_management_group display_value="SVC_MANAGER_GLOBAL GTS" name="SVC_MANAGER_GLOBAL GTS">0b78988edb9f2b00eb8d81cc0b961999</u_management_group>
+        <u_order>1000</u_order>
+        <u_owner/>
+        <u_owning_it_organization display_value="GLOBAL GTS">c2f3ae5fdb519304eb8d81cc0b961933</u_owning_it_organization>
+        <u_personnel_area_scope/>
+        <u_personnel_sub_area_scope/>
+        <u_populate_values_from_url>false</u_populate_values_from_url>
+        <u_product_group/>
+        <u_product_management_group/>
+        <u_product_stream/>
+        <u_refine_scope>false</u_refine_scope>
+        <u_responsible_ag/>
+        <u_restrict_based_on_personnel_areas>false</u_restrict_based_on_personnel_areas>
+        <u_restrict_based_on_personnel_sub_areas>false</u_restrict_based_on_personnel_sub_areas>
+        <u_restrict_to_nespresso>false</u_restrict_to_nespresso>
+        <u_retirement_message/>
+        <u_search_using_catalog_variable/>
+        <u_service_offering/>
+        <u_sla_run_schedule_type/>
+        <u_status/>
+        <u_superseded_global_item/>
+        <u_to_be_automated>false</u_to_be_automated>
+        <u_type_of_search/>
+        <u_user_feedback/>
+        <use_sc_layout>true</use_sc_layout>
+        <vendor/>
+        <view/>
+        <visible_bundle>true</visible_bundle>
+        <visible_guide>true</visible_guide>
+        <visible_standalone>true</visible_standalone>
+        <workflow/>
+    </sc_cat_item_producer>
+    <sys_translated_text action="delete_multiple" query="documentkey=871394b81b4b0910fe9e43f1b24bcb52"/>
+    <fx_price action="delete_multiple" query="id=871394b81b4b0910fe9e43f1b24bcb52"/>
+    <fx_price action="INSERT_OR_UPDATE">
+        <amount>0</amount>
+        <currency display_value="CHF">CHF</currency>
+        <field>price</field>
+        <id>871394b81b4b0910fe9e43f1b24bcb52</id>
+        <parent/>
+        <reference_amount>0</reference_amount>
+        <reference_currency display_value="CHF">CHF</reference_currency>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-04-21 08:11:21</sys_created_on>
+        <sys_id>a15314f81b4b0910fe9e43f1b24bcb25</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-04-21 08:11:21</sys_updated_on>
+        <table>sc_cat_item_producer</table>
+        <type>calculated</type>
+    </fx_price>
+</record_update>
