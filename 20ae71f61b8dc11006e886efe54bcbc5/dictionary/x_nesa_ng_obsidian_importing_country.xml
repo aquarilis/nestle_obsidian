@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this table is used for &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this table has been created or updated &gt;" label="Importing Country" max_length="40" name="x_nesa_ng_obsidian_importing_country" type="collection">
+        <element display="true" label="Country" max_length="32" name="country" reference="cmn_location" type="reference"/>
+        <index name="index">
+            <element name="country"/>
+        </index>
+    </element>
+</database>
