@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_nesa_ng_obsidian_transit_lead_time</collection>
+        <condition/>
+        <description>STSK0020654&#13;
+onBefore insert/update BR on Transit lead time table to ensure that there cannot be 2 "Transit lead time" record having the same "Importing country" and "Departing country" pair</description>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>(DXC)prevent transit lead time duplicate</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
+	try {
+
+		var transit_gr = new GlideRecord('x_nesa_ng_obsidian_transit_lead_time');
+		transit_gr.addQuery('importing_country', current.importing_country);
+		transit_gr.addQuery('departing_country', current.departing_country);
+		transit_gr.setLimit(1);
+		transit_gr.query();
+		if(transit_gr.hasNext()) {
+			gs.addErrorMessage("There cannot be duplicate 'transit lead time' records for a import country/departing country pair");
+			current.setAbortAction(true);
+		}
+
+	} catch (exception) {
+		var dxcLogger = new global.DXCGSLog("com.dxc.global.debugging_enabled",
+											"(DXC)prevent transit lead time duplicate");
+		dxcLogger.logWarning(exception);
+	}
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-07-19 09:48:56</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>f57cf6d11bfcd19406e886efe54bcbcc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>(DXC)prevent transit lead time duplicate</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_f57cf6d11bfcd19406e886efe54bcbcc</sys_update_name>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-07-19 09:48:56</sys_updated_on>
+        <template/>
+        <when>before</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=f57cf6d11bfcd19406e886efe54bcbcc"/>
+</record_update>

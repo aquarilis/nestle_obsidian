@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element audit="true" extends="sys_import_set_row" label="(DXC) Obsidian - 05 - Config. to Feature" max_length="40" name="x_nesa_ng_obsidian_model_config_feat_option_import" sizeclass="1038" type="collection">
+    <element audit="true" extends="sys_import_set_row" label="(DXC) Obsidian - 05 - Config. to Feature" max_length="40" name="x_nesa_ng_obsidian_model_config_feat_option_import" sizeclass="0" type="collection">
         <element attributes="edge_encryption_enabled=true,import_attribute_name=Model configuration" label="Model configuration" max_length="40" name="u_model_configuration" type="string"/>
         <element attributes="edge_encryption_enabled=true,import_attribute_name=Related feature option" label="Related feature option" max_length="147" name="u_related_feature_option" type="string"/>
     </element>

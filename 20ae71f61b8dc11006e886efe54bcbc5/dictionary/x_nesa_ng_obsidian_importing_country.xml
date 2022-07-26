@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this table is used for &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this table has been created or updated &gt;" label="Importing Country" max_length="40" name="x_nesa_ng_obsidian_importing_country" type="collection">
-        <element display="true" label="Country" max_length="32" name="country" reference="cmn_location" type="reference"/>
+    <element audit="true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this table is used for &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this table has been created or updated &gt;" label="Importing Country" max_length="40" name="x_nesa_ng_obsidian_importing_country" sizeclass="3" type="collection">
+        <element comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" display="true" label="Country" mandatory="true" max_length="32" name="country" reference="cmn_location" reference_qual="u_active=true^u_type=country^EQ" reference_qual_condition="u_active=true^u_type=country^EQ" type="reference" unique="true"/>
+        <element label="Dispenser appendixes" max_length="500" name="dispenser_appendixes" type="string"/>
+        <element label="Dispenser documentation leadtime (days)" max_length="40" name="dispenser_documentation_leadtime" type="integer"/>
+        <element label="Dispenser document information" max_length="500" name="dispenser_document_information" type="string"/>
+        <element label="General Comments" max_length="500" name="general_comments" type="string"/>
+        <element attributes="edge_encryption_enabled=true" calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;return current.country.name;&#13;&#10;&#13;&#10;})(current);" label="Importing country" max_length="100" name="importing_country" read_only="true" type="string" virtual="true"/>
+        <element label="Instructions for free of charge parts" max_length="500" name="instructions_for_free_of_charge_parts" type="string"/>
+        <element label="Mandatory elements in the box" max_length="500" name="mandatory_elements_in_the_box" type="string"/>
+        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;return current.country.parent;&#13;&#10;&#13;&#10;})(current);" label="Market" max_length="32" name="market" read_only="true" reference="cmn_location" type="reference" virtual="true"/>
+        <element label="Product Constraints" max_length="500" name="product_constraints" type="string"/>
+        <element label="Spare part appendixes" max_length="500" name="spare_part_appendixes" type="string"/>
+        <element label="Spare part documentation leadtime (days)" max_length="40" name="spare_part_documentation_leadtime" type="integer"/>
+        <element label="Spare part document information" max_length="500" name="spare_part_document_information" type="string"/>
+        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;return current.country.parent.parent.parent;&#13;&#10;&#13;&#10;})(current);" label="Zone" max_length="32" name="zone" read_only="true" reference="cmn_location" type="reference" virtual="true"/>
         <index name="index">
+            <element name="market"/>
+        </index>
+        <index name="index2">
+            <element name="zone"/>
+        </index>
+        <index name="index3" unique="true">
             <element name="country"/>
         </index>
     </element>

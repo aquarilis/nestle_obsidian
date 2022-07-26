@@ -291,83 +291,7 @@ DXCObsidianCommonUtils.prototype = {
     },
 
 
-    // /**
-    //  * @author	DXC - Isaac Perez
-    //  * @desc Retrieve the list of countriesthe given user is related to
-    //  * @param Sys_id from the table "sys_user"
-    //  * @return Array [string] - sys_id from the cmn_location table
-    //  */
-    // getValidCountriesForUser: function (userID) {
-    //     var result = [];
-
-    //     var memberGR = new GlideRecord('sys_group_covers_location');
-    //     memberGR.addQuery('location.u_type', 'country');
-    //     memberGR.addQuery('group', 'IN', this._getUserGroups(userID));
-    //     memberGR.query();
-
-    //     while (memberGR.next()) {
-    //         result.push(memberGR.getValue('location'));
-    //     }
-
-    //     return result;
-    // },
-
-    // /**
-    //  * @author	DXC - Isaac Perez
-    //  * @desc Retrieve the list of countries the given user is related to
-    //  * @param Sys_id from the table "sys_user"
-    //  * @return Array [string] - sys_id from the cmn_location table
-    //  */
-    // getValidMarketsForUser: function (userID) {
-    //     var result = [];
-    //     var groups = this._getUserGroups(userID);
-
-    //     var memberGR = new GlideRecord('sys_group_covers_location');
-    //     memberGR.addQuery('location.u_type', 'market');
-    //     memberGR.addQuery('group', 'IN', groups);
-    //     memberGR.query();
-
-    //     while (memberGR.next()) {
-    //         result.push(memberGR.getValue('location'));
-    //     }
-
-    //     var countryParentGR = new GlideRecord('sys_group_covers_location');
-    //     countryParentGR.addQuery('location.u_type', 'country');
-    //     countryParentGR.addQuery('group', 'IN', groups);
-    //     countryParentGR.query();
-
-    //     while (countryParentGR.next()) {
-    //         var parent = countryParentGR.location.parent.toString();
-    //         if (result.indexOf(parent) != -1)
-    //             continue;
-
-    //         result.push(parent);
-    //     }
-
-    //     return result;
-    // },
-
-    // /**
-    //  * @author	DXC - Isaac Perez
-    //  * @desc Retrieve the list of groups the user is member
-    //  * @param userID from the table "sys_user"
-    //  * @return Array [string] - sys_id from the sys_user_group table
-    //  */
-    // _getUserGroups: function (userID) {
-    //     var groups = [];
-
-    //     var groupGR = new GlideRecord('sys_user_grmember');
-    //     groupGR.addQuery('user', userID);
-    //     groupGR.addQuery('group.name', 'STARTSWITH', 'Obsidian');
-    //     groupGR.query();
-
-    //     while (groupGR.next()) {
-    //         groups.push(groupGR.getValue('group'));
-    //     }
-
-    //     return groups.toString();
-    // },
-
+    
 
     /**
      * @author	DXC - Luu-Ly Mai
@@ -609,13 +533,13 @@ DXCObsidianCommonUtils.prototype = {
         <sys_created_by>admin_Isaac_Perez</sys_created_by>
         <sys_created_on>2022-01-20 10:14:36</sys_created_on>
         <sys_id>18b68c6b1b0d855006e886efe54bcb37</sys_id>
-        <sys_mod_count>171</sys_mod_count>
+        <sys_mod_count>172</sys_mod_count>
         <sys_name>DXCObsidianCommonUtils</sys_name>
         <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
         <sys_update_name>sys_script_include_18b68c6b1b0d855006e886efe54bcb37</sys_update_name>
         <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
-        <sys_updated_on>2022-06-09 13:33:14</sys_updated_on>
+        <sys_updated_on>2022-07-14 07:25:12</sys_updated_on>
     </sys_script_include>
 </record_update>

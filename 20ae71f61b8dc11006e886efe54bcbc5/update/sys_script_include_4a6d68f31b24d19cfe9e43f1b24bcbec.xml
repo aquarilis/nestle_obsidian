@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_nesa_ng_obsidian.DXCObsidianImportRequirementsUtils</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>DXCObsidianImportRequirementsUtils</name>
+        <script><![CDATA[var DXCObsidianImportRequirementsUtils = Class.create();
+//initialize with         
+//var obsidianImportRequirementsUtils = new x_nesa_ng_obsidian.DXCObsidianImportRequirementsUtils();
+DXCObsidianImportRequirementsUtils.prototype = {
+    initialize: function () {
+        this.logger = new global.GSLog("com.dxc.global.debugging_enabled", "LMADebug");
+        this.obsidianCommonUtils = new x_nesa_ng_obsidian.DXCObsidianCommonUtils();
+
+    },
+
+
+
+
+    /** 
+     * @desc returns the sys_ids of country locations supported by Obsidian vendors 
+
+     * 
+     * @return {Array}   array of cmn_location sys_ids 
+     */
+    getVendorSupportedCountrySysIDs: function () {
+        var obsidianVendor_GA = new GlideAggregate("core_company");
+        obsidianVendor_GA.addEncodedQuery("u_restrict_visibility_toLIKEec2686691b61c110fe9e43f1b24bcbeb^u_is_parent_vendor=false^u_locationISNOTEMPTY");
+        obsidianVendor_GA.addAggregate('COUNT');
+        obsidianVendor_GA.groupBy("u_location");
+        obsidianVendor_GA.addHaving('COUNT', '>', '0'); // get only values where count is more than 1     
+        obsidianVendor_GA.query();
+        var vendorSupportedCountrySysIDs = [];
+        while (obsidianVendor_GA.next()) {
+            // check if the row is for a unique value and not for an overall count
+            if (obsidianVendor_GA.getValue("u_location")) {
+                vendorSupportedCountrySysIDs.push(obsidianVendor_GA.getValue("u_location"));
+            }
+        }
+
+        return vendorSupportedCountrySysIDs;
+
+    },
+
+
+    /** 
+         * @desc
+         * returns whether the user can read a given Import Requirement record
+         * Used in Import requirement read ACL
+         * 
+         * @param importingCountry_GR the glideRecord of the obsidian record being evaluated for read access
+         *
+         * @return
+         *  Boolean whether the logged in user can read the record
+         */
+    userCanReadImportingCountry: function (importingCountry_GR) {
+        try {
+
+            //NBS and central users can read all 
+            if (gs.hasRole("admin") || gs.hasRole("x_nesa_ng_obsidian.nbs_user") || gs.hasRole("x_nesa_ng_obsidian.central_user")) {
+                return true;
+            }
+
+            var currentGlideUser = gs.getUser();
+            var userID = currentGlideUser.getID();
+
+            if (currentGlideUser.isMemberOf("Obsidian-NP Procurement")) {
+                return true;
+            }
+
+            if (this.obsidianCommonUtils.isUserSupplierRelated(userID) || this.obsidianCommonUtils.isUser3rdPartyRelated(userID)) {
+                return false;
+            }
+
+            if (this.obsidianCommonUtils.isUserMarketRelated(userID)) {
+                //to do check if supports country
+                var userSupportedCountries = this.obsidianCommonUtils.getCountriesCoveredByUser(userID);
+
+                var importingCountrySysID = importingCountry_GR.getValue("country");
+                if (importingCountrySysID && userSupportedCountries.indexOf(importingCountrySysID) != -1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+
+            return false;
+
+
+        } catch (e) {
+            this.logger.logErr("error in userCanReadSKUAssignment function (DXCObsidianSKUUtils): " + e);
+        }
+    },
+
+
+
+
+
+
+
+    type: 'DXCObsidianImportRequirementsUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-07-14 07:21:13</sys_created_on>
+        <sys_id>4a6d68f31b24d19cfe9e43f1b24bcbec</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>DXCObsidianImportRequirementsUtils</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_include_4a6d68f31b24d19cfe9e43f1b24bcbec</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-07-14 11:03:47</sys_updated_on>
+    </sys_script_include>
+</record_update>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element extends="sys_import_set_row" label="(DXC) Obsidian - 08 - SKU Assignment" max_length="40" name="x_nesa_ng_obsidian_sku_assignment_import" sizeclass="48" type="collection">
+    <element extends="sys_import_set_row" label="(DXC) Obsidian - 08 - SKU Assignment" max_length="40" name="x_nesa_ng_obsidian_sku_assignment_import" sizeclass="0" type="collection">
         <element attributes="edge_encryption_enabled=true,import_attribute_name=A" label="A" max_length="40" name="u_a" type="string"/>
         <element attributes="edge_encryption_enabled=true,import_attribute_name=AA" label="AA" max_length="40" name="u_aa" type="string"/>
         <element attributes="edge_encryption_enabled=true,import_attribute_name=AB" label="AB" max_length="40" name="u_ab" type="string"/>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this table is used for &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this table has been created or updated &gt;" label="Document languages" max_length="40" name="x_nesa_ng_obsidian_document_languages" sizeclass="14" type="collection">
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element display="true" label="Language" mandatory="true" max_length="100" name="language" type="string"/>
+    </element>
+</database>

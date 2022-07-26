@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Ng Obsidian M2m Locations Documents" max_length="40" name="x_nesa_ng_obsidian_m2m_locations_documents" sizeclass="2" type="collection">
+        <element attributes="encode_utf8=false" label="Location" max_length="32" name="applicable_country" read_only="true" reference="cmn_location" type="reference"/>
+        <element attributes="encode_utf8=false" label="Document" max_length="32" name="document" read_only="true" reference="x_nesa_ng_obsidian_document" type="reference"/>
+        <index name="index">
+            <element name="document"/>
+        </index>
+        <index name="index2">
+            <element name="applicable_country"/>
+        </index>
+    </element>
+</database>

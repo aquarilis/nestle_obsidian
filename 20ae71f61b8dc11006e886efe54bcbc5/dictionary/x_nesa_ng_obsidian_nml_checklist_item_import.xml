@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element audit="true" extends="sys_import_set_row" label="(DXC) Obsidian - 07 - NML checklist item" max_length="40" name="x_nesa_ng_obsidian_nml_checklist_item_import" sizeclass="4026" type="collection">
+    <element audit="true" extends="sys_import_set_row" label="(DXC) Obsidian - 07 - NML checklist item" max_length="40" name="x_nesa_ng_obsidian_nml_checklist_item_import" sizeclass="0" type="collection">
         <element attributes="edge_encryption_enabled=true,import_attribute_name=Active in this NML" label="Active in this NML" max_length="40" name="u_active_in_this_nml" type="string"/>
         <element attributes="edge_encryption_enabled=true,import_attribute_name=NML Checklist Item" label="NML Checklist Item" max_length="53" name="u_nml_checklist_item" type="string"/>
         <element attributes="edge_encryption_enabled=true,import_attribute_name=Obsidian Model" label="Obsidian Model" max_length="40" name="u_obsidian_model" type="string"/>

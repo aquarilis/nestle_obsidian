@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="document_request" label="Document Request" language="en" table="x_nesa_ng_obsidian_document">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>document_request</element>
+            <help/>
+            <hint/>
+            <label>Document Request</label>
+            <language>en</language>
+            <name>x_nesa_ng_obsidian_document</name>
+            <plural>Document Requests</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-07-13 13:09:30</sys_created_on>
+            <sys_id>0283b8e71b2c19d8fe9e43f1b24bcb13</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Document Request</sys_name>
+            <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+            <sys_update_name>sys_documentation_x_nesa_ng_obsidian_document_document_request_en</sys_update_name>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-07-13 13:09:30</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

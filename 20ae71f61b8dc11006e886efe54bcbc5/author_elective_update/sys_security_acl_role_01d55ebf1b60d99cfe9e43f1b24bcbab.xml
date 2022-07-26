@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="DELETE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-07-14 14:58:18</sys_created_on>
+        <sys_id>01d55ebf1b60d99cfe9e43f1b24bcbab</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>.x_nesa_ng_obsidian.nbs_user</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_security_acl display_value="">dac55abf1b60d99cfe9e43f1b24bcb73</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_01d55ebf1b60d99cfe9e43f1b24bcbab</sys_update_name>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-07-14 14:58:18</sys_updated_on>
+        <sys_user_role display_value="x_nesa_ng_obsidian.nbs_user" name="x_nesa_ng_obsidian.nbs_user">9bbbd86b1bd2455406e886efe54bcb68</sys_user_role>
+        <transaction_id/>
+    </sys_security_acl_role>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</application>
+        <file_path/>
+        <instance_id>088a9d09dbcf8f405904f897bf9619d7</instance_id>
+        <instance_name>nestledev</instance_name>
+        <name>sys_security_acl_role_01d55ebf1b60d99cfe9e43f1b24bcbab</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role"><sys_security_acl_role action="INSERT_OR_UPDATE"><sys_class_name>sys_security_acl_role</sys_class_name><sys_created_by>admin_Hien The_Tran</sys_created_by><sys_created_on>2022-07-14 14:58:18</sys_created_on><sys_id>01d55ebf1b60d99cfe9e43f1b24bcbab</sys_id><sys_mod_count>0</sys_mod_count><sys_name>.x_nesa_ng_obsidian.nbs_user</sys_name><sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package><sys_policy/><sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope><sys_security_acl display_value="">dac55abf1b60d99cfe9e43f1b24bcb73</sys_security_acl><sys_update_name>sys_security_acl_role_01d55ebf1b60d99cfe9e43f1b24bcbab</sys_update_name><sys_updated_by>admin_Hien The_Tran</sys_updated_by><sys_updated_on>2022-07-14 14:58:18</sys_updated_on><sys_user_role display_value="x_nesa_ng_obsidian.nbs_user" name="x_nesa_ng_obsidian.nbs_user">9bbbd86b1bd2455406e886efe54bcb68</sys_user_role><transaction_id/></sys_security_acl_role></record_update>]]></payload>
+        <payload_hash>-1391307347</payload_hash>
+        <record_name>.x_nesa_ng_obsidian.nbs_user</record_name>
+        <reverted_from/>
+        <source>f72e168b1be81dd006e886efe54bcb6c</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-07-14 14:58:18</sys_created_on>
+        <sys_id>610616ff1b60d99cfe9e43f1b24bcb7b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>181fd37bf550000001</sys_recorded_at>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-07-14 14:58:18</sys_updated_on>
+        <type>Access Roles</type>
+        <update_guid>690616ff0f60d99c2e0e9512543af77a</update_guid>
+        <update_guid_history>690616ff0f60d99c2e0e9512543af77a:-1391307347</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Record deleted 14-07-2022 15:09:41">10a89a771ba0d99cfe9e43f1b24bcbbd</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-07-14 15:09:41</sys_created_on>
+        <sys_db_object display_value="" name="sys_security_acl_role">sys_security_acl_role</sys_db_object>
+        <sys_id>7e0ee092d90447b498996d23014e9710</sys_id>
+        <sys_metadata>01d55ebf1b60d99cfe9e43f1b24bcbab</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>.x_nesa_ng_obsidian.nbs_user</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_parent display_value="">dac55abf1b60d99cfe9e43f1b24bcb73</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_scope_delete display_value="">2b1177cc58ae40468b55d80cc784eec4</sys_scope_delete>
+        <sys_update_name>sys_security_acl_role_01d55ebf1b60d99cfe9e43f1b24bcbab</sys_update_name>
+        <sys_update_version display_value="sys_security_acl_role_01d55ebf1b60d99cfe9e43f1b24bcbab">610616ff1b60d99cfe9e43f1b24bcb7b</sys_update_version>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-07-14 15:09:41</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

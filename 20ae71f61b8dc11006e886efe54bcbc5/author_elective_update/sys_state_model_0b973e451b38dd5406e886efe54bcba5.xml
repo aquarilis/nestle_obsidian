@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_state_model">
+    <sys_state_model action="DELETE">
+        <active>true</active>
+        <condition/>
+        <description/>
+        <global_exit_condition/>
+        <name>Obsidian Document flow</name>
+        <order/>
+        <sys_class_name>sys_state_model</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-07-18 14:38:08</sys_created_on>
+        <sys_id>0b973e451b38dd5406e886efe54bcba5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Obsidian Document flow</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_state_model_0b973e451b38dd5406e886efe54bcba5</sys_update_name>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-07-18 14:38:08</sys_updated_on>
+        <table>x_nesa_ng_obsidian_document</table>
+    </sys_state_model>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</application>
+        <file_path/>
+        <instance_id>088a9d09dbcf8f405904f897bf9619d7</instance_id>
+        <instance_name>nestledev</instance_name>
+        <name>sys_state_model_0b973e451b38dd5406e886efe54bcba5</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_state_model"><sys_state_model action="INSERT_OR_UPDATE"><active>true</active><condition/><description/><global_exit_condition/><name>Obsidian Document flow</name><order/><sys_class_name>sys_state_model</sys_class_name><sys_created_by>admin_Hien The_Tran</sys_created_by><sys_created_on>2022-07-18 14:38:08</sys_created_on><sys_id>0b973e451b38dd5406e886efe54bcba5</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Obsidian Document flow</sys_name><sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package><sys_policy/><sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope><sys_update_name>sys_state_model_0b973e451b38dd5406e886efe54bcba5</sys_update_name><sys_updated_by>admin_Hien The_Tran</sys_updated_by><sys_updated_on>2022-07-18 14:38:08</sys_updated_on><table>x_nesa_ng_obsidian_document</table></sys_state_model></record_update>]]></payload>
+        <payload_hash>-814466649</payload_hash>
+        <record_name>Obsidian Document flow</record_name>
+        <reverted_from/>
+        <source>f72e168b1be81dd006e886efe54bcb6c</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-07-18 14:38:08</sys_created_on>
+        <sys_id>09c77ac51b38dd5406e886efe54bcb9f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>18211beba200000001</sys_recorded_at>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-07-18 14:38:08</sys_updated_on>
+        <type>State Model</type>
+        <update_guid>01c77ac55b38dd547d2660d41834029f</update_guid>
+        <update_guid_history>01c77ac55b38dd547d2660d41834029f:-814466649</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-07-18 14:39:55</sys_created_on>
+        <sys_db_object display_value="" name="sys_state_model">sys_state_model</sys_db_object>
+        <sys_id>4f2d5647c0f745e8ae43fc09c7319f59</sys_id>
+        <sys_metadata>0b973e451b38dd5406e886efe54bcba5</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Obsidian Document flow</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_scope_delete display_value="">2b1177cc58ae40468b55d80cc784eec4</sys_scope_delete>
+        <sys_update_name>sys_state_model_0b973e451b38dd5406e886efe54bcba5</sys_update_name>
+        <sys_update_version display_value="sys_state_model_0b973e451b38dd5406e886efe54bcba5">09c77ac51b38dd5406e886efe54bcb9f</sys_update_version>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-07-18 14:39:55</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

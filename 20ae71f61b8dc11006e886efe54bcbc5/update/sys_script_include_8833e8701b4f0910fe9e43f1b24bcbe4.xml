@@ -10,176 +10,195 @@
         <script><![CDATA[var DXCObsidianSKUUtilsAJAX = Class.create();
 DXCObsidianSKUUtilsAJAX.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
 
-    processModelRequesterGroup: function () {
-        var groupSysId = this.getParameter("sysparm_group_sys_id");
+	processModelRequesterGroup: function () {
+		var groupSysId = this.getParameter("sysparm_group_sys_id");
 
-        var answerJSON = {
-            sku_requester_group_has_countries: false,
-            default_assignment_country_sys_id: null,
-            default_assignment_country_display_value: null,
-        };
+		var answerJSON = {
+			sku_requester_group_has_countries: false,
+			default_assignment_country_sys_id: null,
+			default_assignment_country_display_value: null,
+		};
 
-        var coveredCountriesReferenceQualifierString = 'u_active=true^u_type=country^sys_idIN' + new x_nesa_ng_obsidian.DXCObsidianCommonUtils().getCountriesCoveredByGroup(groupSysId) + '^EQ';
-
-
-        var location_GR = new GlideRecord("cmn_location");
-        location_GR.addEncodedQuery(coveredCountriesReferenceQualifierString);
-        location_GR.query();
-
-        if (location_GR.hasNext()) {
-            answerJSON.sku_requester_group_has_countries = true;
-            if (location_GR.getRowCount() == 1) {
-                location_GR.next();
-                answerJSON.default_assignment_country_sys_id = location_GR.getValue("sys_id");
-                answerJSON.default_assignment_country_display_value = location_GR.getValue("name");
-            }
-        }
-
-        return JSON.stringify(answerJSON, null, 4, 4);
+		var coveredCountriesReferenceQualifierString = 'u_active=true^u_type=country^sys_idIN' + new x_nesa_ng_obsidian.DXCObsidianCommonUtils().getCountriesCoveredByGroup(groupSysId) + '^EQ';
 
 
-    },
+		var location_GR = new GlideRecord("cmn_location");
+		location_GR.addEncodedQuery(coveredCountriesReferenceQualifierString);
+		location_GR.query();
 
-    checkSelectedModel: function () {
-        var lmaLogger = new global.GSLog("com.dxc.global.debugging_enabled", "LMADebug");
-        try {
-            var obsidianModelSysID = this.getParameter("sysparm_obsidian_model_sys_id");
-            var returnObject = {
-                error_message: null
-            };
+		if (location_GR.hasNext()) {
+			answerJSON.sku_requester_group_has_countries = true;
+			if (location_GR.getRowCount() == 1) {
+				location_GR.next();
+				answerJSON.default_assignment_country_sys_id = location_GR.getValue("sys_id");
+				answerJSON.default_assignment_country_display_value = location_GR.getValue("name");
+			}
+		}
 
-            var modelFeature_GR = new GlideRecord('x_nesa_ng_obsidian_obsidian_model_feature');
-            modelFeature_GR.addQuery("obsidian_model", obsidianModelSysID);
-            modelFeature_GR.setLimit(1);
-            modelFeature_GR.query();
-
-            if (!modelFeature_GR.hasNext()) {
-                returnObject.error_message = "selected model hasn't got any Model Feature defined";
-            } else {
-
-                modelFeature_GR = new GlideRecord('x_nesa_ng_obsidian_obsidian_model_feature');
-                modelFeature_GR.addEncodedQuery("standard_optionISEMPTY^ORactive_option_count=0^ORactive_option_countISEMPTY^obsidian_model=" + obsidianModelSysID);
-                modelFeature_GR.query();
-                if (modelFeature_GR.hasNext()) {
-                    returnObject.error_message = "selected model has incomplete Model Features data";
-                }
-            }
+		return JSON.stringify(answerJSON, null, 4, 4);
 
 
+	},
 
+	checkSelectedModel: function () {
+		var lmaLogger = new global.GSLog("com.dxc.global.debugging_enabled", "LMADebug");
+		try {
+			var obsidianModelSysID = this.getParameter("sysparm_obsidian_model_sys_id");
+			var returnObject = {
+				error_message: null
+			};
 
-            return JSON.stringify(returnObject, null, 4, 4);
-        } catch (e) {
-            lmaLogger.logErr("error in checkSelectedModel: " + e);
-        }
+			var modelFeature_GR = new GlideRecord('x_nesa_ng_obsidian_obsidian_model_feature');
+			modelFeature_GR.addQuery("obsidian_model", obsidianModelSysID);
+			modelFeature_GR.setLimit(1);
+			modelFeature_GR.query();
 
+			if (!modelFeature_GR.hasNext()) {
+				returnObject.error_message = "selected model hasn't got any Model Feature defined";
+			} else {
 
-
-    },
-
-    getSKUAssignmentFeaturesJSON: function (skuAssignmentSysID) {
-        var lmaLogger = new global.GSLog("com.dxc.global.debugging_enabled", "LMADebug");
-        try {
-
-            if (!skuAssignmentSysID) {
-                skuAssignmentSysID = this.getParameter("sysparm_assignment_sku_sys_id");
-            }
-
-            var assignmentFeaturesJSON = {};
-
-            var assignmentFeatureGR = new GlideRecord(x_nesa_ng_obsidian.DXCObsidianConstants.SKU_TABLE_NAMES.SKU_ASSIGNMENT_FEATURE_TABLE);
-            assignmentFeatureGR.addQuery("sku_assignment", skuAssignmentSysID);
-            assignmentFeatureGR.orderBy('model_feature.feature_category');
-            assignmentFeatureGR.query();
-
-            var featureDefaultCurrency = null;
-
-
-            while (assignmentFeatureGR.next()) {
-
-                if (!featureDefaultCurrency) {
-                    featureDefaultCurrency = assignmentFeatureGR.sku_assignment.obsidian_model.default_currency.toString();
-                }
-
-                var featureCategoryName = assignmentFeatureGR.model_feature.feature_category.getDisplayValue();
-                var featuresubCategoryName = assignmentFeatureGR.model_feature.feature_subcategory.getDisplayValue();
-                var featureName = assignmentFeatureGR.model_feature.getDisplayValue();
-
-                if (!assignmentFeaturesJSON[featureCategoryName]) {
-                    assignmentFeaturesJSON[featureCategoryName] = {};
-                }
-
-                if (!assignmentFeaturesJSON[featureCategoryName][featuresubCategoryName]) {
-                    assignmentFeaturesJSON[featureCategoryName][featuresubCategoryName] = {};
-                }
-
-
-                var currentlySelectedFeatureOptionSysID = assignmentFeatureGR.getValue("feature_option");
-                var selectedChoiceJSON;
-
-                assignmentFeaturesJSON[featureCategoryName][featuresubCategoryName][assignmentFeatureGR.getValue("sys_id")] = {
-                    feature_name: featureName,
-                    default_currency: featureDefaultCurrency,
-                    feature_option_choice: assignmentFeatureGR.getValue("feature_option_choice"),
-                    choices: (function getFeatureOptionChoices() {
-                        var choiceArray = [];
-
-                        var featureOptionGR = new GlideRecord(x_nesa_ng_obsidian.DXCObsidianConstants.NML_TABLE_NAMES.FEATURE_OPTION_TABLE);
-                        featureOptionGR.addQuery("model_feature", assignmentFeatureGR.getValue("model_feature"));
-                        featureOptionGR.addQuery("active", true);
-                        featureOptionGR.orderBy("name");
-                        featureOptionGR.query();
-                        while (featureOptionGR.next()) {
-                            choiceArray.push((choiceJSON = {
-                                label: featureOptionGR.getValue("name"),
-                                feature_option_sys_id: featureOptionGR.getValue("sys_id"),
-                                gross_price_currency_value: featureOptionGR.getDisplayValue("gross_price"),
-                                gross_price_numeric: parseFloat(featureOptionGR.gross_price.amount),
-                                feature_price_currency_value: featureOptionGR.getDisplayValue("feature_price"),
-                                feature_price_numeric: parseFloat(featureOptionGR.feature_price.amount),
-                            }));
-
-                            if (choiceJSON.feature_option_sys_id == currentlySelectedFeatureOptionSysID) {
-                                selectedChoiceJSON = choiceJSON;
-                            }
-
-                        }
-                        return choiceArray;
-
-                    })(),
-                    selection: selectedChoiceJSON,
-                    editable: assignmentFeatureGR.model_feature.editable.toString(),
-                    specification_comments: assignmentFeatureGR.specification_comments.toString()
-                };
-            }
-
-            return JSON.stringify(assignmentFeaturesJSON, null, 4, 4);
-
-
-        } catch (e) {
-            lmaLogger.logErr("error in getSKUAssignmentFeaturesJSON: " + e);
-            //return "error in getSKUAssignmentFeaturesJSON: " + e;
-        }
-
-    },
+				modelFeature_GR = new GlideRecord('x_nesa_ng_obsidian_obsidian_model_feature');
+				modelFeature_GR.addEncodedQuery("standard_optionISEMPTY^ORactive_option_count=0^ORactive_option_countISEMPTY^obsidian_model=" + obsidianModelSysID);
+				modelFeature_GR.query();
+				if (modelFeature_GR.hasNext()) {
+					returnObject.error_message = "selected model has incomplete Model Features data";
+				}
+			}
 
 
 
 
+			return JSON.stringify(returnObject, null, 4, 4);
+		} catch (e) {
+			lmaLogger.logErr("error in checkSelectedModel: " + e);
+		}
 
-    type: 'DXCObsidianSKUUtilsAJAX'
+
+
+	},
+
+	getSKUAssignmentFeaturesJSON: function (skuAssignmentSysID) {
+		var lmaLogger = new global.GSLog("com.dxc.global.debugging_enabled", "LMADebug");
+		try {
+
+			if (!skuAssignmentSysID) {
+				skuAssignmentSysID = this.getParameter("sysparm_assignment_sku_sys_id");
+			}
+
+			var assignmentFeaturesJSON = {};
+
+			var assignmentFeatureGR = new GlideRecord(x_nesa_ng_obsidian.DXCObsidianConstants.SKU_TABLE_NAMES.SKU_ASSIGNMENT_FEATURE_TABLE);
+			assignmentFeatureGR.addQuery("sku_assignment", skuAssignmentSysID);
+			assignmentFeatureGR.orderBy('model_feature.feature_category');
+			assignmentFeatureGR.query();
+
+			var featureDefaultCurrency = null;
+
+
+			while (assignmentFeatureGR.next()) {
+
+				if (!featureDefaultCurrency) {
+					featureDefaultCurrency = assignmentFeatureGR.sku_assignment.obsidian_model.default_currency.toString();
+				}
+
+				var featureCategoryName = assignmentFeatureGR.model_feature.feature_category.getDisplayValue();
+				var featuresubCategoryName = assignmentFeatureGR.model_feature.feature_subcategory.getDisplayValue();
+				var featureName = assignmentFeatureGR.model_feature.getDisplayValue();
+
+				if (!assignmentFeaturesJSON[featureCategoryName]) {
+					assignmentFeaturesJSON[featureCategoryName] = {};
+				}
+
+				if (!assignmentFeaturesJSON[featureCategoryName][featuresubCategoryName]) {
+					assignmentFeaturesJSON[featureCategoryName][featuresubCategoryName] = {};
+				}
+
+
+				var currentlySelectedFeatureOptionSysID = assignmentFeatureGR.getValue("feature_option");
+				var selectedChoiceJSON;
+
+				assignmentFeaturesJSON[featureCategoryName][featuresubCategoryName][assignmentFeatureGR.getValue("sys_id")] = {
+					feature_name: featureName,
+					default_currency: featureDefaultCurrency,
+					feature_option_choice: assignmentFeatureGR.getValue("feature_option_choice"),
+					choices: (function getFeatureOptionChoices() {
+						var choiceArray = [];
+
+						var featureOptionGR = new GlideRecord(x_nesa_ng_obsidian.DXCObsidianConstants.NML_TABLE_NAMES.FEATURE_OPTION_TABLE);
+						featureOptionGR.addQuery("model_feature", assignmentFeatureGR.getValue("model_feature"));
+						featureOptionGR.addQuery("active", true);
+						featureOptionGR.orderBy("name");
+						featureOptionGR.query();
+						while (featureOptionGR.next()) {
+							choiceArray.push((choiceJSON = {
+								label: featureOptionGR.getValue("name"),
+								feature_option_sys_id: featureOptionGR.getValue("sys_id"),
+								gross_price_currency_value: featureOptionGR.getDisplayValue("gross_price"),
+								gross_price_numeric: parseFloat(featureOptionGR.gross_price.amount),
+								feature_price_currency_value: featureOptionGR.getDisplayValue("feature_price"),
+								feature_price_numeric: parseFloat(featureOptionGR.feature_price.amount),
+							}));
+
+							if (choiceJSON.feature_option_sys_id == currentlySelectedFeatureOptionSysID) {
+								selectedChoiceJSON = choiceJSON;
+							}
+
+						}
+						return choiceArray;
+
+					})(),
+					selection: selectedChoiceJSON,
+					editable: assignmentFeatureGR.model_feature.editable.toString(),
+					specification_comments: assignmentFeatureGR.specification_comments.toString()
+				};
+			}
+
+			return JSON.stringify(assignmentFeaturesJSON, null, 4, 4);
+
+
+		} catch (e) {
+			lmaLogger.logErr("error in getSKUAssignmentFeaturesJSON: " + e);
+			//return "error in getSKUAssignmentFeaturesJSON: " + e;
+		}
+
+	},
+
+	getSAPMaterialNumberInfo: function () {
+		var lmaLogger = new global.GSLog("com.dxc.global.debugging_enabled", "LMADebug");
+		try {
+			var sapNumber = this.getParameter("sysparm_sap_material_number");
+			var result = {};
+
+			var sapNumber_gr = new GlideRecord('x_nesa_ng_obsidian_sap_material');
+			if(sapNumber_gr.get(sapNumber)) {
+				result.number = sapNumber_gr.getValue('sap_material_number');
+				result.description = sapNumber_gr.getValue('description');
+				result.batch_managed = sapNumber_gr.getDisplayValue('batch_managed');
+			}
+
+			return JSON.stringify(result);
+			
+		} catch (e) {
+			lmaLogger.logErr("error in checkSelectedModel: " + e);
+		}
+
+
+
+	},
+
+	type: 'DXCObsidianSKUUtilsAJAX'
 });]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
         <sys_created_on>2022-04-21 09:20:37</sys_created_on>
         <sys_id>8833e8701b4f0910fe9e43f1b24bcbe4</sys_id>
-        <sys_mod_count>93</sys_mod_count>
+        <sys_mod_count>96</sys_mod_count>
         <sys_name>DXCObsidianSKUUtilsAJAX</sys_name>
         <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
         <sys_update_name>sys_script_include_8833e8701b4f0910fe9e43f1b24bcbe4</sys_update_name>
-        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
-        <sys_updated_on>2022-05-31 14:16:49</sys_updated_on>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-07-18 14:11:20</sys_updated_on>
     </sys_script_include>
 </record_update>

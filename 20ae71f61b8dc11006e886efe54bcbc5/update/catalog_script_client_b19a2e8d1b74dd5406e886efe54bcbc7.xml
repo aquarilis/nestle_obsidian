@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="catalog_script_client">
+    <catalog_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_catalog>true</applies_catalog>
+        <applies_extended>false</applies_extended>
+        <applies_req_item>false</applies_req_item>
+        <applies_sc_task>false</applies_sc_task>
+        <applies_target_record>false</applies_target_record>
+        <applies_to>item</applies_to>
+        <cat_item display_value="New SKU Assignment">871394b81b4b0910fe9e43f1b24bcb52</cat_item>
+        <cat_variable>IO:077205f81bc34910fe9e43f1b24bcb4e</cat_variable>
+        <condition/>
+        <description/>
+        <field/>
+        <global>true</global>
+        <isolate_script>true</isolate_script>
+        <messages/>
+        <name>(DXC) onChange Sap Material Number</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading) {
+    if (isLoading) {
+        return;
+    }
+
+    try {
+
+		// STRY0190769 - The "SAP material number" field exhibits the SAP Material description and batch managed (Yes/No) of each selectable SAP material number, and these information remain on screen once a selection is made
+
+        if (newValue != "") {
+            var ga = new GlideAjax("x_nesa_ng_obsidian.DXCObsidianSKUUtilsAJAX");
+            ga.addParam("sysparm_name", "getSAPMaterialNumberInfo");
+            ga.addParam("sysparm_sap_material_number", newValue);
+            ga.getXML(function (response) {
+                var answer = response.responseXML.documentElement.getAttribute("answer");
+                var answerObject = JSON.parse(answer);
+                if (answerObject) {
+					var displayValue = answerObject.number + " - " + answerObject.description + " - " + answerObject.batch_managed;
+                    g_form.setValue("sap_material_number", newValue, displayValue);
+                }
+            });
+        }
+
+    } catch (e) {
+        jslog("error in onChange Sap Material Number script: " + e);
+
+    }
+}]]></script>
+        <sys_class_name>catalog_script_client</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-07-18 13:48:40</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>b19a2e8d1b74dd5406e886efe54bcbc7</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>(DXC) onChange Sap Material Number</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>catalog_script_client_b19a2e8d1b74dd5406e886efe54bcbc7</sys_update_name>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-07-18 14:09:59</sys_updated_on>
+        <table/>
+        <type>onChange</type>
+        <ui_type>10</ui_type>
+        <variable_set/>
+        <view/>
+    </catalog_script_client>
+</record_update>

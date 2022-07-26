@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this table is used for &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this table has been created or updated &gt;" label="Document" max_length="40" name="x_nesa_ng_obsidian_document" sizeclass="18" type="collection">
+        <element label="Applicable countries" max_length="4000" name="applicable_countries" read_only="true" reference="cmn_location" type="glide_list"/>
+        <element label="Certificate expiry date" max_length="40" name="certificate_expiry_date" type="glide_date"/>
+        <element label="Certificate geographical scope" max_length="2000" name="certificate_geographical_scope" reference="cmn_location" reference_qual="u_active=true^u_type=country^EQ" reference_qual_condition="u_active=true^u_type=country^EQ" type="glide_list"/>
+        <element label="Certificate of compliance" max_length="40" name="certificate_of_compliance" type="file_attachment"/>
+        <element label="Certification body" max_length="100" name="certification_body" type="string"/>
+        <element label="Certification type" max_length="100" name="certification_type" type="string"/>
+        <element label="Complete certificate name" max_length="100" name="complete_certificate_name" type="string"/>
+        <element label="Description" mandatory="true" max_length="500" name="description" type="string"/>
+        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;    var displayName = current.type + &quot; - &quot; + current.document_title + &quot; (&quot; + current.supplier.name + &quot;)&quot;;&#13;&#10;    return displayName;&#13;&#10;&#13;&#10;})(current);" display="true" label="Display title" max_length="200" name="display_title" read_only="true" type="string" virtual="true"/>
+        <element label="Document" max_length="40" name="document" type="file_attachment"/>
+        <element attributes="encode_utf8=false" label="Document Request" max_length="32" name="document_request" read_only="true" reference="x_nesa_ng_obsidian_document_requests" type="reference"/>
+        <element choice="1" default="10" label="Document stage" max_length="40" name="document_stage" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Draft" sequence="0" value="10"/>
+                <element inactive_on_update="false" label="Published" sequence="1" value="30"/>
+                <element inactive_on_update="false" label="Obsolete" sequence="2" value="40"/>
+                <element inactive_on_update="false" label="Cancelled" sequence="3" value="99"/>
+            </choice>
+        </element>
+        <element label="Document title" mandatory="true" max_length="120" name="document_title" type="string"/>
+        <element label="Editorial notes" max_length="600" name="editorial_notes" type="string"/>
+        <element hint="Number of months required to issue initial certificate" label="First certification lead-time (months)" max_length="40" name="first_certification_lead_time" type="integer"/>
+        <element choice="1" label="Initiated by" max_length="40" name="initiated_by" read_only="true" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="NBS" sequence="0" value="NBS"/>
+                <element inactive_on_update="false" label="Supplier" sequence="1" value="Supplier"/>
+            </choice>
+        </element>
+        <element attributes="no_sort=true,slushbucket_ref_no_expand=true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Languages" mandatory="true" max_length="5000" name="languages" reference="x_nesa_ng_obsidian_document_languages" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="glide_list"/>
+        <element label="Published by" max_length="32" name="published_by" read_only="true" reference="sys_user" type="reference"/>
+        <element label="Publish date" max_length="40" name="publish_date" read_only="true" type="glide_date"/>
+        <element label="Related models" max_length="4000" name="related_models" read_only="true" reference="x_nesa_ng_obsidian_obsidian_model" type="glide_list"/>
+        <element label="Release date" max_length="100" name="release_date" type="string"/>
+        <element hint="Number of months required to issue certificate renewal" label="Re-certification lead-time (months)" max_length="40" name="re_certification_lead_time" type="integer"/>
+        <element default="javascript:gs.getUserID()" dynamic_default_value="2fd8e97bef3221002841f7f775c0fbc1" label="Submitted by" max_length="32" name="submitted_by" read_only="true" reference="sys_user" type="reference" use_dynamic_default="true"/>
+        <element choice="1" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this field is used for (make sure to provide details if it is automatically filled-in via a calculation or a script &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this field has been created or updated &gt;" label="Supplier" mandatory="true" max_length="32" name="supplier" reference="core_company" reference_qual="u_active=true^u_restrict_visibility_toLIKEec2686691b61c110fe9e43f1b24bcbeb^u_is_parent_vendor=true^EQ" reference_qual_condition="u_active=true^u_restrict_visibility_toLIKEec2686691b61c110fe9e43f1b24bcbeb^u_is_parent_vendor=true^EQ" type="reference">
+            <choice/>
+        </element>
+        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;&#13;&#10;&#9;return new x_nesa_ng_obsidian.DXCObsidianCommonUtils().getSupplierGroupSysIDForSupplier(current.supplier);&#13;&#10;&#13;&#10;})(current);" label="Supplier group" max_length="32" name="supplier_group" read_only="true" reference="sys_user_group" type="reference" virtual="true"/>
+        <element label="Test reports" max_length="40" name="test_reports" type="file_attachment"/>
+        <element choice="1" label="Type" mandatory="true" max_length="40" name="type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Certificate" sequence="0" value="Certificate"/>
+                <element inactive_on_update="false" label="Compatibility matrix" sequence="1" value="Compatibility matrix"/>
+                <element inactive_on_update="false" label="Spare parts lists/manuals" sequence="2" value="Spare parts lists"/>
+                <element inactive_on_update="false" label="Electric diagrams" sequence="3" value="Electric diagrams"/>
+                <element inactive_on_update="false" label="FAQs" sequence="4" value="FAQs"/>
+                <element inactive_on_update="false" label="Forms and procedures" sequence="5" value="Forms and procedures"/>
+                <element inactive_on_update="false" label="Key features" sequence="6" value="Key features"/>
+                <element inactive_on_update="false" label="Master SW / Firmware" sequence="7" value="Master firmware"/>
+                <element inactive_on_update="false" label="Operations manual" sequence="8" value="Operations manual"/>
+                <element inactive_on_update="false" label="Brochure" sequence="9" value="Brochure"/>
+                <element inactive_on_update="false" label="Quick Reference Card (QRC)" sequence="10" value="QRC"/>
+                <element inactive_on_update="false" label="Recipe files / configuration data (.da3, .dat, GUI)" sequence="11" value="Recipe files"/>
+                <element inactive_on_update="false" label="Service books" sequence="12" value="Service books"/>
+                <element inactive_on_update="false" label="Technical manual" sequence="13" value="Technical manual"/>
+                <element inactive_on_update="false" label="Technical information (Service bulletins, guidelines...)" sequence="14" value="Technical information"/>
+                <element inactive_on_update="false" label="Training material" sequence="15" value="Training material"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="published_by"/>
+        </index>
+        <index name="index2">
+            <element name="supplier"/>
+        </index>
+        <index name="index3">
+            <element name="document_request"/>
+        </index>
+        <index name="index4">
+            <element name="submitted_by"/>
+        </index>
+        <index name="index5">
+            <element name="supplier_group"/>
+        </index>
+    </element>
+</database>

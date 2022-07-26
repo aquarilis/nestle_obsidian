@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element audit="true" extends="sys_import_set_row" label="(DXC) Obsidian - 01 - Models" max_length="40" name="x_nesa_ng_obsidian_obsidian_model_import" sizeclass="99" type="collection">
+    <element audit="true" extends="sys_import_set_row" label="(DXC) Obsidian - 01 - Models" max_length="40" name="x_nesa_ng_obsidian_obsidian_model_import" sizeclass="0" type="collection">
         <element attributes="edge_encryption_enabled=true,import_attribute_name=Air pallet loading (units)" label="Air pallet loading (units)" max_length="40" name="u_air_pallet_loading__units_" type="integer"/>
         <element attributes="edge_encryption_enabled=true,import_attribute_name=AJ" label="AJ" max_length="156" name="u_aj" type="string"/>
         <element attributes="edge_encryption_enabled=true,import_attribute_name=Beverage Temperature" label="Beverage Temperature" max_length="40" name="u_beverage_temperature" type="string"/>

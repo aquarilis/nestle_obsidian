@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section action="DELETE" caption="Import certificates and documents" section_id="7229b07f1be8559cfe9e43f1b24bcb2c" sys_domain="global" table="x_nesa_ng_obsidian_importing_country" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>12M.x_nesa_ng_obsidian_importing_country.x_nesa_ng_obsidian_import_certificate_and_document.importing_country</element>
+            <position>0</position>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-07-14 08:12:44</sys_created_on>
+            <sys_id>203934771b2c559cfe9e43f1b24bcb98</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Import certificates and documents" display_value="Import certificates and documents" name="x_nesa_ng_obsidian_importing_country" sys_domain="global" view="Default view">7229b07f1be8559cfe9e43f1b24bcb2c</sys_ui_section>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-07-14 08:12:44</sys_updated_on>
+            <sys_user/>
+            <type>list</type>
+        </sys_ui_element>
+        <sys_ui_section action="DELETE">
+            <caption>Import certificates and documents</caption>
+            <header>false</header>
+            <name>x_nesa_ng_obsidian_importing_country</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-07-14 08:12:37</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>7229b07f1be8559cfe9e43f1b24bcb2c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_nesa_ng_obsidian_importing_country</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+            <sys_update_name>sys_ui_section_7229b07f1be8559cfe9e43f1b24bcb2c</sys_update_name>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-07-14 08:12:37</sys_updated_on>
+            <sys_user/>
+            <title>false</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</application>
+        <file_path/>
+        <instance_id>088a9d09dbcf8f405904f897bf9619d7</instance_id>
+        <instance_name>nestledev</instance_name>
+        <name>sys_ui_section_7229b07f1be8559cfe9e43f1b24bcb2c</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_ui_section caption="Import certificates and documents" section_id="7229b07f1be8559cfe9e43f1b24bcb2c" sys_domain="global" table="x_nesa_ng_obsidian_importing_country" version="3" view=""><sys_ui_element action="INSERT_OR_UPDATE"><element>12M.x_nesa_ng_obsidian_importing_country.x_nesa_ng_obsidian_import_certificate_and_document.importing_country</element><position>0</position><sys_created_by>admin_Luu-Ly_Mai</sys_created_by><sys_created_on>2022-07-14 08:12:44</sys_created_on><sys_id>203934771b2c559cfe9e43f1b24bcb98</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="Import certificates and documents" display_value="Import certificates and documents" name="x_nesa_ng_obsidian_importing_country" sys_domain="global" view="Default view">7229b07f1be8559cfe9e43f1b24bcb2c</sys_ui_section><sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by><sys_updated_on>2022-07-14 08:12:44</sys_updated_on><sys_user/><type>list</type></sys_ui_element><sys_ui_section action="INSERT_OR_UPDATE"><caption>Import certificates and documents</caption><header>false</header><name>x_nesa_ng_obsidian_importing_country</name><roles/><sys_class_name>sys_ui_section</sys_class_name><sys_created_by>admin_Luu-Ly_Mai</sys_created_by><sys_created_on>2022-07-14 08:12:37</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>7229b07f1be8559cfe9e43f1b24bcb2c</sys_id><sys_mod_count>0</sys_mod_count><sys_name>x_nesa_ng_obsidian_importing_country</sys_name><sys_overrides/><sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package><sys_policy/><sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope><sys_update_name>sys_ui_section_7229b07f1be8559cfe9e43f1b24bcb2c</sys_update_name><sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by><sys_updated_on>2022-07-14 08:12:37</sys_updated_on><sys_user/><title>false</title><view display_value="Default view" name="NULL">Default view</view><view_name/></sys_ui_section></sys_ui_section></record_update>]]></payload>
+        <payload_hash>366890858</payload_hash>
+        <record_name>Importing Country</record_name>
+        <reverted_from/>
+        <source>59c2c5d91ba05590fe9e43f1b24bcb3c</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-07-14 08:12:44</sys_created_on>
+        <sys_id>243934771b2c559cfe9e43f1b24bcb9a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>181fbc470ed0000001</sys_recorded_at>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-07-14 08:12:44</sys_updated_on>
+        <type>Form Layout</type>
+        <update_guid>ac393477fb2c559c8064db86acc55399</update_guid>
+        <update_guid_history>ac393477fb2c559c8064db86acc55399:366890858</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-07-14 08:20:23</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_section">sys_ui_section</sys_db_object>
+        <sys_id>399ac3e826e945f0aa0a4d9b8e349900</sys_id>
+        <sys_metadata>7229b07f1be8559cfe9e43f1b24bcb2c</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Import certificates and documents</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_parent display_value="Importing Country">4516d6761b2019d006e886efe54bcb5f</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_scope_delete display_value="">2b1177cc58ae40468b55d80cc784eec4</sys_scope_delete>
+        <sys_update_name>sys_ui_section_7229b07f1be8559cfe9e43f1b24bcb2c</sys_update_name>
+        <sys_update_version display_value="sys_ui_section_7229b07f1be8559cfe9e43f1b24bcb2c">243934771b2c559cfe9e43f1b24bcb9a</sys_update_version>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-07-14 08:20:23</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

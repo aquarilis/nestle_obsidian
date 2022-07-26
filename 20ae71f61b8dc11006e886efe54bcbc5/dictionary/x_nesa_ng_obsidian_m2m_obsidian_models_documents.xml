@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Ng Obsidian M2m Obsidian Models Documents" max_length="40" name="x_nesa_ng_obsidian_m2m_obsidian_models_documents" sizeclass="4" type="collection">
+        <element attributes="encode_utf8=false" label="Document" max_length="32" name="document" read_only="true" reference="x_nesa_ng_obsidian_document" type="reference"/>
+        <element attributes="encode_utf8=false" label="Obsidian Model" max_length="32" name="obsidian_model" read_only="true" reference="x_nesa_ng_obsidian_obsidian_model" reference_qual="javascript:&quot;supplier=&quot; + current.document.supplier;" type="reference" use_reference_qualifier="advanced"/>
+        <index name="index">
+            <element name="document"/>
+        </index>
+        <index name="index2">
+            <element name="obsidian_model"/>
+        </index>
+    </element>
+</database>

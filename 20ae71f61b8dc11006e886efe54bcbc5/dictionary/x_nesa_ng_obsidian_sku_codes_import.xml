@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element extends="sys_import_set_row" label="(DXC) Obsidian - 10 - SKU Codes" max_length="40" name="x_nesa_ng_obsidian_sku_codes_import" sizeclass="48" type="collection">
+    <element extends="sys_import_set_row" label="(DXC) Obsidian - 10 - SKU Codes" max_length="40" name="x_nesa_ng_obsidian_sku_codes_import" sizeclass="0" type="collection">
         <element attributes="edge_encryption_enabled=true,import_attribute_name=Account assignment" label="Account assignment" max_length="40" name="u_account_assignment" type="string"/>
         <element attributes="edge_encryption_enabled=true,import_attribute_name=Activation date" label="Activation date" max_length="40" name="u_activation_date" type="glide_date"/>
         <element attributes="edge_encryption_enabled=true,import_attribute_name=Assignment country" label="Assignment country" max_length="40" name="u_assignment_country" type="string"/>

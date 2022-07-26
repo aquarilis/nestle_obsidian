@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this table is used for &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this table has been created or updated &gt;" label="Import certificate and document" max_length="40" name="x_nesa_ng_obsidian_import_certificate_and_document" sizeclass="2" type="collection">
+        <element label="Comments" mandatory="true" max_length="500" name="comments" type="string"/>
+        <element label="Importing country" mandatory="true" max_length="32" name="importing_country" read_only="true" reference="x_nesa_ng_obsidian_importing_country" type="reference"/>
+        <element label="Name" mandatory="true" max_length="80" name="name" type="string"/>
+        <index name="index">
+            <element name="importing_country"/>
+        </index>
+    </element>
+</database>

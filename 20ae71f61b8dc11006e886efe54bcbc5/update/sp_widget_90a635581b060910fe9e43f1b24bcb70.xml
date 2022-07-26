@@ -28,7 +28,7 @@
         var countList = JSON.parse(answer);
         c.options.header_count = countList;
     }
-
+	
     function update_record_count(table, query, index) {
         var ga = new GlideAjax('x_nesa_ng_obsidian.DXCObsidianPortalUtils');
         ga.addParam('sysparm_name', 'count');
@@ -555,6 +555,58 @@ color: #141414 !important;&#13;
 			options.tabs.push(tsmTabs_obj);
 		}
 
+		//add "Documents" tab if User is not a 3rd party user
+		if (
+			!userIs3rdPartyRelated ||
+			(adminOverride && gs.hasRole("admin"))
+		) {
+			var documentTabs_obj = {
+				"title": "Documents",
+				"id": "x_nesa_ng_obsidian_document",
+				"table": "x_nesa_ng_obsidian_document",
+				"fields": "supplier,type,document_title,document_stage,publish_date",
+				"filter": "",
+				"sort_options": [
+					["Sort by", ""],
+					["Newest", "desc"], "Oldest", "asc"
+				],
+				"filter_by_options": [
+					["All", "sys_id!=null"],
+					["Draft", "document_stage=10"],
+					["Published", "document_stage=30"],
+					["Obsolete", "document_stage=40"],
+				]
+			};
+
+			options.tabs.push(documentTabs_obj);
+		}
+
+
+
+		//add "Import requirements" tab if User is Supplier related
+		if (
+			(!userIsSupplierRelated && !userIs3rdPartyRelated) ||
+			(adminOverride && gs.hasRole("admin"))
+		) {
+			var icTabs_obj = {
+				"title": "Import requirements",
+				"id": "x_nesa_ng_obsidian_importing_country",
+				"table": "x_nesa_ng_obsidian_importing_country",
+				"fields": "importing_country,market,zone",
+				"filter": "",
+				"sort_options": [
+					["Sort by", ""],
+					["Newest", "desc"], "Oldest", "asc"
+				],
+				"filter_by_options": [
+					["All", "sys_id!=null"]
+				]
+			};
+
+			options.tabs.push(icTabs_obj);
+		}
+
+
 		//add "Approval requests" tab
 		var approvalTab_obj = {
 			"title": "Approval requests",
@@ -635,14 +687,14 @@ color: #141414 !important;&#13;
         <sys_created_by>admin_Isaac_Perez</sys_created_by>
         <sys_created_on>2022-03-01 09:09:04</sys_created_on>
         <sys_id>90a635581b060910fe9e43f1b24bcb70</sys_id>
-        <sys_mod_count>144</sys_mod_count>
+        <sys_mod_count>150</sys_mod_count>
         <sys_name>(DXC) Obsidian My tickets</sys_name>
         <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
         <sys_policy/>
         <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
         <sys_update_name>sp_widget_90a635581b060910fe9e43f1b24bcb70</sys_update_name>
-        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
-        <sys_updated_on>2022-06-08 14:40:07</sys_updated_on>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-07-21 13:45:26</sys_updated_on>
         <template><![CDATA[<div>
   <div class="header">
     <div class="header-tabs" ng-repeat="tab in c.options.tabs track by $index">

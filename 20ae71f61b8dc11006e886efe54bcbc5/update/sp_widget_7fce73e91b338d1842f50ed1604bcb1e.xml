@@ -202,7 +202,7 @@ a.color_box .fa {&#13;
         <internal>false</internal>
         <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
         <name>Obsidian button-circle-img</name>
-        <option_schema>[{"name":"link_template","section":"Presentation","label":"Template","type":"choice","choices":[{"label":"Top Icon","value":"Top Icon"},{"label":"Circle Icon","value":"Circle Icon"},{"label":"Color Box","value":"Color Box"}]},{"name":"icon_src","section":"other","label":"Icon src","type":"string"},{"name":"icon_src_hover","section":"other","default_value":"","label":"Icon src Hover","type":"string"},{"name":"user_criteria_list","section":"other","label":"Available For","type":"string"},{"name":"not_available_for","section":"other","label":"Not Available For","type":"string"}]</option_schema>
+        <option_schema>[{"name":"link_template","section":"Presentation","label":"Template","type":"choice","choices":[{"label":"Top Icon","value":"Top Icon"},{"label":"Circle Icon","value":"Circle Icon"},{"label":"Color Box","value":"Color Box"}]},{"name":"icon_src","section":"other","label":"Icon src","type":"string"},{"name":"icon_src_hover","section":"other","default_value":"","label":"Icon src Hover","type":"string"},{"name":"user_criteria_list","section":"other","label":"Available For","type":"string"},{"name":"not_available_for","section":"other","label":"Not Available For","type":"string"},{"name":"target","section":"other","label":"Target","type":"choice","choices":[{"label":"_blank","value":"_blank"},{"label":"_self","value":"_self"},{"label":"_top","value":"_top"}]}]</option_schema>
         <public>true</public>
         <roles/>
         <script><![CDATA[(function(){
@@ -265,14 +265,14 @@ a.color_box .fa {&#13;
         <sys_created_by>admin_Hien The_Tran</sys_created_by>
         <sys_created_on>2022-05-31 16:02:41</sys_created_on>
         <sys_id>7fce73e91b338d1842f50ed1604bcb1e</sys_id>
-        <sys_mod_count>45</sys_mod_count>
+        <sys_mod_count>47</sys_mod_count>
         <sys_name>Obsidian button-circle-img</sys_name>
         <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
         <sys_policy/>
         <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
         <sys_update_name>sp_widget_7fce73e91b338d1842f50ed1604bcb1e</sys_update_name>
         <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
-        <sys_updated_on>2022-05-31 17:21:28</sys_updated_on>
+        <sys_updated_on>2022-07-15 14:04:10</sys_updated_on>
         <template><![CDATA[<div id='{{::options.id}}'>
   <div class="iconlink" ng-if="data.viewAccess">
     <!--// Top Icon -->

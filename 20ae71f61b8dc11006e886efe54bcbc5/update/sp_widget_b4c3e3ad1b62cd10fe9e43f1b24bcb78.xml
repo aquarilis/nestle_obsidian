@@ -723,7 +723,6 @@
 				if ($scope.data.is_wishlist_item)
 					$rootScope.$broadcast("$sp.service_catalog.wishlist.update");
 				if (c.options.auto_redirect == 'false') {
-					//DXC custom message and redirection to 'My_items'
 					myItemsRedirect(a.number, a.table, a.sys_id, a.redirect_to, a.redirect_portal_url);
 					setFieldsReadonly();
 					$scope.submitted = true;
@@ -1099,7 +1098,9 @@
 					_doRedirect(n, table, sys_id, stage);
 				}
 			});
-		} else _doRedirect(n, table, sys_id, 'fulfillment', redirectTo, redirectUrl);
+		} else {
+			_doRedirect(n, table, sys_id, 'fulfillment', redirectTo, redirectUrl);
+		}
 	}
 
 	_doRedirectenh = function(n, table, sys_id) {
@@ -1860,14 +1861,14 @@
         <sys_created_by>admin_Hien The_Tran</sys_created_by>
         <sys_created_on>2022-03-30 10:46:02</sys_created_on>
         <sys_id>b4c3e3ad1b62cd10fe9e43f1b24bcb78</sys_id>
-        <sys_mod_count>54</sys_mod_count>
+        <sys_mod_count>59</sys_mod_count>
         <sys_name>DXC Obsidian SC Catalog Item</sys_name>
         <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
         <sys_policy/>
         <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
         <sys_update_name>sp_widget_b4c3e3ad1b62cd10fe9e43f1b24bcb78</sys_update_name>
         <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
-        <sys_updated_on>2022-06-27 08:08:40</sys_updated_on>
+        <sys_updated_on>2022-07-26 09:56:33</sys_updated_on>
         <template><![CDATA[<div id="sc_cat_item" ng-if="::(data.recordFound && !data.not_for_mobile)" sn-atf-blacklist="IS_SERVICE_CATALOG">
   <sp-widget widget="c.orderItemModal" ng-if="c.orderItemModal"></sp-widget>
   <div class="row" ng-if="::data.sc_cat_item" ng-class="{'native-mobile': options.native_mobile == 'true'}">

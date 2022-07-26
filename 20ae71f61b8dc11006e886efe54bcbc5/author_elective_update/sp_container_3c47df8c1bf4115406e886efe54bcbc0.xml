@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_container">
+    <sp_container action="DELETE">
+        <background_color/>
+        <background_image/>
+        <background_style>default</background_style>
+        <bootstrap_alt>false</bootstrap_alt>
+        <class_name/>
+        <container_class_name/>
+        <name>Obsidian Portal - Container 2</name>
+        <order>2</order>
+        <sp_page display_value="obsidian_index">a45c168f1b09cd1006e886efe54bcb54</sp_page>
+        <subheader>false</subheader>
+        <sys_class_name>sp_container</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-07-15 14:21:49</sys_created_on>
+        <sys_id>3c47df8c1bf4115406e886efe54bcbc0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Obsidian Portal - Container 2</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sp_container_3c47df8c1bf4115406e886efe54bcbc0</sys_update_name>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-07-15 14:21:49</sys_updated_on>
+        <title/>
+        <width>container</width>
+    </sp_container>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</application>
+        <file_path/>
+        <instance_id>088a9d09dbcf8f405904f897bf9619d7</instance_id>
+        <instance_name>nestledev</instance_name>
+        <name>sp_container_3c47df8c1bf4115406e886efe54bcbc0</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_container"><sp_container action="INSERT_OR_UPDATE"><background_color/><background_image/><background_style>default</background_style><bootstrap_alt>false</bootstrap_alt><class_name/><container_class_name/><name>Obsidian Portal - Container 2</name><order>2</order><sp_page display_value="obsidian_index">a45c168f1b09cd1006e886efe54bcb54</sp_page><subheader>false</subheader><sys_class_name>sp_container</sys_class_name><sys_created_by>admin_Hien The_Tran</sys_created_by><sys_created_on>2022-07-15 14:21:49</sys_created_on><sys_id>3c47df8c1bf4115406e886efe54bcbc0</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Obsidian Portal - Container 2</sys_name><sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package><sys_policy/><sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope><sys_update_name>sp_container_3c47df8c1bf4115406e886efe54bcbc0</sys_update_name><sys_updated_by>admin_Hien The_Tran</sys_updated_by><sys_updated_on>2022-07-15 14:21:49</sys_updated_on><title/><width>container</width></sp_container></record_update>]]></payload>
+        <payload_hash>945112632</payload_hash>
+        <record_name>Obsidian Portal - Container 2</record_name>
+        <reverted_from/>
+        <source>f72e168b1be81dd006e886efe54bcb6c</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-07-15 14:21:49</sys_created_on>
+        <sys_id>b84753001b38115406e886efe54bcb4d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>182023cb6840000001</sys_recorded_at>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-07-15 14:21:49</sys_updated_on>
+        <type>Container</type>
+        <update_guid>b04753003338115420791ddd81641c4d</update_guid>
+        <update_guid_history>b04753003338115420791ddd81641c4d:945112632</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Record deleted 15-07-2022 14:22:48">df771b001b38115406e886efe54bcbb0</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-07-15 14:22:48</sys_created_on>
+        <sys_db_object display_value="" name="sp_container">sp_container</sys_db_object>
+        <sys_id>84d4f31c547f4a7cbb842298cab61dc4</sys_id>
+        <sys_metadata>3c47df8c1bf4115406e886efe54bcbc0</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Obsidian Portal - Container 2</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_scope_delete display_value="">2b1177cc58ae40468b55d80cc784eec4</sys_scope_delete>
+        <sys_update_name>sp_container_3c47df8c1bf4115406e886efe54bcbc0</sys_update_name>
+        <sys_update_version display_value="sp_container_3c47df8c1bf4115406e886efe54bcbc0">b84753001b38115406e886efe54bcb4d</sys_update_version>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-07-15 14:22:48</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

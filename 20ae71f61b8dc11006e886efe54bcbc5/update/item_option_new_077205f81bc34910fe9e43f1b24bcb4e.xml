@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="item_option_new">
     <item_option_new action="INSERT_OR_UPDATE">
         <active>true</active>
-        <attributes/>
+        <attributes>ref_auto_completer=AJAXTableCompleter,ref_ac_columns=sap_material_number;description;batch_managed,ref_ac_columns_search=true</attributes>
         <cat_item display_value="New SKU Assignment">871394b81b4b0910fe9e43f1b24bcb52</cat_item>
         <category/>
         <choice_direction>down</choice_direction>
@@ -68,14 +68,14 @@
         <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
         <sys_created_on>2022-04-21 11:38:30</sys_created_on>
         <sys_id>077205f81bc34910fe9e43f1b24bcb4e</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name>SAP Material number</sys_name>
         <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
         <sys_policy/>
         <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
         <sys_update_name>item_option_new_077205f81bc34910fe9e43f1b24bcb4e</sys_update_name>
-        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
-        <sys_updated_on>2022-05-02 11:39:00</sys_updated_on>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-07-18 13:37:46</sys_updated_on>
         <table/>
         <tooltip/>
         <type>8</type>

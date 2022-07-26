@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_relationship">
+    <sys_relationship action="INSERT_OR_UPDATE">
+        <advanced>false</advanced>
+        <apply_to/>
+        <basic_apply_to>x_nesa_ng_obsidian_importing_country</basic_apply_to>
+        <basic_query_from>x_nesa_ng_obsidian_sku_assignment</basic_query_from>
+        <insert_callback/>
+        <name>Applicable models</name>
+        <query_from/>
+        <query_with><![CDATA[(function refineQuery(current, parent) {
+
+	// Add your code here, such as current.addQuery(field, value);
+	var sku_gr = new GlideRecord('x_nesa_ng_obsidian_sku_assignment');
+	sku_gr.addQuery('sku_stage', 600);
+	sku_gr.addQuery('assignment_country', parent.country);
+	sku_gr.orderByDesc('activation_date');
+	sku_gr.setLimit(1);
+	sku_gr.query();
+	
+	var ids = [];
+
+	if(sku_gr.next()) 
+		ids.push(sku_gr.getUniqueValue());
+
+	current.addQuery('sys_id', ids);
+
+
+})(current, parent);]]></query_with>
+        <reference_field/>
+        <related_list/>
+        <simple_reference>false</simple_reference>
+        <sys_class_name>sys_relationship</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-07-19 13:53:18</sys_created_on>
+        <sys_id>2d56bfd51bbc159406e886efe54bcbb2</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Applicable models</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_relationship_2d56bfd51bbc159406e886efe54bcbb2</sys_update_name>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-07-19 14:02:26</sys_updated_on>
+    </sys_relationship>
+    <sys_translated_text action="delete_multiple" query="documentkey=2d56bfd51bbc159406e886efe54bcbb2"/>
+</record_update>

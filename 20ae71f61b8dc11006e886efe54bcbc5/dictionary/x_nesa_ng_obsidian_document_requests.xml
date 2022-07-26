@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this table is used for &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this table has been created or updated &gt;" extends="x_nesa_nexgen_core_nexgen_core_case" label="Document requests" max_length="40" name="x_nesa_ng_obsidian_document_requests" sizeclass="14" type="collection">
+        <element label="Obsidian Document" max_length="32" name="document" read_only="true" reference="x_nesa_ng_obsidian_document" type="reference"/>
+        <index name="index">
+            <element name="document"/>
+        </index>
+    </element>
+</database>

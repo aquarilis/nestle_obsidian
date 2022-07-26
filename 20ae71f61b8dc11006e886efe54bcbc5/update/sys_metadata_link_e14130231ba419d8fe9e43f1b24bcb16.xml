@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>update</directory>
+        <documentkey>99bf6ce71b2c151406e886efe54bcb19</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="x_nesa_ng_obsidian_document_languages">
+    <x_nesa_ng_obsidian_document_languages action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <language>Russian</language>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-07-13 12:52:48</sys_created_on>
+        <sys_id>99bf6ce71b2c151406e886efe54bcb19</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-07-13 12:52:48</sys_updated_on>
+    </x_nesa_ng_obsidian_document_languages>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-07-13 12:59:38</sys_created_on>
+        <sys_id>e14130231ba419d8fe9e43f1b24bcb16</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Russian</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_metadata_link_e14130231ba419d8fe9e43f1b24bcb16</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-07-13 12:59:38</sys_updated_on>
+        <tablename>x_nesa_ng_obsidian_document_languages</tablename>
+    </sys_metadata_link>
+</record_update>

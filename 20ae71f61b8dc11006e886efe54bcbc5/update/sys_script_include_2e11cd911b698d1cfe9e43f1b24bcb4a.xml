@@ -9,9 +9,9 @@
         <name>DXCObsidianConstants</name>
         <script><![CDATA[var DXCObsidianConstants = Class.create();
 DXCObsidianConstants.prototype = {
-    initialize: function () {},
+	initialize: function () {},
 
-    type: 'DXCObsidianConstants'
+	type: 'DXCObsidianConstants'
 };
 
 // OBSIDIAN IMPACTED SERIALS - TABLE_NAME
@@ -48,29 +48,35 @@ DXCObsidianConstants.TSM_STATE_CONFIRMED = 3;
 DXCObsidianConstants.TSM_STATE_CANCELLED = 7;
 
 DXCObsidianConstants.NML_TABLE_NAMES = {
-    NML_TABLE: 'x_nesa_ng_obsidian_obsidian_new_model_launch',
-    MODEL_TABLE: 'x_nesa_ng_obsidian_obsidian_model',
-    MODEL_FEATURE_TABLE: 'x_nesa_ng_obsidian_obsidian_model_feature',
-    FEATURE_OPTION_TABLE: 'x_nesa_ng_obsidian_obsidian_feature_option',
-    MODEL_CONFIGURATION_TABLE: 'x_nesa_ng_obsidian_obsidian_model_configuration'
+	NML_TABLE: 'x_nesa_ng_obsidian_obsidian_new_model_launch',
+	MODEL_TABLE: 'x_nesa_ng_obsidian_obsidian_model',
+	MODEL_FEATURE_TABLE: 'x_nesa_ng_obsidian_obsidian_model_feature',
+	FEATURE_OPTION_TABLE: 'x_nesa_ng_obsidian_obsidian_feature_option',
+	MODEL_CONFIGURATION_TABLE: 'x_nesa_ng_obsidian_obsidian_model_configuration',
 };
 
 DXCObsidianConstants.SKU_TABLE_NAMES = {
-    SKU_ASSIGNMENT_TABLE: 'x_nesa_ng_obsidian_sku_assignment',
-    SKU_ASSIGNMENT_FEATURE_TABLE: 'x_nesa_ng_obsidian_sku_assignment_feature',
-    SKU_TABLE: 'x_nesa_ng_obsidian_obsidian_sku'
-};]]></script>
+	SKU_ASSIGNMENT_TABLE: 'x_nesa_ng_obsidian_sku_assignment',
+	SKU_ASSIGNMENT_FEATURE_TABLE: 'x_nesa_ng_obsidian_sku_assignment_feature',
+	SKU_TABLE: 'x_nesa_ng_obsidian_obsidian_sku'
+};
+
+// TECHNICAL TICKET - TABLE NAME
+DXCObsidianConstants.DOCUMENT_TABLE_NAMES = {
+	DOCUMENT_TABLE: 'x_nesa_ng_obsidian_document',
+	DOCUMENT_REQUEST_TABLE: 'x_nesa_ng_obsidian_document_requests',
+}]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>admin_Isaac_Perez</sys_created_by>
         <sys_created_on>2022-02-07 11:18:28</sys_created_on>
         <sys_id>2e11cd911b698d1cfe9e43f1b24bcb4a</sys_id>
-        <sys_mod_count>19</sys_mod_count>
+        <sys_mod_count>23</sys_mod_count>
         <sys_name>DXCObsidianConstants</sys_name>
         <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
         <sys_update_name>sys_script_include_2e11cd911b698d1cfe9e43f1b24bcb4a</sys_update_name>
-        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
-        <sys_updated_on>2022-05-18 07:57:49</sys_updated_on>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-07-25 13:14:40</sys_updated_on>
     </sys_script_include>
 </record_update>

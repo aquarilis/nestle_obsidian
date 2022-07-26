@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance_link">
+    <sp_instance_link action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <class_name>homepage_button</class_name>
+        <color>default</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <kb_article/>
+        <kb_category/>
+        <kb_topic/>
+        <order>1</order>
+        <roles/>
+        <sc_cat_item display_value="New SKU Assignment">871394b81b4b0910fe9e43f1b24bcb52</sc_cat_item>
+        <sc_category/>
+        <short_description>Raise procurement request</short_description>
+        <size>md</size>
+        <sp_column display_value="5">ac6717001b38115406e886efe54bcbe1</sp_column>
+        <sp_page display_value="sc_cat_item">9f12251147132100ba13a5554ee490f4</sp_page>
+        <sp_widget display_value="Obsidian button-circle-img">7fce73e91b338d1842f50ed1604bcb1e</sp_widget>
+        <sys_class_name>sp_instance_link</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-07-15 13:52:38</sys_created_on>
+        <sys_id>919017c01bf4115406e886efe54bcb6c</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>ACCESS PSL</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sp_instance_link_919017c01bf4115406e886efe54bcb6c</sys_update_name>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-07-18 13:23:58</sys_updated_on>
+        <title>ACCESS PSL</title>
+        <type>url</type>
+        <url>https://s2pbrowser.nestle.com/psl</url>
+        <widget_parameters><![CDATA[{
+	"id": {
+		"value": "access_psl"
+	},
+	"template": {
+		"value": "Color Box",
+		"displayValue": "Color Box"
+	},
+	"link_template": {
+		"value": "Circle Icon",
+		"displayValue": "Circle Icon"
+	},
+	"icon_src": {
+		"value": "New_Model_Launch.png",
+		"displayValue": "New_Model_Launch.png"
+	},
+	"icon_src_hover": {
+		"value": "New_Model_Launch.png",
+		"displayValue": "New_Model_Launch.png"
+	},
+	"user_criteria_list": {
+		"value": "",
+		"displayValue": ""
+	},
+	"not_available_for": {
+		"value": "",
+		"displayValue": ""
+	},
+	"target": {
+		"value": "_blank",
+		"displayValue": "_blank"
+	}
+}]]></widget_parameters>
+    </sp_instance_link>
+    <sys_translated_text action="delete_multiple" query="documentkey=919017c01bf4115406e886efe54bcb6c"/>
+</record_update>

@@ -53,17 +53,6 @@
 		$window.open("?id=sc_cat_item&sys_id=" + catalog_link);
 	}
 
-	c.cancelSurvey = function (id) {
-		$scope.server.get({
-			method: "cancelSurvey",
-			survey_sys_id: id
-		}).then(function (response) {
-			//Process your response
-			spUtil.update($scope);
-			$rootScope.$broadcast('$sp.updateHeaderCount', true);
-		});
-	}
-
 	$scope.exportTypes = [{
 		label: 'PDF',
 		value: 'PDF'
@@ -92,7 +81,7 @@
 		parm.table = table;
 		parm.sys_id = item.sys_id;
 		parm.view = 'sp';
-		
+
 		if (table === "sysapproval_approver") {
 			parm.id = 'nestle_approval';
 			parm.sys_id = item.sys_id;
@@ -108,9 +97,12 @@
 			parm.table = 'x_nesa_ng_obsidian_obsidian_new_model_launch';
 			parm.sys_id = item.parentId;
 		} 
-		else if (table === "x_nesa_ng_obsidian_obsidian_spare_part") 
+		else if (table === "x_nesa_ng_obsidian_obsidian_spare_part" || table === 'x_nesa_ng_obsidian_importing_country') 
 			parm.id = 'form';
-
+		else if (table === "x_nesa_ng_obsidian_document" &&  item.parentId) {
+			parm.table = 'x_nesa_ng_obsidian_document_requests';
+			parm.sys_id = item.parentId;
+		} 
 
 		var newURL = $location.search(parm);
 		spAriaFocusManager.navigateToLink(newURL.url());
@@ -276,9 +268,9 @@
 
 	$scope.setOrderBy = function (field) {
 		// not able to order by state
-// 		if (field === "state") {
-// 			return;
-// 		}
+		// 		if (field === "state") {
+		// 			return;
+		// 		}
 		var d = "asc";
 		if ($scope.data.o === field) {
 			if ($scope.data.d === "asc")
@@ -839,17 +831,7 @@ tbody tr:last-child {&#13;
 		return;
 
 	if (input) {
-		// Cancel a survey
-		if (input.method === "cancelSurvey") {
-			var record = new GlideRecord('asmt_assessment_instance');
-			record.addQuery("sys_id", input.survey_sys_id);
-			record.query();
-			while (record.next()) {
-				record.state = 'canceled';
-				record.update();
-			}
-		}
-
+	
 	}
 
 	data.msg = {};
@@ -1075,28 +1057,6 @@ tbody tr:last-child {&#13;
 		//Add translation for panel title
 		data.title = gs.getMessage(options.title);
 	}
-	//change here the heder labels and css class
-	else if (options.id && (options.id === "my_open_cases" || options.id === "my_completed_cases")) {
-		//page to redirect
-		data.page_id = "dxc_hrj_ticket_page";
-		//Add translation for panel title
-		data.title = gs.getMessage(options.title);
-	}
-
-	if (options.id && (options.id === "my_items" || options.id === "all_my_items")) {
-		var userGR = new GlideRecord("sys_user");
-		var location_sys_id = "";
-		var company_sys_id = "";
-		var market_sys_id = "";
-		userGR.addQuery("sys_id", gs.getUserID());
-		userGR.query();
-		if (userGR.next()) {
-			location_sys_id = userGR.location;
-			company_sys_id = userGR.company;
-			market_sys_id = userGR.u_market;
-		}
-
-	}
 
 	//show colapsed content for the following instances
 	if (options.id && (options.id === "my_items" || options.id === "all_my_items" || options.id === "my_approvals" || options.id === "my_invoices" || options.id === "my_inquiries" || options.id === "my_closed_invoices" || options.id === "my_rejected_invoices" || options.id === "my_po" || options.id === "my_complete_po" || options.id === "po_line_item")) {
@@ -1124,6 +1084,8 @@ tbody tr:last-child {&#13;
 			record.parentTable = gr.parent.sys_class_name + "";
 		} else if (gr.getTableName() === x_nesa_ng_obsidian.DXCObsidianConstants.NML_TABLE_NAMES.MODEL_TABLE) {
 			record.parentId = gr.getValue('obsidian_new_model_launch');
+		} else if (gr.getTableName() === x_nesa_ng_obsidian.DXCObsidianConstants.DOCUMENT_TABLE_NAMES.DOCUMENT_TABLE) {
+			record.parentId = gr.getValue('document_request');
 		}
 
 
@@ -1170,14 +1132,7 @@ tbody tr:last-child {&#13;
 				}
 			}
 		}
-		//Invoices & Inquiries table
-		else if (options.id && (options.id === "my_invoices" || options.id === "my_closed_invoices" || options.id === "my_inquiries" || options.id === "my_closed_inquiries" || options.id === "my_rejected_invoices")) {
-			if (record.state)
-				record.state.css_class = "hidden-xs";
-			if (record.sys_class_name)
-				//hide sys_class_name for invoices and inquiries
-				record.sys_class_name.css_class = "hidden";
-		}
+		
 		// All other widget definitions
 		else {
 			if (record.state)
@@ -1241,14 +1196,14 @@ tbody tr:last-child {&#13;
         <sys_created_by>admin_Hien The_Tran</sys_created_by>
         <sys_created_on>2022-04-07 08:47:24</sys_created_on>
         <sys_id>4155d01c1bf64594fe9e43f1b24bcb2e</sys_id>
-        <sys_mod_count>87</sys_mod_count>
+        <sys_mod_count>95</sys_mod_count>
         <sys_name>DXC Obsidian Data Table</sys_name>
         <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
         <sys_policy/>
         <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
         <sys_update_name>sp_widget_4155d01c1bf64594fe9e43f1b24bcb2e</sys_update_name>
         <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
-        <sys_updated_on>2022-06-30 10:14:40</sys_updated_on>
+        <sys_updated_on>2022-07-25 14:45:51</sys_updated_on>
         <template><![CDATA[<div class="panel panel-{{options.color}} b">
   <div class="panel-heading form-inline"  ng-hide="options.hide_header" data-toggle="collapse" data-target="#collapse_{{options.id}}" aria-expanded="{{data.show_collapsed_content}}">
     <span class="dropdown m-r-xs">

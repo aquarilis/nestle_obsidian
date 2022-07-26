@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this table is used for &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this table has been created or updated &gt;" label="Transit lead time" max_length="40" name="x_nesa_ng_obsidian_transit_lead_time" sizeclass="3" type="collection">
+        <element label="Customs clearance (days)" mandatory="true" max_length="40" name="customs_clearance" type="integer"/>
+        <element label="Departing country" mandatory="true" max_length="32" name="departing_country" reference="cmn_location" reference_qual="javascript:&quot;sys_idIN&quot;+ new x_nesa_ng_obsidian.DXCObsidianImportRequirementsUtils().getVendorSupportedCountrySysIDs();" type="reference" use_reference_qualifier="advanced"/>
+        <element label="Importing country" mandatory="true" max_length="32" name="importing_country" read_only="true" reference="x_nesa_ng_obsidian_importing_country" type="reference"/>
+        <element label="Transport leadtime (weeks)" mandatory="true" max_length="40" name="transport_leadtime" type="integer"/>
+        <index name="index">
+            <element name="departing_country"/>
+        </index>
+        <index name="index2">
+            <element name="importing_country"/>
+        </index>
+    </element>
+</database>

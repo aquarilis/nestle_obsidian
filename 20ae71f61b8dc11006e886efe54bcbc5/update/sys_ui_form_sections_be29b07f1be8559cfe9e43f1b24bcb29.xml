@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_form_sections form_id="be29b07f1be8559cfe9e43f1b24bcb29" sys_domain="global" table="x_nesa_ng_obsidian_importing_country" version="3">
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>0</position>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-07-14 08:12:37</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>7629b07f1be8559cfe9e43f1b24bcb2b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_nesa_ng_obsidian_importing_country" name="x_nesa_ng_obsidian_importing_country" sys_domain="global" view="Default view">be29b07f1be8559cfe9e43f1b24bcb29</sys_ui_form>
+            <sys_ui_section caption="NULL" display_value="" name="x_nesa_ng_obsidian_importing_country" sys_domain="global" view="Default view">3e933c6f1be819d8fe9e43f1b24bcb10</sys_ui_section>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-07-14 08:12:37</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form action="INSERT_OR_UPDATE">
+            <name>x_nesa_ng_obsidian_importing_country</name>
+            <roles/>
+            <sys_class_name>sys_ui_form</sys_class_name>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-07-14 08:12:37</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>be29b07f1be8559cfe9e43f1b24bcb29</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_nesa_ng_obsidian_importing_country</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+            <sys_update_name>sys_ui_form_sections_be29b07f1be8559cfe9e43f1b24bcb29</sys_update_name>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-07-14 08:12:37</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_form>
+    </sys_ui_form_sections>
+</record_update>
