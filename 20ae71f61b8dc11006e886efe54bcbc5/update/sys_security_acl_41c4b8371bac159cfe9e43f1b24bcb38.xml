@@ -10,19 +10,20 @@
         <script><![CDATA[answer = false;
 var gr_importing_country = current.importing_country.getRefRecord();
 if (gr_importing_country.isValidRecord())
-    answer = new x_nesa_ng_obsidian.DXCObsidianImportRequirementsUtils().userCanReadImportingCountry(gr_importing_country);]]></script>
+    //answer = new x_nesa_ng_obsidian.DXCObsidianImportRequirementsUtils().userCanReadImportingCountry(gr_importing_country);
+	answer = gr_importing_country.canRead();]]></script>
         <sys_class_name>sys_security_acl</sys_class_name>
         <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
         <sys_created_on>2022-07-14 07:53:23</sys_created_on>
         <sys_id>41c4b8371bac159cfe9e43f1b24bcb38</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>x_nesa_ng_obsidian_transit_lead_time</sys_name>
         <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
         <sys_policy/>
         <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
         <sys_update_name>sys_security_acl_41c4b8371bac159cfe9e43f1b24bcb38</sys_update_name>
-        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
-        <sys_updated_on>2022-07-20 07:32:24</sys_updated_on>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-08-02 10:11:55</sys_updated_on>
         <type display_value="record">record</type>
     </sys_security_acl>
 </record_update>

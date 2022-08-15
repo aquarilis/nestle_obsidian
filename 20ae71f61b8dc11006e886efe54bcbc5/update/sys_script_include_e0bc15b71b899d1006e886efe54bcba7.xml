@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_nesa_ng_obsidian.DXCObsidianDocumentUtilsAJAX</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>DXCObsidianDocumentUtilsAJAX</name>
+        <script><![CDATA[var DXCObsidianDocumentUtilsAJAX = Class.create();
+DXCObsidianDocumentUtilsAJAX.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+
+	startSupplierFeedbackFlow: function() {
+
+		var feedback = this.getParameter("sysparm_feedback");
+		var library_record = this.getParameter("sysparm_library");
+		var library_GR = new GlideRecord('x_nesa_ng_obsidian_document');
+		if(library_GR.get(library_record)) {
+			return new x_nesa_ng_obsidian.DXCObsidianDocumentUtils().startSupplierFeedbackFlow(library_GR, feedback);
+		}
+	},
+	type: 'DXCObsidianDocumentUtilsAJAX'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-08-08 07:23:47</sys_created_on>
+        <sys_id>e0bc15b71b899d1006e886efe54bcba7</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>DXCObsidianDocumentUtilsAJAX</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_include_e0bc15b71b899d1006e886efe54bcba7</sys_update_name>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-08-08 07:37:49</sys_updated_on>
+    </sys_script_include>
+</record_update>

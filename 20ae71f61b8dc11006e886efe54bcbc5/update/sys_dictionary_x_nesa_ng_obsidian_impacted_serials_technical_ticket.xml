@@ -41,7 +41,7 @@
         <read_only>false</read_only>
         <read_roles/>
         <reference display_value="" name="x_nesa_ng_obsidian_technical_ticket">x_nesa_ng_obsidian_technical_ticket</reference>
-        <reference_cascade_rule/>
+        <reference_cascade_rule>delete</reference_cascade_rule>
         <reference_floats>false</reference_floats>
         <reference_key/>
         <reference_qual/>
@@ -54,14 +54,14 @@
         <sys_created_by>admin_Isaac_Perez</sys_created_by>
         <sys_created_on>2022-01-18 11:55:53</sys_created_on>
         <sys_id>799a463e1b810510fe9e43f1b24bcb6a</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>Technical Ticket</sys_name>
         <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
         <sys_policy/>
         <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
         <sys_update_name>sys_dictionary_x_nesa_ng_obsidian_impacted_serials_technical_ticket</sys_update_name>
-        <sys_updated_by>admin_Isaac_Perez</sys_updated_by>
-        <sys_updated_on>2022-01-18 11:55:53</sys_updated_on>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-08-10 13:02:15</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

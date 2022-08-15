@@ -42,6 +42,20 @@
             <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
             <sys_updated_on>2022-07-14 12:48:36</sys_updated_on>
         </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>3</position>
+            <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+            <sys_created_on>2022-08-03 12:02:31</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>219de41e1b01dd5406e886efe54bcb13</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_nesa_ng_obsidian_document" name="x_nesa_ng_obsidian_document" sys_domain="global" view="Default view">937d093f1b68199cfe9e43f1b24bcbf4</sys_ui_form>
+            <sys_ui_section caption="History and logs" display_value="History and logs" name="x_nesa_ng_obsidian_document" sys_domain="global" view="Default view">e19de41e1b01dd5406e886efe54bcb10</sys_ui_section>
+            <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+            <sys_updated_on>2022-08-03 12:02:31</sys_updated_on>
+        </sys_ui_form_section>
         <sys_ui_form action="INSERT_OR_UPDATE">
             <name>x_nesa_ng_obsidian_document</name>
             <roles/>

@@ -3,7 +3,7 @@
         <active>true</active>
         <array>false</array>
         <array_denormalized>false</array_denormalized>
-        <attributes/>
+        <attributes>no_attachment=false</attributes>
         <audit>true</audit>
         <calculation><![CDATA[(function calculatedFieldValue(current) {
 
@@ -63,15 +63,15 @@ CREATED IN / UPDATED IN&#13;
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
         <sys_created_on>2022-07-13 12:47:12</sys_created_on>
-        <sys_id>9f6ee4e71b6cd5d8fe9e43f1b24bcbc3</sys_id>
-        <sys_mod_count>7</sys_mod_count>
+        <sys_id>9ad5403b1b3899d0fe9e43f1b24bcb00</sys_id>
+        <sys_mod_count>10</sys_mod_count>
         <sys_name>x_nesa_ng_obsidian_document</sys_name>
         <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
         <sys_policy/>
         <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
         <sys_update_name>sys_dictionary_x_nesa_ng_obsidian_document_null</sys_update_name>
         <sys_updated_by>system</sys_updated_by>
-        <sys_updated_on>2022-07-26 10:36:55</sys_updated_on>
+        <sys_updated_on>2022-08-05 10:37:03</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

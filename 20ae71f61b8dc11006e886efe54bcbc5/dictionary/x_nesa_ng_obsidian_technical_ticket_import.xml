@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element extends="sys_import_set_row" label="(DXC) Obsidian - 20 - Technical tickets" max_length="40" name="x_nesa_ng_obsidian_technical_ticket_import" sizeclass="22" type="collection">
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Additional information" label="Additional information" max_length="40" name="u_additional_information" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Affecting overall look" label="Affecting overall look" max_length="40" name="u_affecting_overall_look" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Assignment group" label="Assignment group" max_length="40" name="u_assignment_group" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Closed" label="Closed" max_length="40" name="u_closed" type="glide_date"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Conclusion rejected" label="Conclusion rejected" max_length="40" name="u_conclusion_rejected" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Defective component" label="Defective component" max_length="40" name="u_defective_component" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Description" label="Description" max_length="1991" name="u_description" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Epidemic flag" label="Epidemic flag" max_length="40" name="u_epidemic_flag" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Estimated resolution date" label="Estimated resolution date" max_length="40" name="u_estimated_resolution_date" type="glide_date"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=EVS TSM Unique ID" label="EVS TSM Unique ID" max_length="40" name="u_evs_tsm_unique_id" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=EVS TT unique ID" label="EVS TT unique ID" max_length="40" name="u_evs_tt_unique_id" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Food safety" label="Food safety" max_length="40" name="u_food_safety" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Food safety market" label="Food safety market" max_length="40" name="u_food_safety_market" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=How did you solve it?" label="How did you solve it?" max_length="64" name="u_how_did_you_solve_it_" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Impacted country" label="Impacted country" max_length="40" name="u_impacted_country" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Impact on operation" label="Impact on operation" max_length="40" name="u_impact_on_operation" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Model" label="Model" max_length="40" name="u_model" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Model version" label="Model version" max_length="40" name="u_model_version" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Number of machines" label="Number of machines" max_length="40" name="u_number_of_machines" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Opened" label="Opened" max_length="40" name="u_opened" type="glide_date"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Opened by" label="Opened by" max_length="40" name="u_opened_by" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Operator safety" label="Operator safety" max_length="40" name="u_operator_safety" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Operator safety market" label="Operator safety market" max_length="40" name="u_operator_safety_market" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Other shipping address" label="Other shipping address" max_length="40" name="u_other_shipping_address" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Priority" label="Priority" max_length="40" name="u_priority" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Recurring issue" label="Recurring issue" max_length="40" name="u_recurring_issue" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Requester group" label="Requester group" max_length="40" name="u_requester_group" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Self-managed" label="Self-managed" max_length="40" name="u_self_managed" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Self-managed description" label="Self-managed description" max_length="64" name="u_self_managed_description" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Shipping instructions" label="Shipping instructions" max_length="289" name="u_shipping_instructions" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Short description" label="Short description" max_length="69" name="u_short_description" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Supplier" label="Supplier" max_length="40" name="u_supplier" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Ticket type" label="Ticket type" max_length="40" name="u_ticket_type" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=TT State" label="TT State" max_length="40" name="u_tt_state" type="string"/>
+    </element>
+</database>

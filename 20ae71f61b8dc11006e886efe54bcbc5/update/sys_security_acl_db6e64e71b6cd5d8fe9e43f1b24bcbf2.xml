@@ -2,24 +2,25 @@
     <sys_security_acl action="INSERT_OR_UPDATE">
         <active>true</active>
         <admin_overrides>true</admin_overrides>
-        <advanced>false</advanced>
+        <advanced>true</advanced>
         <condition/>
         <description>Default access control on x_nesa_ng_obsidian_document</description>
         <name>x_nesa_ng_obsidian_document</name>
         <operation display_value="read">read</operation>
-        <script/>
+        <script><![CDATA[var obsidianDocumentUtils = new x_nesa_ng_obsidian.DXCObsidianDocumentUtils();
+answer = obsidianDocumentUtils.canReadDocument(current);]]></script>
         <sys_class_name>sys_security_acl</sys_class_name>
         <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
         <sys_created_on>2022-07-13 12:47:12</sys_created_on>
         <sys_id>db6e64e71b6cd5d8fe9e43f1b24bcbf2</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>x_nesa_ng_obsidian_document</sys_name>
         <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
         <sys_policy/>
         <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
         <sys_update_name>sys_security_acl_db6e64e71b6cd5d8fe9e43f1b24bcbf2</sys_update_name>
         <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
-        <sys_updated_on>2022-07-13 12:47:12</sys_updated_on>
+        <sys_updated_on>2022-08-03 09:50:59</sys_updated_on>
         <type display_value="record">record</type>
     </sys_security_acl>
 </record_update>

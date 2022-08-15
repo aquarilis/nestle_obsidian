@@ -99,7 +99,7 @@
 		} 
 		else if (table === "x_nesa_ng_obsidian_obsidian_spare_part" || table === 'x_nesa_ng_obsidian_importing_country') 
 			parm.id = 'form';
-		else if (table === "x_nesa_ng_obsidian_document" &&  item.parentId) {
+		else if (table === "x_nesa_ng_obsidian_document") {
 			parm.table = 'x_nesa_ng_obsidian_document_requests';
 			parm.sys_id = item.parentId;
 		} 
@@ -1196,14 +1196,14 @@ tbody tr:last-child {&#13;
         <sys_created_by>admin_Hien The_Tran</sys_created_by>
         <sys_created_on>2022-04-07 08:47:24</sys_created_on>
         <sys_id>4155d01c1bf64594fe9e43f1b24bcb2e</sys_id>
-        <sys_mod_count>95</sys_mod_count>
+        <sys_mod_count>102</sys_mod_count>
         <sys_name>DXC Obsidian Data Table</sys_name>
         <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
         <sys_policy/>
         <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
         <sys_update_name>sp_widget_4155d01c1bf64594fe9e43f1b24bcb2e</sys_update_name>
         <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
-        <sys_updated_on>2022-07-25 14:45:51</sys_updated_on>
+        <sys_updated_on>2022-08-02 15:33:28</sys_updated_on>
         <template><![CDATA[<div class="panel panel-{{options.color}} b">
   <div class="panel-heading form-inline"  ng-hide="options.hide_header" data-toggle="collapse" data-target="#collapse_{{options.id}}" aria-expanded="{{data.show_collapsed_content}}">
     <span class="dropdown m-r-xs">

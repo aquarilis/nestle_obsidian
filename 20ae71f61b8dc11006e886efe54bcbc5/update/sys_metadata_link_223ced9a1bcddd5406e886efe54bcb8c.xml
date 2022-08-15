@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>update</directory>
+        <documentkey>f2cba15a1bcddd5406e886efe54bcb9d</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sn_uni_task_employee_form_question_mapping">
+    <sn_uni_task_employee_form_question_mapping action="INSERT_OR_UPDATE">
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-08-03 16:34:18</sys_created_on>
+        <sys_id>f2cba15a1bcddd5406e886efe54bcb9d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-08-03 16:34:18</sys_updated_on>
+        <u_active>true</u_active>
+        <u_employee_form display_value="Collect comments">d1b83f0487845d5cbc702f89cebb3575</u_employee_form>
+        <u_evaluator_script/>
+        <u_question display_value="answer_comments">5209734487845d5cbc702f89cebb35e7</u_question>
+        <u_table>x_nesa_ng_obsidian_document_requests</u_table>
+        <u_target_field>comments</u_target_field>
+        <u_transfer_response_trigger>automatic</u_transfer_response_trigger>
+        <u_value_mapping>{}</u_value_mapping>
+    </sn_uni_task_employee_form_question_mapping>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-08-03 16:36:11</sys_created_on>
+        <sys_id>223ced9a1bcddd5406e886efe54bcb8c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_metadata_link_223ced9a1bcddd5406e886efe54bcb8c</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-08-03 16:36:11</sys_updated_on>
+        <tablename>sn_uni_task_employee_form_question_mappi</tablename>
+    </sys_metadata_link>
+</record_update>

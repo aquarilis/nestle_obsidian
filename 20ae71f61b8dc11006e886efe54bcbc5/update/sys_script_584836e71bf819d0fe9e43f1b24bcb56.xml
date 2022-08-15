@@ -18,7 +18,7 @@
         <filter_condition/>
         <is_rest>false</is_rest>
         <message/>
-        <name>(DXC) Create Universal Task </name>
+        <name>(DXC) Document request initialization</name>
         <order>100</order>
         <priority>100</priority>
         <rest_method/>
@@ -27,14 +27,39 @@
         <rest_service_text/>
         <rest_variables/>
         <role_conditions/>
-        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
-	try {
-		new x_nesa_ng_obsidian.DXCObsidianCommonUtils().createUniversalTask(current.getUniqueValue(), gs.getProperty('x_nesa_ng_obsidian.default_universal_task_template_for_document_request'));
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
+    try {
 
-	} catch(exception) {
-		var dxcLogger = new global.DXCGSLog("com.dxc.global.debugging_level", "Name_of_my_script");
-		dxcLogger.logError(exception);
-	}
+        var obsidianDocument_GR = current.document.getRefRecord();
+
+       
+        if (!obsidianDocument_GR.isValidRecord()){
+            gs.addErrorMessage("Couldn't get obsidianDocument_GR for obsidian document request " + current.sys_id);
+            throw "(DXC) Document request initialization BR couldn't get obsidianDocument_GR";
+        }
+
+
+        if (obsidianDocument_GR.initiated_by == "Supplier") {
+            new x_nesa_ng_obsidian.DXCObsidianCommonUtils().createUniversalTask(current.getUniqueValue(), gs.getProperty('x_nesa_ng_obsidian.default_universal_task_template_for_document_request'));
+        }
+
+        if ((relatedModelsString = obsidianDocument_GR.getValue("related_models"))){
+            relatedModels = relatedModelsString.split(",");
+            relatedModels.forEach(function(relatedModelSysID){
+                var relatedModel_GR = new GlideRecord("x_nesa_ng_obsidian_m2m_obsidian_models_documents");
+                relatedModel_GR.initialize();
+                relatedModel_GR.setValue("obsidian_model", relatedModelSysID);
+                relatedModel_GR.setValue("document", obsidianDocument_GR.getUniqueValue());
+                relatedModel_GR.setWorkflow(false);
+                relatedModel_GR.insert();
+            });
+        }
+
+    } catch (exception) {
+        var dxcLogger = new global.DXCGSLog("com.dxc.global.debugging_level", "(DXC) Document request initialization");
+        lmaLogger.logErr("error in Document request init = " + exception);
+        dxcLogger.logError(exception);
+    }
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>admin_Hien The_Tran</sys_created_by>
@@ -42,15 +67,15 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>584836e71bf819d0fe9e43f1b24bcb56</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>(DXC) Create Universal Task </sys_name>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_name>(DXC) Document request initialization</sys_name>
         <sys_overrides/>
         <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
         <sys_policy/>
         <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
         <sys_update_name>sys_script_584836e71bf819d0fe9e43f1b24bcb56</sys_update_name>
-        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
-        <sys_updated_on>2022-07-26 09:26:47</sys_updated_on>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-08-03 10:52:53</sys_updated_on>
         <template/>
         <when>after</when>
     </sys_script>

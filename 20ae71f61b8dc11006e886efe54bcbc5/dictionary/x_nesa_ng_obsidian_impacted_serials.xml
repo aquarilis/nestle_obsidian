@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element audit="true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this table is used for &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this table has been created or updated &gt;" label="Impacted Serials" max_length="40" name="x_nesa_ng_obsidian_impacted_serials" sizeclass="0" type="collection">
+    <element audit="true" comments="USAGE&#13;&#10;======&#13;&#10;&#13;&#10;&lt; Describe here what this table is used for &gt;&#13;&#10;&#13;&#10;___________________________&#13;&#10;&#13;&#10;CREATED IN / UPDATED IN&#13;&#10;======================&#13;&#10;&#13;&#10;&lt; Document here in which Sprint(s) and Story(ies) this table has been created or updated &gt;" label="Impacted Serials" max_length="40" name="x_nesa_ng_obsidian_impacted_serials" sizeclass="451" type="collection">
         <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Added by" max_length="32" name="added_by" reference="sys_user" type="reference"/>
         <element label="Installation date" max_length="40" name="installation_date" type="glide_date"/>
         <element label="Prev/Corrr maintenance records" max_length="500" name="prev_corrr_maintenance_records" type="string"/>
         <element label="Serial number" mandatory="true" max_length="100" name="serial_number" type="string"/>
-        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Technical Ticket" mandatory="true" max_length="32" name="technical_ticket" reference="x_nesa_ng_obsidian_technical_ticket" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Technical Ticket" mandatory="true" max_length="32" name="technical_ticket" reference="x_nesa_ng_obsidian_technical_ticket" reference_cascade_rule="delete" type="reference"/>
         <element attributes="edge_encryption_enabled=true" label="Throughput (Machine counter)" max_length="40" name="throughput" type="integer"/>
         <index name="index">
             <element name="added_by"/>

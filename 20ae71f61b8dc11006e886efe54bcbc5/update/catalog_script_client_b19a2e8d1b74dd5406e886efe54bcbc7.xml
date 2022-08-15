@@ -34,7 +34,7 @@
                 var answer = response.responseXML.documentElement.getAttribute("answer");
                 var answerObject = JSON.parse(answer);
                 if (answerObject) {
-					var displayValue = answerObject.number + " - " + answerObject.description + " - " + answerObject.batch_managed;
+					var displayValue = answerObject.number + " - " + answerObject.description + " (" + ( answerObject.batch_managed == "Yes" ? "batched managed" : "non-batched managed") + ")";
                     g_form.setValue("sap_material_number", newValue, displayValue);
                 }
             });
@@ -51,15 +51,15 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>b19a2e8d1b74dd5406e886efe54bcbc7</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name>(DXC) onChange Sap Material Number</sys_name>
         <sys_overrides/>
         <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
         <sys_policy/>
         <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
         <sys_update_name>catalog_script_client_b19a2e8d1b74dd5406e886efe54bcbc7</sys_update_name>
-        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
-        <sys_updated_on>2022-07-18 14:09:59</sys_updated_on>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-08-02 13:16:08</sys_updated_on>
         <table/>
         <type>onChange</type>
         <ui_type>10</ui_type>

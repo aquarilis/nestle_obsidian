@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_nesa_ng_obsidian.DXCObsidianDocumentUtils</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>DXCObsidianDocumentUtils</name>
+        <script><![CDATA[var DXCObsidianDocumentUtils = Class.create();
+DXCObsidianDocumentUtils.prototype = {
+	initialize: function () {
+		this.logger = new global.GSLog("com.dxc.global.debugging_enabled", "LMADebug");
+		this.obsidianCommonUtils = new x_nesa_ng_obsidian.DXCObsidianCommonUtils();
+	},
+
+
+	/** 
+	* @author	DXC - Luu-Ly Mai
+	* @desc start a supplier feedback subflow for a given document
+	* @param {GlideRecord} document_GR the document glideRecord for which the supplier has to provide a feedback
+	* @param {String} universal_task_description the description of the supplier's universal task
+	*
+	* @return null
+	**/
+	startSupplierFeedbackFlow: function (document_GR, universal_task_description) {
+		sn_fd.FlowAPI.startSubflow(
+			"x_nesa_ng_obsidian.dxc_obsidian_document_supplier_input_request",
+			{
+				"document_gr": document_GR,
+				"universal_task_description": universal_task_description
+			}
+		);
+
+	},
+
+
+	canWriteDocument: function (document_GR) {
+		try {
+			var documentStage = document_GR.getValue("document_stage");
+			var userID = gs.getUserID();
+
+			var userIsSupplier = this.obsidianCommonUtils.isUserSupplierRelated(userID);
+			var userIsNBS = gs.hasRole("x_nesa_ng_obsidian.nbs_user");
+
+			if (!userIsNBS && !userIsSupplier){
+				return false; 
+			}
+
+
+			if (documentStage == "99") {
+				return false;
+			}
+
+
+
+			if (userIsNBS) {
+				return true;
+			}
+
+			if (userIsSupplier){
+				if (documentStage == "10"){
+					return true;
+				}
+			}
+
+			return false;
+
+		} catch (e) {
+			this.logger.logErr("error in canWriteDocument function: " + e);
+		}
+	},
+
+	canReadDocument: function (document_GR) {
+		try {
+			if (gs.hasRole("x_nesa_ng_obsidian.nbs_user")) {
+				return true;
+			}
+
+			var userID = gs.getUserID();
+			var documentStage = document_GR.getValue("document_stage");
+
+
+			if (this.obsidianCommonUtils.isUser3rdPartyRelated(userID)) {
+				return false;
+			}
+
+
+			//if not NBS, draft and cancelled documents are not visible
+			if (documentStage == "99") {
+				return false;
+			}
+
+			if (this.obsidianCommonUtils.isUserMarketRelated(userID) || this.obsidianCommonUtils.isUserSBUCentralTeamRelated(userID)) {
+				if (documentStage == "30" || documentStage == "40") {
+					return true;
+				} else {
+					return false;
+				}
+			}
+
+			if (this.obsidianCommonUtils.isUserSupplierRelated(userID)) {
+				var suppliersForUser = this.obsidianCommonUtils.getSuppliersForUser(userID);
+				var documentSupplier = document_GR.getValue("supplier");
+
+
+				if (suppliersForUser.indexOf(documentSupplier) == -1) {
+					return false;
+				}
+
+				if (documentStage == "30" || documentStage == "40") {
+					return true;
+				}
+
+
+				if (documentStage == "10") {
+					if (document_GR.getValue("initiated_by") == "Supplier") {
+						return true;
+					}
+
+					var supplierGroupSysID = this.obsidianCommonUtils.getSupplierGroupSysIDForSupplier(documentSupplier);
+					var universalTask_GR = new GlideRecord('sn_uni_task_universal_task');
+					universalTask_GR.addQuery("parent", document_GR.getValue("document_request"));
+					universalTask_GR.addQuery("assignment_group", supplierGroupSysID);
+					universalTask_GR.addQuery("state", "!=", "1");
+					universalTask_GR.setLimit(1);
+					universalTask_GR.query();
+					if (universalTask_GR.hasNext()) {
+						return true;
+					}
+
+				}
+
+			}
+
+			return false;
+
+		} catch (e) {
+			this.logger.logErr("error in canReadDocument function: " + e);
+		}
+	},
+
+	/** 
+	* @author	DXC - Luu-Ly Mai
+	* @desc set the applicable countries field and m2m records for a given document record, according to its related models and active SKUs   
+	* @param {GlideRecord} document_GR the document GlideRecord to be processed
+	* @return null
+	*/
+	setDocumentApplicableCountries: function (document_GR) {
+
+		if ((relatedModelsString = document_GR.getValue("related_models")) == null) {
+
+			var applicableCountryM2MtoDelete_GR = new GlideRecord('x_nesa_ng_obsidian_m2m_locations_documents');
+			applicableCountryM2MtoDelete_GR.addEncodedQuery("document=" + document_GR.getUniqueValue());
+			applicableCountryM2MtoDelete_GR.deleteMultiple();
+			document_GR.applicable_countries = "";
+			document_GR.update();
+			return;
+		}
+
+		var applicableCountries = this._getDocumentApplicableCountries(relatedModelsString.split(","));
+
+
+		var existingApplicableCountryToDelete = new GlideRecord('x_nesa_ng_obsidian_m2m_locations_documents');
+		existingApplicableCountryToDelete.addQuery("document", document_GR.getUniqueValue());
+		existingApplicableCountryToDelete.addQuery("applicable_country", "NOT IN", applicableCountries.join(","));
+		existingApplicableCountryToDelete.deleteMultiple();
+
+		applicableCountries.forEach(function (applicableCountrySysID) {
+			var applicableCountry_GR = new GlideRecord('x_nesa_ng_obsidian_m2m_locations_documents');
+			applicableCountry_GR.addQuery("document", document_GR.getUniqueValue());
+			applicableCountry_GR.addQuery("applicable_country", applicableCountrySysID);
+			applicableCountry_GR.query();
+			if (!applicableCountry_GR.next()) {
+				applicableCountry_GR.setValue("document", document_GR.getUniqueValue());
+				applicableCountry_GR.setValue("applicable_country", applicableCountrySysID);
+				applicableCountry_GR.insert();
+			}
+		});
+
+		document_GR.applicable_countries = applicableCountries.join(",");
+		document_GR.update();
+
+
+	},
+
+
+	_getDocumentApplicableCountries: function (relatedModels_array) {
+		var applicableCountries_array = [];
+
+		relatedModels_array.forEach(function (relatedModelSysID) {
+			var relatedSKUassignment_GA = new GlideAggregate("x_nesa_ng_obsidian_sku_assignment");
+			relatedSKUassignment_GA.addQuery("sku_stage", "600");
+			relatedSKUassignment_GA.addQuery("obsidian_model", relatedModelSysID);
+			relatedSKUassignment_GA.addAggregate("COUNT");
+			relatedSKUassignment_GA.groupBy("assignment_country");
+			relatedSKUassignment_GA.query();
+
+			while (relatedSKUassignment_GA.next()) {
+				var assignmentCountrySysID = relatedSKUassignment_GA.getValue("assignment_country");
+
+				if (applicableCountries_array.indexOf(assignmentCountrySysID) == -1) {
+					applicableCountries_array.push(assignmentCountrySysID);
+				}
+			}
+
+
+		});
+
+		return applicableCountries_array;
+
+	},
+
+	/** 
+	 * @author	DXC - Hien The Tran
+	 * @desc returns whether the Document state accepts Document (universal) task to be created  
+	 * @param documentStateValue the document state value
+	 * @return Boolean whether the Document state accepts ad-hoc Document Universal Task creation
+	 */
+	canCreateAdHocUniversalTask: function (documentStateValue) {
+
+		if (gs.hasRole("admin"))
+			return true;
+
+
+		if (typeof documentStateValue == "string")
+			documentStateValue = parseInt(documentStateValue);
+
+
+		if (documentStateValue == 10)
+			return true;
+		else
+			return false;
+
+	},
+
+
+	createDocumentRequest: function (document_GR) {
+
+		var documentRequest_GR = new GlideRecord(x_nesa_ng_obsidian.DXCObsidianConstants.DOCUMENT_TABLE_NAMES.DOCUMENT_REQUEST_TABLE);
+		documentRequest_GR.initialize();
+		documentRequest_GR.document = document_GR.getUniqueValue();
+		documentRequest_GR.short_description = document_GR.getValue('document_title');
+		documentRequest_GR.assignment_group = document_GR.getValue('supplier_group');
+		var newDocRequest = documentRequest_GR.insert();
+		if (newDocRequest) {
+			document_GR.document_request = newDocRequest;
+			document_GR.update();
+		}
+	},
+
+
+	getRecordProducer_Supplier_default_value: function () {
+
+		var userSupplierSysIDs = this.obsidianCommonUtils.getSuppliersForUser(gs.getUserID());
+		if (userSupplierSysIDs.length > 0) {
+			return userSupplierSysIDs[0].toString();
+		}
+
+	},
+
+	type: 'DXCObsidianDocumentUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-08-02 12:04:39</sys_created_on>
+        <sys_id>94442b3d1b4d955406e886efe54bcbfc</sys_id>
+        <sys_mod_count>49</sys_mod_count>
+        <sys_name>DXCObsidianDocumentUtils</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_include_94442b3d1b4d955406e886efe54bcbfc</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-08-03 16:18:02</sys_updated_on>
+    </sys_script_include>
+</record_update>

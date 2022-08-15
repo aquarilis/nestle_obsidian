@@ -9,20 +9,25 @@
         <query_from/>
         <query_with><![CDATA[(function refineQuery(current, parent) {
 
-	// Add your code here, such as current.addQuery(field, value);
-	var sku_gr = new GlideRecord('x_nesa_ng_obsidian_sku_assignment');
-	sku_gr.addQuery('sku_stage', 600);
-	sku_gr.addQuery('assignment_country', parent.country);
-	sku_gr.orderByDesc('activation_date');
-	sku_gr.setLimit(1);
-	sku_gr.query();
+    var modelSysIDs = [];
 	
-	var ids = [];
+    var skuAssignment_GR = new GlideRecord('x_nesa_ng_obsidian_sku_assignment');
+    skuAssignment_GR.addQuery('sku_stage', 600);
+    skuAssignment_GR.addQuery('assignment_country', parent.country);
+    skuAssignment_GR.orderBy('obsidian_model');
+    skuAssignment_GR.orderByDesc('activation_date');
+    skuAssignment_GR.query();
 
-	if(sku_gr.next()) 
-		ids.push(sku_gr.getUniqueValue());
+    var applicableModelSysIDs = [];
 
-	current.addQuery('sys_id', ids);
+    while (skuAssignment_GR.next()) {
+        if (modelSysIDs.indexOf((modelSysID = skuAssignment_GR.getValue("obsidian_model"))) == -1) {
+            modelSysIDs.push(modelSysID);
+            applicableModelSysIDs.push(skuAssignment_GR.getUniqueValue());
+        }
+    }
+
+    current.addQuery('sys_id', applicableModelSysIDs);
 
 
 })(current, parent);]]></query_with>
@@ -33,14 +38,14 @@
         <sys_created_by>admin_Hien The_Tran</sys_created_by>
         <sys_created_on>2022-07-19 13:53:18</sys_created_on>
         <sys_id>2d56bfd51bbc159406e886efe54bcbb2</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name>Applicable models</sys_name>
         <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
         <sys_policy/>
         <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
         <sys_update_name>sys_relationship_2d56bfd51bbc159406e886efe54bcbb2</sys_update_name>
-        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
-        <sys_updated_on>2022-07-19 14:02:26</sys_updated_on>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-08-02 09:51:29</sys_updated_on>
     </sys_relationship>
     <sys_translated_text action="delete_multiple" query="documentkey=2d56bfd51bbc159406e886efe54bcbb2"/>
 </record_update>

@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update>
-    <sys_documentation element="" label="Ng Obsidian M2m Obsidian Models Documents" language="en" table="x_nesa_ng_obsidian_m2m_obsidian_models_documents">
+    <sys_documentation element="" label="Model Document" language="en" table="x_nesa_ng_obsidian_m2m_obsidian_models_documents">
         <sys_documentation action="INSERT_OR_UPDATE">
             <element/>
             <help/>
             <hint/>
-            <label>Ng Obsidian M2m Obsidian Models Documents</label>
+            <label>Model Document</label>
             <language>en</language>
             <name>x_nesa_ng_obsidian_m2m_obsidian_models_documents</name>
-            <plural>Ng Obsidian M2m Obsidian Models Documents</plural>
+            <plural>Model Documents</plural>
             <sys_class_name>sys_documentation</sys_class_name>
             <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
             <sys_created_on>2022-07-14 09:15:58</sys_created_on>
-            <sys_id>7ea7817b1be0199cfe9e43f1b24bcb3d</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_name>Ng Obsidian M2m Obsidian Models Documents</sys_name>
+            <sys_id>4ed5003b1b3899d0fe9e43f1b24bcba4</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_name>Model Document</sys_name>
             <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
             <sys_policy/>
             <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
             <sys_update_name>sys_documentation_x_nesa_ng_obsidian_m2m_obsidian_models_documents__en</sys_update_name>
             <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
-            <sys_updated_on>2022-07-14 09:15:58</sys_updated_on>
+            <sys_updated_on>2022-08-08 09:04:50</sys_updated_on>
             <url/>
             <url_target/>
         </sys_documentation>

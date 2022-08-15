@@ -9,7 +9,7 @@
         <choice_table/>
         <create_roles/>
         <default_html_value/>
-        <default_value/>
+        <default_value>javascript:new x_nesa_ng_obsidian.DXCObsidianDocumentUtils().getRecordProducer_Supplier_default_value();</default_value>
         <delete_roles/>
         <delivery_plan/>
         <description/>
@@ -72,14 +72,14 @@
         <sys_created_by>admin_Hien The_Tran</sys_created_by>
         <sys_created_on>2022-07-22 07:04:54</sys_created_on>
         <sys_id>cd66b9d61bfc951006e886efe54bcb7a</sys_id>
-        <sys_mod_count>9</sys_mod_count>
+        <sys_mod_count>10</sys_mod_count>
         <sys_name>Supplier</sys_name>
         <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
         <sys_policy/>
         <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
         <sys_update_name>item_option_new_cd66b9d61bfc951006e886efe54bcb7a</sys_update_name>
-        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
-        <sys_updated_on>2022-07-23 18:57:53</sys_updated_on>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-08-02 11:58:30</sys_updated_on>
         <table/>
         <tooltip/>
         <type>8</type>

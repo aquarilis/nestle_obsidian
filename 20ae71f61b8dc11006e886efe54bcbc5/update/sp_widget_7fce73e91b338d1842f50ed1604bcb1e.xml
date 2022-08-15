@@ -9,12 +9,17 @@
 		//$rootScope.$emit('callInvoices', click);
 		$rootScope.$emit('callAPI', click);
 	}
-	
+
 	//DFCT0020767 - fix blank space in 
 	if(c.data.viewAccess == true) {
+
 		setTimeout(function(){ 
-			$('#' + c.options.id).parents('.col-md-3').show();
-		}, 100
+			$(".search_and_buttons .sp-row-content .col-md-3").each(function(){
+				var icon_link = $(this).find(".iconlink");
+				if(icon_link.length == 0) 
+					$(this).hide(); 
+			});
+		}, 500
 				  );
 	}
 
@@ -211,68 +216,22 @@ a.color_box .fa {&#13;
 	data.target = options.target || "";
 	data.title = gs.getMessage(options.title);
 	data.short_description = gs.getMessage(options.short_description);
-	data.viewAccess=true;
-	/*if(options.user_criteria_list){
-		data.viewAccess  =false;
-		var usreCriteriaList = options.user_criteria_list.split(',');
-		var criteriaEvaluator = new global.UserCriteriaEvaluation();
-		for(var i in usreCriteriaList){
-			var grCriteria = new GlideRecord('user_criteria');
-			var scripted = grCriteria.get(usreCriteriaList[i]) ? grCriteria.advanced : false;
-			
-			if(scripted)
-				data.viewAccess = criteriaEvaluator.checkAdvancedUserCriteria(usreCriteriaList[i]);
-			else
-				data.viewAccess = criteriaEvaluator.checkUserMeetsUserCriteria(usreCriteriaList[i],gs.getUserID());
-		}
-	}
-	
-	if(options.not_available_for){
-		var notAvailableCriteria = options.not_available_for.split(',');
-		var mcriteriaEvaluator = new global.UserCriteriaEvaluation();
-		for(var j in notAvailableCriteria){
-			if(mcriteriaEvaluator.checkUserMeetsUserCriteria(notAvailableCriteria[j],gs.getUserID()))
-				data.viewAccess = false;
-		}
-	}*/
-	
-	if(options.user_criteria_list){
-		data.viewAccess  =false;
-		var usreCriteriaList = options.user_criteria_list.split(',');
-		
-		for(var i in usreCriteriaList){
-			if(checkCriteria(usreCriteriaList[i]))
-				data.viewAccess = true;
-		}
-	}
-	
-	if(options.not_available_for){
-		var notAvailableCriteria = options.not_available_for.split(',');
-		
-		for(var j in notAvailableCriteria){
-			if(checkCriteria(notAvailableCriteria[j]))
-				data.viewAccess = false;
-		}
-	}
-	function checkCriteria(criteriaID){
-		 var criterias = new sn_uc.UserCriteriaLoader.getUserCriteria('sc_cat_item_user_criteria_mtom');
-		return criterias.indexOf(criteriaID) >=0;
-	}
-	
+	data.viewAccess= true;
+
 })();]]></script>
         <servicenow>false</servicenow>
         <sys_class_name>sp_widget</sys_class_name>
         <sys_created_by>admin_Hien The_Tran</sys_created_by>
         <sys_created_on>2022-05-31 16:02:41</sys_created_on>
         <sys_id>7fce73e91b338d1842f50ed1604bcb1e</sys_id>
-        <sys_mod_count>47</sys_mod_count>
+        <sys_mod_count>66</sys_mod_count>
         <sys_name>Obsidian button-circle-img</sys_name>
         <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
         <sys_policy/>
         <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
         <sys_update_name>sp_widget_7fce73e91b338d1842f50ed1604bcb1e</sys_update_name>
         <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
-        <sys_updated_on>2022-07-15 14:04:10</sys_updated_on>
+        <sys_updated_on>2022-08-02 14:52:41</sys_updated_on>
         <template><![CDATA[<div id='{{::options.id}}'>
   <div class="iconlink" ng-if="data.viewAccess">
     <!--// Top Icon -->

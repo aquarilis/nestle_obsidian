@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="DELETE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_nesa_ng_obsidian.DXCObsidianDocumentUtils</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>DXCObsidianDocumentUtils</name>
+        <script><![CDATA[var DXCObsidianDocumentUtils = Class.create();
+DXCObsidianDocumentUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+
+
+	/** 
+     * @author	DXC - Hien The Tran
+     * @desc returns whether the Document state accepts Document (universal) task to be created  
+     * @param documentStateValue the document state value
+     * @return Boolean whether the Document state accepts ad-hoc Document Universal Task creation
+     */
+	canCreateAdHocUniversalTask: function (documentStateValue) {
+
+		if (gs.hasRole("admin")) 
+			return true;
+
+
+		if (typeof documentStateValue == "string") 
+			documentStateValue = parseInt(documentStateValue);
+
+
+		if (documentStateValue == 10) 
+			return true;
+		else 
+			return false;
+
+	},
+
+
+	createDocumentRequest: function (document_GR) {
+
+		var documentRequest_GR = new GlideRecord(x_nesa_ng_obsidian.DXCObsidianConstants.DOCUMENT_TABLE_NAMES.DOCUMENT_REQUEST_TABLE);
+		documentRequest_GR.initialize();
+		documentRequest_GR.document = document_GR.getUniqueValue();
+		documentRequest_GR.short_description = document_GR.getValue('document_title');
+		documentRequest_GR.assignment_group = document_GR.getValue('supplier_group');
+		var newDocRequest = documentRequest_GR.insert();
+		if(newDocRequest) {
+			document_GR.document_request = newDocRequest;
+			document_GR.update();
+		}
+	},
+
+
+	type: 'DXCObsidianDocumentUtils'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-07-19 13:35:58</sys_created_on>
+        <sys_id>67d1fb591b7c159406e886efe54bcb19</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>DXCObsidianDocumentUtils</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_include_67d1fb591b7c159406e886efe54bcb19</sys_update_name>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-08-02 10:42:28</sys_updated_on>
+    </sys_script_include>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</application>
+        <file_path/>
+        <instance_id>088a9d09dbcf8f405904f897bf9619d7</instance_id>
+        <instance_name>nestledev</instance_name>
+        <name>sys_script_include_67d1fb591b7c159406e886efe54bcb19</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_include"&gt;&lt;sys_script_include action="INSERT_OR_UPDATE"&gt;&lt;access&gt;public&lt;/access&gt;&lt;active&gt;true&lt;/active&gt;&lt;api_name&gt;x_nesa_ng_obsidian.DXCObsidianDocumentUtils&lt;/api_name&gt;&lt;caller_access/&gt;&lt;client_callable&gt;true&lt;/client_callable&gt;&lt;description/&gt;&lt;name&gt;DXCObsidianDocumentUtils&lt;/name&gt;&lt;script&gt;&lt;![CDATA[var DXCObsidianDocumentUtils = Class.create();
+DXCObsidianDocumentUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+
+
+	/** 
+     * @author	DXC - Hien The Tran
+     * @desc returns whether the Document state accepts Document (universal) task to be created  
+     * @param documentStateValue the document state value
+     * @return Boolean whether the Document state accepts ad-hoc Document Universal Task creation
+     */
+	canCreateAdHocUniversalTask: function (documentStateValue) {
+
+		if (gs.hasRole("admin")) 
+			return true;
+
+
+		if (typeof documentStateValue == "string") 
+			documentStateValue = parseInt(documentStateValue);
+
+
+		if (documentStateValue == 10) 
+			return true;
+		else 
+			return false;
+
+	},
+
+
+	createDocumentRequest: function (document_GR) {
+
+		var documentRequest_GR = new GlideRecord(x_nesa_ng_obsidian.DXCObsidianConstants.DOCUMENT_TABLE_NAMES.DOCUMENT_REQUEST_TABLE);
+		documentRequest_GR.initialize();
+		documentRequest_GR.document = document_GR.getUniqueValue();
+		documentRequest_GR.short_description = document_GR.getValue('document_title');
+		documentRequest_GR.assignment_group = document_GR.getValue('supplier_group');
+		var newDocRequest = documentRequest_GR.insert();
+		if(newDocRequest) {
+			document_GR.document_request = newDocRequest;
+			document_GR.update();
+		}
+	},
+
+
+	type: 'DXCObsidianDocumentUtils'
+});]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin_Hien The_Tran&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-07-19 13:35:58&lt;/sys_created_on&gt;&lt;sys_id&gt;67d1fb591b7c159406e886efe54bcb19&lt;/sys_id&gt;&lt;sys_mod_count&gt;5&lt;/sys_mod_count&gt;&lt;sys_name&gt;DXCObsidianDocumentUtils&lt;/sys_name&gt;&lt;sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian"&gt;20ae71f61b8dc11006e886efe54bcbc5&lt;/sys_package&gt;&lt;sys_policy&gt;read&lt;/sys_policy&gt;&lt;sys_scope display_value="NexGen Obsidian Management"&gt;20ae71f61b8dc11006e886efe54bcbc5&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_include_67d1fb591b7c159406e886efe54bcb19&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin_luu-ly_mai&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-08-02 10:42:28&lt;/sys_updated_on&gt;&lt;/sys_script_include&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>46968274</payload_hash>
+        <record_name>DXCObsidianDocumentUtils</record_name>
+        <reverted_from/>
+        <source>1485eec41b81d1d006e886efe54bcbed</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin_luu-ly_mai</sys_created_by>
+        <sys_created_on>2022-08-02 10:42:28</sys_created_on>
+        <sys_id>eba19bfd1b4d9590fe9e43f1b24bcb05</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1825e265df60000001</sys_recorded_at>
+        <sys_updated_by>admin_luu-ly_mai</sys_updated_by>
+        <sys_updated_on>2022-08-02 10:42:28</sys_updated_on>
+        <type>Script Include</type>
+        <update_guid>a3a19bfd074d9590e9e8d6eb40422005</update_guid>
+        <update_guid_history>a3a19bfd074d9590e9e8d6eb40422005:46968274,7606ccbb8c3899d007ae90b0fa0f6589:0,f5b83b27a8f099d039d7715f55aca2e9:118760707,6974321fe6389190ecf8b93168cb1ad7:1672488079,b234769b113891901d5e8d2bbeefc13b:-1791656720,16240a13ab345190ee2bf48ee738ddc5:737841248,aa63ca5b64f05190bb5175aa0f797dc5:1533762636,8c237b99927c1594820e2855af69735c:-2019557300</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-08-02 12:02:48</sys_created_on>
+        <sys_db_object display_value="" name="sys_script_include">sys_script_include</sys_db_object>
+        <sys_id>06a09a37bd51494c8b3210f7709f27c9</sys_id>
+        <sys_metadata>67d1fb591b7c159406e886efe54bcb19</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>DXCObsidianDocumentUtils</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_parent/>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_scope_delete display_value="">2b1177cc58ae40468b55d80cc784eec4</sys_scope_delete>
+        <sys_update_name>sys_script_include_67d1fb591b7c159406e886efe54bcb19</sys_update_name>
+        <sys_update_version display_value="sys_script_include_67d1fb591b7c159406e886efe54bcb19">eba19bfd1b4d9590fe9e43f1b24bcb05</sys_update_version>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-08-02 12:02:48</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

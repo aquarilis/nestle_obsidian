@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>update</directory>
+        <documentkey>d1d040dc87c45d5cbc702f89cebb350e</documentkey>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sn_uni_task_employee_form_question_mapping"&gt;
+    &lt;sn_uni_task_employee_form_question_mapping action="INSERT_OR_UPDATE"&gt;
+        &lt;sys_created_by&gt;admin_Luu-Ly_Mai&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2022-06-08 10:36:52&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;d1d040dc87c45d5cbc702f89cebb350e&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;3&lt;/sys_mod_count&gt;
+        &lt;sys_updated_by&gt;obsidian_supplier_rhea_member&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2022-06-08 13:00:29&lt;/sys_updated_on&gt;
+        &lt;u_active&gt;true&lt;/u_active&gt;
+        &lt;u_employee_form display_value="Collect comments"&gt;d1b83f0487845d5cbc702f89cebb3575&lt;/u_employee_form&gt;
+        &lt;u_evaluator_script&gt;&lt;![CDATA[targetGlideRecord = universalTaskGR.parent.getRefRecord();]]&gt;&lt;/u_evaluator_script&gt;
+        &lt;u_question display_value="answer_comments"&gt;5209734487845d5cbc702f89cebb35e7&lt;/u_question&gt;
+        &lt;u_table&gt;x_nesa_ng_obsidian_technical_solution_management&lt;/u_table&gt;
+        &lt;u_target_field&gt;comments&lt;/u_target_field&gt;
+        &lt;u_transfer_response_trigger&gt;automatic&lt;/u_transfer_response_trigger&gt;
+        &lt;u_value_mapping&gt;{}&lt;/u_value_mapping&gt;
+    &lt;/sn_uni_task_employee_form_question_mapping&gt;
+&lt;/record_update&gt;
+</payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-08-03 16:36:11</sys_created_on>
+        <sys_id>223ced9a1bcddd5406e886efe54bcb8a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_metadata_link_223ced9a1bcddd5406e886efe54bcb8a</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-08-03 16:36:11</sys_updated_on>
+        <tablename>sn_uni_task_employee_form_question_mappi</tablename>
+    </sys_metadata_link>
+</record_update>

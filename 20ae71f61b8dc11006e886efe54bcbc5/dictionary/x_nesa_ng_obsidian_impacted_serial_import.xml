@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element extends="sys_import_set_row" label="(DXC) Obsidian - 21 - Impacted serials" max_length="40" name="x_nesa_ng_obsidian_impacted_serial_import" sizeclass="451" type="collection">
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=EVS TT unique ID" label="EVS TT unique ID" max_length="40" name="u_evs_tt_unique_id" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Installation date" label="Installation date" max_length="40" name="u_installation_date" type="glide_date"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=prev corr maintenance records" label="prev corr maintenance records" max_length="40" name="u_prev_corr_ma_enance_records" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Serial number" label="Serial number" max_length="40" name="u_serial_number" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Throughput" label="Throughput" max_length="40" name="u_throughput" type="string"/>
+    </element>
+</database>

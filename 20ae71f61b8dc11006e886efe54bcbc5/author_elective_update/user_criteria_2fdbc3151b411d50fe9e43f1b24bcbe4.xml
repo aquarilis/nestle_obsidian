@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="user_criteria">
+    <user_criteria action="DELETE">
+        <active>true</active>
+        <advanced>false</advanced>
+        <company/>
+        <department/>
+        <group/>
+        <location/>
+        <match_all>false</match_all>
+        <name>PERSONNEL SUB-AREA: USKG - 9037 - TX37 Non-Union</name>
+        <role/>
+        <script/>
+        <sys_class_name>user_criteria</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-07-31 21:00:07</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path/>
+        <sys_id>2fdbc3151b411d50fe9e43f1b24bcbe4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>PERSONNEL SUB-AREA: USKG - 9037 - TX37 Non-Union</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>user_criteria_2fdbc3151b411d50fe9e43f1b24bcbe4</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-07-31 21:00:07</sys_updated_on>
+        <u_default_company/>
+        <u_market/>
+        <u_nestle_building/>
+        <u_personnel_area/>
+        <u_personnel_sub_area>e7dbc3151b411d50fe9e43f1b24bcbe4</u_personnel_sub_area>
+        <u_region/>
+        <u_zone/>
+        <user/>
+    </user_criteria>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</application>
+        <file_path/>
+        <instance_id>088a9d09dbcf8f405904f897bf9619d7</instance_id>
+        <instance_name>nestledev</instance_name>
+        <name>user_criteria_2fdbc3151b411d50fe9e43f1b24bcbe4</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="user_criteria"><user_criteria action="INSERT_OR_UPDATE"><active>true</active><advanced>false</advanced><company/><department/><group/><location/><match_all>false</match_all><name>PERSONNEL SUB-AREA: USKG - 9037 - TX37 Non-Union</name><role/><script/><sys_class_name>user_criteria</sys_class_name><sys_created_by>admin_Luu-Ly_Mai</sys_created_by><sys_created_on>2022-07-31 21:00:07</sys_created_on><sys_domain>global</sys_domain><sys_domain_path/><sys_id>2fdbc3151b411d50fe9e43f1b24bcbe4</sys_id><sys_mod_count>0</sys_mod_count><sys_name>PERSONNEL SUB-AREA: USKG - 9037 - TX37 Non-Union</sys_name><sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package><sys_policy/><sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope><sys_update_name>user_criteria_2fdbc3151b411d50fe9e43f1b24bcbe4</sys_update_name><sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by><sys_updated_on>2022-07-31 21:00:07</sys_updated_on><u_default_company/><u_market/><u_nestle_building/><u_personnel_area/><u_personnel_sub_area>e7dbc3151b411d50fe9e43f1b24bcbe4</u_personnel_sub_area><u_region/><u_zone/><user/></user_criteria></record_update>]]></payload>
+        <payload_hash>-1708520587</payload_hash>
+        <record_name>PERSONNEL SUB-AREA: USKG - 9037 - TX37 Non-Union</record_name>
+        <reverted_from/>
+        <source>1485eec41b81d1d006e886efe54bcbed</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-07-31 21:00:07</sys_created_on>
+        <sys_id>67db07151b411d50fe9e43f1b24bcb3d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>182560f1faf0000001</sys_recorded_at>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-07-31 21:00:07</sys_updated_on>
+        <type>User Criteria</type>
+        <update_guid>6fdb071541411d50ac852ba63ec3383c</update_guid>
+        <update_guid_history>6fdb071541411d50ac852ba63ec3383c:-1708520587</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Record deleted 15/08/2022 10:38:23">18f1f5861b55111406e886efe54bcb15</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-08-15 08:38:23</sys_created_on>
+        <sys_db_object display_value="" name="user_criteria">user_criteria</sys_db_object>
+        <sys_id>19403d99d62745b286f6d75e07117d04</sys_id>
+        <sys_metadata>2fdbc3151b411d50fe9e43f1b24bcbe4</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>PERSONNEL SUB-AREA: USKG - 9037 - TX37 Non-Union</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_scope_delete display_value="">2b1177cc58ae40468b55d80cc784eec4</sys_scope_delete>
+        <sys_update_name>user_criteria_2fdbc3151b411d50fe9e43f1b24bcbe4</sys_update_name>
+        <sys_update_version display_value="user_criteria_2fdbc3151b411d50fe9e43f1b24bcbe4">67db07151b411d50fe9e43f1b24bcb3d</sys_update_version>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-08-15 08:38:23</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

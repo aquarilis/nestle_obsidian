@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element extends="sys_import_set_row" label="(DXC) Obsidian - 22 - Tech Sol Mgmt" max_length="40" name="x_nesa_ng_obsidian_technical_solution_management_import" sizeclass="4" type="collection">
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=8D Report" label="8D Report" max_length="40" name="u_8d_report" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=8D Report document filename" label="8D Report document filename" max_length="40" name="u_8d_report_document_filename" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=8D report first date of issuance" label="8D report first date of issuance" max_length="40" name="u_8d_report_fi_te_of_issuance" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=8D Report number" label="8D Report number" max_length="40" name="u_8d_report_number" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Assignment group" label="Assignment group" max_length="40" name="u_assignment_group" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Closed" label="Closed" max_length="40" name="u_closed" type="glide_date"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Crisis flag" label="Crisis flag" max_length="40" name="u_crisis_flag" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Critical flag" label="Critical flag" max_length="40" name="u_critical_flag" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=description" label="description" max_length="388" name="u_description" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=ECR document filename" label="ECR document filename" max_length="40" name="u_ecr_document_filename" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Epidemic flag" label="Epidemic flag" max_length="40" name="u_epidemic_flag" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Estimated TSM Resolution date" label="Estimated TSM Resolution date" max_length="40" name="u_estimated_ts_esolution_date" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=EVS TSM unique ID" label="EVS TSM unique ID" max_length="40" name="u_evs_tsm_unique_id" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=EVS TT Unique ID" label="EVS TT Unique ID" max_length="40" name="u_evs_tt_unique_id" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Issue name" label="Issue name" max_length="84" name="u_issue_name" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Origin" label="Origin" max_length="40" name="u_origin" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Priority level" label="Priority level" max_length="40" name="u_priority_level" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Resolution plan" label="Resolution plan" max_length="137" name="u_resolution_plan" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=TSM description" label="TSM description" max_length="49" name="u_tsm_description" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=TSM Status" label="TSM Status" max_length="40" name="u_tsm_status" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=TSM type" label="TSM type" max_length="51" name="u_tsm_type" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=With ECR" label="With ECR" max_length="40" name="u_with_ecr" type="string"/>
+    </element>
+</database>

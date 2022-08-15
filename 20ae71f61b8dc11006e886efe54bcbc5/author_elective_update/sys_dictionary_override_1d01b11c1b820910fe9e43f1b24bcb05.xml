@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_dictionary_override action="DELETE">
+<attributes/>
+<attributes_override>false</attributes_override>
+<base_table>task</base_table>
+<calculation/>
+<calculation_override>false</calculation_override>
+<default_value>javascript:new DXCTechnicalTicketUtils().calculateEstimatedResolutionTime()</default_value>
+<default_value_override>true</default_value_override>
+<dependent/>
+<dependent_override>false</dependent_override>
+<display_override>false</display_override>
+<element>due_date</element>
+<mandatory>false</mandatory>
+<mandatory_override>false</mandatory_override>
+<name>x_nesa_ng_obsidian_technical_ticket</name>
+<read_only>false</read_only>
+<read_only_override>false</read_only_override>
+<reference_qual/>
+<reference_qual_override>false</reference_qual_override>
+<sys_class_name>sys_dictionary_override</sys_class_name>
+<sys_created_by>admin_Isaac_Perez</sys_created_by>
+<sys_created_on>2022-03-01 08:41:19</sys_created_on>
+<sys_id>1d01b11c1b820910fe9e43f1b24bcb05</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_name>due_date</sys_name>
+<sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+<sys_policy/>
+<sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+<sys_update_name>sys_dictionary_override_1d01b11c1b820910fe9e43f1b24bcb05</sys_update_name>
+<sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+<sys_updated_on>2022-03-01 08:41:19</sys_updated_on>
+</sys_dictionary_override>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</application>
+        <file_path/>
+        <instance_id>088a9d09dbcf8f405904f897bf9619d7</instance_id>
+        <instance_name>nestledev</instance_name>
+        <name>sys_dictionary_override_1d01b11c1b820910fe9e43f1b24bcb05</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_dictionary_override action="INSERT_OR_UPDATE">
+<attributes/>
+<attributes_override>false</attributes_override>
+<base_table>task</base_table>
+<calculation/>
+<calculation_override>false</calculation_override>
+<default_value>javascript:new DXCTechnicalTicketUtils().calculateEstimatedResolutionTime()</default_value>
+<default_value_override>true</default_value_override>
+<dependent/>
+<dependent_override>false</dependent_override>
+<display_override>false</display_override>
+<element>due_date</element>
+<mandatory>false</mandatory>
+<mandatory_override>false</mandatory_override>
+<name>x_nesa_ng_obsidian_technical_ticket</name>
+<read_only>false</read_only>
+<read_only_override>false</read_only_override>
+<reference_qual/>
+<reference_qual_override>false</reference_qual_override>
+<sys_class_name>sys_dictionary_override</sys_class_name>
+<sys_created_by>admin_Isaac_Perez</sys_created_by>
+<sys_created_on>2022-03-01 08:41:19</sys_created_on>
+<sys_id>1d01b11c1b820910fe9e43f1b24bcb05</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_name>due_date</sys_name>
+<sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+<sys_policy/>
+<sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+<sys_update_name>sys_dictionary_override_1d01b11c1b820910fe9e43f1b24bcb05</sys_update_name>
+<sys_updated_by>admin_Isaac_Perez</sys_updated_by>
+<sys_updated_on>2022-03-01 08:41:19</sys_updated_on>
+</sys_dictionary_override></record_update>]]></payload>
+        <payload_hash>1136773681</payload_hash>
+        <record_name>due_date</record_name>
+        <reverted_from/>
+        <source>1485eec41b81d1d006e886efe54bcbed</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-08-10 12:30:18</sys_created_on>
+        <sys_id>c51738a41b9d1590fe9e43f1b24bcb86</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>18287bbf61c0000001</sys_recorded_at>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-08-10 12:30:18</sys_updated_on>
+        <type>Dictionary Entry Override</type>
+        <update_guid>4d1738a4de9d15905837dd8632e04385</update_guid>
+        <update_guid_history>4d1738a4de9d15905837dd8632e04385:1136773681,fd263860569d1590807c2ae908238187:1159369096,89a5786c5d5d159083305b0409e71864:-730051586,4f11bdd87582091057a9dc6f6204f2e5:-213114415</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-08-10 12:31:01</sys_created_on>
+        <sys_db_object display_value="" name="sys_dictionary_override">sys_dictionary_override</sys_db_object>
+        <sys_id>0bf489940635464080929e0eb82f1240</sys_id>
+        <sys_metadata>1d01b11c1b820910fe9e43f1b24bcb05</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>due_date</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_parent display_value="x_nesa_ng_obsidian_technical_ticket">252f71761bcdc11006e886efe54bcb4f</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_scope_delete display_value="">2b1177cc58ae40468b55d80cc784eec4</sys_scope_delete>
+        <sys_update_name>sys_dictionary_override_1d01b11c1b820910fe9e43f1b24bcb05</sys_update_name>
+        <sys_update_version display_value="sys_dictionary_override_1d01b11c1b820910fe9e43f1b24bcb05">c51738a41b9d1590fe9e43f1b24bcb86</sys_update_version>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-08-10 12:31:01</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

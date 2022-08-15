@@ -15,7 +15,7 @@
         <reverse_if_false>true</reverse_if_false>
         <run_scripts>true</run_scripts>
         <script_false><![CDATA[function onCondition() {
-
+	g_form.setSectionDisplay('certificate_details', true);
 }]]></script_false>
         <script_true><![CDATA[function onCondition() {
   g_form.setSectionDisplay('certificate_details', false);
@@ -28,7 +28,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>fbbe6fa91bfcd550fe9e43f1b24bcb04</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>(DXC) show/ hide fields when type is Certificate</sys_name>
         <sys_overrides/>
         <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
@@ -36,7 +36,7 @@
         <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
         <sys_update_name>sys_ui_policy_fbbe6fa91bfcd550fe9e43f1b24bcb04</sys_update_name>
         <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
-        <sys_updated_on>2022-07-20 08:06:10</sys_updated_on>
+        <sys_updated_on>2022-08-05 14:50:25</sys_updated_on>
         <table>x_nesa_ng_obsidian_document</table>
         <ui_type>10</ui_type>
         <view/>

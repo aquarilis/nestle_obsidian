@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script><![CDATA[function invokeCallback(choice) {
+	var callbackFunctionName = "";
+	var gdwCallback = GlideDialogWindow.get();
+	if (choice == "yes"){
+		var comments = gel("feedback-value").value;
+		var ga = new GlideAjax('x_nesa_ng_obsidian.DXCObsidianDocumentUtilsAJAX');
+		ga.addParam('sysparm_name', 'startSupplierFeedbackFlow');
+		ga.addParam('sysparm_feedback', comments);
+		ga.addParam('sysparm_library', g_form.getUniqueValue());
+		ga.getXMLAnswer(function(answer) {
+
+		});
+		callbackFunctionName = "onYes";
+	}else{
+		callbackFunctionName = "onNo";
+	}
+
+	var f = gdwCallback.getPreference(callbackFunctionName);
+	if (typeof(f) == "function") {
+		try {
+			f.call(gdwCallback, gdwCallback.getPreference("oldValue"));
+		} catch(e) {
+		}
+	}
+	gdwCallback.destroy();
+	return false;
+}
+var button = document.getElementById("yes_button");
+button.disabled = true;
+
+var input = document.getElementById("feedback-value");
+input.value = '';
+
+var gdwCustom = GlideDialogWindow.get();
+var focusButton = gdwCustom.getPreference("defaultButton");
+if (focusButton == null){
+	focusButton = "yes_button";
+}else if(focusButton == "yes_button"){
+	gel("no_button").classList.add("btn-default");
+}else{
+	gel("yes_button").classList.add("btn-default");
+}
+gel(focusButton).classList.add("btn-primary");
+gel(focusButton).focus();
+
+var popupIcon = gdwCustom.getPreference("popupIcon");
+if (popupIcon == null){
+	gel("popup_icon").classList.add("icon-check-circle");
+}else{
+	gel("popup_icon").classList.add(popupIcon);
+}
+var popupIconColor = gdwCustom.getPreference("popupIconColor");
+if (popupIconColor != null){
+	gel("popup_icon").style.color = popupIconColor;
+}
+
+function success() {
+
+	if(input.value.length == 0) {
+		document.getElementById('yes_button').disabled = true; 
+	} else { 
+		document.getElementById('yes_button').disabled = false;
+	}
+}
+
+// input.addEventListener("keyup", function(e) {
+// 	alert(input.value.length )
+// 	if(input.value.length == 0) {
+//   	button.disabled = true
+//   } else {
+//   	button.disabled = false
+//   }
+// })]]></client_script>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_nesa_ng_obsidian_obsidian_feedback_dialog.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	<!-- Set up form fields and labels -->
+	<g:ui_form>
+		<!-- Get the values from dialog preferences -->
+		<g:evaluate var="jvar_popup_message"
+					expression="RP.getWindowProperties().get('popupMessage')" />
+		<g:evaluate var="jvar_yes_label"
+					expression="RP.getWindowProperties().get('yesLabel')" />
+		<g:evaluate var="jvar_no_label"
+					expression="RP.getWindowProperties().get('noLabel')" />
+	</g:ui_form>
+
+	<div style="margin: 10px;">
+		<p style="margin-top:10px; margin-bottom: 10px;">Please provide details on the feedback required from the supplier (will be used as description of the task being assigned to the supplier)</p>
+		<textarea style="width: 100%;" onkeyup="success()"  id="feedback-value" rows="4" cols="50"></textarea>
+
+		<div class="button" style="float: right; margin: 5px;">
+			<button onclick="invokeCallback('yes')" id="yes_button" name="yes_button" value="yes" class="btn yes_button" style='margin-right: 10px;'>
+				OK
+			</button>
+
+			<button onclick="invokeCallback('no')" id="no_button" name="no_button" value="no" class="btn">
+				Cancel
+			</button>	
+		</div>
+	</div>
+</j:jelly>]]></html>
+        <name>obsidian_feedback_dialog</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>admin_Hien The_Tran</sys_created_by>
+        <sys_created_on>2022-08-04 07:28:22</sys_created_on>
+        <sys_id>5c3878a61b41159406e886efe54bcb15</sys_id>
+        <sys_mod_count>40</sys_mod_count>
+        <sys_name>obsidian_feedback_dialog</sys_name>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_ui_page_5c3878a61b41159406e886efe54bcb15</sys_update_name>
+        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
+        <sys_updated_on>2022-08-08 08:44:51</sys_updated_on>
+    </sys_ui_page>
+</record_update>

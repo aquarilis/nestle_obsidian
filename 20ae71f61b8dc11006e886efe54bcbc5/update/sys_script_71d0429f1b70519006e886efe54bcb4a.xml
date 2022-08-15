@@ -27,14 +27,14 @@
         <rest_service_text/>
         <rest_variables/>
         <role_conditions/>
-        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
-   try {
-      new x_nesa_ng_obsidian.DXCObsidianDocumentUtils().createDocumentRequest(current);
-	   
-   } catch(exception) {
-      var dxcLogger = new global.DXCGSLog("com.dxc.global.debugging_level", "Name_of_my_script");
-      dxcLogger.logError(exception);
-   }
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
+    try {
+        new x_nesa_ng_obsidian.DXCObsidianDocumentUtils().createDocumentRequest(current);
+
+    } catch (exception) {
+        var dxcLogger = new global.DXCGSLog("com.dxc.global.debugging_level", "Name_of_my_script");
+        dxcLogger.logError(exception);
+    }
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>admin_Hien The_Tran</sys_created_by>
@@ -42,15 +42,15 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>71d0429f1b70519006e886efe54bcb4a</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>(DXC) Create new Document Request</sys_name>
         <sys_overrides/>
         <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
         <sys_policy/>
         <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
         <sys_update_name>sys_script_71d0429f1b70519006e886efe54bcb4a</sys_update_name>
-        <sys_updated_by>admin_Hien The_Tran</sys_updated_by>
-        <sys_updated_on>2022-07-25 10:36:12</sys_updated_on>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-08-02 10:39:51</sys_updated_on>
         <template/>
         <when>after</when>
     </sys_script>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>false</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_nesa_ng_obsidian_sku_assignment</collection>
+        <condition/>
+        <description>when a SKU assignment becomes active: &#13;
+&#13;
+a new "Transit lead time" row is added (unless it already exists) with the following attribute values:&#13;
+&#13;
+Import country: the country for which under the SKU assignment is for &#13;
+Departing country: the country of the vendor of the SKU assignment&#13;
+if a new Transit lead time row has been added, NBS is informed that a they need to fill in the missing "lead time" attributes on that record</description>
+        <execute_function>false</execute_function>
+        <filter_condition table="x_nesa_ng_obsidian_sku_assignment">sku_stageCHANGESTO600^EQ<item display_value="Active" endquery="false" field="sku_stage" goto="false" newquery="false" operator="CHANGESTO" or="false" value="600"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter_condition>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>(DXC) Process Import requirement data</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+   try {
+      if (!current.getValue("sku_vendor")) {
+         throw "Cannot proceed with transit lead time record management: SKU assignment has no SKU vendor referenced";
+      }
+
+      var skuVendor_GR = current.sku_vendor.getRefRecord();
+
+      if ((departingCountrySysID = skuVendor_GR.getValue("u_location")) == null) {
+         throw "Cannot proceed with transit lead time record management: SKU vendor " + skuVendor_GR.getDisplayValue() + " has no country location defined";
+      }
+      var importingCountrySysID = current.getValue("assignment_country");
+
+      if (departingCountrySysID != importingCountrySysID) {
+         var importingCountry_GR = new GlideRecord("x_nesa_ng_obsidian_importing_country");
+         if (!importingCountry_GR.get("country", importingCountrySysID)) {
+            //importing country does not exist, need to create it
+            importingCountry_GR.initialize();
+            importingCountry_GR.setValue("country", importingCountrySysID);
+            importingCountry_GR.insert();
+
+
+            var importingCountryTaskDescription = '<p>Please fill in the details on the Importing Country record created for <a href="' + importingCountry_GR.getLink() +  '">' + importingCountry_GR.getDisplayValue()+ '</a>';
+
+            createTransitManagementUniversalTask("Fill details for Importing Country " + importingCountry_GR.getDisplayValue(), importingCountryTaskDescription);
+
+
+         }
+      }
+
+      var transitLeadTime_GR = new GlideRecord('x_nesa_ng_obsidian_transit_lead_time');
+      transitLeadTime_GR.addEncodedQuery("importing_country=" + importingCountrySysID);
+      transitLeadTime_GR.addQuery("departing_country", departingCountrySysID);
+      transitLeadTime_GR.query();
+      if (!transitLeadTime_GR.next()) {
+         transitLeadTime_GR.initialize();
+         transitLeadTime_GR.setValue("importing_country", importingCountry_GR.getUniqueValue());
+         transitLeadTime_GR.setValue("departing_country", departingCountrySysID);
+         transitLeadTime_GR.insert();
+
+
+         var transitLeadTimeTaskDescription = '<p>Please fill in the lead time details for transit between <a href="' + transitLeadTime_GR.getLink() +  '">' + transitLeadTime_GR.getDisplayValue("departing_country") + ' and ' + transitLeadTime_GR.getDisplayValue("importing_country")+ '</a>';
+
+
+         createTransitManagementUniversalTask("Fill lead time details for transit from " + transitLeadTime_GR.getDisplayValue("departing_country") + " to " + transitLeadTime_GR.getDisplayValue("importing_country"), transitLeadTimeTaskDescription);
+      }
+
+
+   } catch (exception) {
+      gs.addErrorMessage("Error during 'Process Import requirement data' execution: " + exception);
+      var dxcLogger = new global.DXCGSLog("com.dxc.global.debugging_level", "(DXC) Process Import requirement data");
+      dxcLogger.logError(exception);
+   }
+})(current, previous);
+
+function createTransitManagementUniversalTask(task_short_description, task_description) {
+   var universalTask_GR = new GlideRecord("sn_uni_task_universal_task");
+   universalTask_GR.initialize();
+   universalTask_GR.setValue("parent", current.getUniqueValue());
+   universalTask_GR.setValue("state", "2");
+   universalTask_GR.setValue("assignment_group", current.getValue("assignment_group"));
+   universalTask_GR.setValue("type", "mark_when_complete");
+   universalTask_GR.setValue("short_description", task_short_description);
+   universalTask_GR.setValue("rich_description", task_description);
+   universalTask_GR.insert();
+}]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin_Luu-Ly_Mai</sys_created_by>
+        <sys_created_on>2022-08-02 13:42:59</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>f2aa3f791bc1d55406e886efe54bcb1a</sys_id>
+        <sys_mod_count>20</sys_mod_count>
+        <sys_name>(DXC) Process Import requirement data</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NexGen Obsidian Management" source="x_nesa_ng_obsidian">20ae71f61b8dc11006e886efe54bcbc5</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NexGen Obsidian Management">20ae71f61b8dc11006e886efe54bcbc5</sys_scope>
+        <sys_update_name>sys_script_f2aa3f791bc1d55406e886efe54bcb1a</sys_update_name>
+        <sys_updated_by>admin_Luu-Ly_Mai</sys_updated_by>
+        <sys_updated_on>2022-08-03 09:06:30</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=f2aa3f791bc1d55406e886efe54bcb1a"/>
+</record_update>
